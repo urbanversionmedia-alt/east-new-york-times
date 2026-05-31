@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Food Stamps Could Be Cut Off Tomorrow — The East New York Times</title>
+  <meta name="description" content="Federal Work Requirements Take Effect June 1 — Here's What East New York Residents Need to Know Before It's Too Late." />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface-2: #1c2128;
+      --surface-3: #21262d;
+      --border: #2d333b;
+      --divider: #21262d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --text-faint: #484f58;
+      --accent: #e8952a;
+      --accent-hover: #d4820a;
+      --accent-dim: rgba(232,149,42,0.12);
+      --red: #f85149;
+      --blue: #2563eb;
+      --blue-dim: rgba(37,99,235,0.1);
+      --font-display: 'Clash Display', 'Georgia', serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+      --font-serif: 'Georgia', 'Times New Roman', serif;
+      --radius: 6px;
+      --radius-lg: 12px;
+      --shadow: 0 4px 16px rgba(0,0,0,0.4);
+      --transition: 200ms cubic-bezier(0.16,1,0.3,1);
+      --max-w: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+    ul { list-style: none; }
+    h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
+    p { text-wrap: pretty; }
+    ::selection { background: var(--accent-dim); }
+
+    .container { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
+    .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; }
+    .tag--accent { background: var(--accent-dim); color: var(--accent); }
+    .tag--red { background: rgba(248,81,73,0.1); color: var(--red); }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--red);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0;
+      text-align: center;
+    }
+
+    /* HEADER */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: color-mix(in oklab, var(--bg) 92%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      height: 70px;
+    }
+    .masthead { display: flex; flex-direction: column; gap: 0.1rem; }
+    .masthead-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .masthead-name span { color: var(--accent); }
+    .masthead-sub {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .nav ul { display: flex; gap: 1.75rem; }
+    .nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color var(--transition); }
+    .nav a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background var(--transition), transform var(--transition); }
+    .btn-accent { background: var(--accent); color: #0d1117; }
+    .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 36px; height: 36px; padding: 0.4rem; justify-content: center; }
+    .menu-toggle span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .mobile-nav { display: none; padding: 1rem clamp(1.25rem,5vw,4rem) 1.5rem; border-top: 1px solid var(--border); }
+    .mobile-nav.open { display: block; }
+    .mobile-nav li { border-bottom: 1px solid var(--divider); }
+    .mobile-nav a { display: block; padding: 0.875rem 0; font-size: 1rem; font-weight: 500; }
+
+    /* ARTICLE HERO */
+    .article-hero {
+      padding-block: 3rem 0;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .article-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .article-hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      max-width: 22ch;
+    }
+    .article-hero .subheadline {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--text-muted);
+      font-family: var(--font-serif);
+      font-style: italic;
+      margin-bottom: 2rem;
+      max-width: 58ch;
+    }
+    .hero-img-wrap {
+      width: 100%;
+      max-height: 520px;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      margin-top: 2rem;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .img-caption {
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      margin-top: 0.5rem;
+      padding-inline: 0.25rem;
+    }
+
+    /* ARTICLE LAYOUT */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 4rem;
+      padding-block: 3rem 4rem;
+      align-items: start;
+    }
+
+    /* ARTICLE BODY */
+    .article-body { max-width: 100%; }
+    .article-body p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #c9d1d9;
+      margin-bottom: 1.5rem;
+      max-width: 68ch;
+    }
+    .article-body h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 2.25rem 0 0.75rem;
+    }
+    .article-body ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    .article-body ul li {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #c9d1d9;
+      padding: 0.4rem 0 0.4rem 1.25rem;
+      position: relative;
+      max-width: 68ch;
+    }
+    .article-body ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .article-body a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: rgba(232,149,42,0.4);
+      text-underline-offset: 3px;
+      transition: text-decoration-color var(--transition);
+    }
+    .article-body a:hover { text-decoration-color: var(--accent); }
+
+    /* ALERT BOX */
+    .alert-box {
+      border: 1px solid var(--red);
+      border-left: 4px solid var(--red);
+      background: rgba(248,81,73,0.08);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .alert-box-title {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .alert-box p {
+      margin-bottom: 0 !important;
+      font-size: 0.95rem !important;
+      color: var(--text) !important;
+    }
+
+    /* PLAN BOX */
+    .plan-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .plan-box h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .plan-box ul { margin-bottom: 0; }
+    .plan-box ul li { font-size: 0.95rem !important; }
+
+    /* CLOSING */
+    .article-closing {
+      border-top: 1px solid var(--border);
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+    }
+    .article-closing p {
+      font-size: 0.95rem !important;
+      color: var(--text-muted) !important;
+      font-style: italic;
+    }
+    .source-line {
+      font-size: 0.8rem !important;
+      color: var(--text-faint) !important;
+      font-style: normal !important;
+      margin-top: 1rem !important;
+    }
+    .source-line a { color: var(--text-muted) !important; text-decoration: underline; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .sidebar-widget {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+    }
+    .widget-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    /* Subscribe widget */
+    .subscribe-widget { background: var(--accent-dim); border-color: rgba(232,149,42,0.3); }
+    .subscribe-widget p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .subscribe-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.6rem;
+      background: var(--accent);
+      color: #0d1117;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: background var(--transition);
+    }
+    .subscribe-btn:hover { background: var(--accent-hover); }
+
+    /* Related / context items */
+    .context-item { padding: 0.5rem 0; border-bottom: 1px solid var(--divider); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    .context-item:last-child { border-bottom: none; }
+    .context-item strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
+    .context-item a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(232,149,42,0.4); }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-block: 2rem;
+      text-align: center;
+    }
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .footer-name span { color: var(--accent); }
+    .footer p { font-size: 0.8rem; color: var(--text-faint); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sidebar { order: -1; }
+      .nav, .header-cta { display: none; }
+      .menu-toggle { display: flex; }
+      .hero-img-wrap img { height: 280px; }
+    }
+    @media (max-width: 600px) {
+      .article-hero h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">Breaking — Federal SNAP Work Requirements Take Effect June 1 · East New York Residents At Risk</div>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="masthead">
+          <div class="masthead-name">The East New York <span>Times</span></div>
+          <div class="masthead-sub">Community Journalism for East New York, Brooklyn</div>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Transit</a></li>
+            <li><a href="#">Housing</a></li>
+            <li><a href="#">Civic</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+        <div class="header-cta">
+          <a href="#" class="btn btn-accent">Subscribe</a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.mobile-nav').classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <ul>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Transit</a></li>
+        <li><a href="#">Housing</a></li>
+        <li><a href="#">Civic</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- ARTICLE HERO -->
+      <section class="article-hero">
+        <div class="article-meta">
+          <span class="tag tag--red">Breaking</span>
+          <span class="tag tag--accent">Food Security</span>
+          <span class="article-date">Friday, May 30, 2026</span>
+        </div>
+        <h1>Your Food Stamps Could Be Cut Off Tomorrow — East New York, Read This Now</h1>
+        <p class="subheadline">Federal Work Requirements Take Effect June 1 — Here's What East New York Residents Need to Know Before It's Too Late</p>
+        <div class="hero-img-wrap">
+          <img src="../snap-story.jpg" alt="East New York resident at an HRA office" />
+        </div>
+        <p class="img-caption">Photo: Deric Johnson / The East New York Times</p>
+      </section>
+
+      <!-- ARTICLE + SIDEBAR -->
+      <div class="article-layout">
+        <article class="article-body">
+
+          <p>If you or someone you know receives SNAP food stamp benefits in East New York, you need to read this today.</p>
+
+          <p>Starting Monday, June 1, thousands of New York City residents could see their food stamp benefits cut off without warning under new federal work requirements from the Trump administration's "Big Beautiful Bill." The city estimates 43,500 New Yorkers are currently at risk. Across New York State, more than 300,000 households could be affected.</p>
+
+          <div class="alert-box">
+            <div class="alert-box-title">⚠ Urgent Deadline — June 1, 2026</div>
+            <p>Benefits may be suspended without notice if you have not yet documented your work, volunteer, or training hours. It is not too late to act — call HRA immediately even if your card shows no balance on June 1.</p>
+          </div>
+
+          <h2>What Changed</h2>
+
+          <p>New York State previously had an exemption from federal SNAP work requirements due to high unemployment. That exemption expired. As of March 1, 2026, certain adults ages 18–64 must now prove they are working, volunteering, or in school for at least 80 hours per month to keep their benefits. The three-month grace period ends June 1.</p>
+
+          <h2>Who Is Affected</h2>
+
+          <p>You may be at risk if you are between 18 and 64 years old, do not have children under 14 at home, and have not yet documented your work, volunteer, or training hours. This includes veterans, seniors who recently retired, young people aging out of foster care, and people experiencing homelessness — groups that were previously protected.</p>
+
+          <h2>What You Can Do Right Now</h2>
+
+          <ul>
+            <li>Check your status at nyc.gov/AccessHRA or on the ACCESS HRA app</li>
+            <li>Call 718-SNAP-NOW (718-762-7669) to speak with the Human Resources Administration</li>
+            <li>Document your hours — even volunteer work counts. Community service of 14–17 hours per month qualifies</li>
+            <li>Don't wait — even if your benefits are cut June 1, the city says you can still reach out and get them reinstated</li>
+          </ul>
+
+          <div class="plan-box">
+            <h3>The Most Important Thing to Know</h3>
+            <ul>
+              <li>It is not too late. Even if your card shows no balance on June 1, call HRA immediately</li>
+              <li>City workers are actively reaching out door-to-door across the five boroughs this weekend to help residents get into compliance before the deadline</li>
+              <li>Community service of as few as 14 hours per month counts toward the requirement</li>
+            </ul>
+          </div>
+
+          <div class="article-closing">
+            <p>The East New York Times will continue reporting on how federal benefit cuts are affecting our community. If you or someone you know has been impacted, email us at <a href="mailto:urbanversionmedia@gmail.com">urbanversionmedia@gmail.com</a>.</p>
+            <p class="source-line">Sources: NYC Human Resources Administration · Gothamist · CNBC · NYC.gov</p>
+          </div>
+
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+          <div class="sidebar-widget subscribe-widget">
+            <div class="widget-title">Stay Informed</div>
+            <p>Get ENY Times community journalism delivered directly to your inbox.</p>
+            <a href="#" class="subscribe-btn">Subscribe Free</a>
+          </div>
+
+          <div class="sidebar-widget">
+            <div class="widget-title">Related Stories</div>
+            <div class="context-item">
+              <strong><a href="../townhall/">"Super Broken": Residents Confront City Agencies at Sandy Nurse's Town Hall</a></strong>
+              Dumping, traffic safety, and delayed repairs top the agenda at District 37 forum.
+            </div>
+            <div class="context-item">
+              <strong><a href="../wellness/">Who Supports the People Who Support East New York?</a></strong>
+              A CB5 meeting turns into a rare wellness session for community advocates.
+            </div>
+            <div class="context-item">
+              <strong><a href="../twok/">East New York Families May Be Left Behind in the First Wave of 2-K</a></strong>
+              District 19 absent from the city's initial early-childhood rollout.
+            </div>
+          </div>
+
+          <div class="sidebar-widget">
+            <div class="widget-title">About The East New York Times</div>
+            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.75rem">The East New York Times is an independent community news outlet covering the people, policies, and events that shape East New York, Brooklyn.</p>
+            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6">Published by Urban Version Media · <a href="mailto:urbanversionmedia@gmail.com" style="color:var(--accent)">urbanversionmedia@gmail.com</a></p>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-name">The East New York <span>Times</span></div>
+      <p>Independent community journalism for East New York, Brooklyn · urbanversionmedia@gmail.com</p>
+    </div>
+  </footer>
+
+</body>
+</html>
