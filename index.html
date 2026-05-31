@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The East New York Times — Community Journalism for East New York</title>
-  <meta name="description" content="Independent community journalism covering East New York, Brooklyn. Civic news, local stories, and community events." />
+  <title>J Train Still Split, Z Still Suspended — The East New York Times</title>
+  <meta name="description" content="J train service between Broadway Junction and Marcy Avenue remains suspended through 5 a.m. Tuesday, June 3. Here's what ENY riders need to know." />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
   <style>
-    /* ── TOKENS ─────────────────────────────────── */
     :root {
       --bg: #0d1117;
       --surface: #161b22;
@@ -34,7 +33,6 @@
       --max-w: 1200px;
     }
 
-    /* ── RESET ──────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
     body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
@@ -43,21 +41,15 @@
     button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
     ul { list-style: none; }
     h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
-    p { text-wrap: pretty; max-width: 68ch; }
+    p { text-wrap: pretty; }
     ::selection { background: var(--accent-dim); }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
 
-    /* ── UTILITIES ──────────────────────────────── */
     .container { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
     .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; }
     .tag--accent { background: var(--accent-dim); color: var(--accent); }
-    .tag--blue { background: var(--blue-dim); color: #60a5fa; }
     .tag--red { background: rgba(248,81,73,0.1); color: var(--red); }
-    .tag--green { background: rgba(46,160,67,0.1); color: #3fb950; }
-    .divider { border: none; border-top: 1px solid var(--border); }
 
-    /* ── TOP BAR ────────────────────────────────── */
+    /* TOP BAR */
     .topbar {
       background: var(--accent);
       color: #0d1117;
@@ -69,7 +61,7 @@
       text-align: center;
     }
 
-    /* ── HEADER ─────────────────────────────────── */
+    /* HEADER */
     .header {
       position: sticky;
       top: 0;
@@ -79,7 +71,6 @@
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-
     .header-inner {
       display: flex;
       align-items: center;
@@ -87,14 +78,7 @@
       gap: 2rem;
       height: 70px;
     }
-
-    /* Masthead */
-    .masthead {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.1rem;
-    }
+    .masthead { display: flex; flex-direction: column; gap: 0.1rem; }
     .masthead-name {
       font-family: var(--font-display);
       font-size: clamp(1.1rem, 2vw, 1.5rem);
@@ -111,1280 +95,537 @@
       text-transform: uppercase;
       color: var(--text-muted);
     }
-
-    /* Nav */
     .nav ul { display: flex; gap: 1.75rem; }
     .nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color var(--transition); }
-    .nav a:hover, .nav a.active { color: var(--text); }
-    .nav a.active { border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
-
-    .header-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-shrink: 0;
-    }
-    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background var(--transition), color var(--transition), transform var(--transition); }
+    .nav a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background var(--transition), transform var(--transition); }
     .btn-accent { background: var(--accent); color: #0d1117; }
     .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .btn-ghost { border: 1px solid var(--border); color: var(--text-muted); }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
     .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 36px; height: 36px; padding: 0.4rem; justify-content: center; }
     .menu-toggle span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
-    .menu-toggle[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .menu-toggle[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
-    .menu-toggle[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
     .mobile-nav { display: none; padding: 1rem clamp(1.25rem,5vw,4rem) 1.5rem; border-top: 1px solid var(--border); }
     .mobile-nav.open { display: block; }
     .mobile-nav li { border-bottom: 1px solid var(--divider); }
     .mobile-nav a { display: block; padding: 0.875rem 0; font-size: 1rem; font-weight: 500; }
 
-    /* ── HERO ───────────────────────────────────── */
-    .hero { padding-block: 3rem 2rem; border-bottom: 1px solid var(--border); }
-
-    .hero-date-bar {
+    /* ARTICLE HERO */
+    .article-hero {
+      padding-block: 3rem 0;
+    }
+    .article-meta {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      font-size: 0.75rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .article-date {
+      font-size: 0.8rem;
       color: var(--text-muted);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
-    .hero-date-bar strong { color: var(--accent); }
+    .article-hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      max-width: 22ch;
+    }
+    .article-hero .subheadline {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--text-muted);
+      font-family: var(--font-serif);
+      font-style: italic;
+      margin-bottom: 2rem;
+      max-width: 58ch;
+    }
+    .hero-img-wrap {
+      width: 100%;
+      max-height: 520px;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      margin-top: 2rem;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .img-caption {
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      margin-top: 0.5rem;
+      padding-inline: 0.25rem;
+    }
 
-    .hero-grid {
+    /* ARTICLE LAYOUT */
+    .article-layout {
       display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 2rem;
+      grid-template-columns: 1fr 300px;
+      gap: 4rem;
+      padding-block: 3rem 4rem;
       align-items: start;
     }
 
-    /* Featured story */
-    .featured-story { display: flex; flex-direction: column; gap: 1rem; }
-    .featured-story-img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      border-radius: var(--radius-lg);
-      background: var(--surface-3);
+    /* ARTICLE BODY */
+    .article-body { max-width: 100%; }
+    .article-body p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #c9d1d9;
+      margin-bottom: 1.5rem;
+      max-width: 68ch;
     }
-    .featured-story-img-placeholder {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: var(--radius-lg);
-      background: var(--surface-3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .featured-label { display: flex; align-items: center; gap: 0.5rem; }
-    .featured-badge {
-      font-size: 0.65rem;
+    .article-body h2 {
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #0d1117;
-      background: var(--accent);
-      padding: 0.2rem 0.6rem;
-      border-radius: 3px;
-    }
-    .featured-story h1 {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3vw, 2.5rem);
-      font-weight: 700;
-      line-height: 1.1;
       color: var(--text);
+      margin: 2.25rem 0 0.75rem;
     }
-    .featured-story h1 a:hover { color: var(--accent); }
-    .featured-story .excerpt { font-size: 1rem; color: var(--text-muted); line-height: 1.65; }
-    .story-meta { font-size: 0.75rem; color: var(--text-faint); display: flex; gap: 1rem; align-items: center; }
-    .story-meta strong { color: var(--text-muted); }
-
-    /* Side stories */
-    .side-stories { display: flex; flex-direction: column; gap: 0; }
-    .side-story {
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .side-story:first-child { padding-top: 0; }
-    .side-story:last-child { border-bottom: none; }
-    .side-story h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; line-height: 1.25; }
-    .side-story h3 a:hover { color: var(--accent); }
-    .side-story p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; max-width: none; }
-
-    /* ── BREAKING TICKER ────────────────────────── */
-    .breaking-bar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 0.6rem 0;
-      overflow: hidden;
-    }
-    .breaking-inner { display: flex; align-items: center; gap: 0; }
-    .breaking-label {
-      flex-shrink: 0;
-      background: var(--red);
-      color: white;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.75rem;
-      margin-right: 1.5rem;
-      border-radius: 3px;
-    }
-    .breaking-ticker { overflow: hidden; flex: 1; }
-    .breaking-track {
-      display: flex;
-      gap: 3rem;
-      white-space: nowrap;
-      animation: ticker 60s linear infinite;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .breaking-track:hover { animation-play-state: paused; }
-    .breaking-track a { color: var(--text); font-weight: 500; }
-    .breaking-track a:hover { color: var(--accent); }
-    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-    /* ── SECTION HEADING ────────────────────────── */
-    .section-head {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    .article-body ul {
+      list-style: none;
       margin-bottom: 1.5rem;
     }
-    .section-head h2 {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      white-space: nowrap;
+    .article-body ul li {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #c9d1d9;
+      padding: 0.4rem 0 0.4rem 1.25rem;
+      position: relative;
+      max-width: 68ch;
     }
-    .section-head-line { flex: 1; height: 1px; background: var(--border); }
-    .section-head a { font-size: 0.75rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
-    .section-head a:hover { text-decoration: underline; }
+    .article-body ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .article-body a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: rgba(232,149,42,0.4);
+      text-underline-offset: 3px;
+      transition: text-decoration-color var(--transition);
+    }
+    .article-body a:hover { text-decoration-color: var(--accent); }
 
-    /* ── LATEST NEWS GRID ───────────────────────── */
-    .latest-section { padding-block: 2.5rem; border-bottom: 1px solid var(--border); }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .news-card {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .news-card-img {
-      aspect-ratio: 16/10;
-      border-radius: var(--radius);
-      background: var(--surface-3);
-      overflow: hidden;
-    }
-    .news-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .news-card:hover .news-card-img img { transform: scale(1.04); }
-    .news-card-img-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .news-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; line-height: 1.25; color: var(--text); }
-    .news-card h3 a:hover { color: var(--accent); }
-    .news-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; max-width: none; }
-
-    /* ── SPLIT SECTION (News + Events) ─────────── */
-    .split-section { padding-block: 2.5rem; }
-    .split-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
-
-    /* ── SUBSTACK STORIES ───────────────────────── */
-    .substack-list { display: flex; flex-direction: column; gap: 0; }
-    .substack-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .substack-item:last-child { border-bottom: none; }
-    .substack-num {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-faint);
-      line-height: 1;
-      flex-shrink: 0;
-      width: 2rem;
-    }
-    .substack-item-body { display: flex; flex-direction: column; gap: 0.3rem; }
-    .substack-item h3 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; line-height: 1.25; }
-    .substack-item h3 a:hover { color: var(--accent); }
-    .substack-item .meta { font-size: 0.75rem; color: var(--text-faint); }
-
-    /* ── EVENTS ─────────────────────────────────── */
-    .events-list { display: flex; flex-direction: column; gap: 0; }
-    .event-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .event-item:last-child { border-bottom: none; }
-    .event-date-block {
-      flex-shrink: 0;
-      width: 48px;
-      height: 52px;
-      background: var(--accent-dim);
+    /* ALERT BOX */
+    .alert-box {
       border: 1px solid var(--accent);
+      border-left: 4px solid var(--accent);
+      background: var(--accent-dim);
       border-radius: var(--radius);
-      display: flex;
-      flex-direction: column;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .alert-box-title {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .alert-box p {
+      margin-bottom: 0 !important;
+      font-size: 0.95rem !important;
+      color: var(--text) !important;
+    }
+
+    /* SERVICE TABLE */
+    .service-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    .service-table th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .service-table td {
+      padding: 0.75rem 1rem;
+      color: #c9d1d9;
+      border-bottom: 1px solid var(--divider);
+      vertical-align: top;
+    }
+    .service-table tr:last-child td { border-bottom: none; }
+    .train-badge {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.8rem;
+      font-family: var(--font-display);
+      color: #fff;
+      vertical-align: middle;
+      margin-right: 4px;
     }
-    .event-date-block .month { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-    .event-date-block .day { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text); line-height: 1; }
-    .event-body { display: flex; flex-direction: column; gap: 0.25rem; }
-    .event-body h4 { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; line-height: 1.25; color: var(--text); }
-    .event-body h4 a:hover { color: var(--accent); }
-    .event-body .event-info { font-size: 0.75rem; color: var(--text-muted); }
+    .train-j { background: #996633; }
+    .train-z { background: #996633; }
+    .train-a { background: #2850ad; }
+    .train-c { background: #2850ad; }
+    .train-l { background: #a7a9ac; color: #111; }
+    .status-disrupted { color: var(--red); font-weight: 600; }
+    .status-ok { color: #3fb950; font-weight: 600; }
 
-    /* ── MISSION BAND ───────────────────────────── */
-    .mission-band {
+    /* PLAN AHEAD BOX */
+    .plan-box {
       background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding-block: 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 2rem 0;
     }
-    .mission-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
+    .plan-box h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
     }
-    .mission-text h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
-    .mission-text h2 span { color: var(--accent); }
-    .mission-text p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; }
-    .mission-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .mission-stat { padding: 1.25rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); }
-    .mission-stat .num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.3rem; }
-    .mission-stat .label { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+    .plan-box ul { margin-bottom: 0; }
+    .plan-box ul li { font-size: 0.95rem !important; }
 
-    /* ── NEWSLETTER BAND ────────────────────────── */
-    .newsletter-band {
-      padding-block: 2.5rem;
-      border-bottom: 1px solid var(--border);
+    /* CLOSING */
+    .article-closing {
+      border-top: 1px solid var(--border);
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
     }
-    .newsletter-inner {
+    .article-closing p {
+      font-size: 0.95rem !important;
+      color: var(--text-muted) !important;
+      font-style: italic;
+    }
+    .source-line {
+      font-size: 0.8rem !important;
+      color: var(--text-faint) !important;
+      font-style: normal !important;
+      margin-top: 1rem !important;
+    }
+    .source-line a { color: var(--text-muted) !important; text-decoration: underline; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .sidebar-widget {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+    }
+    .widget-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    /* Service status widget */
+    .status-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .newsletter-text h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .newsletter-text h2 span { color: var(--accent); }
-    .newsletter-text p { font-size: 0.9rem; color: var(--text-muted); max-width: 44ch; }
-    .newsletter-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .newsletter-form input {
-      padding: 0.6rem 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text);
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--divider);
       font-size: 0.875rem;
-      min-width: 260px;
-      font-family: var(--font-body);
     }
-    .newsletter-form input::placeholder { color: var(--text-faint); }
-    .newsletter-form input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
-    .form-success-msg { display: none; font-size: 0.875rem; font-weight: 600; color: var(--accent); padding: 0.6rem 1rem; background: var(--accent-dim); border-radius: var(--radius); }
-    .form-success-msg.show { display: block; }
+    .status-item:last-child { border-bottom: none; }
+    .status-item-label { display: flex; align-items: center; gap: 0.5rem; }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .status-dot.red { background: var(--red); }
+    .status-dot.green { background: #3fb950; }
 
-    /* ── FOOTER ─────────────────────────────────── */
-    .footer { background: var(--surface); border-top: 1px solid var(--border); padding-block: 2.5rem 1.5rem; }
-    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
-    .footer-brand h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .footer-brand h3 span { color: var(--accent); }
-    .footer-brand p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; max-width: 30ch; }
-    .footer-col h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
-    .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
-    .footer-col a { font-size: 0.85rem; color: var(--text-muted); }
-    .footer-col a:hover { color: var(--accent); }
-    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-    .footer-bottom p { font-size: 0.75rem; color: var(--text-faint); max-width: none; }
-    .footer-bottom a { color: var(--accent); }
-    .footer-bottom a:hover { text-decoration: underline; }
+    /* Subscribe widget */
+    .subscribe-widget { background: var(--accent-dim); border-color: rgba(232,149,42,0.3); }
+    .subscribe-widget p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .subscribe-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.6rem;
+      background: var(--accent);
+      color: #0d1117;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: background var(--transition);
+    }
+    .subscribe-btn:hover { background: var(--accent-hover); }
 
-    /* ── PAGE NAVIGATION (articles/about/events) ── */
-    .page { display: none; }
-    .page.active { display: block; }
+    /* Context widget */
+    .context-item { padding: 0.5rem 0; border-bottom: 1px solid var(--divider); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    .context-item:last-child { border-bottom: none; }
+    .context-item strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
 
-    /* ── ARTICLES PAGE ──────────────────────────── */
-    .page-hero { padding-block: 2.5rem 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
-    .page-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; margin-bottom: 0.5rem; }
-    .page-hero h1 span { color: var(--accent); }
-    .page-hero p { font-size: 1rem; color: var(--text-muted); max-width: 52ch; }
-    .articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; padding-bottom: 3rem; }
-    .article-card { display: flex; flex-direction: column; gap: 0.75rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-    .article-card-img { aspect-ratio: 16/9; border-radius: var(--radius); background: var(--surface-3); overflow: hidden; }
-    .article-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .article-card:hover .article-card-img img { transform: scale(1.04); }
-    .article-card h2 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; line-height: 1.2; }
-    .article-card h2 a:hover { color: var(--accent); }
-    .article-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; max-width: none; }
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-block: 2rem;
+      text-align: center;
+    }
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .footer-name span { color: var(--accent); }
+    .footer p { font-size: 0.8rem; color: var(--text-faint); }
 
-    /* ── ABOUT PAGE ─────────────────────────────── */
-    .about-content { max-width: 720px; margin: 0 auto; padding-block: 2rem 3rem; }
-    .about-content h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 0.5rem; }
-    .about-content h1 span { color: var(--accent); }
-    .about-content .lead { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem; border-left: 3px solid var(--accent); padding-left: 1.25rem; font-style: italic; max-width: none; }
-    .about-content h2 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; }
-    .about-content p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1rem; }
-    .about-content p a { color: var(--accent); }
-    .about-content p a:hover { text-decoration: underline; }
-    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-block: 1.5rem; }
-    .value-card { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
-    .value-card h3 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; }
-    .value-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: none; margin: 0; }
-
-    /* ── EVENTS PAGE ────────────────────────────── */
-    .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding-bottom: 3rem; }
-    .event-card { padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 0.75rem; transition: border-color var(--transition), transform var(--transition); }
-    .event-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .event-card-date { display: flex; align-items: center; gap: 0.75rem; }
-    .event-card-date-block { width: 52px; height: 56px; background: var(--accent-dim); border: 1px solid var(--accent); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
-    .event-card-date-block .month { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-    .event-card-date-block .day { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text); line-height: 1; }
-    .event-card-date-meta { display: flex; flex-direction: column; gap: 0.2rem; }
-    .event-card-date-meta .time { font-size: 0.8rem; font-weight: 600; color: var(--text); }
-    .event-card-date-meta .loc { font-size: 0.75rem; color: var(--text-muted); }
-    .event-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--text); }
-    .event-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: none; margin: 0; }
-    .event-card .event-tag { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-
-    /* ── RESPONSIVE ─────────────────────────────── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .news-grid { grid-template-columns: 1fr 1fr; }
-      .split-grid { grid-template-columns: 1fr; }
-      .mission-inner { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .articles-grid { grid-template-columns: 1fr; }
-      .events-grid { grid-template-columns: 1fr; }
-      .values-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .nav { display: none; }
-      .header-cta .btn-ghost { display: none; }
+      .article-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sidebar { order: -1; }
+      .nav, .header-cta { display: none; }
       .menu-toggle { display: flex; }
-      .news-grid { grid-template-columns: 1fr; }
-      .newsletter-inner { flex-direction: column; align-items: flex-start; }
-      .newsletter-form { flex-direction: column; width: 100%; }
-      .newsletter-form input { min-width: 0; width: 100%; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .mission-stats { grid-template-columns: 1fr 1fr; }
+      .hero-img-wrap img { height: 280px; }
+    }
+    @media (max-width: 600px) {
+      .article-hero h1 { font-size: 1.7rem; }
+      .service-table { font-size: 0.8rem; }
+      .service-table th, .service-table td { padding: 0.5rem 0.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <div class="topbar">East New York, Brooklyn · Independent Community Journalism</div>
+  <div class="topbar">Service Alert — J Train Split · Z Suspended · Through 5 AM Tuesday June 3</div>
 
-  <!-- HEADER -->
-  <header class="header" id="header">
-    <div class="container header-inner">
-      <a href="#" class="masthead" onclick="showPage('home'); return false;">
-        <span class="masthead-name">The East New York <span>Times</span></span>
-        <span class="masthead-sub">East New York · Brooklyn · Est. 2026</span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <ul>
-          <li><a href="#" onclick="showPage('home'); return false;" class="active" id="nav-home">Home</a></li>
-          <li><a href="#" onclick="showPage('articles'); return false;" id="nav-articles">Stories</a></li>
-          <li><a href="#" onclick="showPage('events'); return false;" id="nav-events">Events</a></li>
-          <li><a href="#" onclick="showPage('about'); return false;" id="nav-about">About</a></li>
-        </ul>
-      </nav>
-      <div class="header-cta">
-        <a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener" class="btn btn-ghost">Subscribe</a>
-        <a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener" class="btn btn-accent">Read on Substack</a>
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="masthead">
+          <div class="masthead-name">The East New York <span>Times</span></div>
+          <div class="masthead-sub">Community Journalism for East New York, Brooklyn</div>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Transit</a></li>
+            <li><a href="#">Housing</a></li>
+            <li><a href="#">Civic</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+        <div class="header-cta">
+          <a href="#" class="btn btn-accent">Subscribe</a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.mobile-nav').classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <nav class="mobile-nav" aria-label="Mobile navigation">
       <ul>
-        <li><a href="#" onclick="showPage('home'); closeMobileNav(); return false;">Home</a></li>
-        <li><a href="#" onclick="showPage('articles'); closeMobileNav(); return false;">Stories</a></li>
-        <li><a href="#" onclick="showPage('events'); closeMobileNav(); return false;">Events</a></li>
-        <li><a href="#" onclick="showPage('about'); closeMobileNav(); return false;">About</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Transit</a></li>
+        <li><a href="#">Housing</a></li>
+        <li><a href="#">Civic</a></li>
+        <li><a href="#">About</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ══════════════════════════════════════════════
-       HOME PAGE
-  ══════════════════════════════════════════════ -->
-  <div class="page active" id="page-home">
-
-    <!-- Breaking ticker -->
-    <div class="breaking-bar">
-      <div class="container">
-        <div class="breaking-inner">
-          <span class="breaking-label">Latest</span>
-          <div class="breaking-ticker">
-            <div class="breaking-track">
-              <span><a href="https://urbanversionmedia.substack.com/p/your-food-stamps-could-be-cut-off" target="_blank">BREAKING: East New York SNAP Benefits Alert — Federal work requirements take effect June 1, read now</a></span>
-              <span>·</span>
-              <span>TRANSIT ALERT: No 4/5 trains Brooklyn Bridge–New Lots Av nights &amp; weekends through June 5</span>
-              <span>·</span>
-              <span>Jun 4: Job Spring Fair — On-the-spot interviews at 876 Schenck Ave, 10am–2pm</span>
-              <span>·</span>
-              <span>Jun 5: EBBID Clean Up Day — Trey Whitfield School, 9am–1pm</span>
-              <span>·</span>
-              <span>Jun 6: Annual Housing Resource Fair — Brooklyn College, 10am–3pm</span>
-              <span>·</span>
-              <span>Jun 7: FREE Shirley Chisholm Trail 5K — Shirley Chisholm State Park, 10am</span>
-              <span>·</span>
-              <span>HOUSING: Apply now at 314 Hinsdale Ave — HELP Hinsdale C affordable housing</span>
-              <span>·</span>
-              <span>Jun 20: CB5 Education &amp; Youth Resource Fair — Free bookbags, books &amp; supplies · 461 Williams Ave</span>
-              <span>·</span>
-              <span>Jun 24: CB5 General Board Meeting — 127 Pennsylvania Ave, 3rd Fl, 6:30pm</span>
-              <span>·</span>
-              <span>Paid Summer Eco-Internship — NYC H2O · Jun 30–Aug 13 · Apply: kiki@nych2o.org</span>
-              <span>·</span>
-              <span><a href="https://urbanversionmedia.substack.com/p/east-new-york-families-may-be-left" target="_blank">East New York Families May Be Left Behind in First Wave of 2-K</a></span>
-              <span>·</span>
-              <span>TRANSIT ALERT: No 4/5 trains Brooklyn Bridge–New Lots Av nights &amp; weekends through June 5</span>
-              <span>·</span>
-              <span>Jun 4: Job Spring Fair — On-the-spot interviews at 876 Schenck Ave, 10am–2pm</span>
-              <span>·</span>
-              <span>Jun 5: EBBID Clean Up Day — Trey Whitfield School, 9am–1pm</span>
-              <span>·</span>
-              <span>Jun 6: Annual Housing Resource Fair — Brooklyn College, 10am–3pm</span>
-              <span>·</span>
-              <span>Jun 7: FREE Shirley Chisholm Trail 5K — Shirley Chisholm State Park, 10am</span>
-              <span>·</span>
-              <span>HOUSING: Apply now at 314 Hinsdale Ave — HELP Hinsdale C affordable housing</span>
-              <span>·</span>
-              <span>Jun 20: CB5 Education &amp; Youth Resource Fair — Free bookbags, books &amp; supplies · 461 Williams Ave</span>
-              <span>·</span>
-              <span>Jun 24: CB5 General Board Meeting — 127 Pennsylvania Ave, 3rd Fl, 6:30pm</span>
-              <span>·</span>
-              <span>Paid Summer Eco-Internship — NYC H2O · Jun 30–Aug 13 · Apply: kiki@nych2o.org</span>
-              <span>·</span>
-              <span><a href="https://urbanversionmedia.substack.com/p/east-new-york-families-may-be-left" target="_blank">East New York Families May Be Left Behind in First Wave of 2-K</a></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-date-bar">
-          <span id="today-date"></span>
-          <strong>East New York · Brooklyn</strong>
-        </div>
-        <div class="hero-grid">
-          <!-- Featured story -->
-          <div class="featured-story">
-            <div class="featured-story-img-placeholder" style="position:relative;">
-              <img src="snap-story.jpg" alt="East New York residents at a food distribution event" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />
-              <div style="position:absolute;top:1rem;left:1rem;background:#f85149;color:white;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.75rem;border-radius:3px;">Breaking</div>
-            </div>
-            <div class="featured-label">
-              <span class="featured-badge">Featured</span>
-              <span class="tag tag--red">Food Security</span>
-            </div>
-            <h1><a href="https://urbanversionmedia.substack.com/p/your-food-stamps-could-be-cut-off" target="_blank" rel="noopener">Your Food Stamps Could Be Cut Off Tomorrow — East New York, Read This Now</a></h1>
-            <p class="excerpt">Federal work requirements take effect June 1 — here's what East New York residents need to know before it's too late. 43,500 NYC residents are at risk of losing SNAP benefits starting Monday.</p>
-            <div class="story-meta">
-              <span><strong>Deric Johnson</strong></span>
-              <span>May 30, 2026</span>
-              <span>3 min read</span>
-            </div>
-          </div>
-
-          <!-- Side stories -->
-          <div class="side-stories">
-            <div class="side-story">
-              <span class="tag tag--accent">Education</span>
-              <h3><a href="https://urbanversionmedia.substack.com/p/east-new-york-families-may-be-left" target="_blank" rel="noopener">East New York Families May Be Left Behind in the First Wave of 2-K</a></h3>
-              <p>CB5 members raised concerns about District 19's absence from the city's initial rollout.</p>
-              <div class="story-meta"><span>Mar 17, 2026</span></div>
-            </div>
-            <div class="side-story">
-              <span class="tag tag--green">Community</span>
-              <h3><a href="https://urbanversionmedia.substack.com/p/who-supports-the-people-who-support" target="_blank" rel="noopener">Who Supports the People Who Support East New York?</a></h3>
-              <p>A CB5 meeting focused on the emotional toll carried by people who serve their communities.</p>
-              <div class="story-meta"><span>Mar 12, 2026</span></div>
-            </div>
-            <div class="side-story">
-              <span class="tag tag--red">Public Safety</span>
-              <h3><a href="https://urbanversionmedia.substack.com/p/cb5-grapples-with-limits-of-its-power" target="_blank" rel="noopener">CB5 Grapples With Limits of Its Power in Split Restaurant License Debate</a></h3>
-              <p>Residents' complaints and the limits of community board authority collided at a tense meeting.</p>
-              <div class="story-meta"><span>Mar 12, 2026</span></div>
-            </div>
-            <div class="side-story">
-              <span class="tag tag--accent">Governance</span>
-              <h3><a href="https://urbanversionmedia.substack.com/p/cb5-members-question-their-power" target="_blank" rel="noopener">CB5 Members Question Their Power in Cannabis Licensing After Bud City Vote</a></h3>
-              <p>The East New York cannabis committee voted 6–1 after a tense discussion about community oversight.</p>
-              <div class="story-meta"><span>Mar 8, 2026</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Latest News -->
-    <section class="latest-section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Latest Stories</h2>
-          <div class="section-head-line"></div>
-          <a href="#" onclick="showPage('articles'); return false;">All Stories →</a>
-        </div>
-        <div class="news-grid">
-          <div class="news-card">
-            <div class="news-card-img">
-                            <img src="budcity-story.jpg" alt="Bud City Cannabis, East New York" style="width:100%;height:100%;object-fit:cover;" />
-            </div>
-            <span class="tag tag--accent">Governance</span>
-            <h3><a href="https://urbanversionmedia.substack.com/p/cb5-members-question-their-power" target="_blank" rel="noopener">CB5 Members Question Their Power in Cannabis Licensing</a></h3>
-            <p>A deep look at community board authority and local oversight in East New York's cannabis economy.</p>
-            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Mar 8, 2026</span><span>4 min read</span></div>
-          </div>
-          <div class="news-card">
-            <div class="news-card-img">
-                            <img src="wellness-story.jpg" alt="Community wellness support in East New York" style="width:100%;height:100%;object-fit:cover;" />
-            </div>
-            <span class="tag tag--green">Community</span>
-            <h3><a href="https://urbanversionmedia.substack.com/p/who-supports-the-people-who-support" target="_blank" rel="noopener">Who Supports the People Who Support East New York?</a></h3>
-            <p>Community support workers face burnout while holding East New York together from the inside.</p>
-            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Mar 12, 2026</span><span>5 min read</span></div>
-          </div>
-          <div class="news-card">
-            <div class="news-card-img" style="overflow:hidden;">
-              <img src="school-story.jpg" alt="P.S. 007 Abraham Lincoln School, East New York" style="width:100%;height:100%;object-fit:cover;" />
-            </div>
-            <span class="tag tag--accent">Education</span>
-            <h3><a href="https://urbanversionmedia.substack.com/p/east-new-york-families-may-be-left" target="_blank" rel="noopener">East New York Families May Be Left Behind in First Wave of 2-K</a></h3>
-            <p>District 19's absence from the city's rollout leaves local families uncertain about early childhood care.</p>
-            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Mar 17, 2026</span><span>6 min read</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Split: More Stories + Events -->
-    <section class="split-section">
-      <div class="container">
-        <div class="split-grid">
-          <!-- More Stories -->
-          <div>
-            <div class="section-head">
-              <h2>From the Archive</h2>
-              <div class="section-head-line"></div>
-              <a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener">Substack →</a>
-            </div>
-            <div class="substack-list">
-              <div class="substack-item">
-                <span class="substack-num">01</span>
-                <div class="substack-item-body">
-                  <span class="tag tag--red" style="margin-bottom:0.3rem;">Public Safety</span>
-                  <h3><a href="https://urbanversionmedia.substack.com/p/cb5-grapples-with-limits-of-its-power" target="_blank" rel="noopener">CB5 Grapples With Limits of Its Power in Split Restaurant License Debate</a></h3>
-                  <span class="meta">Mar 12, 2026</span>
-                </div>
-              </div>
-              <div class="substack-item">
-                <span class="substack-num">02</span>
-                <div class="substack-item-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Governance</span>
-                  <h3><a href="https://urbanversionmedia.substack.com/p/cb5-members-question-their-power" target="_blank" rel="noopener">CB5 Members Question Their Power in Cannabis Licensing After Bud City Renewal Vote</a></h3>
-                  <span class="meta">Mar 8, 2026</span>
-                </div>
-              </div>
-              <div class="substack-item">
-                <span class="substack-num">03</span>
-                <div class="substack-item-body">
-                  <span class="tag tag--green" style="margin-bottom:0.3rem;">Community</span>
-                  <h3><a href="https://urbanversionmedia.substack.com/p/who-supports-the-people-who-support" target="_blank" rel="noopener">Who Supports the People Who Support East New York?</a></h3>
-                  <span class="meta">Mar 12, 2026</span>
-                </div>
-              </div>
-              <div class="substack-item">
-                <span class="substack-num">04</span>
-                <div class="substack-item-body">
-                  <span class="tag tag--blue" style="margin-bottom:0.3rem;">Education</span>
-                  <h3><a href="https://urbanversionmedia.substack.com/p/east-new-york-families-may-be-left" target="_blank" rel="noopener">East New York Families May Be Left Behind in the First Wave of 2-K</a></h3>
-                  <span class="meta">Mar 17, 2026</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Events -->
-          <div>
-            <div class="section-head">
-              <h2>Community Events</h2>
-              <div class="section-head-line"></div>
-              <a href="#" onclick="showPage('events'); return false;">All Events →</a>
-            </div>
-            <div class="events-list">
-              <div class="event-item">
-                <div class="event-date-block"><span class="month">Jun</span><span class="day">4</span></div>
-                <div class="event-body">
-                  <span class="tag tag--blue" style="margin-bottom:0.3rem;">Jobs</span>
-                  <h4><a href="#" onclick="showPage('events'); return false;">2026 Job Spring Fair</a></h4>
-                  <span class="event-info">10am–2pm · 876 Schenck Ave (PJACC)</span>
-                </div>
-              </div>
-              <div class="event-item">
-                <div class="event-date-block"><span class="month">Jun</span><span class="day">6</span></div>
-                <div class="event-body">
-                  <span class="tag tag--red" style="margin-bottom:0.3rem;">Housing</span>
-                  <h4><a href="#" onclick="showPage('events'); return false;">Annual Housing Resource Fair</a></h4>
-                  <span class="event-info">10am–3pm · Brooklyn College</span>
-                </div>
-              </div>
-              <div class="event-item">
-                <div class="event-date-block"><span class="month">Jun</span><span class="day">7</span></div>
-                <div class="event-body">
-                  <span class="tag tag--green" style="margin-bottom:0.3rem;">Free 5K</span>
-                  <h4><a href="#" onclick="showPage('events'); return false;">Shirley Chisholm Trail 5K</a></h4>
-                  <span class="event-info">Race 10am · Shirley Chisholm State Park</span>
-                </div>
-              </div>
-              <div class="event-item">
-                <div class="event-date-block"><span class="month">Jun</span><span class="day">20</span></div>
-                <div class="event-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">CB5 · Free</span>
-                  <h4><a href="#" onclick="showPage('events'); return false;">Education &amp; Youth Resource Fair</a></h4>
-                  <span class="event-info">12–3pm · 461 Williams Ave · Free bookbags &amp; supplies</span>
-                </div>
-              </div>
-              <div class="event-item">
-                <div class="event-date-block"><span class="month">Jun</span><span class="day">24</span></div>
-                <div class="event-body">
-                  <span class="tag tag--red" style="margin-bottom:0.3rem;">General Board</span>
-                  <h4><a href="#" onclick="showPage('events'); return false;">CB5 General Board Meeting</a></h4>
-                  <span class="event-info">6:30pm · 127 Pennsylvania Ave, 3rd Fl</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mission Band -->
-    <section class="mission-band">
-      <div class="container">
-        <div class="mission-inner">
-          <div class="mission-text">
-            <h2>Independent Journalism for <span>East New York</span></h2>
-            <p>The East New York Times is a community-first publication dedicated to covering the people, decisions, and events that shape life in East New York, Brooklyn. We answer to our community — not corporations, not advertisers, not political parties.</p>
-            <a href="#" onclick="showPage('about'); return false;" class="btn btn-accent">Our Mission →</a>
-          </div>
-          <div class="mission-stats">
-            <div class="mission-stat">
-              <div class="num">CB5</div>
-              <div class="label">Community Board 5 coverage you won't find anywhere else</div>
-            </div>
-            <div class="mission-stat">
-              <div class="num">ENY</div>
-              <div class="label">Hyper-local reporting rooted in East New York</div>
-            </div>
-            <div class="mission-stat">
-              <div class="num">100%</div>
-              <div class="label">Editorially independent — we answer to the community</div>
-            </div>
-            <div class="mission-stat">
-              <div class="num">Free</div>
-              <div class="label">Community journalism available to everyone</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter-band">
-      <div class="container">
-        <div class="newsletter-inner">
-          <div class="newsletter-text">
-            <h2>Stay Informed About <span>East New York</span></h2>
-            <p>Get the latest stories, civic updates, and community news delivered to your inbox — free, always.</p>
-          </div>
-          <form class="newsletter-form" id="nl-form" novalidate>
-            <input type="email" placeholder="your@email.com" required aria-label="Email address" autocomplete="email" />
-            <button type="submit" class="btn btn-accent">Subscribe Free</button>
-            <div class="form-success-msg" id="nl-success">You're in — welcome to the community!</div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-  </div><!-- /page-home -->
-
-
-  <!-- ══════════════════════════════════════════════
-       STORIES PAGE
-  ══════════════════════════════════════════════ -->
-  <div class="page" id="page-articles">
+  <main>
     <div class="container">
-      <div class="page-hero">
-        <h1>All <span>Stories</span></h1>
-        <p>Every article published by The East New York Times — civic coverage, community voices, and neighborhood news.</p>
-      </div>
-      <div class="articles-grid">
-        <div class="article-card">
-          <div class="article-card-img" style="overflow:hidden;">
-            <img src="snap-story.jpg" alt="SNAP food distribution East New York" style="width:100%;height:100%;object-fit:cover;" />
+
+      <!-- ARTICLE HERO -->
+      <section class="article-hero">
+        <div class="article-meta">
+          <span class="tag tag--red">Service Alert</span>
+          <span class="tag tag--accent">Transit</span>
+          <span class="article-date">Sunday, June 1, 2026</span>
+        </div>
+        <h1>J Train Still Split, Z Still Suspended: What East New York Riders Need to Know Before Tuesday</h1>
+        <p class="subheadline">Broadway Junction service is disrupted through 5 a.m. Tuesday morning. Here's how to get around.</p>
+        <div class="hero-img-wrap">
+          <img src="jtrain-story.jpg" alt="J train arriving at Broadway Junction station at night" />
+        </div>
+        <p class="img-caption">The J train at Broadway Junction. Photo: Urban Version Media</p>
+      </section>
+
+      <!-- ARTICLE + SIDEBAR -->
+      <div class="article-layout">
+        <article class="article-body">
+
+          <p>If you're counting on the J or Z this weekend, the disruption is not over yet.</p>
+
+          <p>J train service between Broadway Junction and Marcy Avenue remains suspended through 5 a.m. Tuesday, June 3, with the Z fully suspended for the same period. The work — structural repairs along the line — began Friday night and has several more hours to go.</p>
+
+          <div class="alert-box">
+            <div class="alert-box-title">⚠ Active Service Alert</div>
+            <p>J trains are not running between Broadway Junction and Marcy Av. Z trains are fully suspended. Disruption ends 5 a.m. Tuesday, June 3.</p>
           </div>
-          <span class="tag tag--red">Breaking · Food Security</span>
-          <h2><a href="https://urbanversionmedia.substack.com/p/your-food-stamps-could-be-cut-off" target="_blank" rel="noopener">Your Food Stamps Could Be Cut Off Tomorrow — East New York, Read This Now</a></h2>
-          <p>Federal work requirements take effect June 1. 43,500 NYC residents at risk of losing SNAP benefits starting Monday. Here's what to do before it's too late.</p>
-          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>May 30, 2026</span><span>3 min read</span></div>
-        </div>
-        <div class="article-card">
-          <div class="article-card-img" style="background:var(--surface-3);border-radius:var(--radius);"></div>
-          <span class="tag tag--blue">Civic</span>
-          <h2><a href="https://urbanversionmedia.substack.com/p/super-broken-residents-confront-city" target="_blank" rel="noopener">"Super Broken": Residents Confront City Agencies at Sandy Nurse's Town Hall</a></h2>
-          <p>Attendees raised concerns about dumping, traffic safety, delayed street repairs and a complaint system many said is failing their neighborhoods.</p>
-          <div class="story-meta"><span>Apr 1, 2026</span><span>5 min read</span></div>
-        </div>
-        <div class="article-card">
-          <div class="article-card-img" style="overflow:hidden;">
-            <img src="school-story.jpg" alt="P.S. 007 Abraham Lincoln School, East New York" style="width:100%;height:100%;object-fit:cover;" />
+
+          <h2>What That Means in Plain Terms</h2>
+
+          <p>The J is now running in two disconnected sections with no through service between them:</p>
+
+          <table class="service-table">
+            <thead>
+              <tr>
+                <th>Section</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="train-badge train-j">J</span> Jamaica Center–Parsons/Archer → Broadway Junction</td>
+                <td class="status-ok">Running</td>
+              </tr>
+              <tr>
+                <td><span class="train-badge train-j">J</span> Broadway Junction → Marcy Av</td>
+                <td class="status-disrupted">Suspended — use T433 shuttle</td>
+              </tr>
+              <tr>
+                <td><span class="train-badge train-j">J</span> Marcy Av → Broad St</td>
+                <td class="status-ok">Running</td>
+              </tr>
+              <tr>
+                <td><span class="train-badge train-z">Z</span> All service</td>
+                <td class="status-disrupted">Fully suspended</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Your Alternatives</h2>
+
+          <p>Free T433 shuttle buses are running all local stops between Broadway Junction and Marcy Avenue. They are free to board and serve every stop along the route. Look for MTA shuttle bus signage at Broadway Junction when you exit the turnstile.</p>
+
+          <p>If you are transferring at Broadway Junction, Myrtle-Wyckoff Avs, Myrtle Avenue, or Marcy Avenue, <strong>ask the station agent for a GO Ticket before you exit</strong> — it allows you to re-enter at another station without paying another fare.</p>
+
+          <h2>How Long Does This Last?</h2>
+
+          <p>Service is scheduled to return to normal at 5 a.m. Tuesday, June 3. Monday is also running on a Sunday subway schedule.</p>
+
+          <div class="plan-box">
+            <h3>Plan Ahead</h3>
+            <ul>
+              <li>Allow extra travel time — shuttles run slower than trains and make all local stops</li>
+              <li>Check <a href="https://www.mta.info/alerts" target="_blank" rel="noopener">mta.info/alerts</a> or the MYmta app for real-time updates before you head out</li>
+              <li>Call 511 if you need live trip planning assistance</li>
+              <li>At Broadway Junction: get a GO Ticket from the station agent before exiting to re-enter without extra fare</li>
+            </ul>
           </div>
-          <span class="tag tag--accent">Education</span>
-          <h2><a href="https://urbanversionmedia.substack.com/p/east-new-york-families-may-be-left" target="_blank" rel="noopener">East New York Families May Be Left Behind in the First Wave of 2-K</a></h2>
-          <p>CB5 members raised concerns about District 19's absence from the city's initial 2-K rollout, uncertainty around Head Start after June 30.</p>
-          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Mar 17, 2026</span><span>6 min read</span></div>
-        </div>
-        <div class="article-card">
-          <div class="article-card-img" style="overflow:hidden;">
-            <img src="wellness-story.jpg" alt="Community wellness support in East New York" style="width:100%;height:100%;object-fit:cover;" />
+
+          <h2>Why It Matters for East New York</h2>
+
+          <p>Broadway Junction is the central transfer hub for much of East New York — connecting the J, Z, A, C, and L lines. Multi-day disruptions here ripple across the neighborhood, affecting commuters, essential workers on overnight shifts, and anyone depending on reliable weekend service.</p>
+
+          <p>For riders who depend on the J to reach jobs in Manhattan or transfer to the A or C to get to other parts of Brooklyn, even a short shuttle delay can turn a 20-minute commute into an hour-long ordeal.</p>
+
+          <div class="article-closing">
+            <p>The East New York Times will continue monitoring service alerts affecting our community. If you experienced significant delays or hardship this weekend, reach out and share your story.</p>
+            <p class="source-line">Source: <a href="https://www.mta.info/article/mta-weekender-memorial-day-weekend-2026" target="_blank" rel="noopener">MTA Planned Service Changes — mta.info</a></p>
           </div>
-          <span class="tag tag--green">Community</span>
-          <h2><a href="https://urbanversionmedia.substack.com/p/who-supports-the-people-who-support" target="_blank" rel="noopener">Who Supports the People Who Support East New York?</a></h2>
-          <p>A CB5 Aging, Health and Social Services Committee meeting focused on the emotional toll carried by community service workers.</p>
-          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Mar 12, 2026</span><span>5 min read</span></div>
-        </div>
-        <div class="article-card">
-          <div class="article-card-img" style="background:var(--surface-3);border-radius:var(--radius);"></div>
-          <span class="tag tag--red">Public Safety</span>
-          <h2><a href="https://urbanversionmedia.substack.com/p/cb5-grapples-with-limits-of-its-power" target="_blank" rel="noopener">CB5 Grapples With Limits of Its Power in Split Restaurant License Debate</a></h2>
-          <p>Residents' complaints, a business owner's distress, and the limits of community board authority collided at a tense Public Safety Committee meeting.</p>
-          <div class="story-meta"><span>Mar 12, 2026</span><span>4 min read</span></div>
-        </div>
-        <div class="article-card">
-          <div class="article-card-img" style="overflow:hidden;">
-            <img src="budcity-story.jpg" alt="Bud City Cannabis, East New York" style="width:100%;height:100%;object-fit:cover;" />
+
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+          <div class="sidebar-widget subscribe-widget">
+            <div class="widget-title">Stay Informed</div>
+            <p>Get ENY Times community journalism delivered directly to your inbox.</p>
+            <a href="#" class="subscribe-btn">Subscribe Free</a>
           </div>
-          <span class="tag tag--accent">Governance</span>
-          <h2><a href="https://urbanversionmedia.substack.com/p/cb5-members-question-their-power" target="_blank" rel="noopener">CB5 Members Question Their Power in Cannabis Licensing After Bud City Renewal Vote</a></h2>
-          <p>The East New York cannabis committee voted 6–1 to support the Bud City dispensary renewal after a tense discussion about community engagement.</p>
-          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Mar 8, 2026</span><span>4 min read</span></div>
-        </div>
-        <div class="article-card" style="display:flex;align-items:center;justify-content:center;border:2px dashed var(--border);border-radius:var(--radius-lg);padding:2rem;text-align:center;flex-direction:column;gap:0.75rem;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--text-faint)" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
-          <p style="color:var(--text-faint);font-size:0.875rem;max-width:none;">More stories coming soon.<br/>Follow us on <a href="https://urbanversionmedia.substack.com" target="_blank" style="color:var(--accent);">Substack</a> for updates.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-
-  <!-- ══════════════════════════════════════════════
-       EVENTS PAGE
-  ══════════════════════════════════════════════ -->
-  <div class="page" id="page-events">
-    <div class="container">
-      <div class="page-hero">
-        <h1>Community <span>Events</span></h1>
-        <p>Brooklyn Community Board 5 — June 2026 public meeting calendar. All meetings held at 127 Pennsylvania Avenue, Brooklyn, NY 11207. Open to all residents.</p>
-      </div>
-      <div class="events-grid">
-
-        <!-- May 30 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">May</span><span class="day">30</span></div>
-            <div class="event-card-date-meta"><span class="time">12:00 PM – 3:00 PM</span><span class="loc">Brooklyn Sports Club</span></div>
+          <div class="sidebar-widget">
+            <div class="widget-title">Broadway Junction — Line Status</div>
+            <div class="status-item">
+              <div class="status-item-label">
+                <span class="status-dot red"></span>
+                <span><span class="train-badge train-j" style="width:20px;height:20px;font-size:0.7rem">J</span> J Train</span>
+              </div>
+              <span style="color:var(--red);font-size:0.8rem;font-weight:600">Partial</span>
+            </div>
+            <div class="status-item">
+              <div class="status-item-label">
+                <span class="status-dot red"></span>
+                <span><span class="train-badge train-z" style="width:20px;height:20px;font-size:0.7rem">Z</span> Z Train</span>
+              </div>
+              <span style="color:var(--red);font-size:0.8rem;font-weight:600">Suspended</span>
+            </div>
+            <div class="status-item">
+              <div class="status-item-label">
+                <span class="status-dot green"></span>
+                <span><span class="train-badge train-a" style="width:20px;height:20px;font-size:0.7rem">A</span> A Train</span>
+              </div>
+              <span style="color:#3fb950;font-size:0.8rem;font-weight:600">Running</span>
+            </div>
+            <div class="status-item">
+              <div class="status-item-label">
+                <span class="status-dot green"></span>
+                <span><span class="train-badge train-c" style="width:20px;height:20px;font-size:0.7rem">C</span> C Train</span>
+              </div>
+              <span style="color:#3fb950;font-size:0.8rem;font-weight:600">Running</span>
+            </div>
+            <div class="status-item">
+              <div class="status-item-label">
+                <span class="status-dot green"></span>
+                <span><span class="train-badge train-l" style="width:20px;height:20px;font-size:0.7rem">L</span> L Train</span>
+              </div>
+              <span style="color:#3fb950;font-size:0.8rem;font-weight:600">Running</span>
+            </div>
+            <p style="font-size:0.72rem;color:var(--text-faint);margin-top:0.75rem">Status as of Sunday June 1 · Ends 5am Tue Jun 3</p>
           </div>
-          <div class="event-tag"><span class="tag tag--blue">Empowerment</span><span class="tag tag--accent">Women</span></div>
-          <h3>Women's Empowerment Conference &amp; Luncheon</h3>
-          <p>Wholesome Family Network &amp; Brooklyn Sports Club present a free empowerment event with special guest speakers, free raffles, and open conversation on health, healing, and triumphs. In partnership with CM Chris Banks. 1540 Van Siclen Avenue, Brooklyn, NY 11239.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Info: 718-749-8869 · wholesomefamilynet@gmail.com</p>
-        </div>
 
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">May</span><span class="day">30</span></div>
-            <div class="event-card-date-meta"><span class="time">2:00 PM – 4:00 PM</span><span class="loc">Gotham Health, ENY</span></div>
+          <div class="sidebar-widget">
+            <div class="widget-title">Quick Reference</div>
+            <div class="context-item">
+              <strong>Free T433 Shuttle</strong>
+              Broadway Junction ↔ Marcy Av · All local stops
+            </div>
+            <div class="context-item">
+              <strong>GO Ticket</strong>
+              Ask station agent before exiting at Broadway Junction, Myrtle-Wyckoff Avs, Myrtle Av, or Marcy Av
+            </div>
+            <div class="context-item">
+              <strong>Disruption Ends</strong>
+              5:00 a.m. Tuesday, June 3, 2026
+            </div>
+            <div class="context-item">
+              <strong>MTA Info Line</strong>
+              Call 511 · <a href="https://www.mta.info/alerts" target="_blank" rel="noopener" style="color:var(--accent)">mta.info/alerts</a>
+            </div>
           </div>
-          <div class="event-tag"><span class="tag tag--green">Health</span></div>
-          <h3>"How to Eat to Live" Better Health Seminar</h3>
-          <p>Muhammad Mosque 7C presents a free health seminar covering diabetes, heart disease, hypertension, obesity, and more. Your kitchen is your medicine cabinet. 2094 Pitkin Ave, Brooklyn, NY 11207.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">RSVP: Sister Phyllis · pbrownrich@aol.com</p>
-        </div>
 
-        <!-- Jun 1 — CB5 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">1</span></div>
-            <div class="event-card-date-meta"><span class="time">6:30 – 8:30 PM</span><span class="loc">127 Pennsylvania Ave, 2nd Fl</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">CB5 Committee</span></div>
-          <h3>Cannabis Management Review</h3>
-          <p>CB5 Cannabis Management Review Committee meeting. Open to the public. 127 Pennsylvania Avenue, 2nd Floor, Brooklyn, NY 11207.</p>
-        </div>
-
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">2</span></div>
-            <div class="event-card-date-meta"><span class="time">6:00 – 8:00 PM</span><span class="loc">127 Pennsylvania Ave, 2nd Fl</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--green">CB5 Committee</span></div>
-          <h3>Parks, Sanitation &amp; Environment</h3>
-          <p>CB5 Parks, Sanitation &amp; Environment Committee meeting. Open to the public. 127 Pennsylvania Avenue, 2nd Floor, Brooklyn, NY 11207.</p>
-        </div>
-
-        <!-- Jun 4 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">4</span></div>
-            <div class="event-card-date-meta"><span class="time">10:00 AM – 2:00 PM</span><span class="loc">876 Schenck Ave, Brooklyn</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--blue">Employment</span><span class="tag tag--accent">Jobs</span></div>
-          <h3>2026 Job Spring Fair</h3>
-          <p>On-the-spot interviews for data entry, customer service, EMT, paramedics, lifeguards, personal trainers &amp; more. Bring physical copies of your resume. PJACC Community Center, 876 Schenck Avenue, Brooklyn, NY 11207.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Info: manupinc.org · (718) 498-2320</p>
-        </div>
-
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">4</span></div>
-            <div class="event-card-date-meta"><span class="time">6:30 – 8:30 PM</span><span class="loc">127 Pennsylvania Ave, 1st Fl</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--blue">CB5 Committee</span><span class="tag tag--accent">Education</span></div>
-          <h3>Education &amp; Youth Services Committee</h3>
-          <p>CB5 Education &amp; Youth Services Committee. Aviation Room, 1st Floor. 127 Pennsylvania Avenue, Brooklyn, NY 11207.</p>
-        </div>
-
-        <!-- Jun 5 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">5</span></div>
-            <div class="event-card-date-meta"><span class="time">9:00 AM – 1:00 PM</span><span class="loc">17 Hinsdale St, Brooklyn</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--green">Community</span><span class="tag tag--accent">Environment</span></div>
-          <h3>EBBID Clean Up Day</h3>
-          <p>East Brooklyn Business Improvement District annual clean up. Pitch in to take pride in the neighborhood, one block at a time. Trey Whitfield School, 17 Hinsdale Street, Brooklyn, NY 11207.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">RSVP: joelo@ldceny.org · eastbrooklynbid.com</p>
-        </div>
-
-        <!-- Jun 6 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">6</span></div>
-            <div class="event-card-date-meta"><span class="time">10:00 AM – 3:00 PM</span><span class="loc">Brooklyn College</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--red">Housing</span></div>
-          <h3>2026 Annual Housing Resource Fair</h3>
-          <p>Free seminars for homeowners, tenants, home buyers &amp; landlords. Experts from housing and social service field including government, nonprofits, and businesses. Brooklyn College, 2705 Campus Road, Brooklyn, NY 11210.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Register: bit.ly/hrf2026 · 718-469-4679 · info@nhsbrooklyn.org</p>
-        </div>
-
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">6</span></div>
-            <div class="event-card-date-meta"><span class="time">8:00 AM Sharp</span><span class="loc">Tillary &amp; Adams St</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--blue">Community</span><span class="tag tag--accent">Women</span></div>
-          <h3>Community Walk Across the Brooklyn Bridge</h3>
-          <p>MGT (Moving. Growing. Together.) walks in unity to celebrate, uplift, and empower Black women and communities. All are welcome. Meeting location: Tillary &amp; Adams Streets (Brooklyn Bridge Entrance).</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Register to reserve your spot — scan QR on flyer.</p>
-        </div>
-
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">6</span></div>
-            <div class="event-card-date-meta"><span class="time">10:00 AM – 2:00 PM</span><span class="loc">198 Euclid Ave, Brooklyn</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--green">Health</span></div>
-          <h3>CHCCC Health Fair 2026</h3>
-          <p>Cypress Hills Child Care Corporation presents a free health fair. 198 Euclid Ave (Parking Lot), Brooklyn, NY 11208.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Info: 718-235-3949 · carolinao@cypresshills.org</p>
-        </div>
-
-        <!-- Jun 7 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">7</span></div>
-            <div class="event-card-date-meta"><span class="time">Meet 9 AM · Race 10 AM</span><span class="loc">Shirley Chisholm State Park</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">5K</span><span class="tag tag--green">Free</span></div>
-          <h3>Shirley Chisholm Trail 5K — 5th Annual</h3>
-          <p>Black Men Run NYC presents the 5th Annual Shirley Chisholm Trail 5K. FREE run/walk for all paces. Bring the whole family. Shirley Chisholm State Park, 950 Fountain Avenue, Brooklyn, NY 11239. Register for a commemorative t-shirt.</p>
-        </div>
-
-        <!-- Jun 8 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">8</span></div>
-            <div class="event-card-date-meta"><span class="time">6:30 – 8:30 PM</span><span class="loc">127 Pennsylvania Ave, 2nd Fl</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--red">CB5 Committee</span></div>
-          <h3>Public Safety &amp; Quality of Life</h3>
-          <p>CB5 Public Safety &amp; Quality of Life Committee meeting. Open to the public. 127 Pennsylvania Avenue, 2nd Floor, Brooklyn, NY 11207.</p>
-        </div>
-
-        <!-- Jun 9 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">9</span></div>
-            <div class="event-card-date-meta"><span class="time">6:30 – 8:30 PM</span><span class="loc">127 Pennsylvania Ave, 2nd Fl</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--green">CB5 Committee</span></div>
-          <h3>Aging, Health &amp; Social Services</h3>
-          <p>CB5 Aging, Health &amp; Social Services Committee meeting. Open to the public. 127 Pennsylvania Avenue, 2nd Floor, Brooklyn, NY 11207.</p>
-        </div>
-
-        <!-- Jun 10 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">10</span></div>
-            <div class="event-card-date-meta"><span class="time">6:30 – 8:30 PM</span><span class="loc">127 Pennsylvania Ave, 2nd Fl</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">CB5 Committee</span></div>
-          <h3>Economic Development, IBZ &amp; BID</h3>
-          <p>CB5 Economic Development, IBZ &amp; BID Committee meeting. Open to the public. 127 Pennsylvania Avenue, 2nd Floor, Brooklyn, NY 11207.</p>
-        </div>
-
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">10</span></div>
-            <div class="event-card-date-meta"><span class="time">11:00 AM – 12:00 PM</span><span class="loc">Virtual (Zoom)</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--blue">Virtual</span><span class="tag tag--accent">DOB</span></div>
-          <h3>NYC DOB Virtual Meeting — Faith Leaders &amp; Houses of Worship</h3>
-          <p>NYC Department of Buildings Office of Faith virtual meeting for faith leaders and houses of worship. Learn about building safety, code compliance, and DOB resources. Meeting ID: 273 264 794 043 · Passcode: wT9rS6mC. No registration required — visit bit.ly/heat-emergency-webinar at event time.</p>
-        </div>
-
-        <!-- Jun 11 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">11</span></div>
-            <div class="event-card-date-meta"><span class="time">10:00 – 11:00 AM</span><span class="loc">Virtual (Zoom)</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--green">Health</span><span class="tag tag--blue">Virtual</span></div>
-          <h3>Heat Emergency &amp; Preparedness Webinar</h3>
-          <p>NYC Health virtual webinar on how summer heat impacts older adults. Topics: heat-related illness symptoms, protection tips, and local cooling resources. For adults 65+, caregivers, and community health workers. No registration required.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Info: healthyaging@health.nyc.gov</p>
-        </div>
-
-        <!-- Jun 15 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">15</span></div>
-            <div class="event-card-date-meta"><span class="time">6:00 – 8:00 PM</span><span class="loc">127 Pennsylvania Ave, 2nd Fl</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--blue">CB5 Committee</span></div>
-          <h3>Transportation &amp; TLC Licensing</h3>
-          <p>CB5 Transportation &amp; TLC Licensing Committee meeting. Open to the public. 127 Pennsylvania Avenue, 2nd Floor, Brooklyn, NY 11207.</p>
-        </div>
-
-        <!-- Jun 16 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">16</span></div>
-            <div class="event-card-date-meta"><span class="time">1:00 – 6:00 PM</span><span class="loc">Linden Park, Brooklyn</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--blue">Family</span><span class="tag tag--green">Free</span></div>
-          <h3>Achievement First Block Party</h3>
-          <p>FREE block party with magic show, ice cream, music, face painters, and community resources. Kids ages 4–11 welcome. Families can also complete 2026–27 school year applications with enrollment team support. Linden Park (Playground Area by Stanley Entrance), Linden Blvd &amp; Vermont St, Brooklyn, NY 11207. Tickets limited — register now.</p>
-        </div>
-
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">16</span></div>
-            <div class="event-card-date-meta"><span class="time">6:30 – 8:30 PM</span><span class="loc">127 Pennsylvania Ave, 2nd Fl</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--red">CB5 Committee</span><span class="tag tag--accent">Housing</span></div>
-          <h3>Land Use &amp; Housing Committee</h3>
-          <p>CB5 Land Use &amp; Housing Committee meeting. Open to the public. 127 Pennsylvania Avenue, 2nd Floor, Brooklyn, NY 11207.</p>
-        </div>
-
-        <!-- Jun 20 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">20</span></div>
-            <div class="event-card-date-meta"><span class="time">10:00 AM – 1:00 PM</span><span class="loc">85 Montauk Ave, Brooklyn</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--green">Volunteer</span><span class="tag tag--accent">Environment</span></div>
-          <h3>Volunteer Day: Shield of Faith Community Garden</h3>
-          <p>Join Shield of Faith Community Garden and NYC Parks GreenThumb for a hands-on volunteer day beautifying the garden and planting a native pollinator garden. All materials provided. Bring weather-appropriate clothing and sturdy shoes. 85 Montauk Ave., Brooklyn, NY 11208.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Register: nycgovparks.org/greenthumb · gt.volunteer@parks.nyc.gov · (646) 623-8599</p>
-        </div>
-
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">20</span></div>
-            <div class="event-card-date-meta"><span class="time">12:00 PM – 3:00 PM</span><span class="loc">461 Williams Ave</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--blue">CB5</span><span class="tag tag--accent">Education</span></div>
-          <h3>CB5 Education &amp; Youth Resource Fair</h3>
-          <p>Community Board 5 Education &amp; Youth Services Committee annual fair. Free bookbags, free books, free school supplies. Success Gardens, 461 Williams Avenue, Brooklyn.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Contact: Natasha Cherry-Perez · 347-593-3723</p>
-        </div>
-
-        <!-- Jun 24 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">24</span></div>
-            <div class="event-card-date-meta"><span class="time">6:30 – 8:30 PM</span><span class="loc">127 Pennsylvania Ave, 3rd Fl</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--red">General Board</span><span class="tag tag--blue">All Welcome</span></div>
-          <h3>CB5 General Board Meeting</h3>
-          <p>Brooklyn Community Board 5 General Board Meeting. Open to all residents. 127 Pennsylvania Avenue, 3rd Floor, Brooklyn, NY 11207. Chair: Alice Lowman · District Manager: Melinda Perkins.</p>
-        </div>
-
-        <!-- Jun 27 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">27</span></div>
-            <div class="event-card-date-meta"><span class="time">10:00 AM – 4:00 PM</span><span class="loc">Vermont St &amp; Linden Blvd</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--green">Seniors</span><span class="tag tag--accent">Free</span></div>
-          <h3>Senior Citizens Resource Day</h3>
-          <p>CM Chris Banks &amp; The Parodneck Foundation present a free Senior Citizens Resource Day — resources, giveaways, refreshments, wellness, and fun. Vermont Street between Linden Boulevard and Stanley Avenue, Brooklyn.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Info: 212-431-9202 · info@parodneckfoundation.org</p>
-        </div>
-
-        <!-- Jul 18 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">18</span></div>
-            <div class="event-card-date-meta"><span class="time">11:00 AM – 6:00 PM</span><span class="loc">Greene Ave &amp; Marcus Garvey Blvd</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">Block Party</span><span class="tag tag--green">Community</span></div>
-          <h3>BSVAC 38th Anniversary Block Party</h3>
-          <p>Bedford-Stuyvesant Volunteer Ambulance Corps 38th Anniversary Block Party. Food, music, NYPD Rock Wall, bounce house, health screenings, and blood drive sign-up. Ceremony at 1 PM. Greene Ave &amp; Marcus Garvey Blvd. Vendors welcome.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Contact: amydorfman@bsvac.net · 516-729-8561</p>
-        </div>
-
-      </div>
-
-      <!-- RESOURCES SECTION -->
-      <div class="section-head" style="margin-top:3rem;">
-        <h2>Community Resources</h2>
-        <div class="section-head-line"></div>
-      </div>
-      <div class="events-grid">
-
-        <!-- Transit Advisory -->
-        <div class="event-card" style="border-color:var(--red);grid-column:1/-1;">
-          <div class="event-tag"><span class="tag tag--red">Transit Advisory</span><span class="tag tag--blue">MTA · Thru June 5</span></div>
-          <h3>4/5 Train Service Disruption — May 18–June 5</h3>
-          <p>No 4/5 trains between Brooklyn Bridge and New Lots Av on weekday nights (Mon–Fri 11:30pm–5am) and weekends (Fri 11:30pm–Mon 5am). 4 train runs Woodlawn ↔ Brooklyn Bridge-City Hall only. 3 train runs to/from New Lots Av.</p>
-          <ul style="font-size:0.85rem;color:var(--text-muted);padding-left:1.25rem;display:flex;flex-direction:column;gap:0.3rem;margin-top:0.5rem;">
-            <li>Fulton St, Wall St, Bowling Green → use nearby J or N/R stations</li>
-            <li>Manhattan ↔ Brooklyn → take the N or Q</li>
-            <li>Borough Hall ↔ Franklin Av → take the 2 or 3</li>
-            <li>Franklin Av ↔ New Lots Av → take the 3</li>
-          </ul>
-          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
-            <a href="https://new.mta.info/weekender" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:0.75rem;padding:0.4rem 0.9rem;">MTA Weekender</a>
-            <a href="https://new.mta.info/planned-service-changes" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:0.75rem;padding:0.4rem 0.9rem;">Planned Service Changes</a>
-          </div>
-        </div>
-
-        <!-- Norwood Ave Construction -->
-        <div class="event-card" style="border-color:rgba(232,149,42,0.4);">
-          <div class="event-tag"><span class="tag tag--accent">Construction</span><span class="tag tag--blue">Starting Jun 8</span></div>
-          <h3>Norwood Ave Station (J/Z) — New Elevator Construction</h3>
-          <p>Starting on or around Monday, June 8, Arlington Ave and Fulton St between Norwood Ave and Hale St will be closed to parking and vehicular traffic for ~6 months. Crosswalks and sidewalks remain open. B20, Q24, and J/Z service not affected.</p>
-        </div>
-
-        <!-- Housing: 314 Hinsdale -->
-        <div class="event-card" style="border-color:rgba(46,160,67,0.3);">
-          <div class="event-tag"><span class="tag tag--green">Affordable Housing</span><span class="tag tag--accent">Open Now</span></div>
-          <h3>HELP Hinsdale C — 314 Hinsdale Ave, Brooklyn</h3>
-          <p>78 affordable rental apartments now accepting applications. 2BR &amp; 3BR units available. Rents from $1,178/mo (40% AMI) to $1,931/mo (60% AMI). Gas for heating included.</p>
-          <ul style="font-size:0.85rem;color:var(--text-muted);padding-left:1.25rem;display:flex;flex-direction:column;gap:0.3rem;margin-top:0.5rem;">
-            <li>40% AMI: 2BR $1,178 · 3BR $1,346</li>
-            <li>60% AMI: 2BR $1,907 · 3BR $1,931</li>
-          </ul>
-          <a href="https://housingconnect.nyc.gov" target="_blank" rel="noopener" class="btn btn-accent" style="margin-top:0.75rem;width:fit-content;font-size:0.75rem;padding:0.4rem 0.9rem;">Apply on NYC Housing Connect ↗</a>
-        </div>
-
-        <!-- Paid Eco-Internship -->
-        <div class="event-card" style="border-color:rgba(46,160,67,0.3);">
-          <div class="event-tag"><span class="tag tag--green">Paid Internship</span><span class="tag tag--accent">Jun 30–Aug 13</span></div>
-          <h3>Paid Summer Eco-Internship — NYC H2O</h3>
-          <p>Join NYC H2O as a paid ecological steward at Highland Park and other natural areas. Mon–Thu, 8am–1pm, June 30–August 13. Ridgewood Reservoir. Must have interest in ecology, enjoy working outdoors, and be able to lift 40 lbs.</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;">Apply: Send resume &amp; letter of interest to kiki@nych2o.org</p>
-        </div>
-
-        <!-- Submit -->
-        <div class="event-card" style="display:flex;align-items:center;justify-content:center;border:2px dashed var(--border);flex-direction:column;gap:0.75rem;text-align:center;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--text-faint)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M12 14v4M10 16h4"/></svg>
-          <p style="color:var(--text-faint);font-size:0.875rem;max-width:none;">Know of an event?<br/><a href="mailto:urbanversionmedia@gmail.com" style="color:var(--accent);">Submit it for listing</a></p>
-        </div>
-
+        </aside>
       </div>
     </div>
-  </div>    </div>
-  </div>
+  </main>
 
-
-  <!-- ══════════════════════════════════════════════
-       ABOUT PAGE
-  ══════════════════════════════════════════════ -->
-  <div class="page" id="page-about">
-    <div class="container">
-      <div class="about-content">
-        <h1>About <span>The East New York Times</span></h1>
-        <p class="lead">"East New York deserves journalism that treats it like what it is — a living, breathing community full of people making decisions, raising families, and fighting for a better neighborhood."</p>
-
-        <h2>Who We Are</h2>
-        <p>The East New York Times is an independent community news publication dedicated to covering civic life, local government, and neighborhood stories in East New York, Brooklyn. We are a publication of <a href="https://urbanversionmedia.substack.com" target="_blank">Urban Version Media</a>.</p>
-        <p>We cover Community Board 5 meetings, local elections, housing and development, public safety, education, and the everyday stories that shape life in one of Brooklyn's most historic neighborhoods.</p>
-
-        <h2>Our Mission</h2>
-        <p>East New York has long been underrepresented in mainstream media. Stories that matter to our community — zoning decisions, school board votes, local business closures, housing displacement — rarely make the front page. We're changing that.</p>
-        <p>We believe that an informed community is an empowered community. Our goal is simple: give East New York the journalism it deserves.</p>
-
-        <h2>Our Values</h2>
-        <div class="values-grid">
-          <div class="value-card">
-            <h3>Independence</h3>
-            <p>We answer to our community — not advertisers, corporations, or political interests. Our editorial decisions are made independently.</p>
-          </div>
-          <div class="value-card">
-            <h3>Accountability</h3>
-            <p>We cover the people and institutions that hold power in East New York and hold them accountable to the community they serve.</p>
-          </div>
-          <div class="value-card">
-            <h3>Community First</h3>
-            <p>Every story we publish starts with the question: how does this affect the people of East New York?</p>
-          </div>
-          <div class="value-card">
-            <h3>Accessibility</h3>
-            <p>Our journalism is free and available to everyone. Knowledge about your community should never sit behind a paywall.</p>
-          </div>
-        </div>
-
-        <h2>Contact Us</h2>
-        <p>Have a story tip, event listing, or want to get in touch? Email us at <a href="mailto:urbanversionmedia@gmail.com">urbanversionmedia@gmail.com</a> or follow us on Substack at <a href="https://urbanversionmedia.substack.com" target="_blank">urbanversionmedia.substack.com</a>.</p>
-        <p style="margin-top:1.5rem;"><a href="https://urbanversionmedia.substack.com" target="_blank" class="btn btn-accent">Follow on Substack →</a></p>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h3>The East New York <span>Times</span></h3>
-          <p>Independent community journalism covering East New York, Brooklyn. Civic news, local stories, and community events.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Navigate</h4>
-          <ul>
-            <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
-            <li><a href="#" onclick="showPage('articles'); return false;">Stories</a></li>
-            <li><a href="#" onclick="showPage('events'); return false;">Events</a></li>
-            <li><a href="#" onclick="showPage('about'); return false;">About</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener">Substack</a></li>
-            <li><a href="https://www.instagram.com/cb5eny/" target="_blank" rel="noopener">Instagram @cb5eny</a></li>
-            <li><a href="mailto:urbanversionmedia@gmail.com">Submit a Story Tip</a></li>
-            <li><a href="mailto:urbanversionmedia@gmail.com">Submit an Event</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 The East New York Times. A publication of <a href="#">Urban Version Media</a>. All rights reserved.</p>
-        <p>East New York · Brooklyn · New York City</p>
-      </div>
+      <div class="footer-name">The East New York <span>Times</span></div>
+      <p>Independent community journalism for East New York, Brooklyn · urbanversionmedia@gmail.com</p>
     </div>
   </footer>
-
-  <script>
-    // ── Date ──────────────────────────────────────
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    const now = new Date();
-    const el = document.getElementById('today-date');
-    if (el) el.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
-
-    // ── Page navigation ───────────────────────────
-    function showPage(name) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
-      document.getElementById('page-' + name).classList.add('active');
-      const navEl = document.getElementById('nav-' + name);
-      if (navEl) navEl.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // ── Mobile nav ────────────────────────────────
-    const menuBtn = document.getElementById('menu-toggle');
-    const mobileNav = document.getElementById('mobile-nav');
-    menuBtn.addEventListener('click', () => {
-      const open = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', String(!open));
-      mobileNav.classList.toggle('open', !open);
-    });
-    function closeMobileNav() {
-      menuBtn.setAttribute('aria-expanded', 'false');
-      mobileNav.classList.remove('open');
-    }
-
-    // ── Newsletter form ───────────────────────────
-    const nlForm = document.getElementById('nl-form');
-    if (nlForm) {
-      nlForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const input = nlForm.querySelector('input');
-        if (!input.validity.valid) { input.focus(); return; }
-        nlForm.querySelector('input').style.display = 'none';
-        nlForm.querySelector('button').style.display = 'none';
-        document.getElementById('nl-success').classList.add('show');
-      });
-    }
-  </script>
 
 </body>
 </html>
