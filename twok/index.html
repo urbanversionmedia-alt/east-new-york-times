@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>East New York Families May Be Left Behind in the First Wave of 2-K — The East New York Times</title>
+  <meta name="description" content="CB5 members raised concerns about District 19's absence from the city's initial 2-K rollout, uncertainty around Head Start after June 30, and a pay gap affecting community-based early-childhood programs." />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface-2: #1c2128;
+      --surface-3: #21262d;
+      --border: #2d333b;
+      --divider: #21262d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --text-faint: #484f58;
+      --accent: #e8952a;
+      --accent-hover: #d4820a;
+      --accent-dim: rgba(232,149,42,0.12);
+      --red: #f85149;
+      --blue: #2563eb;
+      --blue-dim: rgba(37,99,235,0.1);
+      --font-display: 'Clash Display', 'Georgia', serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+      --font-serif: 'Georgia', 'Times New Roman', serif;
+      --radius: 6px;
+      --radius-lg: 12px;
+      --shadow: 0 4px 16px rgba(0,0,0,0.4);
+      --transition: 200ms cubic-bezier(0.16,1,0.3,1);
+      --max-w: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+    ul { list-style: none; }
+    h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
+    p { text-wrap: pretty; }
+    ::selection { background: var(--accent-dim); }
+
+    .container { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
+    .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; }
+    .tag--accent { background: var(--accent-dim); color: var(--accent); }
+    .tag--red { background: rgba(248,81,73,0.1); color: var(--red); }
+
+    .topbar { background: var(--accent); color: #0d1117; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0; text-align: center; }
+
+    .header { position: sticky; top: 0; z-index: 100; background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; height: 70px; }
+    .masthead { display: flex; flex-direction: column; gap: 0.1rem; }
+    .masthead-name { font-family: var(--font-display); font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text); line-height: 1; }
+    .masthead-name span { color: var(--accent); }
+    .masthead-sub { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+    .nav ul { display: flex; gap: 1.75rem; }
+    .nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color var(--transition); }
+    .nav a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background var(--transition), transform var(--transition); }
+    .btn-accent { background: var(--accent); color: #0d1117; }
+    .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 36px; height: 36px; padding: 0.4rem; justify-content: center; }
+    .menu-toggle span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .mobile-nav { display: none; padding: 1rem clamp(1.25rem,5vw,4rem) 1.5rem; border-top: 1px solid var(--border); }
+    .mobile-nav.open { display: block; }
+    .mobile-nav li { border-bottom: 1px solid var(--divider); }
+    .mobile-nav a { display: block; padding: 0.875rem 0; font-size: 1rem; font-weight: 500; }
+
+    .article-hero { padding-block: 3rem 0; }
+    .article-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .article-date { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+    .article-hero h1 { font-size: clamp(1.9rem, 4.5vw, 3.2rem); font-weight: 700; color: var(--text); margin-bottom: 1rem; max-width: 22ch; }
+    .article-hero .subheadline { font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--text-muted); font-family: var(--font-serif); font-style: italic; margin-bottom: 2rem; max-width: 58ch; }
+    .hero-img-wrap { width: 100%; max-height: 520px; overflow: hidden; border-radius: var(--radius-lg); margin-top: 2rem; }
+    .hero-img-wrap img { width: 100%; height: 520px; object-fit: cover; object-position: center 40%; }
+    .img-caption { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.5rem; padding-inline: 0.25rem; }
+
+    .article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 4rem; padding-block: 3rem 4rem; align-items: start; }
+
+    .article-body { max-width: 100%; }
+    .article-body p { font-size: 1.05rem; line-height: 1.8; color: #c9d1d9; margin-bottom: 1.5rem; max-width: 68ch; }
+    .article-body h2 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 2.25rem 0 0.75rem; }
+    .article-body ul { list-style: none; margin-bottom: 1.5rem; }
+    .article-body ul li { font-size: 1.05rem; line-height: 1.8; color: #c9d1d9; padding: 0.4rem 0 0.4rem 1.25rem; position: relative; max-width: 68ch; }
+    .article-body ul li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .article-body a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(232,149,42,0.4); text-underline-offset: 3px; transition: text-decoration-color var(--transition); }
+    .article-body a:hover { text-decoration-color: var(--accent); }
+
+    /* DATA CALLOUT */
+    .data-callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .data-callout h3 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .data-callout p { margin-bottom: 0 !important; font-size: 0.95rem !important; color: var(--text) !important; }
+
+    /* PAY COMPARISON TABLE */
+    .pay-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .pay-table th { text-align: left; padding: 0.6rem 1rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .pay-table td { padding: 0.75rem 1rem; color: #c9d1d9; border-bottom: 1px solid var(--divider); vertical-align: top; }
+    .pay-table tr:last-child td { border-bottom: none; }
+    .pay-higher { color: #3fb950; font-weight: 600; }
+    .pay-lower { color: var(--red); font-weight: 600; }
+
+    .article-closing { border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem; }
+    .article-closing p { font-size: 0.95rem !important; color: var(--text-muted) !important; font-style: italic; }
+    .source-line { font-size: 0.8rem !important; color: var(--text-faint) !important; font-style: normal !important; margin-top: 1rem !important; }
+    .source-line a { color: var(--text-muted) !important; text-decoration: underline; }
+
+    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+    .sidebar-widget { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+    .widget-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--divider); }
+    .subscribe-widget { background: var(--accent-dim); border-color: rgba(232,149,42,0.3); }
+    .subscribe-widget p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .subscribe-btn { display: block; width: 100%; text-align: center; padding: 0.6rem; background: var(--accent); color: #0d1117; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; border-radius: var(--radius); transition: background var(--transition); }
+    .subscribe-btn:hover { background: var(--accent-hover); }
+    .context-item { padding: 0.5rem 0; border-bottom: 1px solid var(--divider); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    .context-item:last-child { border-bottom: none; }
+    .context-item strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
+    .context-item a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(232,149,42,0.4); }
+
+    .footer { border-top: 1px solid var(--border); padding-block: 2rem; text-align: center; }
+    .footer-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .footer-name span { color: var(--accent); }
+    .footer p { font-size: 0.8rem; color: var(--text-faint); }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sidebar { order: -1; }
+      .nav, .header-cta { display: none; }
+      .menu-toggle { display: flex; }
+      .hero-img-wrap img { height: 280px; }
+    }
+    @media (max-width: 600px) { .article-hero h1 { font-size: 1.7rem; } }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">Education Report — District 19 · 2-K Rollout · Community Board 5</div>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="masthead">
+          <div class="masthead-name">The East New York <span>Times</span></div>
+          <div class="masthead-sub">Community Journalism for East New York, Brooklyn</div>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Transit</a></li>
+            <li><a href="#">Housing</a></li>
+            <li><a href="#">Civic</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+        <div class="header-cta">
+          <a href="#" class="btn btn-accent">Subscribe</a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.mobile-nav').classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <ul>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Transit</a></li>
+        <li><a href="#">Housing</a></li>
+        <li><a href="#">Civic</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section class="article-hero">
+        <div class="article-meta">
+          <span class="tag tag--accent">Education</span>
+          <span class="article-date">Wednesday, March 18, 2026</span>
+        </div>
+        <h1>East New York Families May Be Left Behind in the First Wave of 2-K</h1>
+        <p class="subheadline">CB5 members raised concerns about District 19's absence from the city's initial 2-K rollout, uncertainty around Head Start after June 30, and a pay gap affecting community-based early-childhood programs.</p>
+        <div class="hero-img-wrap">
+          <img src="../school-story.jpg" alt="East New York school and early education" />
+        </div>
+        <p class="img-caption">Photo: Deric Johnson / The East New York Times</p>
+      </section>
+
+      <div class="article-layout">
+        <article class="article-body">
+
+          <p>At the March 5, 2026, Community Board 5 Education and Youth Services Committee meeting, members said East New York families could be left behind in the city's early-childhood rollout because District 19 was not included in the first wave of new 2-K seats and because there is still uncertainty about what will happen after June 30 to current Head Start arrangements.</p>
+
+          <p>The city announced on March 3 that the first phase of 2-K includes Districts 6, 10, 18/23, and 27 — not District 19. City Hall said the initial rollout will create more than 2,000 seats this fall, expand to 12,000 seats citywide by fall 2027, and reach full universality within four years.</p>
+
+          <h2>District 19 Left Out of Phase One</h2>
+
+          <p>During the meeting, one speaker said the city had "opened up more 2-K seats" but that the expansion "doesn't cover District 19." That concern aligns with the city's explanation of how the first districts were chosen, but the distinction matters: District 19 was left out of the first phase, not the entire program.</p>
+
+          <p>Speakers said that omission could have local consequences if East New York schools and providers are unable to compete for new seats. One participant said opportunities might be missed "if the district is not actively participating or saying anything." Another participant described how difficult it was to expand current pre-K offerings at a local school.</p>
+
+          <h2>Head Start Uncertainty</h2>
+
+          <p>The discussion then turned to programs already serving families in the neighborhood. "The contract is up," one speaker said, and another added, "We have no contract for next year," describing the uncertainty surrounding current Head Start programs and the fact that some centers still do not know what to expect next year.</p>
+
+          <p>City records show that children currently enrolled in NYCPS-contracted Head Start or Early Head Start programs may remain in their current programs through June 30, 2026, under city-funded transitional agreements.</p>
+
+          <p>Meeting attendees said that uncertainty is especially stressful because smaller Head Start and pre-K settings remain important for some children in East New York. Some suggested children are better served in classes of 10 to 14 than in classrooms of 28 to 30. Another speaker said small, independent Head Start sites are essential for working families, especially those needing overnight care arrangements.</p>
+
+          <h2>A Two-Tier Pay System</h2>
+
+          <p>Committee members and attendees also said community-based programs struggle to keep qualified teachers because Department of Education jobs pay more and offer better benefits. One speaker said the system has "two different unions and two different levels of pay," and another called it "not equitable."</p>
+
+          <div class="data-callout">
+            <h3>Pay Gap — CBO vs. DOE Teachers (as of 2024–2025)</h3>
+            <p>The NYC Comptroller reported in 2024 that contracts for non-union certified CBO teachers were still funded at October 2021 rates: $61,070 (bachelor's) and $68,652 (master's). The city estimated $41.6 million more per year would be needed to reach parity.</p>
+          </div>
+
+          <table class="pay-table">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Bachelor's Degree</th>
+                <th>Master's Degree</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>DOE Teacher (starting, Sept. 2025)</td>
+                <td class="pay-higher">$68,902</td>
+                <td class="pay-higher">$77,455</td>
+              </tr>
+              <tr>
+                <td>CBO Certified Teacher (2021 contracted rate)</td>
+                <td class="pay-lower">$61,070</td>
+                <td class="pay-lower">$68,652</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>No votes were taken on these issues at the meeting. But the discussion made clear that committee members see early-childhood access, program stability, and teacher retention as connected concerns for East New York residents.</p>
+
+          <div class="article-closing">
+            <p>The East New York Times will continue reporting on education equity in East New York. If you have experience with early-childhood care in the neighborhood, reach out at <a href="mailto:urbanversionmedia@gmail.com">urbanversionmedia@gmail.com</a>.</p>
+            <p class="source-line">Sources: Community Board 5 Education and Youth Services Committee meeting · NYC March 3 announcement on 2-K rollout · NYC Comptroller · TeachNYC</p>
+          </div>
+
+        </article>
+
+        <aside class="sidebar">
+
+          <div class="sidebar-widget subscribe-widget">
+            <div class="widget-title">Stay Informed</div>
+            <p>Get ENY Times community journalism delivered directly to your inbox.</p>
+            <a href="#" class="subscribe-btn">Subscribe Free</a>
+          </div>
+
+          <div class="sidebar-widget">
+            <div class="widget-title">Related Stories</div>
+            <div class="context-item">
+              <strong><a href="../snap/">Your Food Stamps Could Be Cut Off Tomorrow</a></strong>
+              Federal SNAP work requirements take effect June 1 — what East New York residents need to know.
+            </div>
+            <div class="context-item">
+              <strong><a href="../wellness/">Who Supports the People Who Support East New York?</a></strong>
+              A CB5 meeting turns into a rare wellness session for community advocates.
+            </div>
+            <div class="context-item">
+              <strong><a href="../townhall/">"Super Broken": Residents Confront City Agencies at Sandy Nurse's Town Hall</a></strong>
+              Dumping, traffic safety, and the limits of the complaint system.
+            </div>
+          </div>
+
+          <div class="sidebar-widget">
+            <div class="widget-title">About The East New York Times</div>
+            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.75rem">The East New York Times is an independent community news outlet covering the people, policies, and events that shape East New York, Brooklyn.</p>
+            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6">Published by Urban Version Media · <a href="mailto:urbanversionmedia@gmail.com" style="color:var(--accent)">urbanversionmedia@gmail.com</a></p>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-name">The East New York <span>Times</span></div>
+      <p>Independent community journalism for East New York, Brooklyn · urbanversionmedia@gmail.com</p>
+    </div>
+  </footer>
+
+</body>
+</html>
