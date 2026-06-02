@@ -1,4 +1,4 @@
-         <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,269 +8,115 @@
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface-2: #1c2128;
-      --surface-3: #21262d;
-      --border: #2d333b;
-      --divider: #21262d;
-      --text: #e6edf3;
-      --text-muted: #8b949e;
-      --text-faint: #484f58;
-      --accent: #e8952a;
-      --accent-hover: #d4820a;
-      --accent-dim: rgba(232,149,42,0.12);
-      --red: #f85149;
-      --font-display: 'Clash Display', 'Georgia', serif;
-      --font-body: 'Satoshi', 'Inter', sans-serif;
-      --font-serif: 'Georgia', 'Times New Roman', serif;
-      --radius: 6px;
-      --radius-lg: 12px;
-      --shadow: 0 4px 16px rgba(0,0,0,0.4);
-      --transition: 200ms cubic-bezier(0.16,1,0.3,1);
-      --max-w: 1200px;
+      --bg:#0d1117;--surface:#161b22;--surface-2:#1c2128;--border:#2d333b;--divider:#21262d;
+      --text:#e6edf3;--text-muted:#8b949e;--text-faint:#484f58;
+      --accent:#e8952a;--accent-dim:rgba(232,149,42,0.12);
+      --font-display:'Clash Display','Georgia',serif;--font-body:'Satoshi','Inter',sans-serif;
+      --radius:6px;--radius-lg:12px;--max-w:720px;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
-    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
-    img { display: block; max-width: 100%; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
-    ul { list-style: none; }
-    h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
-    p { text-wrap: pretty; }
-    ::selection { background: var(--accent-dim); }
-
-    .container { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
-    .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; }
-    .tag--accent { background: var(--accent-dim); color: var(--accent); }
-    .tag--red { background: rgba(248,81,73,0.1); color: var(--red); }
-
-    .topbar { background: var(--accent); color: #0d1117; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0; text-align: center; }
-
-    .header { position: sticky; top: 0; z-index: 100; background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; height: 70px; }
-    .masthead { display: flex; flex-direction: column; gap: 0.1rem; }
-    .masthead-name { font-family: var(--font-display); font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text); line-height: 1; }
-    .masthead-name span { color: var(--accent); }
-    .masthead-sub { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
-    .nav ul { display: flex; gap: 1.75rem; }
-    .nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color var(--transition); }
-    .nav a:hover { color: var(--text); }
-    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background var(--transition), transform var(--transition); }
-    .btn-accent { background: var(--accent); color: #0d1117; }
-    .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 36px; height: 36px; padding: 0.4rem; justify-content: center; }
-    .menu-toggle span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
-    .mobile-nav { display: none; padding: 1rem clamp(1.25rem,5vw,4rem) 1.5rem; border-top: 1px solid var(--border); }
-    .mobile-nav.open { display: block; }
-    .mobile-nav li { border-bottom: 1px solid var(--divider); }
-    .mobile-nav a { display: block; padding: 0.875rem 0; font-size: 1rem; font-weight: 500; }
-
-    .article-hero { padding-block: 3rem 0; }
-    .article-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
-    .article-date { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
-    .article-hero h1 { font-size: clamp(1.9rem, 4.5vw, 3.2rem); font-weight: 700; color: var(--text); margin-bottom: 1rem; max-width: 22ch; }
-    .article-hero .subheadline { font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--text-muted); font-family: var(--font-serif); font-style: italic; margin-bottom: 2rem; max-width: 58ch; }
-
-    .hero-placeholder { width: 100%; height: 420px; background: var(--surface-2); border-radius: var(--radius-lg); margin-top: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; border: 1px solid var(--border); }
-    .hero-placeholder svg { opacity: 0.25; }
-    .hero-placeholder span { font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.08em; text-transform: uppercase; }
-    .img-caption { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.5rem; padding-inline: 0.25rem; }
-
-    .article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 4rem; padding-block: 3rem 4rem; align-items: start; }
-
-    .article-body { max-width: 100%; }
-    .article-body p { font-size: 1.05rem; line-height: 1.8; color: #c9d1d9; margin-bottom: 1.5rem; max-width: 68ch; }
-    .article-body h2 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 2.25rem 0 0.75rem; }
-    .article-body a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(232,149,42,0.4); text-underline-offset: 3px; transition: text-decoration-color var(--transition); }
-    .article-body a:hover { text-decoration-color: var(--accent); }
-
-    /* CONTEXT BOX */
-    .context-box { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 2rem 0; }
-    .context-box h3 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
-    .context-box p { margin-bottom: 0 !important; font-size: 0.95rem !important; color: var(--text) !important; }
-
-    /* PULLQUOTE */
-    .pullquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: var(--accent-dim); border-radius: 0 var(--radius) var(--radius) 0; }
-    .pullquote p { font-family: var(--font-serif); font-size: 1.15rem !important; font-style: italic; color: var(--text) !important; margin-bottom: 0 !important; }
-
-    .article-closing { border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem; }
-    .article-closing p { font-size: 0.95rem !important; color: var(--text-muted) !important; font-style: italic; }
-
-    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-    .sidebar-widget { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
-    .widget-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--divider); }
-    .subscribe-widget { background: var(--accent-dim); border-color: rgba(232,149,42,0.3); }
-    .subscribe-widget p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
-    .subscribe-btn { display: block; width: 100%; text-align: center; padding: 0.6rem; background: var(--accent); color: #0d1117; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; border-radius: var(--radius); transition: background var(--transition); }
-    .subscribe-btn:hover { background: var(--accent-hover); }
-    .sidebar-context-item { padding: 0.5rem 0; border-bottom: 1px solid var(--divider); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-    .sidebar-context-item:last-child { border-bottom: none; }
-    .sidebar-context-item strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
-    .sidebar-context-item a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(232,149,42,0.4); }
-
-    .footer { border-top: 1px solid var(--border); padding-block: 2rem; text-align: center; }
-    .footer-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .footer-name span { color: var(--accent); }
-    .footer p { font-size: 0.8rem; color: var(--text-faint); }
-
-    @media (max-width: 900px) {
-      .article-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .sidebar { order: -1; }
-      .nav, .header-cta { display: none; }
-      .menu-toggle { display: flex; }
-      .hero-placeholder { height: 240px; }
-    }
-    @media (max-width: 600px) { .article-hero h1 { font-size: 1.7rem; } }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.7;color:var(--text);background:var(--bg);}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;height:auto;}
+    p{text-wrap:pretty;}
+    .header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin-inline:auto;padding:0 clamp(1.25rem,5vw,3rem);height:64px;}
+    .masthead-name{font-family:var(--font-display);font-size:clamp(1rem,2vw,1.3rem);font-weight:700;letter-spacing:-0.02em;color:var(--text);}
+    .masthead-name span{color:var(--accent);}
+    .masthead-sub{font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);display:block;margin-top:2px;}
+    .header-substack{font-size:0.75rem;font-weight:700;color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:var(--radius);}
+    .header-substack:hover{background:var(--accent-dim);}
+    .back-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:0.6rem clamp(1.25rem,5vw,3rem);}
+    .back-bar a{font-size:0.8rem;font-weight:600;color:var(--text-muted);display:inline-flex;align-items:center;gap:0.4rem;}
+    .back-bar a:hover{color:var(--accent);}
+    .article-wrap{max-width:var(--max-w);margin-inline:auto;padding:2.5rem clamp(1.25rem,5vw,2rem) 4rem;}
+    .article-meta-top{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+    .tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:3px;}
+    .tag--accent{background:var(--accent-dim);color:var(--accent);}
+    .tag--blue{background:rgba(37,99,235,0.1);color:#60a5fa;}
+    .tag--red{background:rgba(248,81,73,0.1);color:#f85149;}
+    .tag--green{background:rgba(46,160,67,0.1);color:#3fb950;}
+    .article-date{font-size:0.8rem;color:var(--text-faint);}
+    .article-headline{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--text);margin-bottom:1rem;}
+    .article-deck{font-size:1.1rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--accent);padding-left:1rem;}
+    .article-byline{font-size:0.8rem;color:var(--text-muted);padding:0.75rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:1.75rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .article-byline strong{color:var(--text);}
+    .article-hero{width:100%;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:0.75rem;aspect-ratio:16/9;}
+    .article-hero img{width:100%;height:100%;object-fit:cover;}
+    .article-caption{font-size:0.75rem;color:var(--text-faint);margin-bottom:2rem;font-style:italic;}
+    .article-body{display:flex;flex-direction:column;gap:1.25rem;}
+    .article-body p{font-size:1rem;color:var(--text-muted);line-height:1.8;}
+    .article-body p strong{color:var(--text);}
+    .article-body h2{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--text);margin-top:0.5rem;}
+    .article-body ul{padding-left:1.5rem;display:flex;flex-direction:column;gap:0.5rem;}
+    .article-body ul li{font-size:1rem;color:var(--text-muted);line-height:1.8;}
+    .article-body ul li strong{color:var(--text);}
+    .article-body blockquote{border-left:3px solid var(--accent);padding-left:1rem;font-style:italic;color:var(--text-muted);}
+    .substack-cta{margin-top:2.5rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);text-align:center;display:flex;flex-direction:column;gap:0.75rem;align-items:center;}
+    .substack-cta p{font-size:0.9rem;color:var(--text-muted);max-width:40ch;}
+    .btn-accent{display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.5rem;background:var(--accent);color:#0d1117;font-size:0.8rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;border-radius:var(--radius);}
+    .btn-accent:hover{opacity:0.9;}
+    .footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem clamp(1.25rem,5vw,3rem);text-align:center;}
+    .footer p{font-size:0.75rem;color:var(--text-faint);}
+    .footer a{color:var(--accent);}
+    @media(max-width:640px){.header-substack{display:none;}}
   </style>
 </head>
 <body>
-
-  <div class="topbar">Public Safety · CB5 Public Safety Committee · March 2026</div>
-
   <header class="header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="https://eastnewyorktimes.com" class="masthead">
-          <div class="masthead-name">East New York <span>Times</span></div>
-          <div class="masthead-sub">Community Journalism for East New York, Brooklyn</div>
-        </a>
-        <nav class="nav" aria-label="Main navigation">
-          <ul>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Transit</a></li>
-            <li><a href="#">Housing</a></li>
-            <li><a href="#">Civic</a></li>
-            <li><a href="#">About</a></li>
-          </ul>
-        </nav>
-        <div class="header-cta">
-          <a href="#" class="btn btn-accent">Subscribe</a>
-        </div>
-        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.mobile-nav').classList.toggle('open')">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+    <div class="header-inner">
+      <a href="/" style="text-decoration:none;">
+        <div class="masthead-name">East New York <span>Times</span></div>
+        <span class="masthead-sub">East New York · Brooklyn · Est. 2026</span>
+      </a>
+      <a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener" class="header-substack">Subscribe Free</a>
     </div>
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-      <ul>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Transit</a></li>
-        <li><a href="#">Housing</a></li>
-        <li><a href="#">Civic</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
   </header>
-  <div style="background:var(--surface);border-bottom:1px solid var(--border);padding:0.6rem 0;"><div class="container"><a href="https://eastnewyorktimes.com" style="font-size:0.8rem;font-weight:600;color:var(--text-muted);letter-spacing:0.04em;text-decoration:none;">← Back to East New York Times</a></div></div>
-
-  <main>
-    <div class="container">
-
-      <section class="article-hero">
-        <div class="article-meta">
-          <span class="tag tag--red">Public Safety</span>
-          <span class="article-date">Thursday, March 12, 2026</span>
-        </div>
-        <h1>CB5 Grapples With Limits of Its Power in Split Restaurant License Debate</h1>
-        <p class="subheadline">Residents' complaints, a business owner's distress, and the limits of community board authority collided during a tense Public Safety Committee meeting in East New York.</p>
-        <div class="hero-img-wrap">
-          <img src="../restaurant-story.jpg" alt="Bar Fiesta Restaurant on Fulton Street, East New York" />
-        </div>
-        <p class="img-caption">Bar Fiesta Restaurant, 2931 Fulton St, East New York · Photo: Deric Johnson / East New York Times</p>
-      </section>
-
-      <div class="article-layout">
-        <article class="article-body">
-
-          <p>Community Board 5 members found themselves caught in an uncomfortable position Monday night: trying to protect residents' quality of life, help a struggling small business owner in distress, and navigate a liquor-license process that ultimately left them with only one formal choice — yes or no.</p>
-
-          <p>The tension surfaced during a meeting reviewing two restaurant liquor-license matters in East New York, where board members debated complaints tied to Fiesta, a neighborhood establishment whose backyard patio has drawn concerns from nearby residents.</p>
-
-          <div class="context-box">
-            <h3>How the Process Works</h3>
-            <p>Community boards in New York City play an advisory role in the liquor licensing process. They can recommend approval or opposition to the New York State Liquor Authority, which makes the final decision. Boards cannot deny applications outright.</p>
-          </div>
-
-          <h2>The Fiesta Patio Problem</h2>
-
-          <p>For Fiesta, the committee repeatedly returned to the same unresolved issue: a backyard patio operating in a dense residential setting. Members said the patio had become a significant issue in the community, particularly during the summer months when outdoor activity can carry into surrounding residential blocks.</p>
-
-          <p>During the discussion, the owner of Fiesta appeared visibly emotional while addressing the committee and began crying as she spoke in Spanish, saying she did not know how to defend herself in the situation.</p>
-
-          <p>Board members attempted to reassure her that the committee was not trying to force the business to close.</p>
-
-          <div class="pullquote">
-            <p>"We value your business. We want you to stay in business. We're not looking to deny your renewal. We're looking to work with you."</p>
-          </div>
-
-          <h2>Public Safety Comes First</h2>
-
-          <p>Even as members expressed sympathy for the owner's situation, they emphasized that neighborhood concerns had to remain the priority. One member reminded the room that the committee's responsibility is public safety and quality of life, not simply the survival of a business facing complaints.</p>
-
-          <p>The conversation also revealed uncertainty over how the committee should proceed. At one point, members discussed tabling the matter because there were too many unresolved issues. Others clarified that the committee ultimately needed to make a recommendation.</p>
-
-          <p>That exchange exposed the blunt nature of the process: despite the complexity of the situation, the board's formal options were limited to recommending approval or opposition.</p>
-
-          <h2>A Different Outcome Next Door</h2>
-
-          <p>As members leaned toward a negative recommendation on the Fiesta application, they also attempted to guide the owner toward outside help, suggesting she seek legal advice and contact the community board district office for assistance navigating the process.</p>
-
-          <p>The contrast with another business reviewed the same evening illustrated how multiple factors shape board recommendations. Members voiced support for Mr. Fire, another establishment seeking approval, despite minor issues with its paperwork. Committee members cited the absence of precinct objections and spoke positively about the business's role in the community.</p>
-
-          <h2>More Than One Restaurant</h2>
-
-          <p>By the end of the meeting, the debate over Fiesta had become about more than one restaurant. It exposed the narrow space community boards occupy in neighborhood disputes: they are often expected to mediate between residents and businesses, even when the licensing process gives them little room to do more than recommend yes or no.</p>
-
-          <div class="article-closing">
-            <p>East New York Times covers civic accountability and public safety in East New York. Tips and community concerns can be sent to <a href="mailto:urbanversionmedia@gmail.com">urbanversionmedia@gmail.com</a>.</p>
-          </div>
-
-        </article>
-
-        <aside class="sidebar">
-
-          <div class="sidebar-widget subscribe-widget">
-            <div class="widget-title">Stay Informed</div>
-            <p>Get ENY Times community journalism delivered directly to your inbox.</p>
-            <a href="#" class="subscribe-btn">Subscribe Free</a>
-          </div>
-
-          <div class="sidebar-widget">
-            <div class="widget-title">Related Stories</div>
-            <div class="sidebar-context-item">
-              <strong><a href="../budcity/">CB5 Members Question Their Power After Bud City Renewal Vote</a></strong>
-              A 6–1 vote exposed the same tensions over local advisory authority and state oversight.
-            </div>
-            <div class="sidebar-context-item">
-              <strong><a href="../townhall/">"Super Broken": Residents Confront City Agencies at Sandy Nurse's Town Hall</a></strong>
-              Dumping, traffic safety, and the limits of the complaint system.
-            </div>
-            <div class="sidebar-context-item">
-              <strong><a href="../snap/">Your Food Stamps Could Be Cut Off Tomorrow</a></strong>
-              Federal SNAP work requirements take effect June 1.
-            </div>
-          </div>
-
-          <div class="sidebar-widget">
-            <div class="widget-title">About East New York Times</div>
-            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.75rem">East New York Times is an independent community news outlet covering the people, policies, and events that shape East New York, Brooklyn.</p>
-            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6">Published by Urban Version Media · <a href="mailto:urbanversionmedia@gmail.com" style="color:var(--accent)">urbanversionmedia@gmail.com</a></p>
-          </div>
-
-        </aside>
-      </div>
+  <div class="back-bar">
+    <a href="/">&#8592; Back to East New York Times</a>
+  </div>
+  <article class="article-wrap">
+    <div class="article-meta-top">
+      <span class="tag tag--red">Public Safety</span>
+      <span class="tag tag--accent">Governance</span>
+      <span class="article-date">March 12, 2026</span>
     </div>
-  </main>
-
+    <h1 class="article-headline">CB5 Grapples With Limits of Its Power in Split Restaurant License Debate</h1>
+    <p class="article-deck">Residents' complaints, a business owner's distress, and the limits of community board authority collided during a tense Public Safety Committee meeting in East New York.</p>
+    <div class="article-byline">
+      <span>By <strong>Deric Johnson</strong></span>
+      <span>·</span>
+      <span>The East New York Times</span>
+      <span>·</span>
+      <span>March 12, 2026</span>
+    </div>
+    <div class="article-hero">
+      <img src="../restaurant-story.jpg" alt="Bar Fiesta Restaurant, 2931 Fulton Street, East New York" />
+    </div>
+    <p class="article-caption">Bar Fiesta Restaurant at 2931 Fulton Street, East New York. Photo: Deric Johnson / The East New York Times</p>
+    <div class="article-body">
+      <p><strong>East New York, Brooklyn</strong> — Community Board 5 members found themselves caught in an uncomfortable position: trying to protect residents' quality of life, help a struggling small business owner in distress, and navigate a liquor-license process that ultimately left them with only one formal choice — yes or no.</p>
+      <p>The tension surfaced during a meeting reviewing two restaurant liquor-license matters in East New York, where board members debated complaints tied to Fiesta, a neighborhood establishment whose backyard patio has drawn concerns from nearby residents.</p>
+      <h2>The Limits of Advisory Power</h2>
+      <p>The discussion illustrated the limited authority community boards have in New York City's liquor licensing process. While boards often mediate neighborhood disputes and review applications, their role is advisory. They can only recommend approval or opposition to the New York State Liquor Authority, which makes the final decision.</p>
+      <p>For Fiesta, the committee repeatedly returned to the same unresolved issue: a backyard patio operating in a dense residential setting. Members said the patio had become a significant issue in the community, particularly during the summer months when outdoor activity can carry into surrounding residential blocks.</p>
+      <h2>An Emotional Exchange</h2>
+      <p>During the discussion, the owner of Fiesta appeared visibly emotional while addressing the committee and began crying as she spoke in Spanish, saying she did not know how to defend herself in the situation. Board members attempted to reassure her.</p>
+      <blockquote>"We value your business. We want you to stay in business. We're not looking to deny your renewal. We're looking to work with you."</blockquote>
+      <p>Even as members expressed sympathy for the owner's situation, they emphasized that neighborhood concerns had to remain the priority. One member reminded the room that the committee's responsibility is public safety and quality of life, not simply the survival of a business facing complaints.</p>
+      <h2>Two Different Outcomes</h2>
+      <p>The contrast with another business reviewed the same evening illustrated how multiple factors shape board recommendations. Members voiced support for Mr. Fire Bar &amp; Grill at 3175 Fulton Street, another establishment seeking approval, despite minor issues with its paperwork. Committee members cited the absence of precinct objections and spoke positively about the business's role in the community.</p>
+      <p>The differing outcomes highlighted how community boards weigh a range of considerations — from complaint history to neighborhood impact — when making recommendations.</p>
+      <p>By the end of the meeting, the debate over Fiesta had become about more than one restaurant. It exposed the narrow space community boards occupy in neighborhood disputes: they are often expected to mediate between residents and businesses, even when the licensing process gives them little room to do more than recommend yes or no.</p>
+    </div>
+    <div class="substack-cta">
+      <p>Subscribe for free community journalism from East New York.</p>
+      <a href="https://urbanversionmedia.substack.com/p/cb5-grapples-with-limits-of-its-power" target="_blank" rel="noopener" class="btn-accent">Read on Substack &#8599;</a>
+    </div>
+  </article>
   <footer class="footer">
-    <div class="container">
-      <div class="footer-name">East New York <span>Times</span></div>
-      <p>Independent community journalism for East New York, Brooklyn · urbanversionmedia@gmail.com</p>
-    </div>
+    <p>&copy; 2026 East New York Times. A publication of <a href="/">Urban Version Media</a>. East New York &middot; Brooklyn.</p>
   </footer>
-
 </body>
 </html>
