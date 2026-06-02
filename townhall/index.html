@@ -3,340 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>"Super Broken": Residents Confront City Agencies at Sandy Nurse's Town Hall — East New York Times</title>
+  <title>"Super Broken": Residents Confront City Agencies at Sandy Nurse's Sanitation and Transportation Town Hall — East New York Times</title>
   <meta name="description" content="Attendees raised concerns about dumping, traffic safety, delayed street repairs and a complaint system many said is failing their neighborhoods." />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface-2: #1c2128;
-      --surface-3: #21262d;
-      --border: #2d333b;
-      --divider: #21262d;
-      --text: #e6edf3;
-      --text-muted: #8b949e;
-      --text-faint: #484f58;
-      --accent: #e8952a;
-      --accent-hover: #d4820a;
-      --accent-dim: rgba(232,149,42,0.12);
-      --red: #f85149;
-      --blue: #2563eb;
-      --blue-dim: rgba(37,99,235,0.1);
-      --font-display: 'Clash Display', 'Georgia', serif;
-      --font-body: 'Satoshi', 'Inter', sans-serif;
-      --font-serif: 'Georgia', 'Times New Roman', serif;
-      --radius: 6px;
-      --radius-lg: 12px;
-      --shadow: 0 4px 16px rgba(0,0,0,0.4);
-      --transition: 200ms cubic-bezier(0.16,1,0.3,1);
-      --max-w: 1200px;
+      --bg:#0d1117;--surface:#161b22;--surface-2:#1c2128;--border:#2d333b;--divider:#21262d;
+      --text:#e6edf3;--text-muted:#8b949e;--text-faint:#484f58;
+      --accent:#e8952a;--accent-dim:rgba(232,149,42,0.12);
+      --font-display:'Clash Display','Georgia',serif;--font-body:'Satoshi','Inter',sans-serif;
+      --radius:6px;--radius-lg:12px;--max-w:720px;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
-    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
-    img { display: block; max-width: 100%; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
-    ul { list-style: none; }
-    h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
-    p { text-wrap: pretty; }
-    ::selection { background: var(--accent-dim); }
-
-    .container { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
-    .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; }
-    .tag--accent { background: var(--accent-dim); color: var(--accent); }
-    .tag--red { background: rgba(248,81,73,0.1); color: var(--red); }
-
-    /* TOP BAR */
-    .topbar {
-      background: var(--accent);
-      color: #0d1117;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.4rem 0;
-      text-align: center;
-    }
-
-    /* HEADER */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: color-mix(in oklab, var(--bg) 92%, transparent);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      height: 70px;
-    }
-    .masthead { display: flex; flex-direction: column; gap: 0.1rem; }
-    .masthead-name {
-      font-family: var(--font-display);
-      font-size: clamp(1.1rem, 2vw, 1.5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      line-height: 1;
-    }
-    .masthead-name span { color: var(--accent); }
-    .masthead-sub {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .nav ul { display: flex; gap: 1.75rem; }
-    .nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color var(--transition); }
-    .nav a:hover { color: var(--text); }
-    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background var(--transition), transform var(--transition); }
-    .btn-accent { background: var(--accent); color: #0d1117; }
-    .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 36px; height: 36px; padding: 0.4rem; justify-content: center; }
-    .menu-toggle span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
-    .mobile-nav { display: none; padding: 1rem clamp(1.25rem,5vw,4rem) 1.5rem; border-top: 1px solid var(--border); }
-    .mobile-nav.open { display: block; }
-    .mobile-nav li { border-bottom: 1px solid var(--divider); }
-    .mobile-nav a { display: block; padding: 0.875rem 0; font-size: 1rem; font-weight: 500; }
-
-    /* ARTICLE HERO */
-    .article-hero { padding-block: 3rem 0; }
-    .article-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
-    .article-date { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
-    .article-hero h1 { font-size: clamp(1.9rem, 4.5vw, 3.2rem); font-weight: 700; color: var(--text); margin-bottom: 1rem; max-width: 22ch; }
-    .article-hero .subheadline { font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--text-muted); font-family: var(--font-serif); font-style: italic; margin-bottom: 2rem; max-width: 58ch; }
-
-    /* Placeholder hero */
-    .hero-placeholder {
-      width: 100%;
-      height: 420px;
-      background: var(--surface-2);
-      border-radius: var(--radius-lg);
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      border: 1px solid var(--border);
-    }
-    .hero-placeholder svg { opacity: 0.25; }
-    .hero-placeholder span { font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.08em; text-transform: uppercase; }
-    .img-caption { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.5rem; padding-inline: 0.25rem; }
-
-    /* ARTICLE LAYOUT */
-    .article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 4rem; padding-block: 3rem 4rem; align-items: start; }
-
-    /* ARTICLE BODY */
-    .article-body { max-width: 100%; }
-    .article-body p { font-size: 1.05rem; line-height: 1.8; color: #c9d1d9; margin-bottom: 1.5rem; max-width: 68ch; }
-    .article-body h2 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 2.25rem 0 0.75rem; }
-    .article-body ul { list-style: none; margin-bottom: 1.5rem; }
-    .article-body ul li { font-size: 1.05rem; line-height: 1.8; color: #c9d1d9; padding: 0.4rem 0 0.4rem 1.25rem; position: relative; max-width: 68ch; }
-    .article-body ul li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-    .article-body a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(232,149,42,0.4); text-underline-offset: 3px; transition: text-decoration-color var(--transition); }
-    .article-body a:hover { text-decoration-color: var(--accent); }
-
-    /* PULLQUOTE */
-    .pullquote {
-      border-left: 4px solid var(--accent);
-      padding: 1rem 1.5rem;
-      margin: 2rem 0;
-      background: var(--surface);
-      border-radius: 0 var(--radius) var(--radius) 0;
-    }
-    .pullquote p {
-      font-family: var(--font-serif);
-      font-size: 1.15rem !important;
-      font-style: italic;
-      color: var(--text) !important;
-      margin-bottom: 0 !important;
-    }
-
-    /* CLOSING */
-    .article-closing { border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem; }
-    .article-closing p { font-size: 0.95rem !important; color: var(--text-muted) !important; font-style: italic; }
-    .source-line { font-size: 0.8rem !important; color: var(--text-faint) !important; font-style: normal !important; margin-top: 1rem !important; }
-    .source-line a { color: var(--text-muted) !important; text-decoration: underline; }
-
-    /* SIDEBAR */
-    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-    .sidebar-widget { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
-    .widget-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--divider); }
-    .subscribe-widget { background: var(--accent-dim); border-color: rgba(232,149,42,0.3); }
-    .subscribe-widget p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
-    .subscribe-btn { display: block; width: 100%; text-align: center; padding: 0.6rem; background: var(--accent); color: #0d1117; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; border-radius: var(--radius); transition: background var(--transition); }
-    .subscribe-btn:hover { background: var(--accent-hover); }
-    .context-item { padding: 0.5rem 0; border-bottom: 1px solid var(--divider); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-    .context-item:last-child { border-bottom: none; }
-    .context-item strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
-    .context-item a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(232,149,42,0.4); }
-
-    /* FOOTER */
-    .footer { border-top: 1px solid var(--border); padding-block: 2rem; text-align: center; }
-    .footer-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .footer-name span { color: var(--accent); }
-    .footer p { font-size: 0.8rem; color: var(--text-faint); }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .article-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .sidebar { order: -1; }
-      .nav, .header-cta { display: none; }
-      .menu-toggle { display: flex; }
-      .hero-placeholder { height: 240px; }
-    }
-    @media (max-width: 600px) { .article-hero h1 { font-size: 1.7rem; } }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.7;color:var(--text);background:var(--bg);}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;height:auto;}
+    p{text-wrap:pretty;}
+    .header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin-inline:auto;padding:0 clamp(1.25rem,5vw,3rem);height:64px;}
+    .masthead-name{font-family:var(--font-display);font-size:clamp(1rem,2vw,1.3rem);font-weight:700;letter-spacing:-0.02em;color:var(--text);}
+    .masthead-name span{color:var(--accent);}
+    .masthead-sub{font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);display:block;margin-top:2px;}
+    .header-substack{font-size:0.75rem;font-weight:700;color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:var(--radius);}
+    .header-substack:hover{background:var(--accent-dim);}
+    .back-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:0.6rem clamp(1.25rem,5vw,3rem);}
+    .back-bar a{font-size:0.8rem;font-weight:600;color:var(--text-muted);display:inline-flex;align-items:center;gap:0.4rem;}
+    .back-bar a:hover{color:var(--accent);}
+    .article-wrap{max-width:var(--max-w);margin-inline:auto;padding:2.5rem clamp(1.25rem,5vw,2rem) 4rem;}
+    .article-meta-top{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+    .tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:3px;}
+    .tag--accent{background:var(--accent-dim);color:var(--accent);}
+    .tag--blue{background:rgba(37,99,235,0.1);color:#60a5fa;}
+    .tag--red{background:rgba(248,81,73,0.1);color:#f85149;}
+    .tag--green{background:rgba(46,160,67,0.1);color:#3fb950;}
+    .article-date{font-size:0.8rem;color:var(--text-faint);}
+    .article-headline{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--text);margin-bottom:1rem;}
+    .article-deck{font-size:1.1rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--accent);padding-left:1rem;}
+    .article-byline{font-size:0.8rem;color:var(--text-muted);padding:0.75rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:1.75rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .article-byline strong{color:var(--text);}
+    .article-hero{width:100%;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:0.75rem;aspect-ratio:16/9;}
+    .article-hero img{width:100%;height:100%;object-fit:cover;}
+    .article-caption{font-size:0.75rem;color:var(--text-faint);margin-bottom:2rem;font-style:italic;}
+    .article-body{display:flex;flex-direction:column;gap:1.25rem;}
+    .article-body p{font-size:1rem;color:var(--text-muted);line-height:1.8;}
+    .article-body p strong{color:var(--text);}
+    .article-body h2{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--text);margin-top:0.5rem;}
+    .article-body ul{padding-left:1.5rem;display:flex;flex-direction:column;gap:0.5rem;}
+    .article-body ul li{font-size:1rem;color:var(--text-muted);line-height:1.8;}
+    .article-body ul li strong{color:var(--text);}
+    .article-body blockquote{border-left:3px solid var(--accent);padding-left:1rem;font-style:italic;color:var(--text-muted);}
+    .substack-cta{margin-top:2.5rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);text-align:center;display:flex;flex-direction:column;gap:0.75rem;align-items:center;}
+    .substack-cta p{font-size:0.9rem;color:var(--text-muted);max-width:40ch;}
+    .btn-accent{display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.5rem;background:var(--accent);color:#0d1117;font-size:0.8rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;border-radius:var(--radius);}
+    .btn-accent:hover{opacity:0.9;}
+    .footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem clamp(1.25rem,5vw,3rem);text-align:center;}
+    .footer p{font-size:0.75rem;color:var(--text-faint);}
+    .footer a{color:var(--accent);}
+    @media(max-width:640px){.header-substack{display:none;}}
   </style>
 </head>
 <body>
-
-  <div class="topbar">Civic Report — Sandy Nurse Town Hall · District 37 · March 31, 2026</div>
-
   <header class="header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="https://eastnewyorktimes.com" class="masthead">
-          <div class="masthead-name">East New York <span>Times</span></div>
-          <div class="masthead-sub">Community Journalism for East New York, Brooklyn</div>
-        </a>
-        <nav class="nav" aria-label="Main navigation">
-          <ul>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Transit</a></li>
-            <li><a href="#">Housing</a></li>
-            <li><a href="#">Civic</a></li>
-            <li><a href="#">About</a></li>
-          </ul>
-        </nav>
-        <div class="header-cta">
-          <a href="#" class="btn btn-accent">Subscribe</a>
-        </div>
-        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.mobile-nav').classList.toggle('open')">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+    <div class="header-inner">
+      <a href="/" style="text-decoration:none;">
+        <div class="masthead-name">East New York <span>Times</span></div>
+        <span class="masthead-sub">East New York · Brooklyn · Est. 2026</span>
+      </a>
+      <a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener" class="header-substack">Subscribe Free</a>
     </div>
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-      <ul>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Transit</a></li>
-        <li><a href="#">Housing</a></li>
-        <li><a href="#">Civic</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
   </header>
-  <div style="background:var(--surface);border-bottom:1px solid var(--border);padding:0.6rem 0;"><div class="container"><a href="https://eastnewyorktimes.com" style="font-size:0.8rem;font-weight:600;color:var(--text-muted);letter-spacing:0.04em;text-decoration:none;">← Back to East New York Times</a></div></div>
-
-  <main>
-    <div class="container">
-
-      <!-- ARTICLE HERO -->
-      <section class="article-hero">
-        <div class="article-meta">
-          <span class="tag tag--accent">Civic</span>
-          <span class="article-date">Thursday, April 2, 2026</span>
-        </div>
-        <h1>"Super Broken": Residents Confront City Agencies at Sandy Nurse's Town Hall</h1>
-        <p class="subheadline">Attendees raised concerns about dumping, traffic safety, delayed street repairs and a complaint system many said is failing their neighborhoods.</p>
-        <div class="hero-img-wrap">
-          <img src="../townhall-story.jpg" alt="Council Member Sandy Nurse speaking at Sanitation and Transportation Town Hall" />
-        </div>
-        <p class="img-caption">Council Member Sandy Nurse at the Sanitation &amp; Transportation Town Hall, 1474 Gates Ave · Photo: Deric Johnson / East New York Times</p>
-      </section>
-
-      <!-- ARTICLE + SIDEBAR -->
-      <div class="article-layout">
-        <article class="article-body">
-
-          <p>Residents pressed city sanitation and transportation officials over illegal dumping, chronic trash conditions and delayed infrastructure fixes at a Sanitation &amp; Transportation Town Hall hosted by Council Member Sandy Nurse on March 31, 2026, at 1474 Gates Avenue in Brooklyn. The event, held with RiseBoro Community Partnership, brought together representatives from the Department of Sanitation and the Department of Transportation for a forum on dumping, signage, garbage, sidewalks and other neighborhood concerns.</p>
-
-          <h2>The Broadway Corridor Question</h2>
-
-          <p>The most significant long-term issue raised during the meeting was the future of the Broadway corridor, where officials said a long-discussed rebuild remains far from fully funded. DOT Brooklyn Deputy Borough Commissioner Leroy Branch told attendees that Broadway cannot simply be resurfaced because it is made of concrete and must be rebuilt as a capital project. He said the work would have to be phased. The council office added that current money secured for the corridor is only a start, and that millions more are needed even to scope and plan the project.</p>
-
-          <h2>Block-by-Block Complaints</h2>
-
-          <p>Residents also used the meeting to air block-by-block complaints that affect daily life across District 37 and nearby areas, including illegal dumping, litter-filled tree pits, uneven alternate-side parking enforcement, truck traffic, dark streets and garbage around transit hubs and commercial strips. Several speakers pointed to recurring trouble spots near Broadway Junction, Euclid Avenue, Knickerbocker Avenue and Myrtle-Wyckoff.</p>
-
-          <p>Sanitation officials said they are already targeting several chronic dumping hotspots and pointed to cleanup work supported by district funding. The council office said it has funded supplemental cleaning, including a dedicated DSNY truck and corridor-specific cleanup efforts in problem areas such as Fulton Street, Myrtle-Wyckoff and the East New York industrial business zone.</p>
-
-          <div class="pullquote">
-            <p>"The process itself felt 'super broken' — and residents asked who was responsible for fixing it."</p>
-          </div>
-
-          <h2>Frustration With the Complaint System</h2>
-
-          <p>A recurring theme of the night was frustration with the city's response system. One attendee said the process itself felt "super broken" and asked who was responsible for fixing it. The council office acknowledged that 311 is imperfect and said responsibility for improving the system lies with both the City Council and city agencies.</p>
-
-          <h2>Street Safety</h2>
-
-          <p>Street safety frustrations surfaced repeatedly as well. The council office said it had submitted "dozens and dozens" of speed bump requests without receiving approvals. Branch responded that DOT can install speed humps only where studies show most vehicles on a block are traveling at least 30 miles per hour.</p>
-
-          <p>Attendees also asked about the timeline for long-promised changes at Myrtle-Wyckoff. DOT did not provide a firm construction date, saying the project likely would not move in fiscal 2026, though fiscal 2027 was presented as possible.</p>
-
-          <h2>Before the Session Ended</h2>
-
-          <p>Before the session ended, DSNY and DOT agreed to review a series of site-specific complaints, including requests for more litter baskets, concerns about school trash handling, truck-turn conflicts and barriers that residents said had become magnets for garbage.</p>
-
-          <div class="article-closing">
-            <p>East New York Times will continue covering neighborhood infrastructure and civic engagement across District 37. Send tips and community concerns to <a href="mailto:urbanversionmedia@gmail.com">urbanversionmedia@gmail.com</a>.</p>
-          </div>
-
-        </article>
-
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-
-          <div class="sidebar-widget subscribe-widget">
-            <div class="widget-title">Stay Informed</div>
-            <p>Get ENY Times community journalism delivered directly to your inbox.</p>
-            <a href="#" class="subscribe-btn">Subscribe Free</a>
-          </div>
-
-          <div class="sidebar-widget">
-            <div class="widget-title">Related Stories</div>
-            <div class="context-item">
-              <strong><a href="../snap/">Your Food Stamps Could Be Cut Off Tomorrow</a></strong>
-              Federal SNAP work requirements take effect June 1 — what East New York residents need to know.
-            </div>
-            <div class="context-item">
-              <strong><a href="../budcity/">CB5 Members Question Their Power After Bud City Renewal Vote</a></strong>
-              The cannabis committee voted 6–1 to support the dispensary renewal after a tense public review.
-            </div>
-            <div class="context-item">
-              <strong><a href="../restaurant/">CB5 Grapples With Limits of Its Power in Restaurant License Debate</a></strong>
-              The blunt reality of community board authority in liquor-license disputes.
-            </div>
-          </div>
-
-          <div class="sidebar-widget">
-            <div class="widget-title">About East New York Times</div>
-            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.75rem">East New York Times is an independent community news outlet covering the people, policies, and events that shape East New York, Brooklyn.</p>
-            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6">Published by Urban Version Media · <a href="mailto:urbanversionmedia@gmail.com" style="color:var(--accent)">urbanversionmedia@gmail.com</a></p>
-          </div>
-
-        </aside>
-      </div>
+  <div class="back-bar">
+    <a href="/">&#8592; Back to East New York Times</a>
+  </div>
+  <article class="article-wrap">
+    <div class="article-meta-top">
+      <span class="tag tag--blue">Civic</span>
+      <span class="tag tag--red">Public Safety</span>
+      <span class="article-date">April 1, 2026</span>
     </div>
-  </main>
-
+    <h1 class="article-headline">"Super Broken": Residents Confront City Agencies at Sandy Nurse's Sanitation and Transportation Town Hall</h1>
+    <p class="article-deck">Attendees raised concerns about dumping, traffic safety, delayed street repairs and a complaint system many said is failing their neighborhoods.</p>
+    <div class="article-byline">
+      <span>By <strong>Deric Johnson</strong></span>
+      <span>·</span>
+      <span>The East New York Times</span>
+      <span>·</span>
+      <span>April 1, 2026</span>
+    </div>
+    <div class="article-hero">
+      <img src="../sandynurse-story.jpg" alt="Council Member Sandy Nurse speaks at community town hall" />
+    </div>
+    <p class="article-caption">Council Member Sandy Nurse at the March 31, 2026 Sanitation & Transportation Town Hall. Photo: Deric Johnson / The East New York Times</p>
+    <div class="article-body">
+      <p>Residents pressed city sanitation and transportation officials over illegal dumping, chronic trash conditions and delayed infrastructure fixes at a <strong>Sanitation &amp; Transportation Town Hall</strong> hosted by <strong>Council Member Sandy Nurse</strong> on <strong>March 31, 2026</strong>, at <strong>1474 Gates Avenue in Brooklyn</strong>. The event, held with RiseBoro Community Partnership, brought together representatives from the Department of Sanitation and the Department of Transportation.</p>
+      <h2>The Broadway Corridor</h2>
+      <p>The most significant long-term issue raised during the meeting was the future of the <strong>Broadway corridor</strong>, where officials said a long-discussed rebuild remains far from fully funded. DOT Brooklyn Deputy Borough Commissioner Leroy Branch told attendees that Broadway cannot simply be resurfaced because it is made of concrete and must be rebuilt as a capital project. He said the work would have to be phased. The council office added that current money secured for the corridor is only a start, and that millions more are needed even to scope and plan the project.</p>
+      <h2>Block-by-Block Complaints</h2>
+      <p>Residents also used the meeting to air block-by-block complaints that affect daily life across District 37 and nearby areas, including illegal dumping, litter-filled tree pits, uneven alternate-side parking enforcement, truck traffic, dark streets and garbage around transit hubs and commercial strips. Several speakers pointed to recurring trouble spots near Broadway Junction, Euclid Avenue, Knickerbocker Avenue and Myrtle-Wyckoff.</p>
+      <p>Sanitation officials said they are already targeting several chronic dumping hotspots and pointed to cleanup work supported by district funding. The council office said it has funded supplemental cleaning, including a dedicated DSNY truck and corridor-specific cleanup efforts in problem areas such as Fulton Street and Myrtle-Wyckoff.</p>
+      <h2>"Super Broken"</h2>
+      <p>A recurring theme of the night was frustration with the city's response system. One attendee said the process itself felt <strong>"super broken"</strong> and asked who was responsible for fixing it. The council office acknowledged that 311 is imperfect and said responsibility for improving the system lies with both the City Council and city agencies.</p>
+      <p>Street safety frustrations surfaced repeatedly as well. The council office said it had submitted "dozens and dozens" of speed bump requests without receiving approvals. Branch responded that DOT can install speed humps only where studies show most vehicles on a block are traveling at least 30 miles per hour.</p>
+      <h2>Myrtle-Wyckoff Timeline</h2>
+      <p>Attendees also asked about the timeline for long-promised changes at <strong>Myrtle-Wyckoff</strong>. DOT did not provide a firm construction date, saying the project likely would not move in fiscal 2026, though fiscal 2027 was presented as possible.</p>
+      <p>Before the session ended, DSNY and DOT agreed to review a series of site-specific complaints, including requests for more litter baskets, concerns about school trash handling, and truck-turn conflicts. For residents, the meeting offered direct access to agency officials — and underscored how many longstanding complaints remain unresolved.</p>
+    </div>
+    <div class="substack-cta">
+      <p>Subscribe for free community journalism from East New York.</p>
+      <a href="https://urbanversionmedia.substack.com/p/super-broken-residents-confront-city" target="_blank" rel="noopener" class="btn-accent">Read on Substack &#8599;</a>
+    </div>
+  </article>
   <footer class="footer">
-    <div class="container">
-      <div class="footer-name">East New York <span>Times</span></div>
-      <p>Independent community journalism for East New York, Brooklyn · urbanversionmedia@gmail.com</p>
-    </div>
+    <p>&copy; 2026 East New York Times. A publication of <a href="/">Urban Version Media</a>. East New York &middot; Brooklyn.</p>
   </footer>
-
 </body>
 </html>
