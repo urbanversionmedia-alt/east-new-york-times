@@ -1,290 +1,123 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Who Supports the People Who Support East New York? — East New York Times</title>
-  <meta name="description" content="A Community Board 5 Aging, Health and Social Services Committee meeting focused on the emotional toll carried by people who serve their communities." />
+  <meta name="description" content="A recent Community Board 5 Aging, Health and Social Services Committee meeting focused on the emotional toll carried by people who serve their communities." />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface-2: #1c2128;
-      --surface-3: #21262d;
-      --border: #2d333b;
-      --divider: #21262d;
-      --text: #e6edf3;
-      --text-muted: #8b949e;
-      --text-faint: #484f58;
-      --accent: #e8952a;
-      --accent-hover: #d4820a;
-      --accent-dim: rgba(232,149,42,0.12);
-      --red: #f85149;
-      --font-display: 'Clash Display', 'Georgia', serif;
-      --font-body: 'Satoshi', 'Inter', sans-serif;
-      --font-serif: 'Georgia', 'Times New Roman', serif;
-      --radius: 6px;
-      --radius-lg: 12px;
-      --shadow: 0 4px 16px rgba(0,0,0,0.4);
-      --transition: 200ms cubic-bezier(0.16,1,0.3,1);
-      --max-w: 1200px;
+      --bg:#0d1117;--surface:#161b22;--surface-2:#1c2128;--border:#2d333b;--divider:#21262d;
+      --text:#e6edf3;--text-muted:#8b949e;--text-faint:#484f58;
+      --accent:#e8952a;--accent-dim:rgba(232,149,42,0.12);
+      --font-display:'Clash Display','Georgia',serif;--font-body:'Satoshi','Inter',sans-serif;
+      --radius:6px;--radius-lg:12px;--max-w:720px;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
-    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
-    img { display: block; max-width: 100%; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
-    ul { list-style: none; }
-    h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
-    p { text-wrap: pretty; }
-    ::selection { background: var(--accent-dim); }
-
-    .container { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
-    .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; }
-    .tag--accent { background: var(--accent-dim); color: var(--accent); }
-
-    .topbar { background: var(--accent); color: #0d1117; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0; text-align: center; }
-
-    .header { position: sticky; top: 0; z-index: 100; background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; height: 70px; }
-    .masthead { display: flex; flex-direction: column; gap: 0.1rem; }
-    .masthead-name { font-family: var(--font-display); font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--text); line-height: 1; }
-    .masthead-name span { color: var(--accent); }
-    .masthead-sub { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
-    .nav ul { display: flex; gap: 1.75rem; }
-    .nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color var(--transition); }
-    .nav a:hover { color: var(--text); }
-    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background var(--transition), transform var(--transition); }
-    .btn-accent { background: var(--accent); color: #0d1117; }
-    .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 36px; height: 36px; padding: 0.4rem; justify-content: center; }
-    .menu-toggle span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
-    .mobile-nav { display: none; padding: 1rem clamp(1.25rem,5vw,4rem) 1.5rem; border-top: 1px solid var(--border); }
-    .mobile-nav.open { display: block; }
-    .mobile-nav li { border-bottom: 1px solid var(--divider); }
-    .mobile-nav a { display: block; padding: 0.875rem 0; font-size: 1rem; font-weight: 500; }
-
-    .article-hero { padding-block: 3rem 0; }
-    .article-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
-    .article-date { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
-    .article-hero h1 { font-size: clamp(1.9rem, 4.5vw, 3.2rem); font-weight: 700; color: var(--text); margin-bottom: 1rem; max-width: 22ch; }
-    .article-hero .subheadline { font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--text-muted); font-family: var(--font-serif); font-style: italic; margin-bottom: 2rem; max-width: 58ch; }
-    .hero-img-wrap { width: 100%; max-height: 520px; overflow: hidden; border-radius: var(--radius-lg); margin-top: 2rem; }
-    .hero-img-wrap img { width: 100%; height: 520px; object-fit: cover; object-position: center 40%; }
-    .img-caption { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.5rem; padding-inline: 0.25rem; }
-
-    .article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 4rem; padding-block: 3rem 4rem; align-items: start; }
-
-    .article-body { max-width: 100%; }
-    .article-body p { font-size: 1.05rem; line-height: 1.8; color: #c9d1d9; margin-bottom: 1.5rem; max-width: 68ch; }
-    .article-body h2 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 2.25rem 0 0.75rem; }
-    .article-body a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(232,149,42,0.4); text-underline-offset: 3px; transition: text-decoration-color var(--transition); }
-    .article-body a:hover { text-decoration-color: var(--accent); }
-
-    /* AFFIRMATION BOX */
-    .affirmation-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      margin: 2rem 0;
-    }
-    .affirmation-box h3 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-    .affirmation-box ul { list-style: none; }
-    .affirmation-box ul li { font-size: 1rem; line-height: 1.8; color: #c9d1d9; padding: 0.35rem 0 0.35rem 1.25rem; position: relative; font-family: var(--font-serif); font-style: italic; }
-    .affirmation-box ul li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-
-    /* PULLQUOTE */
-    .pullquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: var(--accent-dim); border-radius: 0 var(--radius) var(--radius) 0; }
-    .pullquote p { font-family: var(--font-serif); font-size: 1.15rem !important; font-style: italic; color: var(--text) !important; margin-bottom: 0 !important; }
-    .pullquote cite { display: block; font-size: 0.8rem; font-style: normal; color: var(--text-muted); margin-top: 0.5rem; }
-
-    .article-closing { border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem; }
-    .article-closing p { font-size: 0.95rem !important; color: var(--text-muted) !important; font-style: italic; }
-
-    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-    .sidebar-widget { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
-    .widget-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--divider); }
-    .subscribe-widget { background: var(--accent-dim); border-color: rgba(232,149,42,0.3); }
-    .subscribe-widget p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
-    .subscribe-btn { display: block; width: 100%; text-align: center; padding: 0.6rem; background: var(--accent); color: #0d1117; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; border-radius: var(--radius); transition: background var(--transition); }
-    .subscribe-btn:hover { background: var(--accent-hover); }
-    .context-item { padding: 0.5rem 0; border-bottom: 1px solid var(--divider); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-    .context-item:last-child { border-bottom: none; }
-    .context-item strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
-    .context-item a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(232,149,42,0.4); }
-
-    .footer { border-top: 1px solid var(--border); padding-block: 2rem; text-align: center; }
-    .footer-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .footer-name span { color: var(--accent); }
-    .footer p { font-size: 0.8rem; color: var(--text-faint); }
-
-    @media (max-width: 900px) {
-      .article-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .sidebar { order: -1; }
-      .nav, .header-cta { display: none; }
-      .menu-toggle { display: flex; }
-      .hero-img-wrap img { height: 280px; }
-    }
-    @media (max-width: 600px) { .article-hero h1 { font-size: 1.7rem; } }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.7;color:var(--text);background:var(--bg);}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;height:auto;}
+    p{text-wrap:pretty;}
+    .header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin-inline:auto;padding:0 clamp(1.25rem,5vw,3rem);height:64px;}
+    .masthead-name{font-family:var(--font-display);font-size:clamp(1rem,2vw,1.3rem);font-weight:700;letter-spacing:-0.02em;color:var(--text);}
+    .masthead-name span{color:var(--accent);}
+    .masthead-sub{font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);display:block;margin-top:2px;}
+    .header-substack{font-size:0.75rem;font-weight:700;color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:var(--radius);}
+    .header-substack:hover{background:var(--accent-dim);}
+    .back-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:0.6rem clamp(1.25rem,5vw,3rem);}
+    .back-bar a{font-size:0.8rem;font-weight:600;color:var(--text-muted);display:inline-flex;align-items:center;gap:0.4rem;}
+    .back-bar a:hover{color:var(--accent);}
+    .article-wrap{max-width:var(--max-w);margin-inline:auto;padding:2.5rem clamp(1.25rem,5vw,2rem) 4rem;}
+    .article-meta-top{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+    .tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:3px;}
+    .tag--accent{background:var(--accent-dim);color:var(--accent);}
+    .tag--blue{background:rgba(37,99,235,0.1);color:#60a5fa;}
+    .tag--red{background:rgba(248,81,73,0.1);color:#f85149;}
+    .tag--green{background:rgba(46,160,67,0.1);color:#3fb950;}
+    .article-date{font-size:0.8rem;color:var(--text-faint);}
+    .article-headline{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--text);margin-bottom:1rem;}
+    .article-deck{font-size:1.1rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--accent);padding-left:1rem;}
+    .article-byline{font-size:0.8rem;color:var(--text-muted);padding:0.75rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:1.75rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .article-byline strong{color:var(--text);}
+    .article-hero{width:100%;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:0.75rem;aspect-ratio:16/9;}
+    .article-hero img{width:100%;height:100%;object-fit:cover;}
+    .article-caption{font-size:0.75rem;color:var(--text-faint);margin-bottom:2rem;font-style:italic;}
+    .article-body{display:flex;flex-direction:column;gap:1.25rem;}
+    .article-body p{font-size:1rem;color:var(--text-muted);line-height:1.8;}
+    .article-body p strong{color:var(--text);}
+    .article-body h2{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--text);margin-top:0.5rem;}
+    .article-body ul{padding-left:1.5rem;display:flex;flex-direction:column;gap:0.5rem;}
+    .article-body ul li{font-size:1rem;color:var(--text-muted);line-height:1.8;}
+    .article-body ul li strong{color:var(--text);}
+    .article-body blockquote{border-left:3px solid var(--accent);padding-left:1rem;font-style:italic;color:var(--text-muted);}
+    .substack-cta{margin-top:2.5rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);text-align:center;display:flex;flex-direction:column;gap:0.75rem;align-items:center;}
+    .substack-cta p{font-size:0.9rem;color:var(--text-muted);max-width:40ch;}
+    .btn-accent{display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.5rem;background:var(--accent);color:#0d1117;font-size:0.8rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;border-radius:var(--radius);}
+    .btn-accent:hover{opacity:0.9;}
+    .footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem clamp(1.25rem,5vw,3rem);text-align:center;}
+    .footer p{font-size:0.75rem;color:var(--text-faint);}
+    .footer a{color:var(--accent);}
+    @media(max-width:640px){.header-substack{display:none;}}
   </style>
 </head>
 <body>
-
-  <div class="topbar">Community · CB5 Aging, Health &amp; Social Services Committee · March 2026</div>
-
   <header class="header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="https://eastnewyorktimes.com" class="masthead">
-          <div class="masthead-name">East New York <span>Times</span></div>
-          <div class="masthead-sub">Community Journalism for East New York, Brooklyn</div>
-        </a>
-        <nav class="nav" aria-label="Main navigation">
-          <ul>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Transit</a></li>
-            <li><a href="#">Housing</a></li>
-            <li><a href="#">Civic</a></li>
-            <li><a href="#">About</a></li>
-          </ul>
-        </nav>
-        <div class="header-cta">
-          <a href="#" class="btn btn-accent">Subscribe</a>
-        </div>
-        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.mobile-nav').classList.toggle('open')">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+    <div class="header-inner">
+      <a href="/" style="text-decoration:none;">
+        <div class="masthead-name">East New York <span>Times</span></div>
+        <span class="masthead-sub">East New York · Brooklyn · Est. 2026</span>
+      </a>
+      <a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener" class="header-substack">Subscribe Free</a>
     </div>
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-      <ul>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Transit</a></li>
-        <li><a href="#">Housing</a></li>
-        <li><a href="#">Civic</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
   </header>
-  <div style="background:var(--surface);border-bottom:1px solid var(--border);padding:0.6rem 0;"><div class="container"><a href="https://eastnewyorktimes.com" style="font-size:0.8rem;font-weight:600;color:var(--text-muted);letter-spacing:0.04em;text-decoration:none;">← Back to East New York Times</a></div></div>
-
-  <main>
-    <div class="container">
-
-      <section class="article-hero">
-        <div class="article-meta">
-          <span class="tag tag--accent">Community</span>
-          <span class="article-date">Thursday, March 12, 2026</span>
-        </div>
-        <h1>Who Supports the People Who Support East New York?</h1>
-        <p class="subheadline">A Community Board 5 Aging, Health and Social Services Committee meeting focused on the emotional toll carried by people who serve their communities.</p>
-        <div class="hero-img-wrap">
-          <img src="../wellness-story.jpg" alt="Community advocates gather at a CB5 wellness session in East New York" />
-        </div>
-        <p class="img-caption">Photo: Deric Johnson / East New York Times</p>
-      </section>
-
-      <div class="article-layout">
-        <article class="article-body">
-
-          <p>Instead of a typical policy discussion, the meeting featured a wellness session led by Alicia Joy Powell, a licensed nurse and doula who works in maternal health and community wellness.</p>
-
-          <p>Powell opened the discussion with a simple question directed at the room of longtime community advocates.</p>
-
-          <div class="pullquote">
-            <p>"My question for you is: who takes care of you? You have a cup that gets emptied and poured out. It needs to be filled."</p>
-            <cite>— Alicia Joy Powell, licensed nurse and doula</cite>
-          </div>
-
-          <p>Around the table sat residents who have spent years working on issues affecting East New York — from tenant advocacy and domestic violence support to neighborhood organizing and mental health counseling.</p>
-
-          <p>The conversation highlighted a reality many community leaders know well: those who spend their time helping others often carry the emotional weight of the work themselves.</p>
-
-          <h2>The Weight of Caregiving</h2>
-
-          <p>Dr. Angela Mitchell, a committee co-chair, said caregivers frequently shoulder responsibilities that go unseen.</p>
-
-          <div class="pullquote">
-            <p>"Black women are carriers. We carry a lot."</p>
-            <cite>— Dr. Angela Mitchell, CB5 committee co-chair</cite>
-          </div>
-
-          <p>Powell led participants through breathing and reflection exercises designed to help them pause and focus on their own well-being. Members repeated affirmations during the session.</p>
-
-          <div class="affirmation-box">
-            <h3>Affirmations from the Session</h3>
-            <ul>
-              <li>"I do not have to carry the world on my shoulders."</li>
-              <li>"I deserve support too."</li>
-            </ul>
-          </div>
-
-          <p>Several participants shared their own experiences managing stress from both family responsibilities and community service.</p>
-
-          <p>"Stress used to beat me up until I learned how to deal with it," one longtime advocate said.</p>
-
-          <h2>Bringing Wellness to the Neighborhood</h2>
-
-          <p>Beyond the personal discussion, the meeting also explored ways to bring wellness resources to East New York residents. Powell offered to collaborate with the committee on workshops, maternal health education and community wellness programs.</p>
-
-          <p>The conversation illustrated how community board meetings sometimes serve another purpose beyond government oversight: bringing together neighborhood leaders who quietly support residents every day.</p>
-
-          <p>For many in the room, the discussion provided a rare opportunity to slow down and reflect.</p>
-
-          <p>"This is not done enough," one participant said. "A lot of people don't know how transformative spaces like this can be."</p>
-
-          <div class="article-closing">
-            <p>East New York Times covers the full range of community life in East New York, including the people who make the neighborhood work every day. Reach us at <a href="mailto:urbanversionmedia@gmail.com">urbanversionmedia@gmail.com</a>.</p>
-          </div>
-
-        </article>
-
-        <aside class="sidebar">
-
-          <div class="sidebar-widget subscribe-widget">
-            <div class="widget-title">Stay Informed</div>
-            <p>Get ENY Times community journalism delivered directly to your inbox.</p>
-            <a href="#" class="subscribe-btn">Subscribe Free</a>
-          </div>
-
-          <div class="sidebar-widget">
-            <div class="widget-title">Related Stories</div>
-            <div class="context-item">
-              <strong><a href="../snap/">Your Food Stamps Could Be Cut Off Tomorrow</a></strong>
-              Federal SNAP work requirements take effect June 1 — what East New York residents need to know.
-            </div>
-            <div class="context-item">
-              <strong><a href="../twok/">East New York Families May Be Left Behind in the First Wave of 2-K</a></strong>
-              District 19 absent from the city's initial early-childhood rollout.
-            </div>
-            <div class="context-item">
-              <strong><a href="../townhall/">"Super Broken": Residents Confront City Agencies at Sandy Nurse's Town Hall</a></strong>
-              Dumping, traffic safety, and the limits of the complaint system.
-            </div>
-          </div>
-
-          <div class="sidebar-widget">
-            <div class="widget-title">About East New York Times</div>
-            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.75rem">East New York Times is an independent community news outlet covering the people, policies, and events that shape East New York, Brooklyn.</p>
-            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6">Published by Urban Version Media · <a href="mailto:urbanversionmedia@gmail.com" style="color:var(--accent)">urbanversionmedia@gmail.com</a></p>
-          </div>
-
-        </aside>
-      </div>
+  <div class="back-bar">
+    <a href="/">&#8592; Back to East New York Times</a>
+  </div>
+  <article class="article-wrap">
+    <div class="article-meta-top">
+      <span class="tag tag--green">Community</span>
+      <span class="tag tag--accent">Wellness</span>
+      <span class="article-date">March 12, 2026</span>
     </div>
-  </main>
-
+    <h1 class="article-headline">Who Supports the People Who Support East New York?</h1>
+    <p class="article-deck">A recent Community Board 5 Aging, Health and Social Services Committee meeting focused on the emotional toll carried by people who serve their communities.</p>
+    <div class="article-byline">
+      <span>By <strong>Deric Johnson</strong></span>
+      <span>·</span>
+      <span>The East New York Times</span>
+      <span>·</span>
+      <span>March 12, 2026</span>
+    </div>
+    <div class="article-hero">
+      <img src="../wellness-story.jpg" alt="Community wellness session, East New York" />
+    </div>
+    <p class="article-caption">A participant receives a brief shoulder massage during a community wellness session. Photo: Deric Johnson / The East New York Times</p>
+    <div class="article-body">
+      <p><strong>East New York, Brooklyn</strong> — Instead of a typical policy discussion, the CB5 Aging, Health and Social Services Committee meeting featured a wellness session led by Alicia Joy Powell, a licensed nurse and doula who works in maternal health and community wellness.</p>
+      <p>Powell opened the discussion with a simple question directed at the room of longtime community advocates.</p>
+      <blockquote>"My question for you is: who takes care of you? You have a cup that gets emptied and poured out. It needs to be filled."</blockquote>
+      <p>Around the table sat residents who have spent years working on issues affecting East New York — from tenant advocacy and domestic violence support to neighborhood organizing and mental health counseling.</p>
+      <p>The conversation highlighted a reality many community leaders know well: those who spend their time helping others often carry the emotional weight of the work themselves.</p>
+      <p>Dr. Angela Mitchell, a committee co-chair, said caregivers frequently shoulder responsibilities that go unseen.</p>
+      <blockquote>"Black women are carriers. We carry a lot."</blockquote>
+      <p>Powell led participants through breathing and reflection exercises designed to help them pause and focus on their own well-being. Members repeated affirmations such as "I do not have to carry the world on my shoulders" and "I deserve support too."</p>
+      <p>Several participants shared their own experiences managing stress from both family responsibilities and community service.</p>
+      <blockquote>"Stress used to beat me up until I learned how to deal with it."</blockquote>
+      <p>Beyond the personal discussion, the meeting also explored ways to bring wellness resources to East New York residents. Powell offered to collaborate with the committee on workshops, maternal health education and community wellness programs.</p>
+      <p>The conversation illustrated how community board meetings sometimes serve another purpose beyond government oversight: bringing together neighborhood leaders who quietly support residents every day. For many in the room, the discussion provided a rare opportunity to slow down and reflect.</p>
+      <blockquote>"This is not done enough. A lot of people don't know how transformative spaces like this can be."</blockquote>
+    </div>
+    <div class="substack-cta">
+      <p>Subscribe for free community journalism from East New York.</p>
+      <a href="https://urbanversionmedia.substack.com/p/who-supports-the-people-who-support" target="_blank" rel="noopener" class="btn-accent">Read on Substack &#8599;</a>
+    </div>
+  </article>
   <footer class="footer">
-    <div class="container">
-      <div class="footer-name">East New York <span>Times</span></div>
-      <p>Independent community journalism for East New York, Brooklyn · urbanversionmedia@gmail.com</p>
-    </div>
+    <p>&copy; 2026 East New York Times. A publication of <a href="/">Urban Version Media</a>. East New York &middot; Brooklyn.</p>
   </footer>
-
 </body>
 </html>
