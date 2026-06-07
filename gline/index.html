@@ -1,1 +1,442 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summer G Line Disruptions: What East New York Riders Need to Know Before the Weekend | East New York Times</title>
+  <meta name="description" content="Signal and tunnel work will bring repeated shutdowns and service changes to the G line this summer, including key weekends in June. Here's what East New York riders should know before the weekend." />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface-2: #1c2128;
+      --surface-3: #21262d;
+      --border: #2d333b;
+      --divider: #21262d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --text-faint: #484f58;
+      --accent: #e8952a;
+      --accent-hover: #d4820a;
+      --font-display: 'Clash Display', 'Georgia', serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+      --max-width: 1180px;
+      --prose: 760px;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.28);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    .container { width: min(var(--max-width), calc(100% - 2rem)); margin: 0 auto; }
+    .topbar {
+      background: var(--accent);
+      color: #0d1117;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.55rem 1rem;
+    }
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(13, 17, 23, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      min-height: 88px;
+    }
+    .masthead {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .masthead-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      color: var(--text);
+    }
+    .masthead-name span { color: var(--accent); }
+    .masthead-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 160ms ease;
+    }
+    .nav a:hover,
+    .nav a.active { color: var(--text); }
+    .header-cta {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+    .btn-ghost { color: var(--text); background: transparent; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-accent { background: var(--accent); color: #0d1117; border-color: var(--accent); }
+    .btn-accent:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+    .menu-toggle, .mobile-nav { display: none; }
+
+    .story-shell {
+      padding: 2.5rem 0 4rem;
+    }
+    .story-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 2rem;
+    }
+    .story-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(232,149,42,0.12);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .story-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 0.98;
+      margin-bottom: 1rem;
+      max-width: 12ch;
+    }
+    .story-dek {
+      font-size: clamp(1.05rem, 1.3vw, 1.28rem);
+      color: var(--text-muted);
+      max-width: 58ch;
+    }
+    .story-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      margin-top: 1.4rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-top: 1px solid var(--divider);
+      padding-top: 1rem;
+    }
+    .story-card {
+      background: linear-gradient(180deg, var(--surface-2), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .story-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .story-caption {
+      padding: 0.85rem 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+    .story-layout {
+      display: grid;
+      grid-template-columns: minmax(0, var(--prose)) 300px;
+      gap: 2rem;
+      align-items: start;
+    }
+    .story-body {
+      min-width: 0;
+    }
+    .story-body p {
+      margin-bottom: 1.25rem;
+      color: var(--text);
+      font-size: 1.06rem;
+    }
+    .story-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2vw, 2.2rem);
+      line-height: 1.05;
+      margin: 2.4rem 0 1rem;
+      color: var(--text);
+    }
+    .story-body ul {
+      list-style: disc;
+      padding-left: 1.2rem;
+      margin: 0 0 1.5rem;
+      color: var(--text);
+    }
+    .story-body li {
+      margin-bottom: 0.85rem;
+      font-size: 1.03rem;
+    }
+    .story-sidebar {
+      position: sticky;
+      top: 112px;
+      display: grid;
+      gap: 1rem;
+    }
+    .sidebar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .sidebar-card h3 {
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.85rem;
+    }
+    .sidebar-card p,
+    .sidebar-card li {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+    .sidebar-card ul {
+      list-style: disc;
+      padding-left: 1rem;
+    }
+    .story-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 1.25rem;
+    }
+    .story-nav:hover { color: var(--accent-hover); }
+    .footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding-block: 2.5rem 1.5rem;
+      margin-top: 3rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+    .footer-brand h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .footer-brand h3 span { color: var(--accent); }
+    .footer-brand p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; max-width: 30ch; }
+    .footer-col h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col a { font-size: 0.85rem; color: var(--text-muted); }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .footer-bottom p { font-size: 0.75rem; color: var(--text-faint); max-width: none; }
+    .footer-bottom a { color: var(--accent); }
+    .footer-bottom a:hover { text-decoration: underline; }
+
+    @media (max-width: 980px) {
+      .header-inner { grid-template-columns: 1fr; gap: 1rem; padding: 1rem 0; }
+      .nav ul, .header-cta { justify-content: flex-start; }
+      .story-hero, .story-layout, .footer-grid { grid-template-columns: 1fr; }
+      .story-sidebar { position: static; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(var(--max-width), calc(100% - 1.25rem)); }
+      .topbar { font-size: 0.66rem; padding-inline: 0.75rem; }
+      .masthead-name { font-size: 1.7rem; }
+      .masthead-sub { font-size: 0.63rem; letter-spacing: 0.14em; }
+      .nav ul { gap: 1rem; }
+      .header-cta { flex-wrap: wrap; }
+      .story-shell { padding-top: 1.5rem; }
+      .story-body p, .story-body li { font-size: 1rem; }
+      .footer-bottom { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">East New York, Brooklyn — Independent Community Journalism</div>
+
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="masthead">
+        <span class="masthead-name">East New York <span>Times</span></span>
+        <span class="masthead-sub">East New York · Brooklyn · Est. 2026</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#stories" class="active">Stories</a></li>
+          <li><a href="../index.html#events">Events</a></li>
+          <li><a href="../index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener" class="btn btn-ghost">Subscribe</a>
+        <a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener" class="btn btn-accent">Read on Substack</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="story-shell">
+    <div class="container">
+      <a class="story-nav" href="../index.html">← Back to East New York Times</a>
+
+      <section class="story-hero">
+        <div>
+          <div class="story-label">Transit</div>
+          <h1>Summer G Line Disruptions: What East New York Riders Need to Know Before the Weekend</h1>
+          <p class="story-dek">Signal and tunnel work will bring repeated shutdowns and service changes to the G line this summer, including key weekends in June. Here’s how riders from East New York can plan around the disruptions.</p>
+          <div class="story-meta">
+            <span>By Deric Johnson</span>
+            <span>Jun 7 2026</span>
+            <span>East New York Times</span>
+          </div>
+        </div>
+
+        <figure class="story-card">
+          <img src="../P1071290.jpg" alt="Commuter sitting near a subway platform staircase as a train approaches" width="1357" height="1094" loading="eager" />
+          <figcaption class="story-caption">A rider waits near the platform as subway service disruptions continue across parts of Brooklyn this summer.</figcaption>
+        </figure>
+      </section>
+
+      <section class="story-layout">
+        <article class="story-body">
+          <p>If your commute depends on the G, this summer is not business as usual. The MTA is continuing a multi-year project to modernize signals and upgrade infrastructure on the line, which means repeated shutdowns and service changes on nights and weekends.</p>
+
+          <p>Official service notices show multiple June weekends with G service suspended on key stretches, along with weeknight service changes during parts of the month. For riders in East New York, who often rely on transfers through Downtown Brooklyn or North Brooklyn to reach jobs, school, and medical appointments, those shutdowns can easily turn into missed shifts and late arrivals if you don’t plan ahead.</p>
+
+          <h2>Key dates and segments to watch</h2>
+          <p>According to current MTA advisories, G line riders should expect June weekends with shutdowns north of Bedford–Nostrand, including June 5 to 8 and June 19 to 22 for signal work. On those weekends, from Friday night through early Monday, trains do not run between Court Sq and Bedford–Nostrand Avs, and shuttle buses replace service along the affected section.</p>
+
+          <p>Additional summer closures and overnight service changes are also listed as the modernization project continues. Local officials have warned that the cumulative shutdowns could add up to nearly 40 percent of 2026 weekends without full G service, though riders should always double-check the latest advisories before leaving home because exact dates and station impacts can change.</p>
+
+          <h2>How East New York riders rely on the G</h2>
+          <p>East New York does not sit directly on the G, but many residents depend on it through transfer points in other parts of Brooklyn. Common patterns include taking the A, C, J, Z, or L from East New York or Broadway Junction, then connecting to the G at Hoyt–Schermerhorn, Bergen Street, or further north.</p>
+
+          <p>Many riders also use the G to move between Brooklyn neighborhoods without going through Manhattan, which is one of the line’s biggest advantages when service is normal. When the G goes down, those crosstown trips become slower, more fragile, and more expensive in time.</p>
+
+          <h2>Alternatives and workarounds</h2>
+          <p>For jobs in Downtown Brooklyn or near Fulton Street, staying on the A or C and then walking or using a short bus connection may be more reliable than trying to chase shuttle buses back to the G. Riders traveling toward Williamsburg or Queens may also be able to replace some G trips with a J or Z transfer to the M, depending on the destination.</p>
+
+          <p>During targeted closures, the MTA runs shuttle buses to connect G riders between key stations, and station posters often provide route-specific transfer details. If you normally transfer to the G, build extra time into the trip and screenshot the alternate route before you go underground in case your signal drops.</p>
+
+          <h2>Before you leave the house</h2>
+          <ul>
+            <li>Check MTA.info or the MYmta app for G line service changes the night before your trip.</li>
+            <li>Look for construction posters at Broadway Junction and other major transfer points.</li>
+            <li>Build an extra 15 to 30 minutes into your trip if you normally connect to the G.</li>
+            <li>Save your alternate route and shuttle information before heading underground.</li>
+          </ul>
+
+          <p>Summer 2026 might not be the smoothest season for G riders, but the right information can help East New York commuters avoid being caught off guard before the weekend starts.</p>
+        </article>
+
+        <aside class="story-sidebar">
+          <div class="sidebar-card">
+            <h3>Quick facts</h3>
+            <p>Confirmed weekend disruptions already announced by the MTA include June 5 to 8 and June 19 to 22 on the Court Sq to Bedford–Nostrand segment.</p>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Plan ahead</h3>
+            <ul>
+              <li>Shuttle buses replace trains on affected segments.</li>
+              <li>Weeknight service changes are also scheduled during parts of June.</li>
+              <li>Expect longer trips if your route depends on a G transfer.</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>East New York <span>Times</span></h3>
+          <p>Independent community journalism covering civic life, local government, schools, public safety, and neighborhood stories in East New York, Brooklyn.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#stories">Stories</a></li>
+            <li><a href="../index.html#events">Events</a></li>
+            <li><a href="../index.html#about">About</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://urbanversionmedia.substack.com" target="_blank" rel="noopener">Substack</a></li>
+            <li><a href="mailto:urbanversionmedia@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 East New York Times. A publication of Urban Version Media.</p>
+        <p>Built for East New York, Brooklyn.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
