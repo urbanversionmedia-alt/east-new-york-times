@@ -1,1 +1,253 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYCHA Has Placed 14 Families. Nearly 5,100 Are Still Waiting. — East New York Times</title>
+  <meta name="description" content="At a City Council hearing on the Emergency Housing Voucher crisis, NYCHA admitted it has moved just 14 families while nearly 5,100 face losing their homes by November. East New York's CM Chris Banks called the number 'astounding.'" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0d1117;--surface:#161b22;--surface-2:#1c2128;--border:#2d333b;--text:#e6edf3;--text-muted:#8b949e;--text-faint:#484f58;--accent:#e8952a;--accent-dim:rgba(232,149,42,0.12);--red:#f85149;--red-dim:rgba(248,81,73,0.1);--blue:#60a5fa;--blue-dim:rgba(96,165,250,0.1);--font-display:'Clash Display','Georgia',serif;--font-body:'Satoshi','Inter',sans-serif;--radius:6px;--radius-lg:12px;--max-w:720px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{-webkit-font-smoothing:antialiased;}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.7;color:var(--text);background:var(--bg);}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;height:auto;}
+    .header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin-inline:auto;padding:0 clamp(1.25rem,5vw,3rem);height:64px;}
+    .masthead-name{font-family:var(--font-display);font-size:clamp(1rem,2vw,1.3rem);font-weight:700;letter-spacing:-0.02em;color:var(--text);}
+    .masthead-name span{color:var(--accent);}
+    .masthead-sub{font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);display:block;margin-top:2px;}
+    .header-substack{font-size:0.75rem;font-weight:700;color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:var(--radius);}
+    .back-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:0.6rem clamp(1.25rem,5vw,3rem);}
+    .back-bar a{font-size:0.8rem;font-weight:600;color:var(--text-muted);display:inline-flex;align-items:center;gap:0.4rem;}
+    .back-bar a:hover{color:var(--accent);}
+    .article-wrap{max-width:var(--max-w);margin-inline:auto;padding:2.5rem clamp(1.25rem,5vw,2rem) 4rem;}
+    .article-meta-top{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+    .tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:3px;}
+    .tag--red{background:var(--red-dim);color:var(--red);}
+    .tag--accent{background:var(--accent-dim);color:var(--accent);}
+    .article-date{font-size:0.8rem;color:var(--text-faint);}
+    .article-headline{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--text);margin-bottom:1rem;}
+    .article-deck{font-size:1.1rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--accent);padding-left:1rem;}
+    .article-byline{font-size:0.8rem;color:var(--text-muted);padding:0.75rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:1.75rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .article-byline strong{color:var(--text);}
+    .article-body{display:flex;flex-direction:column;gap:1.25rem;}
+    .article-body p{font-size:1rem;color:var(--text-muted);line-height:1.8;}
+    .article-body p strong{color:var(--text);}
+    .article-body h2{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--text);margin-top:0.5rem;}
+    .pull-quote{border-left:3px solid var(--accent);padding:1rem 1.25rem;margin:0.5rem 0;background:var(--surface);border-radius:0 var(--radius) var(--radius) 0;}
+    .pull-quote p{font-family:var(--font-display);font-size:1.1rem;font-style:italic;color:var(--text);line-height:1.5;margin:0;}
+    .pull-quote cite{display:block;font-size:0.75rem;color:var(--text-faint);margin-top:0.5rem;font-style:normal;}
+    .numbers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:0.5rem 0;}
+    .stat-box{background:var(--surface);padding:1rem 0.75rem;text-align:center;}
+    .stat-num{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--accent);display:block;line-height:1;}
+    .stat-label{font-size:0.72rem;color:var(--text-muted);display:block;margin-top:0.35rem;line-height:1.4;}
+    .exchange-box{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin:0.5rem 0;}
+    .exchange-box .ex-line{font-size:0.9rem;color:var(--text-muted);line-height:1.7;padding:0.25rem 0;}
+    .exchange-box .ex-line strong{color:var(--text);}
+    .exchange-box .ex-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);display:block;margin-bottom:0.5rem;}
+    .info-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--radius);padding:1.25rem 1.25rem 1.25rem 1.5rem;margin:0.5rem 0;}
+    .info-box h3{font-family:var(--font-display);font-size:0.85rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.75rem;}
+    .info-box ul{padding-left:1.25rem;display:flex;flex-direction:column;gap:0.5rem;}
+    .info-box ul li{font-size:0.95rem;color:var(--text-muted);line-height:1.7;}
+    .info-box ul li strong{color:var(--text);}
+    .substack-cta{margin-top:2.5rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);text-align:center;display:flex;flex-direction:column;gap:0.75rem;align-items:center;}
+    .substack-cta p{font-size:0.9rem;color:var(--text-muted);max-width:40ch;}
+    .btn-accent{display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.5rem;background:var(--accent);color:#0d1117;font-size:0.8rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;border-radius:var(--radius);}
+    .footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem clamp(1.25rem,5vw,3rem);text-align:center;}
+    .footer p{font-size:0.75rem;color:var(--text-faint);}
+    .footer a{color:var(--accent);}
+    @media(max-width:500px){.numbers-grid{grid-template-columns:1fr 1fr;}.header-substack{display:none;}}
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="/">
+        <div class="masthead-name">East New York <span>Times</span>
+          <span class="masthead-sub">Independent Community Journalism</span>
+        </div>
+      </a>
+      <a href="https://eastnewyorktimes.substack.com" target="_blank" rel="noopener" class="header-substack">Subscribe Free</a>
+    </div>
+  </header>
+
+  <div class="back-bar">
+    <a href="/"><span>&#8592;</span> Back to East New York Times</a>
+  </div>
+
+  <main class="article-wrap">
+
+    <div class="article-meta-top">
+      <span class="tag tag--accent">Housing</span>
+      <span class="tag tag--red">Governance</span>
+      <span class="article-date">June 17, 2026</span>
+    </div>
+
+    <h1 class="article-headline">NYCHA Has Placed 14 Families. Nearly 5,100 Are Still Waiting.</h1>
+
+    <p class="article-deck">At a City Council hearing today on the Emergency Housing Voucher program, NYCHA said it has moved 14 families to alternative housing. Nearly 5,100 households face losing their assistance by November. CM Chris Banks called the number astounding. The audience gasped.</p>
+
+    <div style="border-radius:10px;overflow:hidden;margin-bottom:0.75rem;">
+      <img src="/ehv-hearing.jpg" alt="CM Chris Banks at the NYC Council Committee on Public Housing hearing, June 17, 2026" style="width:100%;display:block;" />
+    </div>
+    <p style="font-size:0.75rem;color:var(--text-faint);font-style:italic;margin-bottom:1.5rem;">Council Member Chris Banks at the dais during the Committee on Public Housing oversight hearing on the Emergency Housing Voucher program. New York City Council, 250 Broadway, June 17, 2026. Photo: Deric Johnson / East New York Times</p>
+
+    <div class="article-byline">
+      <span><strong>Deric Johnson</strong></span>
+      <span>Reporter, East New York Times</span>
+      <span>250 Broadway, New York City</span>
+      <span>7 min read</span>
+    </div>
+
+    <div class="article-body">
+
+      <p>The number that stopped the room was 14.</p>
+
+      <p>Council Member Chris Banks chairs the City Council Committee on Public Housing. He represents District 42 in East New York. For more than an hour at today&rsquo;s oversight hearing at 250 Broadway, he pressed NYCHA and HPD officials on their plan to house the thousands of families about to lose their Emergency Housing Vouchers. The federal government cut the program four years early. The city has known since March 2025.</p>
+
+      <p>Banks asked how many families had actually been moved into alternative housing.</p>
+
+      <p>NYCHA said 14.</p>
+
+      <p>The audience gasped. Banks said: &ldquo;14 is astounding. I just want to write this so I can understand.&rdquo; At another point during the hearing, as agency officials continued to answer questions, one audience member said aloud: &ldquo;They&rsquo;re lying.&rdquo;</p>
+
+      <h2>The Numbers</h2>
+
+      <div class="numbers-grid">
+        <div class="stat-box"><span class="stat-num">5,100</span><span class="stat-label">NYCHA households losing EHV assistance by November</span></div>
+        <div class="stat-box"><span class="stat-num">700</span><span class="stat-label">Move-in ready units NYCHA has available today</span></div>
+        <div class="stat-box"><span class="stat-num">14</span><span class="stat-label">Families actually moved to alternative housing</span></div>
+        <div class="stat-box"><span class="stat-num">3,500</span><span class="stat-label">Additional units NYCHA says it still needs</span></div>
+        <div class="stat-box"><span class="stat-num">$125M</span><span class="stat-label">Annual federal funding being cut</span></div>
+        <div class="stat-box"><span class="stat-num">Nov 2026</span><span class="stat-label">When NYCHA funding runs out</span></div>
+      </div>
+
+      <h2>What the EHV Program Is</h2>
+
+      <p>Congress created the Emergency Housing Voucher program in 2021 through the American Rescue Plan. It provides rental assistance to domestic violence survivors, people experiencing homelessness, youth aging out of foster care, and people with disabilities. New York City received nearly 8,000 vouchers. NYCHA runs 5,100 of them. HPD administers roughly 2,000 more.</p>
+
+      <p>In March 2025, HUD said the program would run out of federal funding by the end of 2026, four years ahead of its original 2030 end date. Every family holding a voucher started counting down.</p>
+
+      <h2>What NYCHA Admitted</h2>
+
+      <p>NYCHA&rsquo;s Lakeisha Miller, Executive Vice President of Lease Housing, told the committee the agency was working to find housing options for every household. She said 67% of EHV households had completed a public housing application. Of those, roughly 1,000 were out of compliance with program requirements. She said 568 households had been matched to available units. Then she said 14 had moved.</p>
+
+      <p>Banks pressed on the math. NYCHA does not have 5,100 units available. It has 700. To house everyone, NYCHA acknowledged it needs 3,500 additional move-in ready units. Those units do not exist in its portfolio today.</p>
+
+      <div class="exchange-box">
+        <span class="ex-label">On the Record</span>
+        <div class="ex-line"><strong>Banks:</strong> &ldquo;Does NYCHA have enough units readily available to transfer the 5,200 EHV households to its portfolio?&rdquo;</div>
+        <div class="ex-line"><strong>NYCHA:</strong> &ldquo;We do not have 5,200 units available.&rdquo;</div>
+        <div class="ex-line"><strong>Banks:</strong> &ldquo;How many units will NYCHA need to turn over before a complete transfer is possible?&rdquo;</div>
+        <div class="ex-line"><strong>NYCHA:</strong> &ldquo;We would require rough math and an additional 3,500 units.&rdquo;</div>
+      </div>
+
+      <p>When Banks asked how long the transition would take, NYCHA said they were acting with urgency. Banks asked again. NYCHA said the process had been underway roughly a week.</p>
+
+      <h2>This Is Not a Lottery</h2>
+
+      <p>A NYCHA official compared the housing transition to a lottery. Banks corrected him on the record.</p>
+
+      <div class="exchange-box">
+        <span class="ex-label">The Exchange</span>
+        <div class="ex-line"><strong>NYCHA official:</strong> &ldquo;It&rsquo;s sort of like the lottery, you have to be in it to win it.&rdquo;</div>
+        <div class="ex-line"><strong>Banks:</strong> &ldquo;I want to be clear. This is not a lottery.&rdquo;</div>
+        <div class="ex-line"><strong>NYCHA official:</strong> &ldquo;I&rsquo;m sorry.&rdquo;</div>
+      </div>
+
+      <h2>No Commitment on Evictions</h2>
+
+      <p>Banks asked NYCHA directly: will you commit to not evicting any EHV tenants when the program ends?</p>
+
+      <p>NYCHA said no, without using that word. NYCHA&rsquo;s Brian Wilson explained that EHV holders live in private apartments with private landlords. When the subsidy stops, the relationship is between the tenant and the landlord. NYCHA said it would not be responsible for what happens next.</p>
+
+      <div class="exchange-box">
+        <span class="ex-label">When Banks Asked for a Commitment</span>
+        <div class="ex-line"><strong>Banks:</strong> &ldquo;You will not evict any tenants.&rdquo;</div>
+        <div class="ex-line"><strong>NYCHA:</strong> &ldquo;It won&rsquo;t be on us, the evictions. They are not, we&rsquo;re not their landlord. They were given these vouchers and they went into the private market.&rdquo;</div>
+        <div class="ex-line"><strong>Banks:</strong> &ldquo;Can you give us an estimate of how many households will be displaced?&rdquo;</div>
+        <div class="ex-line"><strong>NYCHA:</strong> &ldquo;No, because we really don&rsquo;t know.&rdquo;</div>
+      </div>
+
+      <h2>Two Agencies. Two Different Outcomes.</h2>
+
+      <p>HPD told a different story. All 2,000 of its EHV households received applications to move to a new program called Home TBRA. About 80% returned their applications. Those families do not have to move. They stay in their current apartments with a different voucher.</p>
+
+      <p>Princess Thomas, a domestic violence survivor with a NYCHA voucher, called out the difference directly in her testimony.</p>
+
+      <div class="pull-quote">
+        <p>&ldquo;I do not understand why families facing the same crisis are being treated differently depending on which agency managed their voucher.&rdquo;</p>
+        <cite>Princess Thomas, NYCHA EHV holder, City Council hearing, June 17, 2026</cite>
+      </div>
+
+      <p>HPD First Deputy Commissioner Adam Phillips confirmed it: &ldquo;For the HPD voucher holders, the transition from EHV to Home TBRA, no households are moving. It&rsquo;s just a different voucher program. Folks are not moving into other units, they&rsquo;re staying in their current units.&rdquo;</p>
+
+      <h2>The People in the Room</h2>
+
+      <p>Stephanie Mansfield testified first. She is a single mother of three neurodivergent children. She is a domestic violence survivor and a strangulation survivor. She navigates daily life with a traumatic brain injury. It took her ten years to be safely rehoused. The EHV gave her family two and a half years of stability.</p>
+
+      <div class="pull-quote">
+        <p>&ldquo;Two and a half years to be told that, hey, this voucher that provided that safety and security is no longer available for me and my children. This is why I am here. I am here to advocate for my children.&rdquo;</p>
+        <cite>Stephanie Mansfield, EHV recipient, City Council hearing, June 17, 2026</cite>
+      </div>
+
+      <p>She was nervous when she sat down. Banks offered her water and told her to take her time.</p>
+
+      <p>A woman testified through an Arabic translator. She is a single mother in Bay Ridge, a domestic violence survivor. She said the voucher was the only reason she felt safe. &ldquo;Before I got this voucher, I was extremely stressed about my ability to pay rent. I was considering going back to Egypt,&rdquo; she said. &ldquo;I don&rsquo;t want my daughter to change schools. I don&rsquo;t want her to lose her community.&rdquo;</p>
+
+      <p>A written statement was read on behalf of Dr. Qua&rsquo;ser Brown, who had a school interview and could not attend. &ldquo;Housing is the foundation that allows people to succeed. EHV gave me that foundation. We are not asking for luxury. We are asking for the opportunity to continue living, working, learning, and contributing to our communities.&rdquo;</p>
+
+      <h2>The Landlord Who Never Got the Letter</h2>
+
+      <p>NYCHA said it sent letters and emails to all affected landlords starting in March 2026. Angelica Charles, testifying virtually, said that was not true for her landlord.</p>
+
+      <p>&ldquo;I can tell you that my landlord never received that email,&rdquo; she said. &ldquo;I received the email in March. I followed all the protocols, but yet I was told that I&rsquo;m on the wait list.&rdquo;</p>
+
+      <h2>What CM Banks Introduced This Week</h2>
+
+      <p><strong>Intro 926</strong> requires NYCHA to report monthly on vacant units, how many are habitable, how many are under repair, and what the timelines are. NYCHA currently has no public monthly accounting of its vacancies.</p>
+
+      <p><strong>Resolution 495</strong> calls on the New York State Legislature to strengthen the state&rsquo;s Housing Access Voucher Program. As currently funded, HAVP covers roughly 1,000 vouchers statewide. There are 7,200 EHV households in New York City alone. Resolution 495 calls for more funding, stronger inspection standards, and priority placement for EHV holders losing their assistance.</p>
+
+      <h2>If You Hold an EHV Voucher</h2>
+
+      <div class="info-box">
+        <h3>What to Do Right Now</h3>
+        <ul>
+          <li><strong>NYCHA EHV holders:</strong> Complete your public housing application on the NYCHA self-service portal. Applications are still being accepted. This is required before NYCHA can place you in alternative housing.</li>
+          <li><strong>Make sure your annual recertification is current.</strong> About 1,000 households are out of compliance and at risk of being passed over.</li>
+          <li><strong>Make sure your apartment inspection is up to date.</strong> NYCHA cannot place you if your unit has an outstanding inspection issue.</li>
+          <li><strong>HPD EHV holders:</strong> Return your Home TBRA application immediately if you have not. You do not need to move. The transition keeps you in your current apartment.</li>
+          <li><strong>District 42 residents:</strong> Contact CM Banks&rsquo; office at (718) 649-9495 or <a href="https://council.nyc.gov/district-42/" target="_blank" rel="noopener" style="color:var(--accent);">council.nyc.gov/district-42</a></li>
+          <li><strong>Facing eviction or loss of assistance:</strong> Contact Legal Aid at <a href="https://legalaidnyc.org" target="_blank" rel="noopener" style="color:var(--accent);">legalaidnyc.org</a></li>
+          <li><strong>Domestic violence survivors:</strong> Contact New Destiny Housing at <a href="https://newdestinyhousing.org" target="_blank" rel="noopener" style="color:var(--accent);">newdestinyhousing.org</a></li>
+        </ul>
+      </div>
+
+      <h2>What Happens Next</h2>
+
+      <p>HPD&rsquo;s Home TBRA stop-gap program has about two years of funding. After that, the 1,700 NYCHA households and 2,000 HPD households on that program face the same problem again in 2028. Both agencies said the only long-term solution is restored federal Section 8 funding.</p>
+
+      <p>The city budget deadline is June 30. Whether EHV holders will be made eligible for CityFHEPS, which would let them stay in their current apartments with a city-funded voucher, remains unresolved. The Mamdani administration said it wants to use existing resources before adding CityFHEPS. Multiple council members and advocates pushed back on that position at the hearing.</p>
+
+      <p>East New York Times will continue to cover this. If you hold an EHV voucher in East New York and want to share your experience, email us at <a href="mailto:info@eastnewyorktimes.com" style="color:var(--accent);">info@eastnewyorktimes.com</a>.</p>
+
+      <div class="substack-cta">
+        <p>We will follow the EHV crisis until it is resolved. Get every story free.</p>
+        <a href="https://eastnewyorktimes.substack.com" target="_blank" rel="noopener" class="btn-accent">Subscribe on Substack</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Source: NYC City Council Committee on Public Housing Oversight Hearing, June 17, 2026. Testimony of Lakeisha Miller (NYCHA), Adam Phillips (HPD), Public Advocate, and residents. Transcript on file with East New York Times.</p>
+    <p style="margin-top:0.75rem;">&copy; 2026 East New York Times. A publication of <a href="https://urbanversionmedia.com">Urban Version Media</a>. Contact: <a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a></p>
+  </footer>
+
+</body>
+</html>
