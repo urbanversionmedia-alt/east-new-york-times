@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CB5 Brooklyn General Board Meeting — Last Chance Before Summer Break — East New York Times</title>
-  <meta name="description" content="The CB5 Brooklyn General Board meeting is Wednesday, June 24 at 6:30 PM at 127 Pennsylvania Avenue. This is the last meeting before the board goes on summer recess until September." />
-  <link rel="canonical" href="https://eastnewyorktimes.com/cb5tonight/" />
+  <title>Primary Election Day Is Today — East New York, Here Is Everything You Need to Vote — East New York Times</title>
+  <meta name="description" content="Polls are open until 9 PM tonight across Brooklyn. Here is your polling location, what is on the ballot, and what you need to know before you go." />
+  <link rel="canonical" href="https://eastnewyorktimes.com/primary2026/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="CB5 Brooklyn General Board Meeting — Last Chance Before the Summer Break" />
-  <meta property="og:description" content="The CB5 Brooklyn General Board meeting is Wednesday, June 24 at 6:30 PM at 127 Pennsylvania Avenue. Last meeting before summer recess." />
-  <meta property="og:image" content="https://eastnewyorktimes.com/127penn.jpg" />
-  <meta property="og:url" content="https://eastnewyorktimes.com/cb5tonight/" />
+  <meta property="og:title" content="Primary Election Day Is Today — East New York, Here Is Everything You Need to Vote" />
+  <meta property="og:description" content="Polls are open until 9 PM tonight across Brooklyn. Here is your polling location, what is on the ballot, and what you need to know before you go." />
+  <meta property="og:image" content="https://eastnewyorktimes.com/juneteenth-hero.jpg" />
+  <meta property="og:url" content="https://eastnewyorktimes.com/primary2026/" />
   <meta property="og:type" content="article" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -35,15 +35,18 @@
 
   <style>
     :root {
-      --bg: #0d0a1a;
-      --surface: #16112a;
-      --surface-2: #1d1735;
-      --accent: #8b5cf6;
-      --accent-dim: rgba(139, 92, 246, 0.12);
-      --accent-border: rgba(139, 92, 246, 0.35);
+      --bg: #0f0a0a;
+      --surface: #1a0f0f;
+      --surface-2: #221414;
+      --accent: #dc2626;
+      --accent-dim: rgba(220, 38, 38, 0.12);
+      --accent-border: rgba(220, 38, 38, 0.35);
+      --gold: #fbbf24;
+      --gold-dim: rgba(251, 191, 36, 0.12);
+      --gold-border: rgba(251, 191, 36, 0.3);
       --text: #e6edf3;
       --text-muted: #8b949e;
-      --text-faint: #4a4060;
+      --text-faint: #4a3535;
       --border: rgba(255,255,255,0.07);
       --radius: 6px;
       --radius-lg: 10px;
@@ -69,7 +72,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(13, 10, 26, 0.88);
+      background: rgba(15, 10, 10, 0.9);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
@@ -167,10 +170,7 @@
     }
     .tag--civic { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border); }
 
-    .article-date {
-      font-size: 0.8rem;
-      color: var(--text-faint);
-    }
+    .article-date { font-size: 0.8rem; color: var(--text-faint); }
 
     /* ── HEADLINE / DECK ── */
     .article-headline {
@@ -241,8 +241,9 @@
       line-height: 1.75;
     }
     .alert-details strong { color: var(--text); }
+    .alert-details a { color: var(--gold); text-decoration: underline; }
 
-    /* ── BODY TEXT ── */
+    /* ── BODY ── */
     .article-body { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .article-body p {
@@ -263,48 +264,86 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* ── ISSUE LIST ── */
-    .issue-list {
+    /* ── ACTION BOX (red left border) ── */
+    .action-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px 24px;
+      margin: 4px 0;
+    }
+
+    .action-box-title {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .action-box p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+    .action-box a { color: var(--gold); text-decoration: underline; }
+
+    /* ── AD54 CALLOUT BOX (gold) ── */
+    .ad54-box {
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 22px 26px;
+      margin: 4px 0;
+    }
+
+    .ad54-box .ad54-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .ad54-box p {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 0.85em;
+    }
+    .ad54-box p:last-of-type { margin-bottom: 0; }
+    .ad54-box strong { color: var(--text); }
+    .ad54-box a { color: var(--gold); text-decoration: underline; }
+
+    /* ── PLAIN LIST ── */
+    .plain-list {
       list-style: none;
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin: 4px 0;
+      gap: 10px;
     }
 
-    .issue-list li {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 18px 20px;
+    .plain-list li {
       font-size: 0.97rem;
       color: var(--text-muted);
       line-height: 1.7;
+      padding-left: 20px;
       position: relative;
-      padding-left: 52px;
     }
 
-    .issue-list li::before {
-      content: attr(data-n);
+    .plain-list li::before {
+      content: '—';
       position: absolute;
-      left: 16px;
-      top: 18px;
-      background: var(--accent-dim);
+      left: 0;
       color: var(--accent);
-      border: 1px solid var(--accent-border);
-      font-family: var(--font-display);
-      font-size: 0.78rem;
-      font-weight: 700;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-
-    .issue-list li strong { color: var(--text); display: block; margin-bottom: 4px; }
 
     /* ── INFO BOX ── */
     .info-box {
@@ -326,66 +365,34 @@
       margin-bottom: 12px;
     }
 
-    .info-box p {
+    .info-box p, .info-box ul {
       font-size: 0.94rem;
       color: var(--text-muted);
       line-height: 1.75;
     }
 
-    /* ── COMMITTEE TABLE ── */
-    .meeting-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.87rem;
-      margin: 4px 0;
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
-    .meeting-table thead tr {
-      border-bottom: 2px solid var(--border);
+    .info-box ul li {
+      padding-left: 18px;
+      position: relative;
     }
 
-    .meeting-table th {
-      font-family: var(--font-display);
-      font-size: 0.65rem;
+    .info-box ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
       font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      padding: 8px 10px;
-      text-align: left;
     }
 
-    .meeting-table td {
-      padding: 10px;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--surface-2);
-      line-height: 1.5;
-      vertical-align: top;
-    }
-
-    .meeting-table td strong { color: var(--text); }
-    .meeting-table tr:last-child td { border-bottom: none; }
-    .meeting-table tr:hover td { background: var(--surface); }
-
-    .ct {
-      display: inline-block;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 2px 7px;
-      border-radius: 3px;
-      margin-bottom: 3px;
-    }
-    .ct-general { background: rgba(139,92,246,0.2); color: var(--accent); }
-    .ct-housing { background: rgba(139,92,246,0.1); color: #a78bfa; }
-    .ct-safety  { background: rgba(248,81,73,0.1); color: #f85149; }
-    .ct-transit { background: rgba(88,166,255,0.1); color: #58a6ff; }
-    .ct-edu     { background: rgba(63,185,80,0.1); color: #3fb950; }
-    .ct-health  { background: rgba(88,166,255,0.1); color: #79c0ff; }
-    .ct-parks   { background: rgba(63,185,80,0.1); color: #56d364; }
-    .ct-econ    { background: rgba(210,153,34,0.12); color: #d29922; }
-    .ct-cannabis{ background: rgba(63,185,80,0.15); color: #3fb950; }
+    .info-box a { color: var(--gold); text-decoration: underline; }
 
     /* ── SUBSTACK CTA ── */
     .substack-cta {
@@ -417,7 +424,7 @@
     .substack-cta a {
       display: inline-block;
       background: var(--accent);
-      color: var(--bg);
+      color: #fff;
       font-family: var(--font-body);
       font-size: 0.85rem;
       font-weight: 700;
@@ -453,11 +460,8 @@
     @media (max-width: 600px) {
       .article-wrap { padding: 32px 16px 60px; }
       .back-bar, .header-inner { padding-left: 16px; padding-right: 16px; }
-      .meeting-table thead { display: none; }
-      .meeting-table tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--border); }
-      .meeting-table td { display: block; padding: 2px 0; border: none; }
       .substack-cta { padding: 24px 16px; }
-      .issue-list li { padding-left: 46px; }
+      .ad54-box { padding: 18px 18px; }
     }
   </style>
 </head>
@@ -474,13 +478,13 @@
   <main class="article-wrap">
 
     <div class="article-meta-top">
-      <span class="tag tag--civic">Civic + Governance</span>
+      <span class="tag tag--civic">Civic</span>
       <span class="article-date">June 23, 2026</span>
     </div>
 
-    <h1 class="article-headline">CB5 Brooklyn General Board Meeting — Last Chance Before the Summer Break</h1>
+    <h1 class="article-headline">Primary Election Day Is Today — East New York, Here Is Everything You Need to Vote</h1>
 
-    <p class="article-deck">The CB5 Brooklyn General Board meeting is Wednesday, June 24 at 6:30 PM at 127 Pennsylvania Avenue. This is the last meeting before the board goes on summer recess until September.</p>
+    <p class="article-deck">Polls are open until 9 PM tonight across Brooklyn. Here is your polling location, what is on the ballot, and what you need to know before you go.</p>
 
     <div class="article-byline">
       <strong>Deric Johnson</strong>
@@ -495,123 +499,79 @@
     <div class="article-body">
 
       <div class="alert-box">
-        <div class="alert-label">Wednesday, June 24 — Last Meeting Until September</div>
-        <div class="alert-title">CB5 Brooklyn General Board Meeting</div>
+        <div class="alert-label">Polls Are Open Now</div>
+        <div class="alert-title">Primary Election Day — Tuesday, June 23, 2026</div>
         <div class="alert-details">
-          <strong>Wednesday, June 24, 2026 at 6:30 PM</strong><br />
-          127 Pennsylvania Avenue, 3rd Floor, Brooklyn NY 11207<br />
-          Open to all residents
+          <strong>6:00 AM to 9:00 PM</strong><br />
+          Find your poll site: <a href="https://findmypollsite.vote.nyc" target="_blank" rel="noopener">findmypollsite.vote.nyc</a><br />
+          Anyone in line by 9 PM can vote
         </div>
       </div>
 
-      <p>Community Board 5 Brooklyn holds its last General Board meeting of the season on Wednesday, June 24 at 6:30 PM at 127 Pennsylvania Avenue. After this meeting, the board goes on summer recess and does not meet again until September 2026.</p>
+      <p>Today is Primary Election Day in New York. Polls opened at 6 AM and close at 9 PM. If you are registered to vote and have not yet cast your ballot, you can vote today at your assigned Election Day poll site. Note: your Election Day poll site may be different from your early voting location. Check before you go.</p>
 
-      <p>The General Board meeting is open to all residents. Public comment is on the agenda. You do not need to be a CB5 member to speak.</p>
+      <h2>How to Find Your Poll Site</h2>
 
-      <h2>Three Issues Worth Raising at the Meeting</h2>
+      <div class="action-box">
+        <div class="action-box-title">Find Your Poll Site</div>
+        <p>Go to <a href="https://findmypollsite.vote.nyc" target="_blank" rel="noopener">findmypollsite.vote.nyc</a> and enter your registered address. Your Election Day site is assigned to your home address — it is often a different location from where you voted during early voting.<br /><br />Questions? Call the Board of Elections at <a href="tel:8668683692">(866) 868-3692</a></p>
+      </div>
 
-      <ul class="issue-list">
-        <li data-n="1">
-          <strong>Innovative Urban Village grocery store</strong>
-          The development at Flatlands and Louisiana promised a 17,000 sq ft fresh food grocery store in Phase 1A. Is it leased? When does it open? East New York is a food desert and this commitment needs a timeline.
-        </li>
-        <li data-n="2">
-          <strong>Broadway Junction construction timeline</strong>
-          MTA and NYCEDC are spending $495M at Broadway Junction. What are the short-term safety fixes for residents while the full project runs through 2031?
-        </li>
-        <li data-n="3">
-          <strong>Essential Plan coverage cliff</strong>
-          The August 30 deadline is approaching. Has CB5 reached out to local health providers to ensure residents get notified in time?
-        </li>
+      <h2>What Is on the Ballot in East New York</h2>
+
+      <p>The biggest race on the ballot for many East New York residents today is the Democratic primary for <strong>New York's 7th Congressional District</strong> — the seat being vacated by retiring Rep. Nydia Velázquez, who represented parts of Brooklyn and Queens. Four candidates are running: <strong>Antonio Reynoso</strong> (Brooklyn Borough President, endorsed by Velázquez), <strong>Claire Valdez</strong> (Assembly Member, endorsed by Mayor Mamdani and the DSA), <strong>Julie Won</strong>, and <strong>Vichal Kumar</strong>. This race will shape federal representation for a district that includes parts of Brooklyn and Queens through 2028.</p>
+
+      <p>City Council primaries for Districts 37 (CM Sandy Nurse) and 42 (CM Chris Banks) are not on the ballot today — both council members won re-election in 2025 and are not up for re-election until 2029.</p>
+
+      <h2>The Race That Directly Affects East New York</h2>
+
+      <div class="ad54-box">
+        <div class="ad54-label">Assembly District 54 — On Your Ballot Today</div>
+        <p>Assembly District 54 covers Bushwick, Cypress Hills, and East New York — which means this race is directly on the ballot for many ENY Times readers today.</p>
+        <p>Incumbent Assemblymember <strong>Erik Dilan</strong> faces a challenge from <strong>Christian Celeste Tate</strong> (also known as CCT), an anti-poverty activist and Democratic Socialist endorsed by NYC-DSA and the Working Families Party. Dilan has held the seat for nearly a decade and survived two previous DSA challenges in 2022 and 2024 (the 2024 race was decided by just 190 votes).</p>
+        <p>The contrast is clear: Dilan is backed by major unions including <strong>1199SEIU, DC37, and the Hotel and Gaming Trades Council</strong>. Tate is backed by the same DSA network that helped elect Mayor Mamdani and is running on housing, healthcare, and anti-displacement.</p>
+        <p>If you live in the AD54 footprint — Cypress Hills, East New York, or the nearby parts of Bushwick — this race is on your ballot today.</p>
+        <p>Find your poll site: <a href="https://findmypollsite.vote.nyc" target="_blank" rel="noopener">findmypollsite.vote.nyc</a></p>
+      </div>
+
+      <h2>What Ranked-Choice Voting Means</h2>
+
+      <p>New York City uses ranked-choice voting in primary elections. You can rank up to five candidates in order of preference. Your first choice is counted first. If no candidate gets a majority, the lowest vote-getter is eliminated and their votes are redistributed to the next ranked choice. You do not have to rank all five — ranking just one is valid.</p>
+
+      <h2>What You Need to Bring</h2>
+
+      <ul class="plain-list">
+        <li>No ID required to vote in New York.</li>
+        <li>You will be asked to sign the poll book.</li>
+        <li>If your name is not in the poll book, ask for an affidavit ballot — you have the right to vote by affidavit.</li>
       </ul>
 
       <div class="info-box">
-        <h3>How to Participate</h3>
-        <p>Show up at 127 Pennsylvania Ave, 3rd Floor by 6:30 PM. Bring your address and a specific concern. Public comment typically opens within the first 30 minutes. The meeting runs until 8:30 PM.</p>
+        <h3>Need Help?</h3>
+        <ul>
+          <li>Board of Elections: <a href="tel:8668683692">(866) 868-3692</a></li>
+          <li>NYC Votes: <a href="https://www.nycvotes.org" target="_blank" rel="noopener">nycvotes.org</a></li>
+          <li>Find your poll site: <a href="https://findmypollsite.vote.nyc" target="_blank" rel="noopener">findmypollsite.vote.nyc</a></li>
+          <li>311 for general voting questions</li>
+        </ul>
       </div>
-
-      <h2>Full CB5 Brooklyn Committee Schedule</h2>
-
-      <p>All meetings are held at <strong>127 Pennsylvania Avenue, Brooklyn NY 11207</strong> unless otherwise posted. Check <a href="https://www.nyc.gov/site/brooklyncb5/meetings/meetings.page" target="_blank" rel="noopener" style="color:var(--accent);">nyc.gov/site/brooklyncb5</a> before attending.</p>
-
-      <table class="meeting-table">
-        <thead>
-          <tr>
-            <th>Committee</th>
-            <th>Schedule</th>
-            <th>Time</th>
-            <th>Room</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="ct ct-general">General Board</span><br /><strong>Full Board Meeting</strong></td>
-            <td>Every 4th Wednesday<br /><strong>Next: June 24, 2026</strong></td>
-            <td>6:30 PM</td>
-            <td>3rd Floor</td>
-          </tr>
-          <tr>
-            <td><span class="ct ct-housing">Housing</span><br /><strong>Land Use &amp; Housing</strong></td>
-            <td>Every 3rd Tuesday</td>
-            <td>6:30 PM</td>
-            <td>2nd Floor, Main Office</td>
-          </tr>
-          <tr>
-            <td><span class="ct ct-safety">Public Safety</span><br /><strong>Public Safety &amp; Quality of Life</strong></td>
-            <td>Every 2nd Monday</td>
-            <td>6:00 PM</td>
-            <td>2nd Floor, Conference Room</td>
-          </tr>
-          <tr>
-            <td><span class="ct ct-transit">Transit</span><br /><strong>Transportation &amp; TLC</strong></td>
-            <td>Every 3rd Monday</td>
-            <td>6:00 PM</td>
-            <td>2nd Floor, Conference Room</td>
-          </tr>
-          <tr>
-            <td><span class="ct ct-edu">Education</span><br /><strong>Education &amp; Youth Services</strong></td>
-            <td>Every 1st Thursday</td>
-            <td>6:30 PM</td>
-            <td>1st Floor, Aviation Room</td>
-          </tr>
-          <tr>
-            <td><span class="ct ct-health">Health</span><br /><strong>Aging, Health &amp; Social Services</strong></td>
-            <td>Every 2nd Tuesday</td>
-            <td>6:30 PM</td>
-            <td>2nd Floor, Conference Room</td>
-          </tr>
-          <tr>
-            <td><span class="ct ct-parks">Environment</span><br /><strong>Parks, Sanitation &amp; Environment</strong></td>
-            <td>Every 1st Tuesday</td>
-            <td>6:00 PM</td>
-            <td>2nd Floor, Conference Room</td>
-          </tr>
-          <tr>
-            <td><span class="ct ct-econ">Economic Dev</span><br /><strong>Economic Development, IBZ &amp; BIDs</strong></td>
-            <td>Every 2nd Wednesday</td>
-            <td>6:30 PM</td>
-            <td>2nd Floor, Conference Room</td>
-          </tr>
-          <tr>
-            <td><span class="ct ct-cannabis">Cannabis</span><br /><strong>Cannabis Committee</strong></td>
-            <td>Every 1st Monday</td>
-            <td>6:30 PM</td>
-            <td>2nd Floor, Conference Room</td>
-          </tr>
-        </tbody>
-      </table>
 
     </div>
 
     <div class="substack-cta">
-      <h3>Stay informed on civic and community news in East New York</h3>
+      <h3>Get East New York election coverage as it happens</h3>
       <p>Free updates, direct to your inbox — no spam.</p>
       <a href="https://eastnewyorktimes.substack.com" target="_blank" rel="noopener">Subscribe Free on Substack</a>
     </div>
 
     <div class="sources">
       <strong>Sources:</strong>
-      <a href="https://www.nyc.gov/site/brooklyncb5" target="_blank" rel="noopener">CB5 Brooklyn Meetings Page (nyc.gov/site/brooklyncb5)</a>
+      <a href="https://vote.nyc" target="_blank" rel="noopener">NYC Board of Elections (vote.nyc)</a> &nbsp;·&nbsp;
+      NYC311 &nbsp;·&nbsp;
+      <a href="https://www.ballotpedia.org" target="_blank" rel="noopener">Ballotpedia</a> &nbsp;·&nbsp;
+      <a href="https://www.cityandstateny.com" target="_blank" rel="noopener">City &amp; State NY (cityandstateny.com)</a> &nbsp;·&nbsp;
+      <a href="https://indypendent.org" target="_blank" rel="noopener">The Indypendent (indypendent.org)</a> &nbsp;·&nbsp;
+      <a href="https://bkreader.com" target="_blank" rel="noopener">BKReader (bkreader.com)</a>
     </div>
 
   </main>
