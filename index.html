@@ -458,6 +458,20 @@
     .article-card h2 a:hover { color: var(--accent); }
     .article-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; max-width: none; }
 
+    /* ── LETTERS TO THE EDITOR ─────────────────── */
+    .letters-band { padding-block: 3rem; border-bottom: 1px solid var(--border); background: linear-gradient(135deg, rgba(232,149,42,.08), transparent 55%); }
+    .letter-feature { display: grid; grid-template-columns: minmax(190px,.55fr) 1.45fr; gap: clamp(1.5rem,4vw,3.5rem); align-items: stretch; }
+    .letter-mark { min-height: 280px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .letter-mark:after { content: '“'; position: absolute; right: 1rem; bottom: -3.8rem; font-family: Georgia,serif; font-size: 13rem; line-height: 1; color: var(--accent-dim); }
+    .letter-mark-label { font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+    .letter-mark-title { font-family: var(--font-display); font-size: clamp(2rem,5vw,3.8rem); line-height: .92; letter-spacing: -.04em; max-width: 5ch; position: relative; z-index: 1; }
+    .letter-feature-copy { align-self: center; }
+    .letter-feature-copy h2 { font-family: var(--font-display); font-size: clamp(1.55rem,3vw,2.4rem); line-height: 1.08; letter-spacing: -.025em; margin: .8rem 0 1rem; }
+    .letter-feature-copy h2 a:hover { color: var(--accent); }
+    .letter-feature-copy > p { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+    .letters-intro { max-width: 720px; margin-bottom: 2rem; }
+    .letters-intro a { color: var(--accent); }
+
     /* ── ABOUT PAGE ─────────────────────────────── */
     .about-content { max-width: 720px; margin: 0 auto; padding-block: 2rem 3rem; }
     .about-content h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 0.5rem; }
@@ -497,6 +511,8 @@
       .articles-grid { grid-template-columns: 1fr; }
       .events-grid { grid-template-columns: 1fr; }
       .values-grid { grid-template-columns: 1fr; }
+      .letter-feature { grid-template-columns: 1fr; }
+      .letter-mark { min-height: 220px; }
     }
     @media (max-width: 640px) {
       .nav { display: none; }
@@ -530,6 +546,7 @@
         <ul>
           <li><a href="#" onclick="showPage('home'); return false;" class="active" id="nav-home">Home</a></li>
           <li><a href="#" onclick="showPage('articles'); return false;" id="nav-articles">Stories</a></li>
+          <li><a href="#" onclick="showPage('letters'); return false;" id="nav-letters">Letters</a></li>
           <li><a href="#" onclick="showPage('events'); return false;" id="nav-events">Events</a></li>
           <li><a href="#" onclick="showPage('about'); return false;" id="nav-about">About</a></li>
         </ul>
@@ -546,6 +563,7 @@
       <ul>
         <li><a href="#" onclick="showPage('home'); closeMobileNav(); return false;">Home</a></li>
         <li><a href="#" onclick="showPage('articles'); closeMobileNav(); return false;">Stories</a></li>
+        <li><a href="#" onclick="showPage('letters'); closeMobileNav(); return false;">Letters</a></li>
         <li><a href="#" onclick="showPage('events'); closeMobileNav(); return false;">Events</a></li>
         <li><a href="#" onclick="showPage('about'); closeMobileNav(); return false;">About</a></li>
       </ul>
@@ -842,6 +860,29 @@
       </div>
     </section>
 
+    <!-- Letters to the Editor -->
+    <section class="letters-band">
+      <div class="container">
+        <div class="section-head">
+          <h2>Letters to the Editor</h2>
+          <div class="section-head-line"></div>
+          <a href="#" onclick="showPage('letters'); return false;">Read Letters →</a>
+        </div>
+        <article class="letter-feature">
+          <a class="letter-mark" href="/letter-real-nycha-story-accountability/" aria-label="Read The Real NYCHA Story Is Not Public vs. Private">
+            <span class="letter-mark-label">Reader response</span>
+            <span class="letter-mark-title">Who answers?</span>
+          </a>
+          <div class="letter-feature-copy">
+            <span class="tag tag--accent">Letter to the Editor</span>
+            <h2><a href="/letter-real-nycha-story-accountability/">The Real NYCHA Story Is Not Public vs. Private. It’s Who Answers When the Ceiling Comes Down.</a></h2>
+            <p>A policy writer responds to our coverage of Councilmember Chris Banks’s warning on PACT, and points to the federal monitor that ends the moment a building converts.</p>
+            <div class="story-meta"><span><strong>Delaine Dixon, MPA I/O</strong></span><span>Jul 30, 2026</span><span>5 min read</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- Split: More Stories + Events -->
     <section class="split-section">
       <div class="container">
@@ -1028,6 +1069,16 @@
         <p>Every article published by East New York Times — civic coverage, community voices, and neighborhood news.</p>
       </div>
       <div class="articles-grid">
+        <div class="article-card">
+          <a class="letter-mark" href="/letter-real-nycha-story-accountability/" aria-label="Read The Real NYCHA Story Is Not Public vs. Private">
+            <span class="letter-mark-label">Reader response</span>
+            <span class="letter-mark-title">Who answers?</span>
+          </a>
+          <span class="tag tag--accent">Letter to the Editor</span>
+          <h2><a href="/letter-real-nycha-story-accountability/">The Real NYCHA Story Is Not Public vs. Private. It’s Who Answers When the Ceiling Comes Down.</a></h2>
+          <p>A policy writer responds to our coverage of Councilmember Chris Banks’s warning on PACT and focuses the debate on enforceable accountability.</p>
+          <div class="story-meta"><span><strong>Delaine Dixon, MPA I/O</strong></span><span>Jul 30, 2026</span><span>5 min read</span></div>
+        </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
             <img src="broadway-junction-hire-east-ny.jpg" alt="A resident holds a Hire East NY sign at a Broadway Junction local hiring rally" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
@@ -1257,6 +1308,33 @@
     </div>
   </div>
 
+
+  <!-- ══════════════════════════════════════════════
+       LETTERS PAGE
+  ══════════════════════════════════════════════ -->
+  <div class="page" id="page-letters">
+    <div class="container">
+      <div class="page-hero">
+        <h1>Letters to the <span>Editor</span></h1>
+        <p>Reader arguments and responses on matters of local concern, published with verified authorship and light editing for length and clarity.</p>
+      </div>
+      <div class="letters-intro">
+        <p>East New York Times welcomes letters from readers. Send submissions to <a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a>.</p>
+      </div>
+      <article class="letter-feature" style="padding-bottom:3rem;">
+        <a class="letter-mark" href="/letter-real-nycha-story-accountability/" aria-label="Read The Real NYCHA Story Is Not Public vs. Private">
+          <span class="letter-mark-label">Reader response</span>
+          <span class="letter-mark-title">Who answers?</span>
+        </a>
+        <div class="letter-feature-copy">
+          <span class="tag tag--accent">Letter to the Editor</span>
+          <h2><a href="/letter-real-nycha-story-accountability/">The Real NYCHA Story Is Not Public vs. Private. It’s Who Answers When the Ceiling Comes Down.</a></h2>
+          <p>A policy writer responds to our coverage of Councilmember Chris Banks’s warning on PACT, and points to the federal monitor that ends the moment a building converts.</p>
+          <div class="story-meta"><span><strong>Delaine Dixon, MPA I/O</strong></span><span>Jul 30, 2026</span><span>5 min read</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════════════════
        EVENTS PAGE
@@ -1695,6 +1773,7 @@
           <ul>
             <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
             <li><a href="#" onclick="showPage('articles'); return false;">Stories</a></li>
+            <li><a href="#" onclick="showPage('letters'); return false;">Letters to the Editor</a></li>
             <li><a href="#" onclick="showPage('events'); return false;">Events</a></li>
             <li><a href="#" onclick="showPage('about'); return false;">About</a></li>
           </ul>
