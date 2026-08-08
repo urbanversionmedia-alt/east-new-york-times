@@ -1,8 +1,5 @@
 /primary2026/ /primary2026/index.html 200
-/cb5tonight/ /cb5tonight/index.html 200
-/essentialupdate/ /essentialupdate/index.html 200
 /cb5meetings/ /cb5meetings/index.html 200
-/ami/ /ami/index.html 200
 /juneteenth/ /juneteenth/index.html 200
 /cityfheps/ /cityfheps/index.html 200
 /resourcefair/ /resourcefair/index.html 200
@@ -27,3 +24,12 @@
 /townhall/ /townhall/index.html 200
 /restaurant/ /restaurant/index.html 200
 /publicsafety/ /publicsafety/index.html 200
+/gline/ /gline/index.html 200
+
+# legacy space-encoded URLs -> clean paths
+/rent%20board/ /rentboard/ 301!
+/rent%20board/index.html /rentboard/ 301!
+/resource%20fair/ /resourcefair/ 301!
+/resource%20fair/index.html /resourcefair/ 301!
+/senior%20day/ /seniorday/ 301!
+/senior%20day/index.html /seniorday/ 301!
