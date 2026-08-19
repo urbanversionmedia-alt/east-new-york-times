@@ -35,3 +35,5 @@
 /resource%20fair/index.html /resourcefair/ 301!
 /senior%20day/ /seniorday/ 301!
 /senior%20day/index.html /seniorday/ 301!
+
+/stories/ /stories/index.html 200
