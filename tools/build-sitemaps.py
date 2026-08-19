@@ -38,12 +38,16 @@ NEWS_WINDOW_DAYS = 2
 # They belong in sitemap.xml but never in news-sitemap.xml.
 NOT_NEWS = {
     "stories",
+    "ethics",
+    "corrections",
     "honorary-street-names",
     "how-to-request-street-conaming-cb5",
 }
 
 # Undated pages: give sitemap.xml a sensible lastmod without faking a news date.
 STATIC_LASTMOD = {
+    "ethics": "2026-08-19",
+    "corrections": "2026-08-19",
     "honorary-street-names": "2026-08-19",
     "how-to-request-street-conaming-cb5": "2026-08-19",
     "virginia-burroughs-way-video": "2026-08-19",
@@ -93,7 +97,8 @@ def build_sitemap(root: str, slugs, today: str) -> str:
             continue
         iso = published_iso(root, slug)
         lastmod = (iso[:10] if iso else STATIC_LASTMOD.get(slug, today))
-        entries.append((f"{SITE}/{slug}/", lastmod, "monthly", "0.8"))
+        prio = "0.5" if slug in ("ethics", "corrections") else "0.8"
+        entries.append((f"{SITE}/{slug}/", lastmod, "monthly", prio))
 
     body = "\n".join(
         f"  <url>\n"
