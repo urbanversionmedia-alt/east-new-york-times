@@ -1,6 +1,6 @@
 # tools/
 
-Three generator scripts. Run them from the repo root. They read the repo's own
+Four generator scripts. Run them from the repo root. They read the repo's own
 files, so they never need editing when you add a story — just run them.
 
 ## Whenever you publish or update a story
@@ -75,17 +75,49 @@ and `PUBLISHED_LABEL`.
 
 ---
 
-## Known gap: logo sizes
+## `build-icons.py`
 
-Google News uses your **site favicon** as the publisher logo on standard News
-surfaces, not an uploaded logo. Current assets:
+Regenerates the full square-icon set from the ENYT wordmark typeface:
 
-| File | Size | Note |
+| File | Size | Used for |
 |---|---|---|
-| `favicon.png` | 32×32 | Too small for a publisher logo |
-| `logo.png` | 600×60 | Wide wordmark |
-| `logo-dark.png` | 1200×120 | Wide wordmark |
+| `favicon.svg` | vector | Modern browsers. Glyphs are converted to paths, so it needs no webfont. |
+| `favicon.png` | 512×512 | General use, and the **Google News publisher logo** — Google uses your favicon for this, not an uploaded logo. |
+| `favicon.ico` | 16 / 32 / 48 | Legacy browsers, multi-resolution. |
+| `apple-touch-icon.png` | 180×180 | iOS home screen. |
+| `enyt-square-512.png` | 512×512 | Upload copy for LION Publishers and Project Oasis. |
 
-There is no square logo in the repo. A **512×512 square** version of the ENYT
-mark is needed for Google News and for directory listings such as LION
-Publishers and Project Oasis. This is a design task, not a script task.
+The mark is `EN` in off-white over `YT` in amber on the dark brand field, with the
+same 12.5% corner radius as the original favicon. It was chosen over a single-line
+`ENYT` or a lone `E` because it stays legible at 32px in a browser tab while still
+reading as ENYT at 512px, which is the size Google News shows a publisher logo at.
+
+Running it also writes `tools/_icon-qa-preview.png`, a strip of every size from
+512px down to 16px. Look at that file after any change — small-size legibility is
+the whole point of this mark and it cannot be judged at full size.
+
+### Requires the brand font
+
+`build-icons.py` needs Clash Display Bold, the same face as the wordmark. It is not
+committed to the repo. Fetch it once:
+
+```bash
+curl -sL -o /tmp/clash700.ttf "$(curl -s 'https://api.fontshare.com/v2/css?f[]=clash-display@700' \
+  | grep -o 'https\?://[^)]*\.ttf' | head -1)"
+python3 tools/build-icons.py
+```
+
+Or point it somewhere else with `CLASH_TTF=/path/to/font.ttf`.
+
+To change the mark, edit `render()` for the raster and `build_svg()` for the
+vector. Both must be changed together or the SVG and PNG will disagree — compare
+them after any edit.
+
+---
+
+## Wide wordmarks
+
+`logo.png` (600×60) and `logo-dark.png` (1200×120) are the horizontal wordmarks.
+They remain the right choice for the site masthead and for the `logo` property in
+the homepage `NewsMediaOrganization` schema. Do not upload them to directories
+that display a square avatar — use `enyt-square-512.png` there.

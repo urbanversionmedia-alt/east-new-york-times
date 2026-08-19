@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#0d1117"/>
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="16" fill="#e8952a">E</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="East New York Times">
+  <rect width="512" height="512" rx="64.0" fill="#0d1117"/>
+  <g fill="#e6edf3" transform="translate(95.439 251.808) scale(0.232024 -0.232024)">
+    <path transform="translate(0 0)" d="M625 0H30V670H625V501H218V421H610V253H218V169H625Z"/>
+    <path transform="translate(648 0)" d="M218 0H30V670H230L416 419L514 265H527L518 411V670H706V0H506L308 258L223 390H210L218 262Z"/>
+  </g>
+  <g fill="#e8952a" transform="translate(105.563 418.793) scale(0.210844 -0.210844)">
+    <path transform="translate(0 0)" d="M474 0H286V213L-15 670H218L319 511L376 417H389L446 511L547 670H781L474 212Z"/>
+    <path transform="translate(766 0)" d="M440 0H252V501H15V670H676V501H440Z"/>
+  </g>
 </svg>
