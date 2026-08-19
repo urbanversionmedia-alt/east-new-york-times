@@ -1,97 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESCSB47KZY"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ESCSB47KZY');
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Editorial Standards, Ethics & Conflicts of Interest — East New York Times</title>
-  <meta name="description" content="How the East New York Times reports: editorial independence, the wall between Urban Version Media client work and ENYT coverage, disclosure and recusal, political clients, sponsored-content labeling, sourcing standards and AI use." />
-  <link rel="canonical" href="https://eastnewyorktimes.com/ethics/" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="East New York Times" />
-  <meta property="og:title" content="Editorial Standards, Ethics & Conflicts of Interest — East New York Times" />
-  <meta property="og:description" content="How the East New York Times reports: editorial independence, the wall between Urban Version Media client work and ENYT coverage, disclosure and recusal, political clients, sponsored-content labeling, sourcing standards and AI use." />
-  <meta property="og:url" content="https://eastnewyorktimes.com/ethics/" />
-  <meta property="og:image" content="https://eastnewyorktimes.com/broadway-junction-hire-east-ny.jpg" />
-  <meta property="og:locale" content="en_US" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Editorial Standards, Ethics & Conflicts of Interest — East New York Times" />
-  <meta name="twitter:description" content="How the East New York Times reports: editorial independence, the wall between Urban Version Media client work and ENYT coverage, disclosure and recusal, political clients, sponsored-content labeling, sourcing standards and AI use." />
-  <meta name="twitter:image" content="https://eastnewyorktimes.com/broadway-junction-hire-east-ny.jpg" />
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Editorial standards, ethics and conflicts of interest",
-  "url": "https://eastnewyorktimes.com/ethics/",
-  "description": "How the East New York Times reports: editorial independence, the wall between Urban Version Media client work and ENYT coverage, disclosure and recusal, political clients, sponsored-content labeling, sourcing standards and AI use.",
-  "datePublished": "2026-08-19",
-  "dateModified": "2026-08-19",
-  "inLanguage": "en-US",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "East New York Times",
-    "alternateName": "ENYT",
-    "url": "https://eastnewyorktimes.com/"
-  },
-  "publisher": {
-    "@type": "NewsMediaOrganization",
-    "name": "East New York Times",
-    "alternateName": "ENYT",
-    "url": "https://eastnewyorktimes.com/",
-    "email": "info@eastnewyorktimes.com",
-    "sameAs": [
-      "https://www.instagram.com/eastnewyorktimes/",
-      "https://www.youtube.com/@eastnewyorktimes",
-      "https://eastnewyorktimes.substack.com"
-    ],
-    "ethicsPolicy": "https://eastnewyorktimes.com/ethics/",
-    "correctionsPolicy": "https://eastnewyorktimes.com/corrections/",
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "Urban Version Media",
-      "url": "https://urbanversionmedia.com"
-    }
-  },
-  "about": {
-    "@type": "Thing",
-    "name": "Journalism ethics and conflicts of interest"
-  }
-}
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://eastnewyorktimes.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Editorial Standards",
-      "item": "https://eastnewyorktimes.com/ethics/"
-    }
-  ]
-}
-  </script>
-  <style>
+#!/usr/bin/env python3
+"""Generate /ethics/ and /corrections/ policy pages for eastnewyorktimes.com."""
+import os, json
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE = "https://eastnewyorktimes.com"
+EFFECTIVE = "September 1, 2026"        # date the policy takes effect (shown to readers)
+EFFECTIVE_ISO = "2026-09-01"
+PUBLISHED_ISO = "2026-08-19"           # date the page went live (schema datePublished)
+
+CSS = """
     :root {
       --bg: #0d1117; --surface: #161b22; --surface-2: #1c2128; --surface-3: #21262d;
       --border: #2d333b; --divider: #21262d;
@@ -203,7 +120,54 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
     @media (max-width: 620px) { .nav ul { gap: 1rem; } }
-  </style>
+"""
+
+
+PUBLISHED_LABEL = "August 19, 2026"
+
+
+def shell(*, slug, title, description, h1, eyebrow, standfirst, toc, body, schema):
+    toc_html = "\n            ".join(
+        f'<li><a href="#{anchor}">{label}</a></li>' for anchor, label in toc
+    )
+    schema_html = "\n".join(
+        f'  <script type="application/ld+json">\n{json.dumps(s, indent=2)}\n  </script>'
+        for s in schema
+    )
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESCSB47KZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-ESCSB47KZY');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content="{description}" />
+  <link rel="canonical" href="{SITE}/{slug}/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="East New York Times" />
+  <meta property="og:title" content="{title}" />
+  <meta property="og:description" content="{description}" />
+  <meta property="og:url" content="{SITE}/{slug}/" />
+  <meta property="og:image" content="{SITE}/broadway-junction-hire-east-ny.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{title}" />
+  <meta name="twitter:description" content="{description}" />
+  <meta name="twitter:image" content="{SITE}/broadway-junction-hire-east-ny.jpg" />
+{schema_html}
+  <style>{CSS}  </style>
 </head>
 <body>
 
@@ -219,8 +183,8 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/stories/">Archive</a></li>
-          <li><a href="/ethics/" class="active" aria-current="page">Ethics</a></li>
-          <li><a href="/corrections/">Corrections</a></li>
+          <li><a href="/ethics/"{' class="active" aria-current="page"' if slug == 'ethics' else ''}>Ethics</a></li>
+          <li><a href="/corrections/"{' class="active" aria-current="page"' if slug == 'corrections' else ''}>Corrections</a></li>
           <li><a href="https://eastnewyorktimes.substack.com" target="_blank" rel="noopener">Subscribe</a></li>
         </ul>
       </nav>
@@ -230,10 +194,10 @@
   <main>
     <div class="policy-hero">
       <div class="container">
-        <span class="eyebrow">Editorial Standards</span>
-        <h1>Editorial standards, ethics and conflicts of interest</h1>
-        <p class="standfirst">Everything a reader, source or subject needs to know about how the East New York Times decides what to publish — and what cannot be bought.</p>
-        <p class="policy-meta">Effective September 1, 2026 · Published August 19, 2026 · Urban Version Media LLC</p>
+        <span class="eyebrow">{eyebrow}</span>
+        <h1>{h1}</h1>
+        <p class="standfirst">{standfirst}</p>
+        <p class="policy-meta">Effective {EFFECTIVE} · Published {PUBLISHED_LABEL} · Urban Version Media LLC</p>
       </div>
     </div>
 
@@ -242,18 +206,7 @@
         <nav class="panel" aria-label="On this page">
           <h2>On this page</h2>
           <ul class="toc">
-            <li><a href="#who-we-are">Who we are</a></li>
-            <li><a href="#independence">Editorial independence</a></li>
-            <li><a href="#the-wall">The wall between UVM and ENYT</a></li>
-            <li><a href="#disclosure">Disclosure and recusal</a></li>
-            <li><a href="#political">Political clients and campaigns</a></li>
-            <li><a href="#advertising">Advertising and sponsored content</a></li>
-            <li><a href="#sourcing">Sourcing and verification</a></li>
-            <li><a href="#ai">How we use AI tools</a></li>
-            <li><a href="#opinion">Opinion, letters and analysis</a></li>
-            <li><a href="#gifts">Gifts, access and civic roles</a></li>
-            <li><a href="#corrections">Corrections</a></li>
-            <li><a href="#contact">Questions and complaints</a></li>
+            {toc_html}
           </ul>
         </nav>
         <div class="panel">
@@ -265,7 +218,68 @@
       </aside>
 
       <div class="prose">
-        <section id="who-we-are">
+{body}
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>East New York <span>Times</span></h3>
+          <p>Independent community journalism covering East New York, Brooklyn. Civic news,
+          local stories, and community events. Also known as ENYT.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/stories/">Story Archive</a></li>
+            <li><a href="/honorary-street-names/">Honorary Names</a></li>
+            <li><a href="/the-sit-down/">The Sit Down</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Standards</h4>
+          <ul>
+            <li><a href="/ethics/">Editorial Standards &amp; Ethics</a></li>
+            <li><a href="/corrections/">Corrections Policy</a></li>
+            <li><a href="mailto:info@eastnewyorktimes.com">Report an Error</a></li>
+            <li><a href="mailto:info@eastnewyorktimes.com">Submit a Story Tip</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 East New York Times. A publication of Urban Version Media. All rights reserved.</p>
+        <p>East New York · Brooklyn · New York City</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+"""
+
+
+# ────────────────────────────── ETHICS ──────────────────────────────
+
+ETHICS_TOC = [
+    ("who-we-are", "Who we are"),
+    ("independence", "Editorial independence"),
+    ("the-wall", "The wall between UVM and ENYT"),
+    ("disclosure", "Disclosure and recusal"),
+    ("political", "Political clients and campaigns"),
+    ("advertising", "Advertising and sponsored content"),
+    ("sourcing", "Sourcing and verification"),
+    ("ai", "How we use AI tools"),
+    ("opinion", "Opinion, letters and analysis"),
+    ("gifts", "Gifts, access and civic roles"),
+    ("corrections", "Corrections"),
+    ("contact", "Questions and complaints"),
+]
+
+ETHICS_BODY = """        <section id="who-we-are">
           <h2>Who we are</h2>
           <p><strong>The East New York Times</strong> (ENYT) is an independent community news
           publication covering East New York, Cypress Hills, City Line, Starrett City and
@@ -460,46 +474,206 @@
           relationship, or violated anything on this page, write to
           <a class="inline" href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a>.
           A person reads every message and you will get a response.</p>
-          <p>This policy was published on August 19, 2026 and takes effect September 1, 2026.
+          <p>This policy was published on """ + PUBLISHED_LABEL + """ and takes effect """ + EFFECTIVE + """.
           We will update it as the publication grows, and material changes will be dated here.</p>
+        </section>"""
+
+
+# ──────────────────────────── CORRECTIONS ────────────────────────────
+
+CORRECTIONS_TOC = [
+    ("commitment", "Our commitment"),
+    ("report", "How to report an error"),
+    ("what-we-do", "What we do when you tell us"),
+    ("levels", "Corrections, clarifications, updates"),
+    ("no-unpublishing", "We do not unpublish"),
+    ("log", "Published corrections"),
+]
+
+CORRECTIONS_BODY = """        <section id="commitment">
+          <h2>Our commitment</h2>
+          <p>The East New York Times is reported by people, and people get things wrong. What
+          separates a trustworthy publication from an untrustworthy one is not the absence of
+          errors — it is what happens after one.</p>
+          <p>When we get something wrong, we correct it promptly, we say plainly what was wrong,
+          and we leave a permanent record on the story itself. We do not delete a story to make a
+          mistake disappear, and we do not quietly edit an error out and pretend it was never
+          there.</p>
         </section>
-      </div>
-    </div>
-  </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h3>East New York <span>Times</span></h3>
-          <p>Independent community journalism covering East New York, Brooklyn. Civic news,
-          local stories, and community events. Also known as ENYT.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Navigate</h4>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/stories/">Story Archive</a></li>
-            <li><a href="/honorary-street-names/">Honorary Names</a></li>
-            <li><a href="/the-sit-down/">The Sit Down</a></li>
+        <section id="report">
+          <h2>How to report an error</h2>
+          <p>Email <a class="inline" href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a>
+          with <strong>Correction</strong> in the subject line. That subject line moves your
+          message to the front of the queue.</p>
+          <p>It helps if you can include:</p>
+          <ul class="bullets">
+            <li>A link to the story, or its headline and date</li>
+            <li>The specific sentence, number, name, date or quote you believe is wrong</li>
+            <li>What the correct information is</li>
+            <li>Anything that supports it — a document, a record, a link, or simply your firsthand
+            knowledge</li>
           </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Standards</h4>
-          <ul>
-            <li><a href="/ethics/">Editorial Standards &amp; Ethics</a></li>
-            <li><a href="/corrections/">Corrections Policy</a></li>
-            <li><a href="mailto:info@eastnewyorktimes.com">Report an Error</a></li>
-            <li><a href="mailto:info@eastnewyorktimes.com">Submit a Story Tip</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 East New York Times. A publication of Urban Version Media. All rights reserved.</p>
-        <p>East New York · Brooklyn · New York City</p>
-      </div>
-    </div>
-  </footer>
+          <p>You do not need to be the subject of a story to report an error, you do not need
+          documents to raise a concern, and you do not need to be certain. Tell us and we will
+          check it.</p>
+          <p>If you are the subject of a story and believe it is unfair rather than factually
+          wrong, write to us as well. That is a different conversation than a correction, and we
+          want to have it. A response from you may become a
+          <a class="inline" href="/ethics/#opinion">letter to the editor</a>.</p>
+        </section>
 
-</body>
-</html>
+        <section id="what-we-do">
+          <h2>What we do when you tell us</h2>
+          <ol class="steps">
+            <li><strong>We acknowledge you.</strong> You get a reply from a person, normally within
+            two business days.</li>
+            <li><strong>We check it.</strong> We return to the original sourcing — the transcript,
+            the record, the document, the person we interviewed — rather than relying on memory.</li>
+            <li><strong>We fix it fast when we are wrong.</strong> A clear factual error is
+            corrected as soon as we have confirmed it, typically the same day.</li>
+            <li><strong>We label the fix on the story.</strong> The correction appears on the
+            article itself, dated, describing what was wrong and what it now says. It is not
+            hidden at the bottom in small type and it is not removed later.</li>
+            <li><strong>We tell you what we found.</strong> If we conclude the original reporting
+            was accurate, we explain our reasoning rather than going silent.</li>
+            <li><strong>We fix it everywhere.</strong> If the error also went out in our newsletter,
+            on social media or in a video, we correct it on those platforms too.</li>
+          </ol>
+        </section>
+
+        <section id="levels">
+          <h2>Corrections, clarifications and updates</h2>
+          <p>We use three labels, and we use them consistently so readers know exactly what
+          changed.</p>
+          <h3>Correction</h3>
+          <p>We published something factually wrong — a wrong name, title, number, date, location,
+          or a misattributed quote. The label states the error and the fix. Example:
+          <em>Correction, August 19, 2026: An earlier version of this story misstated the number of
+          residents hired. It is 13, not 30.</em></p>
+          <h3>Clarification</h3>
+          <p>What we published was accurate but could reasonably be misread, or was missing context
+          that changes how a reader understands it. We add the context and label it.</p>
+          <h3>Update</h3>
+          <p>Nothing was wrong. The story developed — a vote happened, an agency responded, a
+          number changed. We add the new information with a dated update note, and we do not
+          re-timestamp an old story to make it look new.</p>
+          <p>Fixing a typo or a broken link does not get a public note. Anything that changes a
+          fact, a number, a name or the meaning of a sentence does.</p>
+        </section>
+
+        <section id="no-unpublishing">
+          <h2>We do not unpublish</h2>
+          <p>Published journalism is a public record. We do not remove a story because a subject
+          later regrets what they said, dislikes the coverage, or asks us to take it down.</p>
+          <p>We make narrow exceptions in rare circumstances — for example, when leaving material
+          online would put someone at genuine risk of harm, or when a court requires removal. In
+          those cases we will normally note that a change was made. Requests are decided by the
+          editor and we will explain our decision to the person who asked.</p>
+        </section>
+
+        <section id="log">
+          <h2>Published corrections</h2>
+          <p>Corrections are always posted on the story they belong to. Substantive corrections
+          are also listed here so readers can see our full record in one place.</p>
+          <div class="empty-log">
+            <p>No corrections have been published to date. When we issue one, it will appear here
+            with the date, the story, and what changed.</p>
+          </div>
+        </section>"""
+
+
+def main():
+    org_ref = {
+        "@type": "NewsMediaOrganization",
+        "name": "East New York Times",
+        "alternateName": "ENYT",
+        "url": f"{SITE}/",
+        "email": "info@eastnewyorktimes.com",
+        "sameAs": [
+            "https://www.instagram.com/eastnewyorktimes/",
+            "https://www.youtube.com/@eastnewyorktimes",
+            "https://eastnewyorktimes.substack.com",
+        ],
+        "ethicsPolicy": f"{SITE}/ethics/",
+        "correctionsPolicy": f"{SITE}/corrections/",
+        "parentOrganization": {
+            "@type": "Organization",
+            "name": "Urban Version Media",
+            "url": "https://urbanversionmedia.com",
+        },
+    }
+
+    pages = {
+        "ethics": dict(
+            title="Editorial Standards, Ethics & Conflicts of Interest — East New York Times",
+            description=(
+                "How the East New York Times reports: editorial independence, the wall between "
+                "Urban Version Media client work and ENYT coverage, disclosure and recusal, "
+                "political clients, sponsored-content labeling, sourcing standards and AI use."
+            ),
+            eyebrow="Editorial Standards",
+            h1="Editorial standards, ethics and conflicts of interest",
+            standfirst=(
+                "Everything a reader, source or subject needs to know about how the East New York "
+                "Times decides what to publish — and what cannot be bought."
+            ),
+            toc=ETHICS_TOC,
+            body=ETHICS_BODY,
+        ),
+        "corrections": dict(
+            title="Corrections Policy — East New York Times",
+            description=(
+                "How to report an error in East New York Times reporting and how we handle it: "
+                "our correction, clarification and update labels, our response timeline, and our "
+                "policy against unpublishing."
+            ),
+            eyebrow="Corrections Policy",
+            h1="Corrections and clarifications",
+            standfirst=(
+                "We get things wrong sometimes. Here is exactly how to tell us, and exactly what "
+                "we do about it."
+            ),
+            toc=CORRECTIONS_TOC,
+            body=CORRECTIONS_BODY,
+        ),
+    }
+
+    for slug, cfg in pages.items():
+        schema = [
+            {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": cfg["h1"],
+                "url": f"{SITE}/{slug}/",
+                "description": cfg["description"],
+                "datePublished": PUBLISHED_ISO,
+                "dateModified": PUBLISHED_ISO,
+                "inLanguage": "en-US",
+                "isPartOf": {"@type": "WebSite", "name": "East New York Times",
+                             "alternateName": "ENYT", "url": f"{SITE}/"},
+                "publisher": org_ref,
+                "about": {"@type": "Thing", "name": (
+                    "Journalism ethics and conflicts of interest" if slug == "ethics"
+                    else "Editorial corrections policy")},
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
+                    {"@type": "ListItem", "position": 2, "name": cfg["eyebrow"],
+                     "item": f"{SITE}/{slug}/"},
+                ],
+            },
+        ]
+        out_dir = os.path.join(ROOT, slug)
+        os.makedirs(out_dir, exist_ok=True)
+        html = shell(slug=slug, schema=schema, **cfg)
+        with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as fh:
+            fh.write(html)
+        print(f"wrote /{slug}/index.html  ({len(html):,} bytes)")
+
+
+if __name__ == "__main__":
+    main()
