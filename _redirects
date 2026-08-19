@@ -25,6 +25,8 @@
 /restaurant/ /restaurant/index.html 200
 /publicsafety/ /publicsafety/index.html 200
 /gline/ /gline/index.html 200
+/honorary-street-names/ /honorary-street-names/index.html 200
+/how-to-request-street-conaming-cb5/ /how-to-request-street-conaming-cb5/index.html 200
 
 # legacy space-encoded URLs -> clean paths
 /rent%20board/ /rentboard/ 301!

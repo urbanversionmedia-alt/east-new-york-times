@@ -502,6 +502,11 @@
     .event-card .event-tag { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
     /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1080px) {
+      .nav ul { gap: 1.1rem; }
+      .nav a { font-size: 0.82rem; }
+      .header-cta .btn-ghost { display: none; }
+    }
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
       .news-grid { grid-template-columns: 1fr 1fr; }
@@ -603,6 +608,7 @@
         <ul>
           <li><a href="#" onclick="showPage('home'); return false;" class="active" id="nav-home">Home</a></li>
           <li><a href="#" onclick="showPage('articles'); return false;" id="nav-articles">Stories</a></li>
+          <li><a href="/honorary-street-names/" id="nav-honorary">Honorary Names</a></li>
           <li><a href="#" onclick="showPage('letters'); return false;" id="nav-letters">Letters</a></li>
           <li><a href="#" onclick="showPage('events'); return false;" id="nav-events">Events</a></li>
           <li><a href="/the-sit-down/" id="nav-sit-down">The Sit Down</a></li>
@@ -621,6 +627,7 @@
       <ul>
         <li><a href="#" onclick="showPage('home'); closeMobileNav(); return false;">Home</a></li>
         <li><a href="#" onclick="showPage('articles'); closeMobileNav(); return false;">Stories</a></li>
+        <li><a href="/honorary-street-names/">Honorary Names</a></li>
         <li><a href="#" onclick="showPage('letters'); closeMobileNav(); return false;">Letters</a></li>
         <li><a href="#" onclick="showPage('events'); closeMobileNav(); return false;">Events</a></li>
         <li><a href="/the-sit-down/">The Sit Down</a></li>
@@ -1850,6 +1857,8 @@
           <ul>
             <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
             <li><a href="#" onclick="showPage('articles'); return false;">Stories</a></li>
+            <li><a href="/honorary-street-names/">Honorary Names</a></li>
+            <li><a href="/how-to-request-street-conaming-cb5/">Request a Co-Naming</a></li>
             <li><a href="#" onclick="showPage('letters'); return false;">Letters to the Editor</a></li>
             <li><a href="#" onclick="showPage('events'); return false;">Events</a></li>
             <li><a href="/the-sit-down/">The Sit Down</a></li>
@@ -1890,6 +1899,15 @@
       if (navEl) navEl.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // ── Deep links from other pages (e.g. /#stories) ──
+    const hashPages = { home: 'home', stories: 'articles', articles: 'articles', letters: 'letters', events: 'events', about: 'about' };
+    function showPageFromHash() {
+      const key = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (hashPages[key]) showPage(hashPages[key]);
+    }
+    showPageFromHash();
+    window.addEventListener('hashchange', showPageFromHash);
 
     // ── Mobile nav ────────────────────────────────
     const menuBtn = document.getElementById('menu-toggle');
