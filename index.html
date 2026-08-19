@@ -105,6 +105,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.1rem;
+      flex-shrink: 0;
     }
     .masthead-name {
       font-family: var(--font-display);
@@ -113,6 +114,7 @@
       letter-spacing: -0.02em;
       color: var(--text);
       line-height: 1;
+      white-space: nowrap;
     }
     .masthead-name span { color: var(--accent); }
     .masthead-sub {
@@ -121,6 +123,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--text-muted);
+      white-space: nowrap;
     }
 
     /* Nav */
@@ -505,14 +508,17 @@
     .event-card .event-tag { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
     /* ── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 1080px) {
-      .nav ul { gap: 1rem; }
+    @media (max-width: 1240px) {
+      .nav ul { gap: 0.9rem; }
+      .nav a { font-size: 0.8rem; }
       .header-cta .btn-ghost { display: none; }
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1080px) {
       .nav { display: none; }
       .header-cta { display: none; }
       .menu-toggle { display: flex; }
+    }
+    @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
       .news-grid { grid-template-columns: 1fr 1fr; }
       .split-grid { grid-template-columns: 1fr; }
