@@ -4,4 +4,8 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
+User-agent: Googlebot-News
+Allow: /
+
 Sitemap: https://eastnewyorktimes.com/sitemap.xml
+Sitemap: https://eastnewyorktimes.com/news-sitemap.xml
