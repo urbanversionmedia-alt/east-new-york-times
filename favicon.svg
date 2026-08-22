@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#0d1117"/>
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="16" fill="#e8952a">E</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="The East New York Times">
+  <rect width="512" height="512" rx="92.16" fill="#0F1319"/>
+  <g transform="translate(91.098,244.480) scale(0.212093,-0.212093)"><path fill="#E8EDF2" d="M74 688H669V523H295V428H615V270H295V165H676V0H74Z M1288 0 999 334V0H796V688H989L1278 349V688H1481V0Z"/></g>
+  <g transform="translate(99.051,413.440) scale(0.212093,-0.212093)"><path fill="#E8952E" d="M501 0H280V267L7 688H261L393 459H397L529 688H770L501 267Z M1248 512V0H1027V512H801V688H1473V512Z"/></g>
 </svg>
