@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://eastnewyorktimes.com/black-inventors-youth-parade-east-new-york/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>East New York Times</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-22T09:00:00-04:00</news:publication_date>
+    </news:news>
+  </url>
+  <url>
     <loc>https://eastnewyorktimes.com/east-new-york-concert-wellness-series/</loc>
     <news:news>
       <news:publication>
