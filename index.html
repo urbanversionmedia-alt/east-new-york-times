@@ -506,6 +506,23 @@
     .event-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--text); }
     .event-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: none; margin: 0; }
     .event-card .event-tag { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .event-card--placeholder { border-style: dashed; }
+    .event-card-details { display: flex; flex-direction: column; gap: 0.3rem; padding-top: 0.75rem; border-top: 1px solid var(--border); margin: 0; }
+    .event-card-details div { display: flex; gap: 0.5rem; font-size: 0.78rem; line-height: 1.5; }
+    .event-card-details dt { flex: 0 0 8.5rem; font-weight: 700; color: var(--text); }
+    .event-card-details dd { margin: 0; color: var(--text-muted); }
+    .event-card-details a { color: var(--accent); }
+    .event-card-details a:hover { text-decoration: underline; }
+    #page-events .section-head h2 { white-space: normal; }
+    .event-panel { max-width: 720px; padding: 1.5rem; margin-bottom: 3rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+    .event-panel h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--text); margin-bottom: 0.75rem; }
+    .event-panel p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; max-width: none; margin: 0 0 0.75rem; }
+    .event-panel p strong { color: var(--text); }
+    .event-panel ul { list-style: disc; padding-left: 1.25rem; margin: 0 0 0.75rem; }
+    .event-panel ul:last-child { margin-bottom: 0; }
+    .event-panel li { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.35rem; }
+    .event-panel a { color: var(--accent); }
+    .event-panel a:hover { text-decoration: underline; }
 
     /* ── RESPONSIVE ─────────────────────────────── */
     @media (max-width: 1240px) {
@@ -1559,13 +1576,112 @@
   ══════════════════════════════════════════════ -->
   <div class="page" id="page-events">
     <div class="container">
+
+      <!-- START PAGE HEADER -->
       <div class="page-hero">
         <h1>Community <span>Events</span></h1>
-        <p>Upcoming public meetings and community events for East New York and Brooklyn Community Board 5. Open to all residents.</p>
+        <p>Find upcoming events, public meetings, school activities, workshops, resource fairs, and community programs happening in East New York. This page is updated regularly and focuses on events that directly serve East New York residents.</p>
+      </div>
+      <div class="letters-intro">
+        <p>Do you have an event to share? Email <a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a>.</p>
+      </div>
+      <!-- END PAGE HEADER -->
+
+      <!--
+        ============================================================
+        EVENT CARD TEMPLATE (copy everything between the lines below)
+        Paste it inside the events-grid of the section where the
+        event belongs, then replace every [BRACKETED] value.
+        Tag colors: tag--accent, tag--green, tag--blue, tag--sports, tag--red
+        ============================================================
+
+        <div class="event-card">
+          <div class="event-card-date">
+            <div class="event-card-date-block"><span class="month">[MON]</span><span class="day">[DAY]</span></div>
+            <div class="event-card-date-meta"><span class="time">[TIME]</span><span class="loc">[LOCATION]</span></div>
+          </div>
+          <div class="event-tag"><span class="tag tag--accent">[CATEGORY]</span></div>
+          <h3>[EVENT TITLE]</h3>
+          <p>[SHORT DESCRIPTION]</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>[FULL DATE]</dd></div>
+            <div><dt>Organizer</dt><dd>[ORGANIZER]</dd></div>
+            <div><dt>Cost</dt><dd>[COST]</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>[AUDIENCE]</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="[LINK]">[LINK TEXT]</a></dd></div>
+          </dl>
+        </div>
+
+        ============================================================
+      -->
+
+      <!-- START THIS WEEK SECTION -->
+      <div class="section-head">
+        <h2>This Week in East New York</h2>
+        <div class="section-head-line"></div>
       </div>
       <div class="events-grid">
 
-        <!-- September 3 — NHS Brooklyn housing discrimination webinar -->
+        <!-- START EVENT CARD: October 3 — East Brooklyn 5K -->
+        <div class="event-card">
+          <div class="event-card-date">
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">3</span></div>
+            <div class="event-card-date-meta"><span class="time">Check-in 8:00 AM &middot; Race 9:00 AM</span><span class="loc">Spring Creek Park at Gateway Mall</span></div>
+          </div>
+          <div class="event-tag"><span class="tag tag--sports">Sports &middot; Community</span></div>
+          <h3>12th Annual East Brooklyn 5K</h3>
+          <p>East New York Restoration LDC hosts its 12th annual East Brooklyn 5K, a community road race taking place rain or shine at Spring Creek Park at Gateway Mall. Check-in begins at 8 a.m. and the race starts at 9 a.m. Registration is available through the event link or the QR code on the flyer.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Saturday, October 3</dd></div>
+            <div><dt>Organizer</dt><dd>East New York Restoration LDC</dd></div>
+            <div><dt>Cost</dt><dd>See registration</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Runners, walkers, and neighbors</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="tel:+17186765920">718-676-5920</a></dd></div>
+          </dl>
+        </div>
+        <!-- END EVENT CARD -->
+
+        <!-- DUPLICATE THIS EVENT CARD FOR NEW EVENTS -->
+        <!-- START EVENT CARD: placeholder -->
+        <div class="event-card event-card--placeholder">
+          <div class="event-card-date">
+            <!-- REPLACE MONTH AND DAY -->
+            <div class="event-card-date-block"><span class="month">Date</span><span class="day">TBA</span></div>
+            <!-- REPLACE TIME / REPLACE LOCATION -->
+            <div class="event-card-date-meta"><span class="time">Time TBA</span><span class="loc">East New York location</span></div>
+          </div>
+          <!-- REPLACE CATEGORY TAG -->
+          <div class="event-tag"><span class="tag tag--accent">This Week</span></div>
+          <!-- REPLACE TITLE -->
+          <h3>Your East New York Event Here</h3>
+          <!-- REPLACE DESCRIPTION -->
+          <p>Hosting something in East New York this week? Send the details to The East New York Times for possible inclusion.</p>
+          <dl class="event-card-details">
+            <!-- REPLACE DATE -->
+            <div><dt>Date</dt><dd>TBA</dd></div>
+            <!-- REPLACE ORGANIZER -->
+            <div><dt>Organizer</dt><dd>Your organization</dd></div>
+            <!-- REPLACE COST -->
+            <div><dt>Cost</dt><dd>Free or listed price</dd></div>
+            <!-- REPLACE WHO IT'S FOR -->
+            <div><dt>Who it&rsquo;s for</dt><dd>East New York residents</dd></div>
+            <!-- REPLACE REGISTRATION OR CONTACT LINK -->
+            <div><dt>Register / Contact</dt><dd><a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a></dd></div>
+          </dl>
+        </div>
+        <!-- END EVENT CARD -->
+
+      </div>
+      <!-- END THIS WEEK SECTION -->
+
+      <!-- START UPCOMING EVENTS SECTION -->
+      <div class="section-head">
+        <h2>Upcoming Events</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="events-grid">
+
+        <!-- START EVENT CARD: September 3 — NHS Brooklyn housing discrimination webinar -->
         <div class="event-card">
           <div class="event-card-date">
             <div class="event-card-date-block"><span class="month">Sep</span><span class="day">3</span></div>
@@ -1573,10 +1689,77 @@
           </div>
           <div class="event-tag"><span class="tag tag--accent">Housing &middot; Virtual</span></div>
           <h3>Housing Discrimination: What To Do About It</h3>
-          <p>NHS Brooklyn&rsquo;s Tenant Services program hosts an informational webinar for tenants dealing with possible housing discrimination. The session covers fair-housing law, how to recognize discrimination, protections related to source-of-income discrimination, ways to document an incident, and possible legal next steps. RSVP through the event&rsquo;s registration link; for more information, call 718-469-4679.</p>
+          <p>NHS Brooklyn&rsquo;s Tenant Services program hosts an informational webinar for tenants dealing with possible housing discrimination. The session covers fair-housing law, how to recognize discrimination, protections related to source-of-income discrimination, ways to document an incident, and possible legal next steps. RSVP through the event&rsquo;s registration link.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Thursday, September 3</dd></div>
+            <div><dt>Organizer</dt><dd>NHS Brooklyn Tenant Services</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Tenants</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="tel:+17184694679">718-469-4679</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- September 12 — District 1 back to school roller skating -->
+        <!-- START EVENT CARD: September 12 — Jump for John basketball tournament -->
+        <div class="event-card">
+          <div class="event-card-date">
+            <div class="event-card-date-block"><span class="month">Sep</span><span class="day">12</span></div>
+            <div class="event-card-date-meta"><span class="time">10:00 AM</span><span class="loc">Location Not Listed on Flyer</span></div>
+          </div>
+          <div class="event-tag"><span class="tag tag--sports">Sports &middot; Community</span></div>
+          <h3>Jump for John: Third Annual Basketball Tournament</h3>
+          <p>The White Family presents its third annual basketball tournament honoring the late John Paul White. A block party follows the tournament.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Saturday, September 12</dd></div>
+            <div><dt>Organizer</dt><dd>The White Family</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Players, families, and neighbors</dd></div>
+            <div><dt>Register / Contact</dt><dd>Contact Lakeisha or Jessica (per flyer)</dd></div>
+          </dl>
+        </div>
+        <!-- END EVENT CARD -->
+
+        <!-- DUPLICATE THIS EVENT CARD FOR NEW EVENTS -->
+        <!-- START EVENT CARD: placeholder -->
+        <div class="event-card event-card--placeholder">
+          <div class="event-card-date">
+            <!-- REPLACE MONTH AND DAY -->
+            <div class="event-card-date-block"><span class="month">Date</span><span class="day">TBA</span></div>
+            <!-- REPLACE TIME / REPLACE LOCATION -->
+            <div class="event-card-date-meta"><span class="time">Time TBA</span><span class="loc">East New York location</span></div>
+          </div>
+          <!-- REPLACE CATEGORY TAG -->
+          <div class="event-tag"><span class="tag tag--accent">Community</span></div>
+          <!-- REPLACE TITLE -->
+          <h3>Your East New York Event Here</h3>
+          <!-- REPLACE DESCRIPTION -->
+          <p>Workshops, fairs, performances, giveaways, and other public events serving East New York residents are listed here.</p>
+          <dl class="event-card-details">
+            <!-- REPLACE DATE -->
+            <div><dt>Date</dt><dd>TBA</dd></div>
+            <!-- REPLACE ORGANIZER -->
+            <div><dt>Organizer</dt><dd>Your organization</dd></div>
+            <!-- REPLACE COST -->
+            <div><dt>Cost</dt><dd>Free or listed price</dd></div>
+            <!-- REPLACE WHO IT'S FOR -->
+            <div><dt>Who it&rsquo;s for</dt><dd>East New York residents</dd></div>
+            <!-- REPLACE REGISTRATION OR CONTACT LINK -->
+            <div><dt>Register / Contact</dt><dd><a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a></dd></div>
+          </dl>
+        </div>
+        <!-- END EVENT CARD -->
+
+      </div>
+      <!-- END UPCOMING EVENTS SECTION -->
+
+      <!-- START YOUTH AND EDUCATION SECTION -->
+      <div class="section-head">
+        <h2>Youth and Education</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="events-grid">
+
+        <!-- START EVENT CARD: September 12 — District 1 back to school roller skating -->
         <div class="event-card">
           <div class="event-card-date">
             <div class="event-card-date-block"><span class="month">Sep</span><span class="day">12</span></div>
@@ -1585,20 +1768,57 @@
           <div class="event-tag"><span class="tag tag--green">Youth &middot; Family</span></div>
           <h3>Back to School Roller Skating Into the Future</h3>
           <p>District 1 hosts a back-to-school community roller-skating event designed to help children and families kick off the new school year. The program features roller skating, games, school supplies, community resources, and food. P.S. 202 is at 982 Hegeman Avenue, Brooklyn, NY 11208.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Saturday, September 12</dd></div>
+            <div><dt>Organizer</dt><dd>District 1</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Children and families</dd></div>
+            <div><dt>Register / Contact</dt><dd>Not listed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- September 12 — Jump for John basketball tournament -->
-        <div class="event-card">
+        <!-- DUPLICATE THIS EVENT CARD FOR NEW EVENTS -->
+        <!-- START EVENT CARD: placeholder -->
+        <div class="event-card event-card--placeholder">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Sep</span><span class="day">12</span></div>
-            <div class="event-card-date-meta"><span class="time">10:00 AM</span><span class="loc">Location Not Listed on Flyer</span></div>
+            <!-- REPLACE MONTH AND DAY -->
+            <div class="event-card-date-block"><span class="month">Date</span><span class="day">TBA</span></div>
+            <!-- REPLACE TIME / REPLACE LOCATION -->
+            <div class="event-card-date-meta"><span class="time">Time TBA</span><span class="loc">School or community location</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--sports">Sports &middot; Community</span></div>
-          <h3>Jump for John: Third Annual Basketball Tournament</h3>
-          <p>The White Family presents its third annual basketball tournament honoring the late John Paul White. A block party follows the tournament. Organizers ask attendees with questions to contact Lakeisha or Jessica.</p>
+          <!-- REPLACE CATEGORY TAG -->
+          <div class="event-tag"><span class="tag tag--green">Youth &middot; Education</span></div>
+          <!-- REPLACE TITLE -->
+          <h3>Your School or Youth Program Here</h3>
+          <!-- REPLACE DESCRIPTION -->
+          <p>School activities, parent workshops, tutoring, college prep, and youth programs serving East New York families are listed here.</p>
+          <dl class="event-card-details">
+            <!-- REPLACE DATE -->
+            <div><dt>Date</dt><dd>TBA</dd></div>
+            <!-- REPLACE ORGANIZER -->
+            <div><dt>Organizer</dt><dd>Your school or organization</dd></div>
+            <!-- REPLACE COST -->
+            <div><dt>Cost</dt><dd>Free or listed price</dd></div>
+            <!-- REPLACE WHO IT'S FOR -->
+            <div><dt>Who it&rsquo;s for</dt><dd>Students, parents, and families</dd></div>
+            <!-- REPLACE REGISTRATION OR CONTACT LINK -->
+            <div><dt>Register / Contact</dt><dd><a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- September 16 — MOPD Deaf Town Hall -->
+      </div>
+      <!-- END YOUTH AND EDUCATION SECTION -->
+
+      <!-- START CIVIC MEETINGS SECTION -->
+      <div class="section-head">
+        <h2>Civic Meetings and Public Hearings</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="events-grid">
+
+        <!-- START EVENT CARD: September 16 — MOPD Deaf Town Hall -->
         <div class="event-card">
           <div class="event-card-date">
             <div class="event-card-date-block"><span class="month">Sep</span><span class="day">16</span></div>
@@ -1607,20 +1827,57 @@
           <div class="event-tag"><span class="tag tag--blue">Civic &middot; Accessibility</span></div>
           <h3>Deaf Town Hall with the Mayor&rsquo;s Office for People with Disabilities</h3>
           <p>The NYC Mayor&rsquo;s Office for People with Disabilities holds an in-person town hall for members of the Deaf community at Positive Exposure, fourth floor, 83 Maiden Lane. Participants can share experiences, concerns, and priorities directly with city officials while discussing public housing, language access, public safety, disability access, and inclusion. Food will be provided, along with ASL interpretation and CART services. Accommodation requests are due by September 9 &mdash; contact Tony Wooden at rwooden@mopd.nyc.gov or 646-396-5830 by videophone.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Wednesday, September 16</dd></div>
+            <div><dt>Organizer</dt><dd>NYC Mayor&rsquo;s Office for People with Disabilities</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Members of the Deaf community</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="mailto:rwooden@mopd.nyc.gov">rwooden@mopd.nyc.gov</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- October 3 — East Brooklyn 5K -->
-        <div class="event-card">
+        <!-- DUPLICATE THIS EVENT CARD FOR NEW EVENTS -->
+        <!-- START EVENT CARD: placeholder -->
+        <div class="event-card event-card--placeholder">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">3</span></div>
-            <div class="event-card-date-meta"><span class="time">Check-in 8:00 AM &middot; Race 9:00 AM</span><span class="loc">Spring Creek Park at Gateway Mall</span></div>
+            <!-- REPLACE MONTH AND DAY -->
+            <div class="event-card-date-block"><span class="month">Date</span><span class="day">TBA</span></div>
+            <!-- REPLACE TIME / REPLACE LOCATION -->
+            <div class="event-card-date-meta"><span class="time">Time TBA</span><span class="loc">Meeting location or virtual link</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--sports">Sports &middot; Community</span></div>
-          <h3>12th Annual East Brooklyn 5K</h3>
-          <p>East New York Restoration LDC hosts its 12th annual East Brooklyn 5K, a community road race taking place rain or shine at Spring Creek Park at Gateway Mall. Check-in begins at 8 a.m. and the race starts at 9 a.m. Registration is available through the event link or the QR code on the flyer. For more information, contact East New York Restoration LDC at 718-676-5920.</p>
+          <!-- REPLACE CATEGORY TAG -->
+          <div class="event-tag"><span class="tag tag--blue">Civic &middot; Public Meeting</span></div>
+          <!-- REPLACE TITLE -->
+          <h3>Public Meeting or Hearing Here</h3>
+          <!-- REPLACE DESCRIPTION -->
+          <p>Community Board 5 meetings, precinct council meetings, public hearings, and town halls affecting East New York are listed here.</p>
+          <dl class="event-card-details">
+            <!-- REPLACE DATE -->
+            <div><dt>Date</dt><dd>TBA</dd></div>
+            <!-- REPLACE ORGANIZER -->
+            <div><dt>Organizer</dt><dd>Agency, board, or elected office</dd></div>
+            <!-- REPLACE COST -->
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <!-- REPLACE WHO IT'S FOR -->
+            <div><dt>Who it&rsquo;s for</dt><dd>Open to the public</dd></div>
+            <!-- REPLACE REGISTRATION OR CONTACT LINK -->
+            <div><dt>Register / Contact</dt><dd><a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- Recurring — Opportunity Hub farm stand (Thursdays) -->
+      </div>
+      <!-- END CIVIC MEETINGS SECTION -->
+
+      <!-- START PROGRAMS AND ONGOING OUTREACH SECTION -->
+      <div class="section-head">
+        <h2>Programs and Ongoing Outreach</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="events-grid">
+
+        <!-- START EVENT CARD: Recurring — Opportunity Hub farm stand (Thursdays) -->
         <div class="event-card">
           <div class="event-card-date">
             <div class="event-card-date-block"><span class="month">Every</span><span class="day">Thu</span></div>
@@ -1629,9 +1886,17 @@
           <div class="event-tag"><span class="tag tag--green">Food &middot; Weekly</span></div>
           <h3>Opportunity Hub Weekly Farm Stand</h3>
           <p>The Opportunity Hub farm stand runs every Thursday through November 19 at 1390 Pennsylvania Avenue, near the ice cream truck and the B83 stop. Fresh produce with cash, credit, EBT, and FMNP all accepted.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Thursdays through November 19</dd></div>
+            <div><dt>Organizer</dt><dd>Opportunity Hub</dd></div>
+            <div><dt>Cost</dt><dd>Produce for purchase; cash, credit, EBT, and FMNP accepted</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>All residents</dd></div>
+            <div><dt>Register / Contact</dt><dd>No registration needed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- Ongoing through Nov 17 — Arlington Library bookmobile -->
+        <!-- START EVENT CARD: Ongoing through Nov 17 — Arlington Library bookmobile -->
         <div class="event-card">
           <div class="event-card-date">
             <div class="event-card-date-block"><span class="month">Thru</span><span class="day">Nov</span></div>
@@ -1640,9 +1905,17 @@
           <div class="event-tag"><span class="tag tag--blue">Library &middot; Bookmobile</span></div>
           <h3>Arlington Library Bookmobile Service</h3>
           <p>While the Arlington Library is closed for renovation, a bookmobile parks outside the library through November 17, 11 a.m. to 4 p.m., keeping books and library services within reach for the neighborhood.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Through November 17</dd></div>
+            <div><dt>Organizer</dt><dd>Arlington Library</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Library patrons of all ages</dd></div>
+            <div><dt>Register / Contact</dt><dd>No registration needed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- Ongoing — Arlington library at Cypress Hills (Mon & Wed) -->
+        <!-- START EVENT CARD: Ongoing — Arlington library at Cypress Hills (Mon & Wed) -->
         <div class="event-card">
           <div class="event-card-date">
             <div class="event-card-date-block"><span class="month">Every</span><span class="day">M/W</span></div>
@@ -1651,9 +1924,17 @@
           <div class="event-tag"><span class="tag tag--green">Library &middot; Programs</span></div>
           <h3>Arlington Library Programs at Cypress Hills Community Center</h3>
           <p>The Arlington Library team sets up at the Cypress Hills Community Center on Mondays and Wednesdays, offering content creation, 3D printing, digital literacy, and podcasting, plus monthly community outreach.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Mondays and Wednesdays</dd></div>
+            <div><dt>Organizer</dt><dd>Arlington Library</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Community members</dd></div>
+            <div><dt>Register / Contact</dt><dd>Not listed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- Ongoing — Arlington library at Cypress Senior Center (Thursdays) -->
+        <!-- START EVENT CARD: Ongoing — Arlington library at Cypress Senior Center (Thursdays) -->
         <div class="event-card">
           <div class="event-card-date">
             <div class="event-card-date-block"><span class="month">Every</span><span class="day">Thu</span></div>
@@ -1662,9 +1943,17 @@
           <div class="event-tag"><span class="tag tag--green">Seniors &middot; Library</span></div>
           <h3>Arlington Library Computer Classes at Cypress Senior Center</h3>
           <p>The Arlington Library team is at the Cypress Senior Center on Thursdays for computer-based classes, along with monthly tabling to connect seniors with library services.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Thursdays</dd></div>
+            <div><dt>Organizer</dt><dd>Arlington Library</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Seniors</dd></div>
+            <div><dt>Register / Contact</dt><dd>Not listed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- Ongoing — People's Kitchen new location -->
+        <!-- START EVENT CARD: Ongoing — People's Kitchen new location -->
         <div class="event-card">
           <div class="event-card-date">
             <div class="event-card-date-block"><span class="month">Now</span><span class="day">Open</span></div>
@@ -1673,9 +1962,90 @@
           <div class="event-tag"><span class="tag tag--green">Food &middot; Community</span></div>
           <h3>People&rsquo;s Kitchen at New Hope Worship Center</h3>
           <p>The People&rsquo;s Kitchen now operates out of the New Hope Worship Center on Livonia Avenue. Neighbors who rely on the meal program can find it at its new home.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Ongoing</dd></div>
+            <div><dt>Organizer</dt><dd>People&rsquo;s Kitchen</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Neighbors who rely on the meal program</dd></div>
+            <div><dt>Register / Contact</dt><dd>Not listed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
+
+        <!-- DUPLICATE THIS EVENT CARD FOR NEW EVENTS -->
+        <!-- START EVENT CARD: placeholder -->
+        <div class="event-card event-card--placeholder">
+          <div class="event-card-date">
+            <!-- REPLACE MONTH AND DAY (for recurring programs use e.g. Every / Tue) -->
+            <div class="event-card-date-block"><span class="month">Every</span><span class="day">TBA</span></div>
+            <!-- REPLACE TIME / REPLACE LOCATION -->
+            <div class="event-card-date-meta"><span class="time">Schedule TBA</span><span class="loc">East New York location</span></div>
+          </div>
+          <!-- REPLACE CATEGORY TAG -->
+          <div class="event-tag"><span class="tag tag--green">Program &middot; Ongoing</span></div>
+          <!-- REPLACE TITLE -->
+          <h3>Your Ongoing Program or Outreach Here</h3>
+          <!-- REPLACE DESCRIPTION -->
+          <p>Weekly food distributions, classes, library programs, health outreach, and other recurring services for East New York residents are listed here.</p>
+          <dl class="event-card-details">
+            <!-- REPLACE DATE -->
+            <div><dt>Date</dt><dd>Recurring schedule</dd></div>
+            <!-- REPLACE ORGANIZER -->
+            <div><dt>Organizer</dt><dd>Your organization</dd></div>
+            <!-- REPLACE COST -->
+            <div><dt>Cost</dt><dd>Free or listed price</dd></div>
+            <!-- REPLACE WHO IT'S FOR -->
+            <div><dt>Who it&rsquo;s for</dt><dd>East New York residents</dd></div>
+            <!-- REPLACE REGISTRATION OR CONTACT LINK -->
+            <div><dt>Register / Contact</dt><dd><a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a></dd></div>
+          </dl>
+        </div>
+        <!-- END EVENT CARD -->
 
       </div>
+      <!-- END PROGRAMS AND ONGOING OUTREACH SECTION -->
+
+      <!-- START SUBMIT AN EVENT SECTION -->
+      <div class="section-head" id="submit-event">
+        <h2>Submit an Event</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="event-panel">
+        <h3>Submit an East New York event</h3>
+        <p>Hosting a public event, workshop, fair, meeting, class, giveaway, performance, or outreach activity in East New York? Send it to The East New York Times for possible inclusion in our Upcoming Events section.</p>
+        <p><strong>Please send:</strong></p>
+        <ul>
+          <li>Event title</li>
+          <li>Date and time</li>
+          <li>Location</li>
+          <li>Organizer name</li>
+          <li>Short description</li>
+          <li>Registration link or public contact</li>
+          <li>Cost</li>
+          <li>Flyer or image, if available</li>
+        </ul>
+        <p>Whenever possible, send events at least 7 days in advance.</p>
+        <p>Email submissions to: <a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a></p>
+      </div>
+      <!-- END SUBMIT AN EVENT SECTION -->
+
+      <!-- START EVENT GUIDELINES SECTION -->
+      <div class="section-head">
+        <h2>Event Guidelines</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="event-panel">
+        <ul>
+          <li>Events must take place in East New York or have a clear East New York connection.</li>
+          <li>Free and low-cost public events should be prioritized.</li>
+          <li>Inclusion is not an endorsement.</li>
+          <li>Event details may change. Readers should confirm details with the organizer before attending.</li>
+          <li>The East New York Times may edit listings for clarity, length, style, and accuracy.</li>
+          <li>Paid placements must be clearly labeled Advertisement, Sponsored, or Paid content.</li>
+        </ul>
+      </div>
+      <!-- END EVENT GUIDELINES SECTION -->
+
     </div>
   </div>
 
