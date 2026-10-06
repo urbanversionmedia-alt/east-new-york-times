@@ -1,0 +1,33 @@
+name: Refresh sitemaps
+
+# Google News only accepts articles from the last 2 days. This rebuilds
+# sitemap.xml and news-sitemap.xml every morning so older stories drop out
+# automatically, even on days nothing new is published.
+on:
+  schedule:
+    - cron: "15 10 * * *"   # 6:15 AM EDT / 5:15 AM EST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 tools/build-sitemaps.py
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- sitemap.xml news-sitemap.xml; then
+            echo "Sitemaps already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml news-sitemap.xml
+          git commit -m "Refresh sitemaps (daily)"
+          git push

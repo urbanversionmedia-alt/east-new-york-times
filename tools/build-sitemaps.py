@@ -27,6 +27,8 @@ Both files are written to the repo root. Commit them with your story.
 import os
 import re
 import sys
+import html as htmllib
+from xml.sax.saxutils import escape
 from datetime import datetime, timedelta, timezone
 
 SITE = "https://eastnewyorktimes.com"
@@ -76,6 +78,21 @@ def published_iso(root: str, slug: str) -> str:
         html = fh.read()
     match = re.search(r'"datePublished"\s*:\s*"(.*?)"', html)
     return match.group(1).strip() if match else ""
+
+
+def headline(root: str, slug: str) -> str:
+    """Article headline from JSON-LD, falling back to <title>. Required by Google News."""
+    path = os.path.join(root, slug, "index.html")
+    with open(path, encoding="utf-8", errors="replace") as fh:
+        page = fh.read()
+    match = re.search(r'"headline"\s*:\s*"((?:[^"\\]|\\.)*)"', page)
+    if not match:
+        match = re.search(r"<title>(.*?)</title>", page, re.S)
+    if not match:
+        return ""
+    text = htmllib.unescape(match.group(1).replace('\\"', '"')).strip()
+    text = re.split(r"\s+[\u2014|]\s+East New York Times", text)[0].strip()
+    return escape(text)
 
 
 def parse_iso(value: str):
@@ -130,7 +147,11 @@ def build_news_sitemap(root: str, slugs, now: datetime):
         if published.tzinfo is None:
             published = published.replace(tzinfo=TZ)
         if published >= cutoff:
-            recent.append((slug, published))
+            title = headline(root, slug)
+            if not title:
+                print(f"WARNING: /{slug}/ has no headline; skipped from news sitemap")
+                continue
+            recent.append((slug, published, title))
 
     recent.sort(key=lambda pair: pair[1], reverse=True)
 
@@ -143,9 +164,10 @@ def build_news_sitemap(root: str, slugs, now: datetime):
         f"        <news:language>{LANGUAGE}</news:language>\n"
         f"      </news:publication>\n"
         f"      <news:publication_date>{published.isoformat()}</news:publication_date>\n"
+        f"      <news:title>{title}</news:title>\n"
         f"    </news:news>\n"
         f"  </url>"
-        for slug, published in recent
+        for slug, published, title in recent
     )
 
     xml = (
@@ -175,7 +197,7 @@ def main() -> int:
     total = sitemap.count("<loc>")
     print(f"sitemap.xml       {total} URLs")
     print(f"news-sitemap.xml  {len(recent)} article(s) in the last {NEWS_WINDOW_DAYS} days")
-    for slug, published in recent:
+    for slug, published, _title in recent:
         print(f"                  /{slug}/  {published.isoformat()}")
     if not recent:
         print("                  (empty urlset — nothing published in the window; this is valid)")

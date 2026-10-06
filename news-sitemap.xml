@@ -2,13 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://eastnewyorktimes.com/fifty-years-on-one-block/</loc>
+    <loc>https://eastnewyorktimes.com/nikki-lucas-brooklyn-democratic-party-chair-court-fight/</loc>
     <news:news>
       <news:publication>
         <news:name>East New York Times</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-08-19T09:00:00-04:00</news:publication_date>
+      <news:publication_date>2026-10-05T12:00:00-04:00</news:publication_date>
+      <news:title>Assemblywoman Nikki Lucas Claims Brooklyn Democratic Party Chair, but Courts May Decide Whether It Counts</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://eastnewyorktimes.com/east-new-york-farms-youth-grow-food-community/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>East New York Times</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-04T12:00:00-04:00</news:publication_date>
+      <news:title>East New York Farms Youth Grow Food for Their Community</news:title>
     </news:news>
   </url>
 </urlset>

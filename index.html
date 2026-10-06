@@ -44,7 +44,7 @@
 
     /* ── RESET ──────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; -webkit-font-smoothing: antialiased; }
     body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
@@ -58,6 +58,8 @@
     /* ── UTILITIES ──────────────────────────────── */
     .container { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+    .skip-link { position: absolute; left: -999px; top: 0; z-index: 200; background: var(--accent); color: #0d1117; padding: 0.6rem 1rem; font-weight: 700; }
+    .skip-link:focus { left: 0.5rem; top: 0.5rem; }
     .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; }
     .tag--accent { background: var(--accent-dim); color: var(--accent); }
     .tag--blue { background: var(--blue-dim); color: #60a5fa; }
@@ -68,13 +70,13 @@
 
     /* ── TOP BAR ────────────────────────────────── */
     .topbar {
-      background: var(--accent);
-      color: #0d1117;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 0.4rem 0;
+      padding: 0.45rem 1rem;
       text-align: center;
     }
 
@@ -83,7 +85,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: color-mix(in oklab, var(--bg) 92%, transparent);
+      background: rgba(13,17,23,0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -93,39 +95,42 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 2rem;
-      height: 70px;
+      gap: 1.25rem;
+      min-height: 64px;
+      padding-block: 0.6rem;
     }
 
     /* Masthead */
     .masthead {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       gap: 0.1rem;
+      flex-shrink: 0;
     }
     .masthead-name {
       font-family: var(--font-display);
-      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-size: clamp(1rem, 2vw, 1.3rem);
       font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--text);
       line-height: 1;
+      white-space: nowrap;
     }
     .masthead-name span { color: var(--accent); }
     .masthead-sub {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--text-muted);
+      white-space: nowrap;
     }
 
     /* Nav */
-    .nav ul { display: flex; gap: 1.75rem; }
-    .nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color var(--transition); }
-    .nav a:hover, .nav a.active { color: var(--text); }
-    .nav a.active { border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+    .nav ul { display: flex; gap: 1.5rem; }
+    .nav a { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); transition: color var(--transition); white-space: nowrap; }
+    .nav a:hover { color: var(--text); }
+    .nav a.active, .nav a[aria-current='page'] { color: var(--text); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
 
     .header-cta {
       display: flex;
@@ -133,9 +138,9 @@
       gap: 0.75rem;
       flex-shrink: 0;
     }
-    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background var(--transition), color var(--transition), transform var(--transition); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.6rem 1.25rem; border-radius: var(--radius); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background var(--transition), color var(--transition), border-color var(--transition); }
     .btn-accent { background: var(--accent); color: #0d1117; }
-    .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-accent:hover { background: var(--accent-hover); }
     .btn-ghost { border: 1px solid var(--border); color: var(--text-muted); }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -145,10 +150,11 @@
     .menu-toggle[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
     .menu-toggle[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .mobile-nav { display: none; padding: 1rem clamp(1.25rem,5vw,4rem) 1.5rem; border-top: 1px solid var(--border); }
+    .mobile-nav { display: none; padding: 0.5rem clamp(1.25rem,5vw,4rem) 1.5rem; border-top: 1px solid var(--border); }
     .mobile-nav.open { display: block; }
     .mobile-nav li { border-bottom: 1px solid var(--divider); }
     .mobile-nav a { display: block; padding: 0.875rem 0; font-size: 1rem; font-weight: 500; }
+    .mobile-nav a.active, .mobile-nav a[aria-current='page'] { color: var(--accent); }
 
     /* ── HERO ───────────────────────────────────── */
     .hero { padding-block: 3rem 2rem; border-bottom: 1px solid var(--border); }
@@ -500,12 +506,34 @@
     .event-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--text); }
     .event-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: none; margin: 0; }
     .event-card .event-tag { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .event-card--placeholder { border-style: dashed; }
+    .event-card-details { display: flex; flex-direction: column; gap: 0.3rem; padding-top: 0.75rem; border-top: 1px solid var(--border); margin: 0; }
+    .event-card-details div { display: flex; gap: 0.5rem; font-size: 0.78rem; line-height: 1.5; }
+    .event-card-details dt { flex: 0 0 8.5rem; font-weight: 700; color: var(--text); }
+    .event-card-details dd { margin: 0; color: var(--text-muted); }
+    .event-card-details a { color: var(--accent); }
+    .event-card-details a:hover { text-decoration: underline; }
+    #page-events .section-head h2 { white-space: normal; }
+    .event-panel { max-width: 720px; padding: 1.5rem; margin-bottom: 3rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+    .event-panel h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--text); margin-bottom: 0.75rem; }
+    .event-panel p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; max-width: none; margin: 0 0 0.75rem; }
+    .event-panel p strong { color: var(--text); }
+    .event-panel ul { list-style: disc; padding-left: 1.25rem; margin: 0 0 0.75rem; }
+    .event-panel ul:last-child { margin-bottom: 0; }
+    .event-panel li { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.35rem; }
+    .event-panel a { color: var(--accent); }
+    .event-panel a:hover { text-decoration: underline; }
 
     /* ── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 1080px) {
-      .nav ul { gap: 1.1rem; }
-      .nav a { font-size: 0.82rem; }
+    @media (max-width: 1240px) {
+      .nav ul { gap: 0.9rem; }
+      .nav a { font-size: 0.8rem; }
       .header-cta .btn-ghost { display: none; }
+    }
+    @media (max-width: 1080px) {
+      .nav { display: none; }
+      .header-cta { display: none; }
+      .menu-toggle { display: flex; }
     }
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
@@ -520,9 +548,6 @@
       .letter-mark { min-height: 220px; }
     }
     @media (max-width: 640px) {
-      .nav { display: none; }
-      .header-cta .btn-ghost { display: none; }
-      .menu-toggle { display: flex; }
       .news-grid { grid-template-columns: 1fr; }
       .newsletter-inner { flex-direction: column; align-items: flex-start; }
       .newsletter-form { flex-direction: column; width: 100%; }
@@ -531,10 +556,13 @@
       .mission-stats { grid-template-columns: 1fr 1fr; }
     }
   </style>
-  <link rel="icon" href="/favicon.ico" sizes="48x48" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
-  <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- Favicons / app icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0F1319">
   <link rel="canonical" href="https://eastnewyorktimes.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="East New York Times" />
@@ -614,6 +642,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#page-home">Skip to main content</a>
+
   <!-- TOP BAR -->
   <div class="topbar">East New York, Brooklyn · Independent Community Journalism</div>
 
@@ -675,55 +705,32 @@
             <div class="breaking-track">
               <span><a href="/juneteenth/" target="_blank">THANK YOU: Juneteenth NYC celebrates a successful festival &amp; parade — Merchants Association virtual meeting ahead</a></span>
               <span>·</span>
-              <span>Jun 27: Aurora Midwifery Foundation virtual wellness — "Intergenerational Trauma, Toxic Stress &amp; Healing in the Black Community," 1pm online</span>
-              <span>·</span>
-              <span>Jun 27: Brooklyn Collective Clergy prayer walk — Legion &amp; Pitkin Ave, 10am, down Pitkin Ave with small businesses</span>
-              <span>·</span>
-              <span>Jun 28: "You Read What You Sow" free-book event — 400 Montauk Community Garden, 956 New Lots Ave, 1pm</span>
-              <span>·</span>
-              <span>Jun 29: "End the Toll Trap" virtual town hall — 6pm · tolltrap.com</span>
-              <span>·</span>
               <span>Thursdays through Nov 19: Opportunity Hub farm stand — 1390 Pennsylvania Ave, 2–5pm · cash, credit, EBT &amp; FMNP</span>
               <span>·</span>
-              <span>Jul 1: 75th Precinct Community Council welcomes new president — National Night Out Aug 4 at Sutter Ball Field Park</span>
+              <span>Oct 1: Construction Business &amp; Job Resource Fair — 817 Livonia Ave, 4–7pm</span>
               <span>·</span>
-              <span>Jul 9: IDNYC &amp; benefits help — Gotham Health, 2094 Pitkin Ave, 11am–2pm · SNAP, Fair Fares &amp; more</span>
+              <span>Oct 3: 12th Annual East Brooklyn 5K — Spring Creek Park at Gateway Mall, check-in 8am</span>
               <span>·</span>
-              <span>Jul 9: Highland Park land use follow-up with developer (tentative) — June 26 date canceled</span>
+              <span>Oct 3: Love Your Library Day — New Lots Library, 818 Schenck Ave, 10am–4:30pm</span>
               <span>·</span>
-              <span>Jul 18: Assembly Member Walker advisory meeting — 400 Rockaway Ave</span>
+              <span>Oct 10: Birding in Highland Park — Upper Highland Park parking lot, 10am</span>
               <span>·</span>
-              <span>Aug 1: Community celebration for a 103-year-old resident — Bradford &amp; Sutter, 12pm</span>
-              <span>·</span>
-              <span>Aug 4: National Night Out — Sutter Ball Field Park</span>
-              <span>·</span>
-              <span>Early Aug: New Lots interim library ribbon cutting — St. Paul Community Baptist Church (date TBD)</span>
+              <span>Oct 28: Community Board 5 General Board Meeting — 127 Pennsylvania Ave, 6:30pm</span>
               <span>·</span>
               <span><a href="/juneteenth/" target="_blank">THANK YOU: Juneteenth NYC celebrates a successful festival &amp; parade — Merchants Association virtual meeting ahead</a></span>
               <span>·</span>
-              <span>Jun 27: Aurora Midwifery Foundation virtual wellness — "Intergenerational Trauma, Toxic Stress &amp; Healing in the Black Community," 1pm online</span>
-              <span>·</span>
-              <span>Jun 27: Brooklyn Collective Clergy prayer walk — Legion &amp; Pitkin Ave, 10am, down Pitkin Ave with small businesses</span>
-              <span>·</span>
-              <span>Jun 28: "You Read What You Sow" free-book event — 400 Montauk Community Garden, 956 New Lots Ave, 1pm</span>
-              <span>·</span>
-              <span>Jun 29: "End the Toll Trap" virtual town hall — 6pm · tolltrap.com</span>
-              <span>·</span>
               <span>Thursdays through Nov 19: Opportunity Hub farm stand — 1390 Pennsylvania Ave, 2–5pm · cash, credit, EBT &amp; FMNP</span>
               <span>·</span>
-              <span>Jul 1: 75th Precinct Community Council welcomes new president — National Night Out Aug 4 at Sutter Ball Field Park</span>
+              <span>Oct 1: Construction Business &amp; Job Resource Fair — 817 Livonia Ave, 4–7pm</span>
               <span>·</span>
-              <span>Jul 9: IDNYC &amp; benefits help — Gotham Health, 2094 Pitkin Ave, 11am–2pm · SNAP, Fair Fares &amp; more</span>
+              <span>Oct 3: 12th Annual East Brooklyn 5K — Spring Creek Park at Gateway Mall, check-in 8am</span>
               <span>·</span>
-              <span>Jul 9: Highland Park land use follow-up with developer (tentative) — June 26 date canceled</span>
+              <span>Oct 3: Love Your Library Day — New Lots Library, 818 Schenck Ave, 10am–4:30pm</span>
               <span>·</span>
-              <span>Jul 18: Assembly Member Walker advisory meeting — 400 Rockaway Ave</span>
+              <span>Oct 10: Birding in Highland Park — Upper Highland Park parking lot, 10am</span>
               <span>·</span>
-              <span>Aug 1: Community celebration for a 103-year-old resident — Bradford &amp; Sutter, 12pm</span>
+              <span>Oct 28: Community Board 5 General Board Meeting — 127 Pennsylvania Ave, 6:30pm</span>
               <span>·</span>
-              <span>Aug 4: National Night Out — Sutter Ball Field Park</span>
-              <span>·</span>
-              <span>Early Aug: New Lots interim library ribbon cutting — St. Paul Community Baptist Church (date TBD)</span>
             </div>
           </div>
         </div>
@@ -741,22 +748,23 @@
           <!-- Featured story -->
           <div class="featured-story">
             <div class="featured-story-img-placeholder" style="position:relative;border-radius:12px;overflow:hidden;">
-              <img src="virginia-burroughs-way.jpg" alt="Family, friends and neighbors gather outside Essex Terrace after the Virginia Burroughs Way co-naming ceremony" class="featured-story-img" style="object-position:center center;">
+              <img src="borough-hall-pillars.jpg" alt="The columned front of Brooklyn Borough Hall in Downtown Brooklyn, with two large American flags hanging between its stone pillars." class="featured-story-img" style="object-position:center center;">
             </div>
+            <p style="font-size:0.72rem;line-height:1.5;color:var(--text-faint);margin-top:0.5rem;">Brooklyn Borough Hall in Downtown Brooklyn. The fight over who leads the Brooklyn Democratic Party is now in state court. (File photo: Deric Johnson/The East New York Times, August 2026)</p>
 
-            <div class="featured-label" style="margin-top:0.5rem;">
+            <div class="featured-label" style="margin-top:0.75rem;">
               <span class="featured-badge">Featured</span>
-              <span class="tag tag--green">Community</span>
+              <span class="tag tag--red">Politics</span>
             </div>
 
-            <h1><a href="/fifty-years-on-one-block/">Fifty Years on One Block: How Virginia Burroughs Became a Street</a></h1>
+            <h1><a href="/nikki-lucas-brooklyn-democratic-party-chair-court-fight/">Assemblywoman Nikki Lucas Claims Brooklyn Democratic Party Chair, but Courts May Decide Whether It Counts</a></h1>
 
-            <p class="excerpt">A tenants association president who served half a century at Essex Terrace is now the name at Linwood Street and Hegeman Avenue. <a href="/virginia-burroughs-way-video/" style="color:var(--accent);font-weight:600;">Watch the unveiling →</a></p>
+            <p class="excerpt">Allies of former leader Rodneyse Bichotte Hermelyn held a late-night virtual vote to name the 60th District Assemblywoman as party chair. Reformers say the vote broke a court order, and a judge is weighing contempt. <a href="/nikki-lucas-brooklyn-democratic-party-chair-court-fight/" style="color:var(--accent);font-weight:600;">Read the story →</a></p>
 
             <div class="story-meta">
               <span><strong>Deric Johnson</strong></span>
-              <span>August 19, 2026</span>
-              <span>8 min read</span>
+              <span>October 5, 2026</span>
+              <span>5 min read</span>
             </div>
           </div>
 
@@ -803,6 +811,96 @@
           <a href="#" onclick="showPage('articles'); return false;">All Stories →</a>
         </div>
         <div class="news-grid">
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="east-new-york-farms-mural.jpg" alt="Volunteers walk past a colorful mural reading “East New York Farms!” above the farm’s garden beds and seedling tables." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            </div>
+            <span class="tag tag--green">Schools &amp; Youth</span>
+            <h3><a href="/east-new-york-farms-youth-grow-food-community/">East New York Farms Youth Grow Food for Their Community</a></h3>
+            <p>At a half-acre urban farm in Brooklyn, teen interns weed garlic beds, make compost and stock a farmers’ market with crops familiar to the neighborhood’s immigrant families.</p>
+            <div class="story-meta"><span><strong>Lilly Sabella</strong></span><span>Oct 4, 2026</span><span>7 min read</span></div>
+          </div>
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="cypress-hills-houses-fallen-tree.jpg" alt="Yellow caution tape and orange traffic cones surround a patch of uprooted ground beside a chain-link fence at the Cypress Hills Houses." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            </div>
+            <span class="tag tag--accent">Public Housing</span>
+            <h3><a href="/nycha-worker-leighton-brown-killed-falling-tree-cypress-hills-houses/">NYCHA Worker Leighton Brown Killed by Falling Tree at Cypress Hills Houses</a></h3>
+            <p>The 56-year-old died after a tree struck him in an East New York parking lot Saturday; residents remember his service to the development.</p>
+            <div class="story-meta"><span><strong>East New York Times</strong></span><span>Sep 27, 2026</span><span>4 min read</span></div>
+          </div>
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="black-inventors-parade-keron.jpg" alt="Organizer Keron Alleyne speaks into a megaphone while giving a thumbs up in front of the Black Inventors Parade banner during the fifth annual Black Inventors Youth Parade." style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+            </div>
+            <span class="tag tag--accent">Education</span>
+            <h3><a href="/black-inventors-youth-parade-east-new-york/">“Who Invented That? We Invented That”: East New York Youth Parade Celebrates Black Innovation</a></h3>
+            <p>Students learned that Black innovation is not only history, it is part of their future.</p>
+            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Sep 22, 2026</span><span>4 min read</span></div>
+          </div>
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="concert-wellness-worship.jpg" alt="A man raises both hands while worshipping in the rain during the gospel and jazz finale of the East New York Concert + Wellness Series." style="width:100%;height:100%;object-fit:cover;object-position:center 22%;" />
+            </div>
+            <span class="tag tag--green">Community</span>
+            <h3><a href="/east-new-york-concert-wellness-series/">More Than a Concert: East New York’s Four-Day Wellness Series Brings Music, Resources and Community Together</a></h3>
+            <p>Assemblywoman Nikki Lucas and DJ Keith Watkins’ annual East New York Concert + Wellness Series returned for its fourth year with four days of music, health screenings, food vendors and community resources.</p>
+            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Sep 21, 2026</span><span>5 min read</span></div>
+          </div>
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="2342-atlantic-rally.jpg" alt="Tenants and organizers in blue HOPE T-shirts stand outside 2342 Atlantic Avenue behind a banner reading “When we fight! We win!” as a speaker addresses the crowd through a bullhorn." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            </div>
+            <span class="tag tag--accent">Housing</span>
+            <h3><a href="/2342-atlantic-avenue-tenants-nurse-safdie-hpd/">A Broken Front Door, a Worst-Landlord Ranking, and Tenants Who Refuse to Leave</a></h3>
+            <p>Residents of 2342 Atlantic Ave. rally with Council Member Sandy Nurse and Deputy Borough President Kim Council, demanding HPD action against a landlord with 1,148 lifetime violations across the property.</p>
+            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Sep 8, 2026</span><span>7 min read</span></div>
+          </div>
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="255-pennsylvania-fix-sign.jpg" alt="A tenant in a leopard-print mesh jersey holds a hand-lettered pink sign reading “Fix 255 Pennsylvania” outside the building during the rally." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            </div>
+            <span class="tag tag--accent">Housing</span>
+            <h3><a href="/255-pennsylvania-avenue-tenants-banks-plaza-management/">“Say his name”: East New York tenants and Council Member Chris Banks put a landlord on notice at 255 Pennsylvania Avenue</a></h3>
+            <p>About 60 residents of a 24-unit rent-stabilized building — some there more than 30 years — say Plaza Management fixes the surface and leaves the cause. One tenant who helped organize says the response was a 14-day eviction notice.</p>
+            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Sep 9, 2026</span><span>6 min read</span></div>
+          </div>
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="brooklyn-democrats-rules-passed.jpg" alt="A demonstrator holds a hand-lettered list of Democratic officials opposing the Kings County Democratic Party rules package on the steps of Brooklyn Borough Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            </div>
+            <span class="tag tag--red">Politics</span>
+            <h3><a href="/brooklyn-democrats-rules-change-passed/">Brooklyn’s Democratic Rules Change Passed. The Court Fight and Chair Vote Come Next.</a></h3>
+            <p>A closed vote in Mill Basin expanded the party’s executive committee from 42 to 68 members “by narrow margins.” Reformers backing Julio Peña III said they would refile suit Wednesday morning.</p>
+            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Aug 26, 2026</span><span>8 min read</span></div>
+          </div>
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="brooklyn-democrats-rules-vote.jpg" alt="A large crowd of Brooklyn Democrats and supporters stands on the steps of Brooklyn Borough Hall holding hand-lettered signs including “Respect the Voters,” “Honor the Election,” and “Back Off Bichotte Hermelyn.”" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            </div>
+            <span class="tag tag--red">Politics</span>
+            <h3><a href="/brooklyn-democrats-rules-vote/">Brooklyn Democrats Move to Reshape Their Own Rules Tonight — What It Means for East New York</a></h3>
+            <p>The Kings County Democratic Party’s executive committee votes tonight on a 10-amendment package that would expand its own membership to more than 68 voting members before this fall’s chair election.</p>
+            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Aug 25, 2026</span><span>9 min read</span></div>
+          </div>
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="fat-boys-avenue.jpg" alt="Family members hold the new Fat Boys Avenue street sign at the co-naming ceremony on Schenck Avenue in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            </div>
+            <span class="tag tag--green">Arts &amp; Culture</span>
+            <h3><a href="/fat-boys-avenue/">Fat Boys Avenue, Down by Law</a></h3>
+            <p>East New York co-names the block where three teenagers became hip-hop history. Only one of them lived to see it.</p>
+            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Aug 24, 2026</span><span>7 min read</span></div>
+          </div>
+          <div class="news-card">
+            <div class="news-card-img" style="overflow:hidden;">
+              <img src="virginia-burroughs-way.jpg" alt="Family, friends and neighbors gather outside Essex Terrace after the Virginia Burroughs Way co-naming ceremony" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            </div>
+            <span class="tag tag--green">Community</span>
+            <h3><a href="/fifty-years-on-one-block/">Fifty Years on One Block: How Virginia Burroughs Became a Street</a></h3>
+            <p>A tenants association president who served half a century at Essex Terrace is now the name at Linwood Street and Hegeman Avenue.</p>
+            <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Aug 19, 2026</span><span>8 min read</span></div>
+          </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
               <img src="broadway-junction-hire-east-ny.jpg" alt="A resident holds a Hire East NY sign at a Broadway Junction local hiring rally" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
@@ -1039,67 +1137,35 @@
             </div>
             <div class="events-list">
               <div class="event-item">
-                <div class="event-date-block"><span class="month">Jul</span><span class="day">2</span></div>
+                <div class="event-date-block"><span class="month">Oct</span><span class="day">1</span></div>
                 <div class="event-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Constituent Services</span>
-                  <h4><a href="/constituent-pop-ups-district-37/">District 37 Pop Up Office</a></h4>
-                  <span class="event-info">1&ndash;3 p.m. &middot; 3133 Fulton St</span>
+                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Jobs &middot; Business</span>
+                  <h4>Construction Business and Job Resource Fair</h4>
+                  <span class="event-info">4&ndash;7 p.m. &middot; 817 Livonia Ave</span>
                 </div>
               </div>
               <div class="event-item">
-                <div class="event-date-block"><span class="month">Jul</span><span class="day">7</span></div>
+                <div class="event-date-block"><span class="month">Oct</span><span class="day">3</span></div>
                 <div class="event-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Constituent Services</span>
-                  <h4><a href="/constituent-pop-ups-district-37/">District 37 Pop Up Office</a></h4>
-                  <span class="event-info">2&ndash;4 p.m. &middot; 3160 Fulton St</span>
+                  <span class="tag tag--sports" style="margin-bottom:0.3rem;">Sports &middot; Community</span>
+                  <h4>12th Annual East Brooklyn 5K</h4>
+                  <span class="event-info">Check-in 8 a.m. &middot; Spring Creek Park at Gateway Mall</span>
                 </div>
               </div>
               <div class="event-item">
-                <div class="event-date-block"><span class="month">Jul</span><span class="day">14</span></div>
+                <div class="event-date-block"><span class="month">Oct</span><span class="day">3</span></div>
                 <div class="event-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Constituent Services</span>
-                  <h4><a href="/constituent-pop-ups-district-37/">District 37 Pop Up Office</a></h4>
-                  <span class="event-info">2&ndash;4 p.m. &middot; Chauncey St Station</span>
+                  <span class="tag tag--green" style="margin-bottom:0.3rem;">Library &middot; Family</span>
+                  <h4>Love Your Library Day at New Lots</h4>
+                  <span class="event-info">10 a.m.&ndash;4:30 p.m. &middot; 818 Schenck Ave</span>
                 </div>
               </div>
               <div class="event-item">
-                <div class="event-date-block"><span class="month">Jul</span><span class="day">15</span></div>
+                <div class="event-date-block"><span class="month">Oct</span><span class="day">10</span></div>
                 <div class="event-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Constituent Services</span>
-                  <h4><a href="/constituent-pop-ups-district-37/">District 37 Pop Up Office</a></h4>
-                  <span class="event-info">2&ndash;4 p.m. &middot; 2796 Fulton St</span>
-                </div>
-              </div>
-              <div class="event-item">
-                <div class="event-date-block"><span class="month">Jul</span><span class="day">21</span></div>
-                <div class="event-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Constituent Services</span>
-                  <h4><a href="/constituent-pop-ups-district-37/">District 37 Pop Up Office</a></h4>
-                  <span class="event-info">2&ndash;4 p.m. &middot; 1239 Broadway Ave</span>
-                </div>
-              </div>
-              <div class="event-item">
-                <div class="event-date-block"><span class="month">Jul</span><span class="day">23</span></div>
-                <div class="event-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Constituent Services</span>
-                  <h4><a href="/constituent-pop-ups-district-37/">District 37 Pop Up Office</a></h4>
-                  <span class="event-info">2&ndash;4 p.m. &middot; Myrtle&ndash;Wyckoff Plaza</span>
-                </div>
-              </div>
-              <div class="event-item">
-                <div class="event-date-block"><span class="month">Jul</span><span class="day">29</span></div>
-                <div class="event-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Constituent Services</span>
-                  <h4><a href="/constituent-pop-ups-district-37/">District 37 Pop Up Office</a></h4>
-                  <span class="event-info">2&ndash;4 p.m. &middot; 31 Mother Gaston Blvd</span>
-                </div>
-              </div>
-              <div class="event-item">
-                <div class="event-date-block"><span class="month">Jul</span><span class="day">30</span></div>
-                <div class="event-body">
-                  <span class="tag tag--accent" style="margin-bottom:0.3rem;">Constituent Services</span>
-                  <h4><a href="/constituent-pop-ups-district-37/">District 37 Pop Up Office</a></h4>
-                  <span class="event-info">2&ndash;4 p.m. &middot; 1210 Halsey St</span>
+                  <span class="tag tag--green" style="margin-bottom:0.3rem;">Outdoors &middot; All Ages</span>
+                  <h4>Birding in Highland Park</h4>
+                  <span class="event-info">10 a.m. &middot; Upper Highland Park parking lot</span>
                 </div>
               </div>
             </div>
@@ -1158,7 +1224,6 @@
 
   </div><!-- /page-home -->
 
-
   <!-- ══════════════════════════════════════════════
        STORIES PAGE
   ══════════════════════════════════════════════ -->
@@ -1169,6 +1234,96 @@
         <p>Every article published by East New York Times — civic coverage, community voices, and neighborhood news.</p>
       </div>
       <div class="articles-grid">
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="borough-hall-pillars.jpg" alt="The columned front of Brooklyn Borough Hall in Downtown Brooklyn, with two large American flags hanging between its stone pillars." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+          </div>
+          <span class="tag tag--red">Politics</span>
+          <h2><a href="/nikki-lucas-brooklyn-democratic-party-chair-court-fight/">Assemblywoman Nikki Lucas Claims Brooklyn Democratic Party Chair, but Courts May Decide Whether It Counts</a></h2>
+          <p>A late-night virtual vote named the 60th District Assemblywoman party chair. Reformers say it broke a court order, and a judge is weighing contempt.</p>
+          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Oct 5, 2026</span><span>5 min read</span></div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="east-new-york-farms-mural.jpg" alt="Volunteers walk past a colorful mural reading “East New York Farms!” above the farm’s garden beds and seedling tables." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+          </div>
+          <span class="tag tag--green">Schools &amp; Youth</span>
+          <h2><a href="/east-new-york-farms-youth-grow-food-community/">East New York Farms Youth Grow Food for Their Community</a></h2>
+          <p>At a half-acre urban farm in Brooklyn, teen interns weed garlic beds, make compost and stock a farmers’ market with crops familiar to the neighborhood’s immigrant families.</p>
+          <div class="story-meta"><span><strong>Lilly Sabella</strong></span><span>Oct 4, 2026</span><span>7 min read</span></div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="cypress-hills-houses-fallen-tree.jpg" alt="Yellow caution tape and orange traffic cones surround a patch of uprooted ground beside a chain-link fence at the Cypress Hills Houses." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+          </div>
+          <span class="tag tag--accent">Public Housing</span>
+          <h2><a href="/nycha-worker-leighton-brown-killed-falling-tree-cypress-hills-houses/">NYCHA Worker Leighton Brown Killed by Falling Tree at Cypress Hills Houses</a></h2>
+          <p>The 56-year-old died after a tree struck him in an East New York parking lot Saturday; residents remember his service to the development.</p>
+          <div class="story-meta"><span><strong>East New York Times</strong></span><span>Sep 27, 2026</span><span>4 min read</span></div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="black-inventors-parade-keron.jpg" alt="Organizer Keron Alleyne speaks into a megaphone while giving a thumbs up in front of the Black Inventors Parade banner during the fifth annual Black Inventors Youth Parade." style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+          </div>
+          <span class="tag tag--accent">Education</span>
+          <h2><a href="/black-inventors-youth-parade-east-new-york/">“Who Invented That? We Invented That”: East New York Youth Parade Celebrates Black Innovation</a></h2>
+          <p>Students learned that Black innovation is not only history, it is part of their future.</p>
+          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Sep 22, 2026</span><span>4 min read</span></div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="concert-wellness-worship.jpg" alt="A man raises both hands while worshipping in the rain during the gospel and jazz finale of the East New York Concert + Wellness Series." style="width:100%;height:100%;object-fit:cover;object-position:center 22%;" />
+          </div>
+          <span class="tag tag--green">Community</span>
+          <h2><a href="/east-new-york-concert-wellness-series/">More Than a Concert: East New York’s Four-Day Wellness Series Brings Music, Resources and Community Together</a></h2>
+          <p>Assemblywoman Nikki Lucas and DJ Keith Watkins’ annual East New York Concert + Wellness Series returned for its fourth year with four days of music, health screenings, food vendors and community resources.</p>
+          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Sep 21, 2026</span><span>5 min read</span></div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="2342-atlantic-rally.jpg" alt="Tenants and organizers in blue HOPE T-shirts rally outside 2342 Atlantic Avenue in Cypress Hills behind a banner reading “When we fight! We win!”" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+          </div>
+          <span class="tag tag--accent">Housing</span>
+          <h2><a href="/2342-atlantic-avenue-tenants-nurse-safdie-hpd/">A Broken Front Door, a Worst-Landlord Ranking, and Tenants Who Refuse to Leave</a></h2>
+          <p>Residents of 2342 Atlantic Ave. rally with Council Member Sandy Nurse and Deputy Borough President Kim Council, demanding HPD action against a landlord with 1,148 lifetime violations across the property.</p>
+          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Sep 8, 2026</span><span>7 min read</span></div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="255-pennsylvania-fix-sign.jpg" alt="A tenant holds a hand-lettered pink sign reading “Fix 255 Pennsylvania” outside 255 Pennsylvania Avenue in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+          </div>
+          <span class="tag tag--accent">Housing</span>
+          <h2><a href="/255-pennsylvania-avenue-tenants-banks-plaza-management/">“Say his name”: East New York tenants and Council Member Chris Banks put a landlord on notice at 255 Pennsylvania Avenue</a></h2>
+          <p>About 60 residents of a 24-unit rent-stabilized building — some there more than 30 years — say Plaza Management fixes the surface and leaves the cause. One tenant who helped organize says the response was a 14-day eviction notice.</p>
+          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Sep 9, 2026</span><span>6 min read</span></div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="brooklyn-democrats-rules-passed.jpg" alt="A demonstrator holds a hand-lettered list of Democratic officials opposing the Kings County Democratic Party rules package on the steps of Brooklyn Borough Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+          </div>
+          <span class="tag tag--red">Politics</span>
+          <h2><a href="/brooklyn-democrats-rules-change-passed/">Brooklyn’s Democratic Rules Change Passed. The Court Fight and Chair Vote Come Next.</a></h2>
+          <p>A closed vote in Mill Basin expanded the party’s executive committee from 42 to 68 members “by narrow margins.” Reformers backing Julio Peña III said they would refile suit Wednesday morning.</p>
+          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Aug 26, 2026</span><span>8 min read</span></div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="brooklyn-democrats-rules-vote.jpg" alt="A large crowd of Brooklyn Democrats and supporters stands on the steps of Brooklyn Borough Hall holding hand-lettered signs including “Respect the Voters,” “Honor the Election,” and “Back Off Bichotte Hermelyn.”" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+          </div>
+          <span class="tag tag--red">Politics</span>
+          <h2><a href="/brooklyn-democrats-rules-vote/">Brooklyn Democrats Move to Reshape Their Own Rules Tonight — What It Means for East New York</a></h2>
+          <p>The Kings County Democratic Party’s executive committee votes tonight on a 10-amendment package that would expand its own membership before this fall’s chair election.</p>
+          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Aug 25, 2026</span><span>9 min read</span></div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img" style="overflow:hidden;">
+            <img src="fat-boys-avenue.jpg" alt="Family members hold the new Fat Boys Avenue street sign at the co-naming ceremony on Schenck Avenue in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+          </div>
+          <span class="tag tag--green">Arts &amp; Culture</span>
+          <h2><a href="/fat-boys-avenue/">Fat Boys Avenue, Down by Law</a></h2>
+          <p>East New York co-names the block where three teenagers became hip-hop history. Only one of them lived to see it.</p>
+          <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Aug 24, 2026</span><span>7 min read</span></div>
+        </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
             <img src="virginia-burroughs-way.jpg" alt="Family, friends and neighbors gather outside Essex Terrace after the Virginia Burroughs Way co-naming ceremony" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
@@ -1417,7 +1572,6 @@
     </div>
   </div>
 
-
   <!-- ══════════════════════════════════════════════
        LETTERS PAGE
   ══════════════════════════════════════════════ -->
@@ -1450,189 +1604,395 @@
   ══════════════════════════════════════════════ -->
   <div class="page" id="page-events">
     <div class="container">
+
+      <!-- START PAGE HEADER -->
       <div class="page-hero">
         <h1>Community <span>Events</span></h1>
-        <p>Upcoming public meetings and community events for East New York and Brooklyn Community Board 5. Open to all residents.</p>
+        <p>Find upcoming events, public meetings, school activities, workshops, resource fairs, and community programs happening in East New York. This page is updated regularly and focuses on events that directly serve East New York residents.</p>
+      </div>
+      <div class="letters-intro">
+        <p>Do you have an event to share? Email <a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a>.</p>
+      </div>
+      <!-- END PAGE HEADER -->
+
+      <!--
+        ============================================================
+        EVENT CARD TEMPLATE (copy everything between the lines below)
+        Paste it inside the events-grid of the section where the
+        event belongs, then replace every [BRACKETED] value.
+        Tag colors: tag--accent, tag--green, tag--blue, tag--sports, tag--red
+        ============================================================
+
+        <div class="event-card">
+          <div class="event-card-date">
+            <div class="event-card-date-block"><span class="month">[MON]</span><span class="day">[DAY]</span></div>
+            <div class="event-card-date-meta"><span class="time">[TIME]</span><span class="loc">[LOCATION]</span></div>
+          </div>
+          <div class="event-tag"><span class="tag tag--accent">[CATEGORY]</span></div>
+          <h3>[EVENT TITLE]</h3>
+          <p>[SHORT DESCRIPTION]</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>[FULL DATE]</dd></div>
+            <div><dt>Organizer</dt><dd>[ORGANIZER]</dd></div>
+            <div><dt>Cost</dt><dd>[COST]</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>[AUDIENCE]</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="[LINK]">[LINK TEXT]</a></dd></div>
+          </dl>
+        </div>
+
+        ============================================================
+      -->
+
+      <!-- START ALERTS AND PUBLIC INFORMATION SECTION -->
+      <div class="section-head">
+        <h2>Alerts and Public Information</h2>
+        <div class="section-head-line"></div>
       </div>
       <div class="events-grid">
 
-        <!-- June 25 — Juneteenth NYC thank you -->
+        <!-- START EVENT CARD: Ongoing — Notify NYC emergency alerts -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">25</span></div>
-            <div class="event-card-date-meta"><span class="time">Virtual Meeting</span><span class="loc">Online &middot; Merchants Association</span></div>
+            <div class="event-card-date-block"><span class="month">Now</span><span class="day">Open</span></div>
+            <div class="event-card-date-meta"><span class="time">Free &middot; Ongoing</span><span class="loc">Mobile app, web, phone, or X</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--accent">Community &middot; Recap</span></div>
-          <h3><a href="/juneteenth/" style="color:var(--text);">Thank You from Juneteenth NYC &mdash; Merchants Meeting Ahead</a></h3>
-          <p>Juneteenth NYC organizers are thanking the community for a successful festival and parade in East New York. Organizers also point neighbors to a Merchants Association virtual meeting to keep the momentum going and plan what comes next for local businesses.</p>
+          <div class="event-tag"><span class="tag tag--red">Alerts &middot; Public Safety</span></div>
+          <h3>Stay Informed with Notify NYC</h3>
+          <p>Sign up for the City of New York&rsquo;s free emergency communications program to get weather and other emergency notifications. Register through the Notify NYC mobile app, online, by calling 311, or by following @NotifyNYC on X.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Ongoing</dd></div>
+            <div><dt>Organizer</dt><dd>City of New York</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>All New Yorkers</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://a858-nycnotify.nyc.gov/notifynyc/" target="_blank" rel="noopener noreferrer">Notify NYC app</a> &middot; <a href="https://www.nyc.gov/notifynyc" target="_blank" rel="noopener noreferrer">NYC.gov/NotifyNYC</a> &middot; Call 311 &middot; <a href="https://x.com/NotifyNYC" target="_blank" rel="noopener noreferrer">@NotifyNYC on X</a></dd></div>
+            <div><dt>Accessibility</dt><dd>Video Relay Service: <a href="tel:+12126399675">212-639-9675</a> &middot; TTY: <a href="tel:+12125044115">212-504-4115</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- June 25 — World Cup watch party -->
+        <!-- START EVENT CARD: Ongoing — Report weather issues to CB5 -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">25</span></div>
-            <div class="event-card-date-meta"><span class="time">6:00 PM</span><span class="loc">Cypress Hills</span></div>
+            <div class="event-card-date-block"><span class="month">Now</span><span class="day">Open</span></div>
+            <div class="event-card-date-meta"><span class="time">Ongoing</span><span class="loc">Brooklyn Community Board 5</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--sports">Sports &middot; Free</span></div>
-          <h3>World Cup Watch Party at Cypress Hills</h3>
-          <p>The Brooklyn Borough President&rsquo;s Office hosts a World Cup watch party in Cypress Hills. Neighbors are invited to gather, cheer, and catch the match together.</p>
+          <div class="event-tag"><span class="tag tag--blue">Civic &middot; Weather</span></div>
+          <h3>Report Weather-Related Neighborhood Issues to Brooklyn Community Board 5</h3>
+          <p>First file a 311 complaint for weather-related problems on your block or elsewhere in the community. Then email the 311 complaint number to Melinda Perkins at Brooklyn Community Board 5 with the subject line &ldquo;Weather CB5.&rdquo;</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Ongoing</dd></div>
+            <div><dt>Organizer</dt><dd>Brooklyn Community Board 5</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Community Board 5 residents</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="mailto:Mperkins@cb.nyc.gov?subject=Weather%20CB5">Mperkins@cb.nyc.gov</a> &middot; Subject: Weather CB5</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- June 26 — 2K enrollment deadline -->
+        <!-- START EVENT CARD: Deadline October 1 — 17–21 Wharton Place rezoning comments -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">26</span></div>
-            <div class="event-card-date-meta"><span class="time">Enrollment Deadline</span><span class="loc">NYC 2K Initiative</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">1</span></div>
+            <div class="event-card-date-meta"><span class="time">Comment deadline 5:00 PM</span><span class="loc">Submit by email</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--blue">Education &middot; Deadline</span></div>
-          <h3>Deadline to Enroll in Free 2K for Young Children</h3>
-          <p>June 26 is the deadline to enroll young children entering the new 2K early childhood initiative this school year. Families are encouraged to sign up before the cutoff to secure a spot.</p>
+          <div class="event-tag"><span class="tag tag--blue">Civic &middot; Land Use</span></div>
+          <h3>17&ndash;21 Wharton Place Rezoning Project: Public Documents and Comment Deadline</h3>
+          <p>Brooklyn Community Board 5 is sharing public documents related to the proposed 17&ndash;21 Wharton Place rezoning project. Review the project materials and email questions or comments with the subject line &ldquo;17-21 Wharton Place Public Hearing.&rdquo;</p>
+          <dl class="event-card-details">
+            <div><dt>Deadline</dt><dd>Thursday, October 1, at 5 p.m.</dd></div>
+            <div><dt>Organizer</dt><dd>Brooklyn Community Board 5</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Residents and anyone with questions or comments on the proposal</dd></div>
+            <div><dt>Documents</dt><dd><a href="https://chow7u4ab.cc.rs6.net/tn.jsp?f=001jL_4TnKQcjOUl7byMpT0-zgyngu3A9XRMgXK6SYX0San6mPi8pmUm-uJGYkcT4tmxSKSsalK9gmZEYOafbcf-FjI5MNtgimHLOxxBR7n3aMt1x3_zeX-iK5LtzZvMFfHSD7bk7aoflxTjHy2s2_YlJ8uAgXnR3ktbbWuVz3jG6-WDSekKGemRA==&amp;c=haK0A8WSEvze_qmzqoSuFkVbvLU4HNyBMq9L4H4ZLAbxrY0nQwxiPA==&amp;ch=tB77R0a3AkxBNDIcYiCddDmgL_71P5Xzyld9-tp20YPpiU_YDUZbdw==" target="_blank" rel="noopener noreferrer">View project materials</a></dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="mailto:Mperkins@cb.nyc.gov?subject=17-21%20Wharton%20Place%20Public%20Hearing">Mperkins@cb.nyc.gov</a> &middot; Subject: 17-21 Wharton Place Public Hearing</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- June 27 -->
+      </div>
+      <!-- END ALERTS AND PUBLIC INFORMATION SECTION -->
+
+      <!-- START THIS WEEK SECTION -->
+      <div class="section-head">
+        <h2>This Week in East New York</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="events-grid">
+
+        <!-- START EVENT CARD: October 1 — Construction business and job resource fair -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">27</span></div>
-            <div class="event-card-date-meta"><span class="time">10:00 AM – 4:00 PM</span><span class="loc">Vermont St, Linden Blvd &amp; Stanley Ave</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">1</span></div>
+            <div class="event-card-date-meta"><span class="time">4:00 PM &ndash; 7:00 PM</span><span class="loc">New Hope Family Worship Center, 817 Livonia Ave, Brooklyn</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--blue">Seniors · Free</span></div>
-          <h3><a href="/seniorday/" style="color:var(--text);">CM Banks Senior Citizens Resource Day</a></h3>
-          <p>Free outdoor resource fair for East New York seniors. Giveaways, wellness activities, and refreshments. Hosted by CM Chris Banks and the Parodneck Foundation.</p>
+          <div class="event-tag"><span class="tag tag--accent">Jobs &middot; Business</span></div>
+          <h3>Construction Business and Job Resource Fair</h3>
+          <p>A resource fair focused on construction jobs, business opportunities, and workforce connections in and around East New York. New Hope Family Worship Center is at 817 Livonia Avenue, Brooklyn, NY 11207.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Thursday, October 1</dd></div>
+            <div><dt>Organizer</dt><dd>Gilbane Building, Council Deputy Leader Chris Banks, Brooklyn Borough President Antonio Reynoso, State Sen. Roxanne Persaud, Assemblymember Nikki Lucas, Rep. Hakeem Jeffries, Brooklyn Community Board 5, and Brooklyn Public Library</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Job seekers, small businesses, construction workers, and residents looking for workforce opportunities</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://www.bklynlibrary.org/calendar/construction-business-and-new-lots-library-20261001-0400pm" target="_blank" rel="noopener noreferrer">Register / info</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- June 27 — Aurora Midwifery virtual wellness -->
+        <!-- START EVENT CARD: October 3 — East Brooklyn 5K -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">27</span></div>
-            <div class="event-card-date-meta"><span class="time">1:00 PM &middot; Online</span><span class="loc">Aurora Midwifery Foundation</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">3</span></div>
+            <div class="event-card-date-meta"><span class="time">Check-in 8:00 AM &middot; Race 9:00 AM</span><span class="loc">Spring Creek Park at Gateway Mall</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--blue">Wellness &middot; Virtual</span></div>
-          <h3>Intergenerational Trauma, Toxic Stress &amp; Healing in the Black Community</h3>
-          <p>The Aurora Midwifery Foundation hosts a free online wellness session exploring intergenerational trauma, toxic stress, and pathways to healing in the Black community. Open to all who want to learn and take part in the conversation.</p>
+          <div class="event-tag"><span class="tag tag--sports">Sports &middot; Community</span></div>
+          <h3>12th Annual East Brooklyn 5K</h3>
+          <p>East New York Restoration LDC hosts its 12th annual East Brooklyn 5K, a community road race taking place rain or shine at Spring Creek Park at Gateway Mall. Check-in begins at 8 a.m. and the race starts at 9 a.m. Registration is available through the event link or the QR code on the flyer.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Saturday, October 3</dd></div>
+            <div><dt>Organizer</dt><dd>East New York Restoration LDC</dd></div>
+            <div><dt>Cost</dt><dd>See registration</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Runners, walkers, and neighbors</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://chow7u4ab.cc.rs6.net/tn.jsp?f=001jL_4TnKQcjOUl7byMpT0-zgyngu3A9XRMgXK6SYX0San6mPi8pmUmz0pzAdVP-KpNwX6LNQQomy9Ckve0LbvTCeNrujE-DplBeGXmbXRbwdHWdposT1XFxD2Y-Mqk8uYiu_SY_Ey9dDvGplPPJeuPOQhip3aqKgZMLxNmjPnGs17Kx5qhYNAHg==&amp;c=haK0A8WSEvze_qmzqoSuFkVbvLU4HNyBMq9L4H4ZLAbxrY0nQwxiPA==&amp;ch=tB77R0a3AkxBNDIcYiCddDmgL_71P5Xzyld9-tp20YPpiU_YDUZbdw==" target="_blank" rel="noopener noreferrer">Register here</a> &middot; <a href="tel:+17186765920">718-676-5920</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- June 27 — Prayer walk -->
+        <!-- START EVENT CARD: October 3 — Love Your Library Day at New Lots -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">27</span></div>
-            <div class="event-card-date-meta"><span class="time">10:00 AM</span><span class="loc">Legion &amp; Pitkin Ave, Brownsville</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">3</span></div>
+            <div class="event-card-date-meta"><span class="time">10:00 AM &ndash; 4:30 PM</span><span class="loc">New Lots Library, 818 Schenck Ave, Brooklyn</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--green">Faith &middot; Community</span></div>
-          <h3>Brooklyn Collective Clergy Prayer Walk</h3>
-          <p>The Brooklyn Collective Clergy invite neighbors to a prayer walk through Brownsville, beginning at Legion and Pitkin Avenue and continuing down Pitkin Avenue to pray with and support local small businesses.</p>
+          <div class="event-tag"><span class="tag tag--green">Library &middot; Family</span></div>
+          <h3>Love Your Library Day at New Lots</h3>
+          <p>New Lots Library will host notebook-decorating kits, YA-book giveaways, library-card signups, a photobooth station, and button-making while supplies last. The library is at 818 Schenck Avenue, Brooklyn, NY 11207.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Saturday, October 3</dd></div>
+            <div><dt>Organizer</dt><dd>Brooklyn Public Library</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Families, young people, and neighborhood library users</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://www.bklynlibrary.org/calendar/love-your-library-day-new-new-lots-library-20261003-1000am" target="_blank" rel="noopener noreferrer">Register / info</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- June 28 — Montauk Community Garden -->
+
+        <!-- START EVENT CARD: October 5 — NYC Health Department immigrant health care webinar -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">28</span></div>
-            <div class="event-card-date-meta"><span class="time">1:00 PM</span><span class="loc">956 New Lots Ave</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">5</span></div>
+            <div class="event-card-date-meta"><span class="time">10:00 AM &ndash; 11:00 AM</span><span class="loc">Online via Microsoft Teams</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--green">Community &middot; Free</span></div>
-          <h3>&ldquo;You Read What You Sow&rdquo; Free-Book Garden Event</h3>
-          <p>The 400 Montauk Community Garden hosts &ldquo;You Read What You Sow,&rdquo; a free-book event at the garden, 956 New Lots Avenue. Stop by to pick up books and enjoy the green space with neighbors.</p>
+          <div class="event-tag"><span class="tag tag--green">Health &middot; Immigration</span></div>
+          <h3>NYC Health Department Webinar: Access to Health Care for Immigrant New Yorkers in a Changing Federal Landscape</h3>
+          <p>The NYC Health Department will provide an update on changes that may affect immigrant New Yorkers&rsquo; access to health care, including the public-charge rule, Temporary Protected Status, Medicaid, Medicare, and the Essential Plan. The session will be conducted in English. No registration is required.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Monday, October 5</dd></div>
+            <div><dt>Organizer</dt><dd>NYC Health Department</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Immigrant New Yorkers, families, and service providers</dd></div>
+            <div><dt>Meeting ID</dt><dd>237 291 591 294 243</dd></div>
+            <div><dt>Passcode</dt><dd>yQ3gZ7Pq</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://chow7u4ab.cc.rs6.net/tn.jsp?f=001jL_4TnKQcjOUl7byMpT0-zgyngu3A9XRMgXK6SYX0San6mPi8pmUmz0pzAdVP-KpiUbpI53z7GLk5fb0qPwdNAgP13XaTtNdQrCjyMX8pZydFbDZgY9HaAPwIZzKqzpLlMVkGriK_fVUk0sJrRUhK25rzg472ga73kvm061Ql87b_FakzM0CBcY_GDT3hlVPWbFeiAQq9JK-nA6Zs_X8dnTq4i_y2jb_p-lMlGUt11yNFoAH3HCeRBFi5jgMO8-6IfOCnav33YnmsrRwB1BhBTjKhOEzQjqIvRJAwCVUkhSbfeJ1tkmAGVZtFlOK22LlZuzjQOIT4c8ST8H1Y9fE7-Yzfl-dbshafMjqb1p7D89E9mHkYtCQ7kckbRxiNDCcpiCWuEh0D0S_GOj0l5fLU8bUwHd4kgEmgwRB8T8_i-qVEbzjtYyzABJwG2lzS6piDFvrQRrZ3phhQiXLvb3uCivR6-hmUd5PPSpXXexB7-kwzgpiFUq0WRC_1CUdrdeiKm-E8vG86n_bMl1FieLTVYX97iYqffaLoSdeC7YRIlWulxcvdsc6B59QvUfnOVsTW_5nM01v9AQf5QoufYc1OmbvHUkBu3m70_vrvFfAW_AHXXDnXtBe70d4JtQpmeSQX9ZatVEHr1VJfuBQa65jUxo50Ql29lPQeMYJ9XRJNfBGxCV_qmxRG_fqCzp0Bc7-Ji6Udfk2cZa1a7_zPCootIvYSJOFEjkxvgeMYA_I16GyuZ1yxV6MUqBiTzkevNwamPAObSXuhhyhGMQvqmTo6Lpd-olr9RC48vSDXM_UTIoIy2pGY6gKEDillesbEgJSuEQRgA4pOTzlSwCWmuV80w==&amp;c=haK0A8WSEvze_qmzqoSuFkVbvLU4HNyBMq9L4H4ZLAbxrY0nQwxiPA==&amp;ch=tB77R0a3AkxBNDIcYiCddDmgL_71P5Xzyld9-tp20YPpiU_YDUZbdw==" target="_blank" rel="noopener noreferrer">Join the webinar</a> &middot; No registration required</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- June 29 — End the Toll Trap town hall -->
+      </div>
+      <!-- END THIS WEEK SECTION -->
+
+      <!-- START JOBS, BUSINESS, AND FUNDING SECTION -->
+      <div class="section-head">
+        <h2>Jobs, Business, and Funding</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="events-grid">
+
+        <!-- START EVENT CARD: Deadline September 30 — We Source NYC Building Electrification Roadmaps -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jun</span><span class="day">29</span></div>
-            <div class="event-card-date-meta"><span class="time">6:00 PM &middot; Online</span><span class="loc">tolltrap.com</span></div>
+            <div class="event-card-date-block"><span class="month">Sep</span><span class="day">30</span></div>
+            <div class="event-card-date-meta"><span class="time">First-round application deadline</span><span class="loc">Apply online</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--accent">Civic &middot; Virtual</span></div>
-          <h3>&ldquo;End the Toll Trap&rdquo; Virtual Town Hall</h3>
-          <p>Assembly Member Walker hosts an &ldquo;End the Toll Trap&rdquo; virtual town hall. Residents can join online at tolltrap.com to learn more and weigh in.</p>
+          <div class="event-tag"><span class="tag tag--accent">Business &middot; Contractors</span></div>
+          <h3>We Source NYC: Building Electrification Roadmaps</h3>
+          <p>NYC mechanical, electrical, plumbing, and general contractors can apply for free, customized one-on-one business-development support focused on the growing building-electrification market. Selected businesses work with technical experts from Energy Infrastructure Partners to review their operations and develop a tailored strategic-growth roadmap. The program requires an estimated 8&ndash;10 hours from the owner or principal over about three months. After the first-round deadline, applications are considered on a rolling basis through December.</p>
+          <dl class="event-card-details">
+            <div><dt>Deadline</dt><dd>Wednesday, September 30 (first round); rolling through December</dd></div>
+            <div><dt>Organizer</dt><dd>We Source NYC</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Contractors in business at least two years who are based in NYC (or do or employ a significant share of their work or workforce in the city) and directly install HVAC, electrical, or plumbing systems used in building electrification</dd></div>
+            <div><dt>Apply</dt><dd><a href="https://forms.fillout.com/t/dfazhbQ6nsus" target="_blank" rel="noopener noreferrer">Apply for a roadmap</a></dd></div>
+            <div><dt>Questions</dt><dd>Alice Fitzpatrick, <a href="mailto:afitzpatrick@bocnet.org">afitzpatrick@bocnet.org</a> &middot; <a href="tel:+17185322930">718-532-2930</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 2 — District 37 pop-up office -->
+        <!-- START EVENT CARD: October 5 — The People's Money information session -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">2</span></div>
-            <div class="event-card-date-meta"><span class="time">1:00 PM &ndash; 3:00 PM</span><span class="loc">3133 Fulton St</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">5</span></div>
+            <div class="event-card-date-meta"><span class="time">11:00 AM &ndash; 12:30 PM</span><span class="loc">Online</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--accent">Constituent Services</span></div>
-          <h3><a href="/constituent-pop-ups-district-37/" style="color:var(--text);">District 37 Pop Up Office</a></h3>
-          <p>Meet Council Member Sandy Nurse&rsquo;s constituent services team for help navigating housing, sanitation, benefits, and city agencies.</p>
+          <div class="event-tag"><span class="tag tag--blue">Funding &middot; Info Session</span></div>
+          <h3>The People&rsquo;s Money Information Session</h3>
+          <p>Attend an online information session about the NYC Civic Engagement Commission&rsquo;s opportunity for organizations to implement winning People&rsquo;s Money projects.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Monday, October 5</dd></div>
+            <div><dt>Organizer</dt><dd>NYC Civic Engagement Commission</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Nonprofits and MWBEs interested in implementing People&rsquo;s Money projects</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="mailto:opportunities@civicengagement.nyc.gov">opportunities@civicengagement.nyc.gov</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 7 — District 37 pop-up office -->
+        <!-- START EVENT CARD: Deadline October 28 — The People's Money project-implementation opportunity -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">7</span></div>
-            <div class="event-card-date-meta"><span class="time">2:00 PM &ndash; 4:00 PM</span><span class="loc">3160 Fulton St</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">28</span></div>
+            <div class="event-card-date-meta"><span class="time">Application deadline 11:59 PM</span><span class="loc">Apply online</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--accent">Constituent Services</span></div>
-          <h3><a href="/constituent-pop-ups-district-37/" style="color:var(--text);">District 37 Pop Up Office</a></h3>
-          <p>Meet Council Member Sandy Nurse&rsquo;s constituent services team for help navigating housing, sanitation, benefits, and city agencies.</p>
+          <div class="event-tag"><span class="tag tag--accent">Funding &middot; Nonprofits</span></div>
+          <h3>NYC Civic Engagement Commission: The People&rsquo;s Money Project-Implementation Opportunity</h3>
+          <p>The NYC Civic Engagement Commission is seeking community-based organizations to implement 20 capital-expense projects selected through Cycle 4 of The People&rsquo;s Money, New York City&rsquo;s participatory-budgeting process. Selected organizations may receive between $165,000 and $235,000 to implement projects.</p>
+          <dl class="event-card-details">
+            <div><dt>Deadline</dt><dd>Wednesday, October 28, at 11:59 p.m.</dd></div>
+            <div><dt>Organizer</dt><dd>NYC Civic Engagement Commission</dd></div>
+            <div><dt>Funding</dt><dd>$165,000 to $235,000 per project</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>NYC-based registered 501(c)(3) nonprofits or MWBEs with strong community ties and experience providing community-based programs and services in Taskforce on Racial Inclusion &amp; Equity neighborhoods</dd></div>
+            <div><dt>Projects</dt><dd><a href="https://www.participate.nyc.gov/" target="_blank" rel="noopener noreferrer">Winning projects, funding amounts, and geographies</a></dd></div>
+            <div><dt>Questions</dt><dd><a href="mailto:opportunities@civicengagement.nyc.gov">opportunities@civicengagement.nyc.gov</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 14 — District 37 pop-up office -->
+      </div>
+      <!-- END JOBS, BUSINESS, AND FUNDING SECTION -->
+
+      <!-- START YOUTH AND EDUCATION SECTION -->
+      <div class="section-head">
+        <h2>Youth and Education</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="events-grid">
+
+        <!-- START EVENT CARD: October 1 — Brooklyn Robotics League recruitment -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">14</span></div>
-            <div class="event-card-date-meta"><span class="time">2:00 PM &ndash; 4:00 PM</span><span class="loc">Chauncey St Station</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">1</span></div>
+            <div class="event-card-date-meta"><span class="time">2:00 PM &ndash; 5:00 PM</span><span class="loc">New Lots Library, 818 Schenck Ave, Brooklyn</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--accent">Constituent Services</span></div>
-          <h3><a href="/constituent-pop-ups-district-37/" style="color:var(--text);">District 37 Pop Up Office</a></h3>
-          <p>Meet Council Member Sandy Nurse&rsquo;s constituent services team for help navigating housing, sanitation, benefits, and city agencies.</p>
+          <div class="event-tag"><span class="tag tag--green">Youth &middot; STEM</span></div>
+          <h3>Brooklyn Robotics League Recruitment</h3>
+          <p>A recruitment session for young people interested in joining the Brooklyn Robotics League and learning about Lego robotics projects and challenges.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Thursday, October 1</dd></div>
+            <div><dt>Organizer</dt><dd>Brooklyn Public Library / Brooklyn Robotics League</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Ages 9 to 16</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://www.bklynlibrary.org/calendar/brooklyn-robotics-league-new-lots-library-20261001-0200pm" target="_blank" rel="noopener noreferrer">Register / info</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 15 — District 37 pop-up office -->
+        <!-- START EVENT CARD: October 14 — Babies &amp; Books -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">15</span></div>
-            <div class="event-card-date-meta"><span class="time">2:00 PM &ndash; 4:00 PM</span><span class="loc">2796 Fulton St</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">14</span></div>
+            <div class="event-card-date-meta"><span class="time">11:00 AM &ndash; 11:45 AM</span><span class="loc">New Lots Library, 818 Schenck Ave, Brooklyn</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--accent">Constituent Services</span></div>
-          <h3><a href="/constituent-pop-ups-district-37/" style="color:var(--text);">District 37 Pop Up Office</a></h3>
-          <p>Meet Council Member Sandy Nurse&rsquo;s constituent services team for help navigating housing, sanitation, benefits, and city agencies.</p>
+          <div class="event-tag"><span class="tag tag--green">Early Childhood &middot; Library</span></div>
+          <h3>Babies &amp; Books</h3>
+          <p>Storytime with songs and rhymes for infants and caregivers.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Wednesday, October 14</dd></div>
+            <div><dt>Organizer</dt><dd>Brooklyn Public Library</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Babies from birth to 18 months and caregivers</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://www.bklynlibrary.org/calendar/babies-books-new-lots-library-20261014-1100am" target="_blank" rel="noopener noreferrer">Register / info</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 21 — District 37 pop-up office -->
+        <!-- START EVENT CARD: October 24 — Brainy Babies -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">21</span></div>
-            <div class="event-card-date-meta"><span class="time">2:00 PM &ndash; 4:00 PM</span><span class="loc">1239 Broadway Ave</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">24</span></div>
+            <div class="event-card-date-meta"><span class="time">10:30 AM &ndash; 12:00 PM</span><span class="loc">New Lots Library, 818 Schenck Ave, Brooklyn</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--accent">Constituent Services</span></div>
-          <h3><a href="/constituent-pop-ups-district-37/" style="color:var(--text);">District 37 Pop Up Office</a></h3>
-          <p>Meet Council Member Sandy Nurse&rsquo;s constituent services team for help navigating housing, sanitation, benefits, and city agencies.</p>
+          <div class="event-tag"><span class="tag tag--green">Early Childhood &middot; Library</span></div>
+          <h3>Brainy Babies</h3>
+          <p>Stories and activities designed to encourage brain development and early learning.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Saturday, October 24</dd></div>
+            <div><dt>Organizer</dt><dd>Brooklyn Public Library</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Families with young children</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://www.bklynlibrary.org/calendar/brainy-babies-new-lots-new-lots-library-20261024-1030am" target="_blank" rel="noopener noreferrer">Register / info</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 23 — District 37 pop-up office -->
+      </div>
+      <!-- END YOUTH AND EDUCATION SECTION -->
+
+      <!-- START CIVIC MEETINGS SECTION -->
+      <div class="section-head">
+        <h2>Civic Meetings and Public Hearings</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="events-grid">
+
+        <!-- START EVENT CARD: October 1 — CB5 Education &amp; Youth Services Committee -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">23</span></div>
-            <div class="event-card-date-meta"><span class="time">2:00 PM &ndash; 4:00 PM</span><span class="loc">Myrtle&ndash;Wyckoff Plaza</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">1</span></div>
+            <div class="event-card-date-meta"><span class="time">6:30 PM</span><span class="loc">127 Pennsylvania Ave, 1st Fl Aviation Room</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--accent">Constituent Services</span></div>
-          <h3><a href="/constituent-pop-ups-district-37/" style="color:var(--text);">District 37 Pop Up Office</a></h3>
-          <p>Meet Council Member Sandy Nurse&rsquo;s constituent services team for help navigating housing, sanitation, benefits, and city agencies.</p>
+          <div class="event-tag"><span class="tag tag--blue">Civic &middot; Public Meeting</span></div>
+          <h3>Brooklyn Community Board 5 Education &amp; Youth Services Committee</h3>
+          <p>A monthly committee meeting focused on education and youth-service issues affecting the district. The meeting is in the first-floor Aviation Room at 127 Pennsylvania Avenue, Brooklyn, NY 11207.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Thursday, October 1</dd></div>
+            <div><dt>Organizer</dt><dd>Brooklyn Community Board 5</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Open to the public</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://www.nyc.gov/site/brooklyncb5/meetings/meetings.page" target="_blank" rel="noopener noreferrer">Register / info</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 29 — District 37 pop-up office -->
+        <!-- START EVENT CARD: October 28 — CB5 General Board Meeting -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">29</span></div>
-            <div class="event-card-date-meta"><span class="time">2:00 PM &ndash; 4:00 PM</span><span class="loc">31 Mother Gaston Blvd</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">28</span></div>
+            <div class="event-card-date-meta"><span class="time">6:30 PM</span><span class="loc">127 Pennsylvania Ave, 3rd Fl</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--accent">Constituent Services</span></div>
-          <h3><a href="/constituent-pop-ups-district-37/" style="color:var(--text);">District 37 Pop Up Office</a></h3>
-          <p>Meet Council Member Sandy Nurse&rsquo;s constituent services team for help navigating housing, sanitation, benefits, and city agencies.</p>
+          <div class="event-tag"><span class="tag tag--blue">Civic &middot; Public Meeting</span></div>
+          <h3>Brooklyn Community Board 5 General Board Meeting</h3>
+          <p>The full board meeting where residents can hear agency updates, community presentations, and votes affecting the district. The meeting is on the third floor at 127 Pennsylvania Avenue, Brooklyn, NY 11207.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Wednesday, October 28</dd></div>
+            <div><dt>Organizer</dt><dd>Brooklyn Community Board 5</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Open to the public</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://www.nyc.gov/site/brooklyncb5/meetings/meetings.page" target="_blank" rel="noopener noreferrer">Register / info</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 30 — District 37 pop-up office -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">30</span></div>
-            <div class="event-card-date-meta"><span class="time">2:00 PM &ndash; 4:00 PM</span><span class="loc">1210 Halsey St</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">Constituent Services</span></div>
-          <h3><a href="/constituent-pop-ups-district-37/" style="color:var(--text);">District 37 Pop Up Office</a></h3>
-          <p>Meet Council Member Sandy Nurse&rsquo;s constituent services team for help navigating housing, sanitation, benefits, and city agencies.</p>
-        </div>
+      </div>
+      <!-- END CIVIC MEETINGS SECTION -->
 
-        <!-- Recurring — Opportunity Hub farm stand (Thursdays) -->
+      <!-- START PROGRAMS AND ONGOING OUTREACH SECTION -->
+      <div class="section-head">
+        <h2>Programs and Ongoing Outreach</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="events-grid">
+
+        <!-- START EVENT CARD: Recurring — Opportunity Hub farm stand (Thursdays) -->
         <div class="event-card">
           <div class="event-card-date">
             <div class="event-card-date-block"><span class="month">Every</span><span class="day">Thu</span></div>
@@ -1640,189 +2000,177 @@
           </div>
           <div class="event-tag"><span class="tag tag--green">Food &middot; Weekly</span></div>
           <h3>Opportunity Hub Weekly Farm Stand</h3>
-          <p>The Opportunity Hub farm stand returns every Thursday through November 19 at 1390 Pennsylvania Avenue, near the ice cream truck and the B83 stop. Fresh produce with cash, credit, EBT, and FMNP all accepted.</p>
+          <p>The Opportunity Hub farm stand runs every Thursday through November 19 at 1390 Pennsylvania Avenue, near the ice cream truck and the B83 stop. Fresh produce with cash, credit, EBT, and FMNP all accepted.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Thursdays through November 19</dd></div>
+            <div><dt>Organizer</dt><dd>Opportunity Hub</dd></div>
+            <div><dt>Cost</dt><dd>Produce for purchase; cash, credit, EBT, and FMNP accepted</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>All residents</dd></div>
+            <div><dt>Register / Contact</dt><dd>No registration needed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 8 — Carpenters Union recruitment -->
+        <!-- START EVENT CARD: Ongoing through Nov 17 — Arlington Library bookmobile -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">8</span></div>
-            <div class="event-card-date-meta"><span class="time">9:00 AM – 10:00 AM</span><span class="loc">395 Hudson St, 2nd Fl, Manhattan</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--green">Jobs &middot; Training</span></div>
-          <h3>Carpenters Union Recruitment Info Session</h3>
-          <p>The Carpenters Union holds a recruitment information session at 395 Hudson Street, 2nd floor, covering minimum requirements and the path into the Building Works pre-apprenticeship program. Attendees are encouraged to arrive ahead of the 9 a.m. start.</p>
-        </div>
-
-        <!-- July 8 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">8</span></div>
-            <div class="event-card-date-meta"><span class="time">4:00 PM</span><span class="loc">100 Church St, 10th Fl, Manhattan</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--red">Policing &middot; Oversight</span></div>
-          <h3>Police Oversight Board Meets July 8: How East New Yorkers Can Tune In</h3>
-          <p>New York City&rsquo;s Civilian Complaint Review Board (CCRB) will hold its next public board meeting on Wednesday, July 8, 2026, at 4:00 p.m. at CCRB headquarters, 100 Church Street, 10th floor in Manhattan. The CCRB is the independent agency that investigates complaints of NYPD misconduct, making its monthly meetings one of the few regular windows into how the city reviews and rules on those cases. Residents can register through the CCRB&rsquo;s website to attend, watch, or offer public comment, with meeting notices and agendas posted in advance. For East New York neighbors who care about policing, discipline and transparency, this is a chance to see the oversight process up close&mdash;even if it&rsquo;s just by streaming the meeting from home.</p>
-        </div>
-
-        <!-- July 9 — Gotham Health IDNYC & benefits -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">9</span></div>
-            <div class="event-card-date-meta"><span class="time">11:00 AM &ndash; 2:00 PM</span><span class="loc">2094 Pitkin Ave</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--blue">Benefits &middot; Free</span></div>
-          <h3>IDNYC &amp; Benefits Help at Gotham Health East New York</h3>
-          <p>Gotham Health East New York hosts an IDNYC reservation event at 2094 Pitkin Avenue with the Mayor&rsquo;s Office of Immigrant Affairs and Hunger Free partners. Staff will help residents with IDNYC, SNAP, Fair Fares, and other benefits.</p>
-        </div>
-
-        <!-- July 9 — Highland Park follow-up (tentative) -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">9</span></div>
-            <div class="event-card-date-meta"><span class="time">Tentative</span><span class="loc">Highland Park Land Use</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">Land Use &middot; Meeting</span></div>
-          <h3>Highland Park Follow-Up Meeting Rescheduled</h3>
-          <p>The chair confirms the earlier June 26 date is off. The Highland Park land use follow-up meeting with the developer is now tentatively set for July 9. Check back for confirmation of the final date.</p>
-        </div>
-
-        <!-- July 18 — Walker advisory meeting -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">18</span></div>
-            <div class="event-card-date-meta"><span class="time">Advisory Meeting</span><span class="loc">400 Rockaway Ave</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">Civic &middot; Community</span></div>
-          <h3>Assembly Member Walker Third-Saturday Advisory Meeting</h3>
-          <p>Assembly Member Walker&rsquo;s third-Saturday advisory meetings continue through the summer at 400 Rockaway Avenue, with the next session on July 18. The most recent meeting focused on deed theft and is available to watch on Facebook.</p>
-        </div>
-
-        <!-- July 18 -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">18</span></div>
-            <div class="event-card-date-meta"><span class="time">11:00 AM – 6:00 PM</span><span class="loc">Greene Ave &amp; Marcus Garvey Blvd</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--green">Community · Free</span></div>
-          <h3>BSVAC 38th Anniversary Block Party</h3>
-          <p>Free community block party with health screenings, blood drive sign-up, bounce house, and music. Hosted by the Bedford-Stuyvesant Volunteer Ambulance Corps.</p>
-        </div>
-
-        <!-- July 24 — Arlington Library closes -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">24</span></div>
-            <div class="event-card-date-meta"><span class="time">Renovation Begins</span><span class="loc">Arlington Library</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--blue">Library &middot; Closure</span></div>
-          <h3>Arlington Library Closes for Major Renovation</h3>
-          <p>The Arlington Library closes on July 24 for a major renovation. Bookmobile service and programming at neighborhood partner sites will keep library access available nearby while the building is closed.</p>
-        </div>
-
-        <!-- July 25 — NYC Unfiltered Youth Listening Tour -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">25</span></div>
-            <div class="event-card-date-meta"><span class="time">Ages 15–24 &middot; $100 Stipend</span><span class="loc">Brownsville &middot; Location on Registration</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">Youth &middot; Civic</span></div>
-          <h3>NYC Unfiltered Youth Listening Tour</h3>
-          <p>The NYC Unfiltered Youth Listening Tour comes to Brownsville for young people ages 15 to 24, with a $100 stipend for participants. The exact location is shared upon registration through Assembly Member Walker&rsquo;s office.</p>
-        </div>
-
-        <!-- July 27 – Nov 17 — Arlington Library bookmobile -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">27</span></div>
-            <div class="event-card-date-meta"><span class="time">11:00 AM – 4:00 PM &middot; Through Nov 17</span><span class="loc">Outside Arlington Library</span></div>
+            <div class="event-card-date-block"><span class="month">Thru</span><span class="day">Nov</span></div>
+            <div class="event-card-date-meta"><span class="time">11:00 AM &ndash; 4:00 PM &middot; Through Nov 17</span><span class="loc">Outside Arlington Library</span></div>
           </div>
           <div class="event-tag"><span class="tag tag--blue">Library &middot; Bookmobile</span></div>
           <h3>Arlington Library Bookmobile Service</h3>
-          <p>While the Arlington Library is closed, a bookmobile parks outside the library from July 27 through November 17, 11 a.m. to 4 p.m., keeping books and library services within reach for the neighborhood.</p>
+          <p>While the Arlington Library is closed for renovation, a bookmobile parks outside the library through November 17, 11 a.m. to 4 p.m., keeping books and library services within reach for the neighborhood.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Through November 17</dd></div>
+            <div><dt>Organizer</dt><dd>Arlington Library</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Library patrons of all ages</dd></div>
+            <div><dt>Register / Contact</dt><dd>No registration needed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- July 29 — NYCHA Board meeting -->
+        <!-- START EVENT CARD: Ongoing — Arlington library at Cypress Hills (Mon & Wed) -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Jul</span><span class="day">29</span></div>
-            <div class="event-card-date-meta"><span class="time">1:00 PM</span><span class="loc">90 Church St, Manhattan</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">Housing &middot; Public Meeting</span></div>
-          <h3>NYCHA Board Meeting</h3>
-          <p>The New York City Housing Authority holds its citywide board meeting at 90 Church Street. The session is open to the public and especially relevant for East New York NYCHA residents who want to follow decisions affecting their developments.</p>
-        </div>
-
-        <!-- August 1 — Oldest resident celebration -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Aug</span><span class="day">1</span></div>
-            <div class="event-card-date-meta"><span class="time">12:00 PM</span><span class="loc">Bradford St &amp; Sutter Ave</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--accent">Community &middot; Celebration</span></div>
-          <h3>Community Celebration for a 103-Year-Old Neighbor</h3>
-          <p>CB5&rsquo;s Aging and Social Service Committee is supporting a community celebration for a beloved 103-year-old resident. Join neighbors at the last house on Bradford Street before Sutter, at the corner of Bradford and Sutter.</p>
-        </div>
-
-        <!-- From August 3 — Arlington library at Cypress Hills (Mon & Wed) -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Aug</span><span class="day">3</span></div>
+            <div class="event-card-date-block"><span class="month">Every</span><span class="day">M/W</span></div>
             <div class="event-card-date-meta"><span class="time">Mondays &amp; Wednesdays</span><span class="loc">Cypress Hills Community Center</span></div>
           </div>
           <div class="event-tag"><span class="tag tag--green">Library &middot; Programs</span></div>
           <h3>Arlington Library Programs at Cypress Hills Community Center</h3>
-          <p>Starting August 3, the Arlington Library team sets up at the Cypress Hills Community Center on Mondays and Wednesdays, offering content creation, 3D printing, digital literacy, and podcasting, plus monthly community outreach.</p>
+          <p>The Arlington Library team sets up at the Cypress Hills Community Center on Mondays and Wednesdays, offering content creation, 3D printing, digital literacy, and podcasting, plus monthly community outreach.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Mondays and Wednesdays</dd></div>
+            <div><dt>Organizer</dt><dd>Arlington Library</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Community members</dd></div>
+            <div><dt>Register / Contact</dt><dd>Not listed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- August 4 — 75th Precinct National Night Out -->
+        <!-- START EVENT CARD: Ongoing — Arlington library at Cypress Senior Center (Thursdays) -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Aug</span><span class="day">4</span></div>
-            <div class="event-card-date-meta"><span class="time">National Night Out</span><span class="loc">Sutter Ball Field Park</span></div>
-          </div>
-          <div class="event-tag"><span class="tag tag--red">Public Safety &middot; Community</span></div>
-          <h3>75th Precinct Community Council: New President &amp; National Night Out</h3>
-          <p>The 75th Precinct Community Council welcomes a new council president effective July 1. The council announces National Night Out at Sutter Ball Field Park on August 4, along with a planned community gathering with officers&mdash;details to follow by email.</p>
-        </div>
-
-        <!-- From August 6 — Arlington library at Cypress Senior Center (Thursdays) -->
-        <div class="event-card">
-          <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Aug</span><span class="day">6</span></div>
+            <div class="event-card-date-block"><span class="month">Every</span><span class="day">Thu</span></div>
             <div class="event-card-date-meta"><span class="time">Thursdays</span><span class="loc">Cypress Senior Center</span></div>
           </div>
           <div class="event-tag"><span class="tag tag--green">Seniors &middot; Library</span></div>
           <h3>Arlington Library Computer Classes at Cypress Senior Center</h3>
-          <p>Starting August 6, the Arlington Library team is at the Cypress Senior Center on Thursdays for computer-based classes, along with monthly tabling to connect seniors with library services.</p>
+          <p>The Arlington Library team is at the Cypress Senior Center on Thursdays for computer-based classes, along with monthly tabling to connect seniors with library services.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Thursdays</dd></div>
+            <div><dt>Organizer</dt><dd>Arlington Library</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Seniors</dd></div>
+            <div><dt>Register / Contact</dt><dd>Not listed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- August 11 — People's Kitchen relocation -->
+        <!-- START EVENT CARD: Ongoing — People's Kitchen new location -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Aug</span><span class="day">11</span></div>
+            <div class="event-card-date-block"><span class="month">Now</span><span class="day">Open</span></div>
             <div class="event-card-date-meta"><span class="time">New Location</span><span class="loc">New Hope Worship Center, Livonia Ave</span></div>
           </div>
           <div class="event-tag"><span class="tag tag--green">Food &middot; Community</span></div>
-          <h3>People&rsquo;s Kitchen Relocates to New Hope Worship Center</h3>
-          <p>The People&rsquo;s Kitchen moves to the New Hope Worship Center on Livonia Avenue beginning August 11. Neighbors who rely on the meal program can find it at its new home.</p>
+          <h3>People&rsquo;s Kitchen at New Hope Worship Center</h3>
+          <p>The People&rsquo;s Kitchen now operates out of the New Hope Worship Center on Livonia Avenue. Neighbors who rely on the meal program can find it at its new home.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Ongoing</dd></div>
+            <div><dt>Organizer</dt><dd>People&rsquo;s Kitchen</dd></div>
+            <div><dt>Cost</dt><dd>Not listed</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Neighbors who rely on the meal program</dd></div>
+            <div><dt>Register / Contact</dt><dd>Not listed</dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
 
-        <!-- Early August (TBD) — New Lots interim library -->
+        <!-- START EVENT CARD: October 10 — Birding in Highland Park -->
         <div class="event-card">
           <div class="event-card-date">
-            <div class="event-card-date-block"><span class="month">Aug</span><span class="day">TBD</span></div>
-            <div class="event-card-date-meta"><span class="time">Ribbon Cutting</span><span class="loc">St. Paul Community Baptist Church</span></div>
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">10</span></div>
+            <div class="event-card-date-meta"><span class="time">Meet 10:00 AM &middot; Starts 10:15 AM</span><span class="loc">Upper Highland Park parking lot</span></div>
           </div>
-          <div class="event-tag"><span class="tag tag--blue">Community &middot; Library</span></div>
-          <h3>New Lots Interim Library to Open</h3>
-          <p>A new interim library site for New Lots is coming to St. Paul Community Baptist Church. A ribbon cutting is planned for early August, with the exact date to be announced.</p>
+          <div class="event-tag"><span class="tag tag--green">Outdoors &middot; All Ages</span></div>
+          <h3>Birding in Highland Park</h3>
+          <p>A guided birdwatching program around Ridgewood Reservoir with materials provided to participants. Meet at 10 a.m. in the upper Highland Park parking lot; the program begins at 10:15 a.m. and heads to Ridgewood Reservoir.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Saturday, October 10</dd></div>
+            <div><dt>Organizer</dt><dd>Arlington Library with the New York State Department of Environmental Conservation</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>All ages</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://www.bklynlibrary.org/calendar/birding-highland-park-arlington-library-20261010-1015am" target="_blank" rel="noopener noreferrer">Register / info</a></dd></div>
+          </dl>
         </div>
+        <!-- END EVENT CARD -->
+
+        <!-- START EVENT CARD: October 27 — Bookmobile at Highland Park Community Garden -->
+        <div class="event-card">
+          <div class="event-card-date">
+            <div class="event-card-date-block"><span class="month">Oct</span><span class="day">27</span></div>
+            <div class="event-card-date-meta"><span class="time">11:00 AM &ndash; 4:00 PM</span><span class="loc">Highland Park Community Garden</span></div>
+          </div>
+          <div class="event-tag"><span class="tag tag--blue">Library &middot; Bookmobile</span></div>
+          <h3>Bookmobile at Highland Park Community Garden</h3>
+          <p>Library staff and the Bookmobile will bring books and library services to Highland Park Community Garden.</p>
+          <dl class="event-card-details">
+            <div><dt>Date</dt><dd>Tuesday, October 27</dd></div>
+            <div><dt>Organizer</dt><dd>Brooklyn Public Library and Arlington Library staff</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+            <div><dt>Who it&rsquo;s for</dt><dd>Kids, adults, and families</dd></div>
+            <div><dt>Register / Contact</dt><dd><a href="https://www.bklynlibrary.org/calendar/bookmobile-highland-park-arlington-library-20261027-1100am" target="_blank" rel="noopener noreferrer">Register / info</a></dd></div>
+          </dl>
+        </div>
+        <!-- END EVENT CARD -->
 
       </div>
+      <!-- END PROGRAMS AND ONGOING OUTREACH SECTION -->
+
+      <!-- START SUBMIT AN EVENT SECTION -->
+      <div class="section-head" id="submit-event">
+        <h2>Submit an Event</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="event-panel">
+        <h3>Submit an East New York event</h3>
+        <p>Hosting a public event, workshop, fair, meeting, class, giveaway, performance, or outreach activity in East New York? Send it to The East New York Times for possible inclusion in our Upcoming Events section.</p>
+        <p><strong>Please send:</strong></p>
+        <ul>
+          <li>Event title</li>
+          <li>Date and time</li>
+          <li>Location</li>
+          <li>Organizer name</li>
+          <li>Short description</li>
+          <li>Registration link or public contact</li>
+          <li>Cost</li>
+          <li>Flyer or image, if available</li>
+        </ul>
+        <p>Whenever possible, send events at least 7 days in advance.</p>
+        <p>Email submissions to: <a href="mailto:info@eastnewyorktimes.com">info@eastnewyorktimes.com</a></p>
+      </div>
+      <!-- END SUBMIT AN EVENT SECTION -->
+
+      <!-- START EVENT GUIDELINES SECTION -->
+      <div class="section-head">
+        <h2>Event Guidelines</h2>
+        <div class="section-head-line"></div>
+      </div>
+      <div class="event-panel">
+        <ul>
+          <li>Events must take place in East New York or have a clear East New York connection.</li>
+          <li>Free and low-cost public events should be prioritized.</li>
+          <li>Inclusion is not an endorsement.</li>
+          <li>Event details may change. Readers should confirm details with the organizer before attending.</li>
+          <li>The East New York Times may edit listings for clarity, length, style, and accuracy.</li>
+          <li>Paid placements must be clearly labeled Advertisement, Sponsored, or Paid content.</li>
+        </ul>
+      </div>
+      <!-- END EVENT GUIDELINES SECTION -->
+
     </div>
   </div>
-
 
   <!-- ══════════════════════════════════════════════
        ABOUT PAGE
@@ -1867,7 +2215,6 @@
       </div>
     </div>
   </div>
-
 
   <!-- FOOTER -->
   <footer class="footer">

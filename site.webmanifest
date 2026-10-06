@@ -1,0 +1,14 @@
+{
+  "name": "The East New York Times",
+  "short_name": "ENYT",
+  "description": "Independent community news for East New York, Brooklyn.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1319",
+  "theme_color": "#0F1319",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
