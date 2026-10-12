@@ -484,6 +484,9 @@
     .about-content h1 span { color: var(--accent); }
     .about-content .lead { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem; border-left: 3px solid var(--accent); padding-left: 1.25rem; font-style: italic; max-width: none; }
     .about-content h2 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; }
+    .page-hero h2.page-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; margin-top: 0; margin-bottom: 0.5rem; }
+    .page-hero h2.page-title span, .about-content h2.page-title span { color: var(--accent); }
+    .about-content h2.page-title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-top: 0; margin-bottom: 0.5rem; }
     .about-content p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1rem; }
     .about-content p a { color: var(--accent); }
     .about-content p a:hover { text-decoration: underline; }
@@ -748,7 +751,7 @@
           <!-- Featured story -->
           <div class="featured-story">
             <div class="featured-story-img-placeholder" style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:2048/932;">
-              <img src="rooted-in-east-new-york-5k.jpg" alt="Dozens of runners, volunteers and families wearing medals and Rooted in East New York T-shirts wave for a group photo in Highland Park." class="featured-story-img" style="object-position:center center;aspect-ratio:2048/932;">
+              <img fetchpriority="high" decoding="async" src="rooted-in-east-new-york-5k.jpg" alt="Dozens of runners, volunteers and families wearing medals and Rooted in East New York T-shirts wave for a group photo in Highland Park." class="featured-story-img" style="object-position:center center;aspect-ratio:2048/932;">
             </div>
             <p style="font-size:0.72rem;line-height:1.5;color:var(--text-faint);margin-top:0.5rem;">Runners, volunteers and neighbors celebrate at the Rooted in East New York Community Week 5K in Highland Park. (Photo: Deric Johnson/The East New York Times)</p>
 
@@ -813,7 +816,7 @@
         <div class="news-grid">
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="borough-hall-pillars.jpg" alt="The columned front of Brooklyn Borough Hall in Downtown Brooklyn, with two large American flags hanging between its stone pillars." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="borough-hall-pillars.jpg" alt="The columned front of Brooklyn Borough Hall in Downtown Brooklyn, with two large American flags hanging between its stone pillars." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--red">Politics</span>
             <h3><a href="/nikki-lucas-brooklyn-democratic-party-chair-court-fight/">Assemblywoman Nikki Lucas Claims Brooklyn Democratic Party Chair, but Courts May Decide Whether It Counts</a></h3>
@@ -822,7 +825,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="east-new-york-farms-mural.jpg" alt="Volunteers walk past a colorful mural reading “East New York Farms!” above the farm’s garden beds and seedling tables." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="east-new-york-farms-mural.jpg" alt="Volunteers walk past a colorful mural reading “East New York Farms!” above the farm’s garden beds and seedling tables." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--green">Schools &amp; Youth</span>
             <h3><a href="/east-new-york-farms-youth-grow-food-community/">East New York Farms Youth Grow Food for Their Community</a></h3>
@@ -831,7 +834,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="cypress-hills-houses-fallen-tree.jpg" alt="Yellow caution tape and orange traffic cones surround a patch of uprooted ground beside a chain-link fence at the Cypress Hills Houses." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="cypress-hills-houses-fallen-tree.jpg" alt="Yellow caution tape and orange traffic cones surround a patch of uprooted ground beside a chain-link fence at the Cypress Hills Houses." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--accent">Public Housing</span>
             <h3><a href="/nycha-worker-leighton-brown-killed-falling-tree-cypress-hills-houses/">NYCHA Worker Leighton Brown Killed by Falling Tree at Cypress Hills Houses</a></h3>
@@ -840,7 +843,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="black-inventors-parade-keron.jpg" alt="Organizer Keron Alleyne speaks into a megaphone while giving a thumbs up in front of the Black Inventors Parade banner during the fifth annual Black Inventors Youth Parade." style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+              <img loading="lazy" decoding="async" src="black-inventors-parade-keron.jpg" alt="Organizer Keron Alleyne speaks into a megaphone while giving a thumbs up in front of the Black Inventors Parade banner during the fifth annual Black Inventors Youth Parade." style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
             </div>
             <span class="tag tag--accent">Education</span>
             <h3><a href="/black-inventors-youth-parade-east-new-york/">“Who Invented That? We Invented That”: East New York Youth Parade Celebrates Black Innovation</a></h3>
@@ -849,7 +852,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="concert-wellness-worship.jpg" alt="A man raises both hands while worshipping in the rain during the gospel and jazz finale of the East New York Concert + Wellness Series." style="width:100%;height:100%;object-fit:cover;object-position:center 22%;" />
+              <img loading="lazy" decoding="async" src="concert-wellness-worship.jpg" alt="A man raises both hands while worshipping in the rain during the gospel and jazz finale of the East New York Concert + Wellness Series." style="width:100%;height:100%;object-fit:cover;object-position:center 22%;" />
             </div>
             <span class="tag tag--green">Community</span>
             <h3><a href="/east-new-york-concert-wellness-series/">More Than a Concert: East New York’s Four-Day Wellness Series Brings Music, Resources and Community Together</a></h3>
@@ -858,7 +861,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="2342-atlantic-rally.jpg" alt="Tenants and organizers in blue HOPE T-shirts stand outside 2342 Atlantic Avenue behind a banner reading “When we fight! We win!” as a speaker addresses the crowd through a bullhorn." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="2342-atlantic-rally.jpg" alt="Tenants and organizers in blue HOPE T-shirts stand outside 2342 Atlantic Avenue behind a banner reading “When we fight! We win!” as a speaker addresses the crowd through a bullhorn." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--accent">Housing</span>
             <h3><a href="/2342-atlantic-avenue-tenants-nurse-safdie-hpd/">A Broken Front Door, a Worst-Landlord Ranking, and Tenants Who Refuse to Leave</a></h3>
@@ -867,7 +870,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="255-pennsylvania-fix-sign.jpg" alt="A tenant in a leopard-print mesh jersey holds a hand-lettered pink sign reading “Fix 255 Pennsylvania” outside the building during the rally." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="255-pennsylvania-fix-sign.jpg" alt="A tenant in a leopard-print mesh jersey holds a hand-lettered pink sign reading “Fix 255 Pennsylvania” outside the building during the rally." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--accent">Housing</span>
             <h3><a href="/255-pennsylvania-avenue-tenants-banks-plaza-management/">“Say his name”: East New York tenants and Council Member Chris Banks put a landlord on notice at 255 Pennsylvania Avenue</a></h3>
@@ -876,7 +879,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="brooklyn-democrats-rules-passed.jpg" alt="A demonstrator holds a hand-lettered list of Democratic officials opposing the Kings County Democratic Party rules package on the steps of Brooklyn Borough Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="brooklyn-democrats-rules-passed.jpg" alt="A demonstrator holds a hand-lettered list of Democratic officials opposing the Kings County Democratic Party rules package on the steps of Brooklyn Borough Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--red">Politics</span>
             <h3><a href="/brooklyn-democrats-rules-change-passed/">Brooklyn’s Democratic Rules Change Passed. The Court Fight and Chair Vote Come Next.</a></h3>
@@ -885,7 +888,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="brooklyn-democrats-rules-vote.jpg" alt="A large crowd of Brooklyn Democrats and supporters stands on the steps of Brooklyn Borough Hall holding hand-lettered signs including “Respect the Voters,” “Honor the Election,” and “Back Off Bichotte Hermelyn.”" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="brooklyn-democrats-rules-vote.jpg" alt="A large crowd of Brooklyn Democrats and supporters stands on the steps of Brooklyn Borough Hall holding hand-lettered signs including “Respect the Voters,” “Honor the Election,” and “Back Off Bichotte Hermelyn.”" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--red">Politics</span>
             <h3><a href="/brooklyn-democrats-rules-vote/">Brooklyn Democrats Move to Reshape Their Own Rules Tonight — What It Means for East New York</a></h3>
@@ -894,7 +897,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="fat-boys-avenue.jpg" alt="Family members hold the new Fat Boys Avenue street sign at the co-naming ceremony on Schenck Avenue in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="fat-boys-avenue.jpg" alt="Family members hold the new Fat Boys Avenue street sign at the co-naming ceremony on Schenck Avenue in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--green">Arts &amp; Culture</span>
             <h3><a href="/fat-boys-avenue/">Fat Boys Avenue, Down by Law</a></h3>
@@ -903,7 +906,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="virginia-burroughs-way.jpg" alt="Family, friends and neighbors gather outside Essex Terrace after the Virginia Burroughs Way co-naming ceremony" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="virginia-burroughs-way.jpg" alt="Family, friends and neighbors gather outside Essex Terrace after the Virginia Burroughs Way co-naming ceremony" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--green">Community</span>
             <h3><a href="/fifty-years-on-one-block/">Fifty Years on One Block: How Virginia Burroughs Became a Street</a></h3>
@@ -912,7 +915,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="broadway-junction-hire-east-ny.jpg" alt="A resident holds a Hire East NY sign at a Broadway Junction local hiring rally" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="broadway-junction-hire-east-ny.jpg" alt="A resident holds a Hire East NY sign at a Broadway Junction local hiring rally" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--accent">Jobs &amp; Transit</span>
             <h3><a href="/broadway-junction-local-hiring/">Only 13 Nearby Residents Hired on $400 Million Broadway Junction Project, Local Officials Say</a></h3>
@@ -921,7 +924,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="chris-banks-nycha-roundtable.jpg" alt="New York City Council Deputy Leader Chris Banks speaks as Majority Whip Kamillah M. Hanks looks on at City Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="chris-banks-nycha-roundtable.jpg" alt="New York City Council Deputy Leader Chris Banks speaks as Majority Whip Kamillah M. Hanks looks on at City Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--accent">Public Housing</span>
             <h3><a href="/banks-calls-new-nycha-leadership-public-housing-privatization/">Banks Calls for New NYCHA Leadership and Warns Against Public Housing Privatization</a></h3>
@@ -930,7 +933,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="constituent-pop-up-district-37.jpg" alt="Dominique Alexandre and District 37 interns staffing a constituent pop-up table in Brooklyn" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="constituent-pop-up-district-37.jpg" alt="Dominique Alexandre and District 37 interns staffing a constituent pop-up table in Brooklyn" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--blue">Civic</span>
             <h3><a href="/constituent-pop-ups-district-37/">Constituent Pop Ups Pull Up Across BKLYN’s 37th District</a></h3>
@@ -939,7 +942,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="nypd-youth-commander-perez-portrait.jpg" alt="Captain Lori Perez speaking at a Community Board 5 meeting in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="nypd-youth-commander-perez-portrait.jpg" alt="Captain Lori Perez speaking at a Community Board 5 meeting in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--red">Youth Strategies</span>
             <h3><a href="/nypd-youth-commander-perez/">“No Reason for These Takeovers”: New NYPD Youth Commander Pitches a Reset at East New York’s Community Hub</a></h3>
@@ -948,7 +951,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="alice-lowman-cb5.jpg" alt="CB5 Chair Alice Lowman speaking at a Community Board 5 meeting" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="alice-lowman-cb5.jpg" alt="CB5 Chair Alice Lowman speaking at a Community Board 5 meeting" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--blue">Civic</span>
             <h3><a href="/alice-lowman-cb5-attendance-borough-hall-reversal/">“No Attendance, You Won’t Be on the Board”: CB5 Chair Alice Lowman Draws a Line on Non-Attendance and Borough Hall’s Reversal</a></h3>
@@ -957,7 +960,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="lucas-cb5.jpg" alt="Assemblymember Nikki Lucas speaking at a Community Board 5 meeting" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+              <img loading="lazy" decoding="async" src="lucas-cb5.jpg" alt="Assemblymember Nikki Lucas speaking at a Community Board 5 meeting" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
             </div>
             <span class="tag tag--blue">Civic</span>
             <h3><a href="/nikki-lucas-cb5-budget-housing-education-democratic-leadership/">Nikki Lucas Connects Albany Budget Fights to East New York’s Housing, Schools and Jobs</a></h3>
@@ -966,7 +969,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="sandy.jpg" alt="Council Member Sandy Nurse speaking at the Community Board 5 meeting in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+              <img loading="lazy" decoding="async" src="sandy.jpg" alt="Council Member Sandy Nurse speaking at the Community Board 5 meeting in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
             </div>
             <span class="tag tag--accent">Housing</span>
             <h3><a href="/housing-wealth-and-who-gets-to-stay-east-new-york/">Housing, Wealth, and Who Gets to Stay in East New York</a></h3>
@@ -975,7 +978,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="tate-cb5.jpg" alt="Christian Celeste Tate at a Community Board 5 Brooklyn committee meeting" style="width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" decoding="async" src="tate-cb5.jpg" alt="Christian Celeste Tate at a Community Board 5 Brooklyn committee meeting" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <span class="tag tag--red">Election Results</span>
             <h3><a href="/ad54/">Celeste Tate Defeats Dilan in AD54 &mdash; What It Means for East New York</a></h3>
@@ -1011,7 +1014,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="127penn.jpg" alt="127 Pennsylvania Avenue, Community Board 5 Brooklyn" style="width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" decoding="async" src="127penn.jpg" alt="127 Pennsylvania Avenue, Community Board 5 Brooklyn" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <span class="tag tag--blue">Civic</span>
             <h3><a href="/cb5meetings/">CB5 Brooklyn Meets This Wednesday — Last Meeting Until September</a></h3>
@@ -1029,7 +1032,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="juneteenth-hero.jpg" alt="Juneteenth NYC 2026 parade East New York" style="width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" decoding="async" src="juneteenth-hero.jpg" alt="Juneteenth NYC 2026 parade East New York" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <span class="tag tag--green">Community</span>
             <h3><a href="/juneteenth/">East New York Filled the Streets for Juneteenth NYC 2026</a></h3>
@@ -1038,7 +1041,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="sandynurse-cityfheps.jpg" alt="CM Sandy Nurse District 37" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);" />
+              <img loading="lazy" decoding="async" src="sandynurse-cityfheps.jpg" alt="CM Sandy Nurse District 37" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);" />
             </div>
             <span class="tag tag--accent">Housing</span>
             <h3><a href="/cityfheps/">Sandy Nurse Says No Budget Without CityFHEPS Expansion. East New York Is Why.</a></h3>
@@ -1047,7 +1050,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="fairfares-story.jpg" alt="MTA bus New York City" style="width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" decoding="async" src="fairfares-story.jpg" alt="MTA bus New York City" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <span class="tag tag--blue">Civic</span>
             <h3><a href="/fairfares/">The City Is Debating Free Buses and Cheaper Fares. Here&rsquo;s What It Means for East New York.</a></h3>
@@ -1056,7 +1059,7 @@
           </div>
           <div class="news-card">
             <div class="news-card-img" style="overflow:hidden;">
-              <img src="75pct.jpg" alt="NYPD 75th Precinct East New York" style="width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" decoding="async" src="75pct.jpg" alt="NYPD 75th Precinct East New York" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <span class="tag tag--red">Public Safety</span>
             <h3><a href="/marcelin/">Brooklyn Man Sentenced to Life Without Parole for the Murder of Susan Leyden on Pennsylvania Avenue.</a></h3>
@@ -1239,13 +1242,13 @@
   <div class="page" id="page-articles">
     <div class="container">
       <div class="page-hero">
-        <h1>All <span>Stories</span></h1>
+        <h2 class="page-title">All <span>Stories</span></h2>
         <p>Every article published by East New York Times — civic coverage, community voices, and neighborhood news.</p>
       </div>
       <div class="articles-grid">
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="rooted-in-east-new-york-5k.jpg" alt="Dozens of runners, volunteers and families wearing medals and Rooted in East New York T-shirts wave for a group photo in Highland Park." style="width:100%;height:100%;object-fit:contain;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="rooted-in-east-new-york-5k.jpg" alt="Dozens of runners, volunteers and families wearing medals and Rooted in East New York T-shirts wave for a group photo in Highland Park." style="width:100%;height:100%;object-fit:contain;object-position:center center;" />
           </div>
           <span class="tag tag--green">Community</span>
           <h2><a href="/rooted-in-east-new-york-5k-scholarships-cypress-hills/">Rooted in East New York 5K Supports Scholarships and Community Programs</a></h2>
@@ -1254,7 +1257,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="borough-hall-pillars.jpg" alt="The columned front of Brooklyn Borough Hall in Downtown Brooklyn, with two large American flags hanging between its stone pillars." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="borough-hall-pillars.jpg" alt="The columned front of Brooklyn Borough Hall in Downtown Brooklyn, with two large American flags hanging between its stone pillars." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--red">Politics</span>
           <h2><a href="/nikki-lucas-brooklyn-democratic-party-chair-court-fight/">Assemblywoman Nikki Lucas Claims Brooklyn Democratic Party Chair, but Courts May Decide Whether It Counts</a></h2>
@@ -1263,7 +1266,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="east-new-york-farms-mural.jpg" alt="Volunteers walk past a colorful mural reading “East New York Farms!” above the farm’s garden beds and seedling tables." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="east-new-york-farms-mural.jpg" alt="Volunteers walk past a colorful mural reading “East New York Farms!” above the farm’s garden beds and seedling tables." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--green">Schools &amp; Youth</span>
           <h2><a href="/east-new-york-farms-youth-grow-food-community/">East New York Farms Youth Grow Food for Their Community</a></h2>
@@ -1272,7 +1275,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="cypress-hills-houses-fallen-tree.jpg" alt="Yellow caution tape and orange traffic cones surround a patch of uprooted ground beside a chain-link fence at the Cypress Hills Houses." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="cypress-hills-houses-fallen-tree.jpg" alt="Yellow caution tape and orange traffic cones surround a patch of uprooted ground beside a chain-link fence at the Cypress Hills Houses." style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--accent">Public Housing</span>
           <h2><a href="/nycha-worker-leighton-brown-killed-falling-tree-cypress-hills-houses/">NYCHA Worker Leighton Brown Killed by Falling Tree at Cypress Hills Houses</a></h2>
@@ -1281,7 +1284,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="black-inventors-parade-keron.jpg" alt="Organizer Keron Alleyne speaks into a megaphone while giving a thumbs up in front of the Black Inventors Parade banner during the fifth annual Black Inventors Youth Parade." style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+            <img loading="lazy" decoding="async" src="black-inventors-parade-keron.jpg" alt="Organizer Keron Alleyne speaks into a megaphone while giving a thumbs up in front of the Black Inventors Parade banner during the fifth annual Black Inventors Youth Parade." style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
           </div>
           <span class="tag tag--accent">Education</span>
           <h2><a href="/black-inventors-youth-parade-east-new-york/">“Who Invented That? We Invented That”: East New York Youth Parade Celebrates Black Innovation</a></h2>
@@ -1290,7 +1293,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="concert-wellness-worship.jpg" alt="A man raises both hands while worshipping in the rain during the gospel and jazz finale of the East New York Concert + Wellness Series." style="width:100%;height:100%;object-fit:cover;object-position:center 22%;" />
+            <img loading="lazy" decoding="async" src="concert-wellness-worship.jpg" alt="A man raises both hands while worshipping in the rain during the gospel and jazz finale of the East New York Concert + Wellness Series." style="width:100%;height:100%;object-fit:cover;object-position:center 22%;" />
           </div>
           <span class="tag tag--green">Community</span>
           <h2><a href="/east-new-york-concert-wellness-series/">More Than a Concert: East New York’s Four-Day Wellness Series Brings Music, Resources and Community Together</a></h2>
@@ -1299,7 +1302,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="2342-atlantic-rally.jpg" alt="Tenants and organizers in blue HOPE T-shirts rally outside 2342 Atlantic Avenue in Cypress Hills behind a banner reading “When we fight! We win!”" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="2342-atlantic-rally.jpg" alt="Tenants and organizers in blue HOPE T-shirts rally outside 2342 Atlantic Avenue in Cypress Hills behind a banner reading “When we fight! We win!”" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--accent">Housing</span>
           <h2><a href="/2342-atlantic-avenue-tenants-nurse-safdie-hpd/">A Broken Front Door, a Worst-Landlord Ranking, and Tenants Who Refuse to Leave</a></h2>
@@ -1308,7 +1311,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="255-pennsylvania-fix-sign.jpg" alt="A tenant holds a hand-lettered pink sign reading “Fix 255 Pennsylvania” outside 255 Pennsylvania Avenue in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="255-pennsylvania-fix-sign.jpg" alt="A tenant holds a hand-lettered pink sign reading “Fix 255 Pennsylvania” outside 255 Pennsylvania Avenue in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--accent">Housing</span>
           <h2><a href="/255-pennsylvania-avenue-tenants-banks-plaza-management/">“Say his name”: East New York tenants and Council Member Chris Banks put a landlord on notice at 255 Pennsylvania Avenue</a></h2>
@@ -1317,7 +1320,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="brooklyn-democrats-rules-passed.jpg" alt="A demonstrator holds a hand-lettered list of Democratic officials opposing the Kings County Democratic Party rules package on the steps of Brooklyn Borough Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="brooklyn-democrats-rules-passed.jpg" alt="A demonstrator holds a hand-lettered list of Democratic officials opposing the Kings County Democratic Party rules package on the steps of Brooklyn Borough Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--red">Politics</span>
           <h2><a href="/brooklyn-democrats-rules-change-passed/">Brooklyn’s Democratic Rules Change Passed. The Court Fight and Chair Vote Come Next.</a></h2>
@@ -1326,7 +1329,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="brooklyn-democrats-rules-vote.jpg" alt="A large crowd of Brooklyn Democrats and supporters stands on the steps of Brooklyn Borough Hall holding hand-lettered signs including “Respect the Voters,” “Honor the Election,” and “Back Off Bichotte Hermelyn.”" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="brooklyn-democrats-rules-vote.jpg" alt="A large crowd of Brooklyn Democrats and supporters stands on the steps of Brooklyn Borough Hall holding hand-lettered signs including “Respect the Voters,” “Honor the Election,” and “Back Off Bichotte Hermelyn.”" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--red">Politics</span>
           <h2><a href="/brooklyn-democrats-rules-vote/">Brooklyn Democrats Move to Reshape Their Own Rules Tonight — What It Means for East New York</a></h2>
@@ -1335,7 +1338,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="fat-boys-avenue.jpg" alt="Family members hold the new Fat Boys Avenue street sign at the co-naming ceremony on Schenck Avenue in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="fat-boys-avenue.jpg" alt="Family members hold the new Fat Boys Avenue street sign at the co-naming ceremony on Schenck Avenue in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--green">Arts &amp; Culture</span>
           <h2><a href="/fat-boys-avenue/">Fat Boys Avenue, Down by Law</a></h2>
@@ -1344,7 +1347,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="virginia-burroughs-way.jpg" alt="Family, friends and neighbors gather outside Essex Terrace after the Virginia Burroughs Way co-naming ceremony" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="virginia-burroughs-way.jpg" alt="Family, friends and neighbors gather outside Essex Terrace after the Virginia Burroughs Way co-naming ceremony" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--green">Community</span>
           <h2><a href="/fifty-years-on-one-block/">Fifty Years on One Block: How Virginia Burroughs Became a Street</a></h2>
@@ -1363,7 +1366,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="broadway-junction-hire-east-ny.jpg" alt="A resident holds a Hire East NY sign at a Broadway Junction local hiring rally" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="broadway-junction-hire-east-ny.jpg" alt="A resident holds a Hire East NY sign at a Broadway Junction local hiring rally" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--accent">Jobs &amp; Transit</span>
           <h2><a href="/broadway-junction-local-hiring/">Only 13 Nearby Residents Hired on $400 Million Broadway Junction Project, Local Officials Say</a></h2>
@@ -1372,7 +1375,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="chris-banks-nycha-roundtable.jpg" alt="New York City Council Deputy Leader Chris Banks speaks as Majority Whip Kamillah M. Hanks looks on at City Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="chris-banks-nycha-roundtable.jpg" alt="New York City Council Deputy Leader Chris Banks speaks as Majority Whip Kamillah M. Hanks looks on at City Hall" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--accent">Public Housing</span>
           <h2><a href="/banks-calls-new-nycha-leadership-public-housing-privatization/">Banks Calls for New NYCHA Leadership and Warns Against Public Housing Privatization</a></h2>
@@ -1381,7 +1384,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="constituent-pop-up-district-37.jpg" alt="Dominique Alexandre and District 37 interns staffing a constituent pop-up table in Brooklyn" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="constituent-pop-up-district-37.jpg" alt="Dominique Alexandre and District 37 interns staffing a constituent pop-up table in Brooklyn" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--blue">Civic</span>
           <h2><a href="/constituent-pop-ups-district-37/">Constituent Pop Ups Pull Up Across BKLYN’s 37th District</a></h2>
@@ -1390,7 +1393,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="nypd-youth-commander-perez-portrait.jpg" alt="Captain Lori Perez speaking at a Community Board 5 meeting in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="nypd-youth-commander-perez-portrait.jpg" alt="Captain Lori Perez speaking at a Community Board 5 meeting in East New York" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--red">Youth Strategies</span>
           <h2><a href="/nypd-youth-commander-perez/">“No Reason for These Takeovers”: New NYPD Youth Commander Pitches a Reset at East New York’s Community Hub</a></h2>
@@ -1399,7 +1402,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="alice-lowman-cb5.jpg" alt="CB5 Chair Alice Lowman speaking at a Community Board 5 meeting" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="alice-lowman-cb5.jpg" alt="CB5 Chair Alice Lowman speaking at a Community Board 5 meeting" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--blue">Civic</span>
           <h2><a href="/alice-lowman-cb5-attendance-borough-hall-reversal/">“No Attendance, You Won’t Be on the Board”: CB5 Chair Alice Lowman Draws a Line on Non-Attendance and Borough Hall’s Reversal</a></h2>
@@ -1408,7 +1411,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="lucas-cb5.jpg" alt="Assemblymember Nikki Lucas speaking at a Community Board 5 meeting" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
+            <img loading="lazy" decoding="async" src="lucas-cb5.jpg" alt="Assemblymember Nikki Lucas speaking at a Community Board 5 meeting" style="width:100%;height:100%;object-fit:cover;object-position:center center;" />
           </div>
           <span class="tag tag--blue">Civic</span>
           <h2><a href="/nikki-lucas-cb5-budget-housing-education-democratic-leadership/">Nikki Lucas Connects Albany Budget Fights to East New York’s Housing, Schools and Jobs</a></h2>
@@ -1417,7 +1420,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="tate-cb5.jpg" alt="Christian Celeste Tate at a Community Board 5 Brooklyn committee meeting" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="tate-cb5.jpg" alt="Christian Celeste Tate at a Community Board 5 Brooklyn committee meeting" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--red">Election Results</span>
           <h2><a href="/ad54/">Celeste Tate Defeats Dilan in AD54 &mdash; What It Means for East New York</a></h2>
@@ -1426,7 +1429,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="ehv-hearing.jpg" alt="CM Chris Banks at NYC Council EHV hearing" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.75);" />
+            <img loading="lazy" decoding="async" src="ehv-hearing.jpg" alt="CM Chris Banks at NYC Council EHV hearing" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.75);" />
           </div>
           <span class="tag tag--accent">Housing</span>
           <h2><a href="/ehv/">NYCHA Has Placed 14 Families. Nearly 5,100 Are Still Waiting.</a></h2>
@@ -1435,7 +1438,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;background:var(--surface-2);display:flex;align-items:center;justify-content:center;">
-            <img src="75pct.jpg" alt="Pennsylvania Avenue East New York Brooklyn" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+            <img loading="lazy" decoding="async" src="75pct.jpg" alt="Pennsylvania Avenue East New York Brooklyn" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
           </div>
           <span class="tag tag--red">Public Safety</span>
           <h2><a href="/marcelin/">Brooklyn Man Sentenced to Life Without Parole for the Murder of Susan Leyden on Pennsylvania Avenue.</a></h2>
@@ -1444,7 +1447,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="gotham-health.jpg" alt="Gotham Health East New York, 2094 Pitkin Avenue" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="gotham-health.jpg" alt="Gotham Health East New York, 2094 Pitkin Avenue" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--red">Health</span>
           <h2><a href="/essentialplan/">Your Health Coverage May Change July 1. Here's What East New York Residents Need to Do Right Now.</a></h2>
@@ -1453,7 +1456,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="spp-story.jpg" alt="Boarded up building East New York" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);" />
+            <img loading="lazy" decoding="async" src="spp-story.jpg" alt="Boarded up building East New York" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);" />
           </div>
           <span class="tag tag--accent">Housing</span>
           <h2><a href="/spp/">While Families Fight to Keep Their Vouchers, the City Just Launched a Program to Save the Buildings They Live In</a></h2>
@@ -1462,7 +1465,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;background:var(--surface-2);">
-            <img src="fairfares-story.jpg" alt="Broadway Junction East New York transit" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="fairfares-story.jpg" alt="Broadway Junction East New York transit" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--blue">Civic</span>
           <h2><a href="/fairfares/">The City Is Debating Free Buses and Cheaper Fares. Here&rsquo;s What It Means for East New York.</a></h2>
@@ -1471,7 +1474,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="gracebasketball.jpg" alt="John P. White benefit tournament at Grace Playground, East New York" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="gracebasketball.jpg" alt="John P. White benefit tournament at Grace Playground, East New York" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--sports">Sports</span>
           <h2><a href="/knicks/">The Knicks Brought $202 Million to New York. Will Any of It Reach East New York?</a></h2>
@@ -1480,7 +1483,7 @@
         </div>
                         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="snap2-story.jpg" alt="East New York food distribution" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="snap2-story.jpg" alt="East New York food distribution" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--red">Food Security</span>
           <h2><a href="/snap2/">SNAP Update: Veterans, Homeless Residents, and Former Foster Youth Now Subject to Work Rules</a></h2>
@@ -1489,7 +1492,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="medicaid2-story.jpg" alt="Medicaid work rules East New York" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="medicaid2-story.jpg" alt="Medicaid work rules East New York" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--red">Health</span>
           <h2><a href="/medicaid2/">What New York Is Doing to Protect ENY Residents From Medicaid Work Rules</a></h2>
@@ -1498,7 +1501,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="medicaid-story.jpg" alt="FDNY ambulance on an East New York street" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="medicaid-story.jpg" alt="FDNY ambulance on an East New York street" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--red">Health</span>
           <h2><a href="/medicaid/">New Medicaid Work Rules Could Cut Off Health Care for East New York Residents</a></h2>
@@ -1507,7 +1510,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="bric-sheila.jpg" alt="Sheila E. at BRIC Celebrate Brooklyn 2026" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="bric-sheila.jpg" alt="Sheila E. at BRIC Celebrate Brooklyn 2026" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--green">Arts &amp; Culture</span>
           <h2><a href="/bric/">Opening Night at BRIC: Sheila E., Leon Knight, and DJ Spinna Bring Brooklyn Together</a></h2>
@@ -1516,7 +1519,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="regents-story.jpg" alt="P.S. 171 Highland Park Community School" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="regents-story.jpg" alt="P.S. 171 Highland Park Community School" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--accent">Education</span>
           <h2><a href="/regents/">June Regents Are Coming — Here's What East New York Families Need to Know</a></h2>
@@ -1525,7 +1528,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="cannabis-story.jpg" alt="CB5 Cannabis Committee Meeting" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="cannabis-story.jpg" alt="CB5 Cannabis Committee Meeting" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--accent">Governance</span>
           <h2><a href="/cannabis/">Unsupported Youth Marijuana Claim Shapes CB5 Cannabis Event Debate</a></h2>
@@ -1534,7 +1537,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="snap-story.jpg" alt="SNAP food distribution East New York" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="snap-story.jpg" alt="SNAP food distribution East New York" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--red">Breaking · Food Security</span>
           <h2><a href="/snap/">Your Food Stamps Could Be Cut Off Tomorrow — East New York, Read This Now</a></h2>
@@ -1542,7 +1545,7 @@
           <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>May 30, 2026</span><span>3 min read</span></div>
         </div>
         <div class="article-card">
-          <div class="article-card-img" style="overflow:hidden;"><img src="sandynurse-story.jpg" alt="Sandy Nurse town hall" style="width:100%;height:100%;object-fit:cover;object-position:center top;" /></div>
+          <div class="article-card-img" style="overflow:hidden;"><img loading="lazy" decoding="async" src="sandynurse-story.jpg" alt="Sandy Nurse town hall" style="width:100%;height:100%;object-fit:cover;object-position:center top;" /></div>
           <span class="tag tag--blue">Civic</span>
           <h2><a href="/townhall/">"Super Broken": Residents Confront City Agencies at Sandy Nurse's Town Hall</a></h2>
           <p>Attendees raised concerns about dumping, traffic safety, delayed street repairs and a complaint system many said is failing their neighborhoods.</p>
@@ -1550,7 +1553,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="school-story.jpg" alt="P.S. 007 Abraham Lincoln School, East New York" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="school-story.jpg" alt="P.S. 007 Abraham Lincoln School, East New York" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--accent">Education</span>
           <h2><a href="/twok/">East New York Families May Be Left Behind in the First Wave of 2-K</a></h2>
@@ -1559,7 +1562,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="wellness-story.jpg" alt="Community wellness support in East New York" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="wellness-story.jpg" alt="Community wellness support in East New York" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--green">Community</span>
           <h2><a href="/wellness/">Who Supports the People Who Support East New York?</a></h2>
@@ -1567,7 +1570,7 @@
           <div class="story-meta"><span><strong>Deric Johnson</strong></span><span>Mar 12, 2026</span><span>5 min read</span></div>
         </div>
         <div class="article-card">
-          <div class="article-card-img" style="overflow:hidden;"><img src="restaurant-story.jpg" alt="Bar Fiesta Restaurant, Fulton Street ENY" style="width:100%;height:100%;object-fit:cover;" /></div>
+          <div class="article-card-img" style="overflow:hidden;"><img loading="lazy" decoding="async" src="restaurant-story.jpg" alt="Bar Fiesta Restaurant, Fulton Street ENY" style="width:100%;height:100%;object-fit:cover;" /></div>
           <span class="tag tag--red">Public Safety</span>
           <h2><a href="/restaurant/">CB5 Grapples With Limits of Its Power in Split Restaurant License Debate</a></h2>
           <p>Residents' complaints, a business owner's distress, and the limits of community board authority collided at a tense Public Safety Committee meeting.</p>
@@ -1575,7 +1578,7 @@
         </div>
         <div class="article-card">
           <div class="article-card-img" style="overflow:hidden;">
-            <img src="budcity-story.jpg" alt="Bud City Cannabis, East New York" style="width:100%;height:100%;object-fit:cover;" />
+            <img loading="lazy" decoding="async" src="budcity-story.jpg" alt="Bud City Cannabis, East New York" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <span class="tag tag--accent">Governance</span>
           <h2><a href="/budcity/">CB5 Members Question Their Power in Cannabis Licensing After Bud City Renewal Vote</a></h2>
@@ -1596,7 +1599,7 @@
   <div class="page" id="page-letters">
     <div class="container">
       <div class="page-hero">
-        <h1>Letters to the <span>Editor</span></h1>
+        <h2 class="page-title">Letters to the <span>Editor</span></h2>
         <p>Reader arguments and responses on matters of local concern, published with verified authorship and light editing for length and clarity.</p>
       </div>
       <div class="letters-intro">
@@ -1625,7 +1628,7 @@
 
       <!-- START PAGE HEADER -->
       <div class="page-hero">
-        <h1>Community <span>Events</span></h1>
+        <h2 class="page-title">Community <span>Events</span></h2>
         <p>Find upcoming events, public meetings, school activities, workshops, resource fairs, and community programs happening in East New York. This page is updated regularly and focuses on events that directly serve East New York residents.</p>
       </div>
       <div class="letters-intro">
@@ -2196,7 +2199,7 @@
   <div class="page" id="page-about">
     <div class="container">
       <div class="about-content">
-        <h1>About <span>The East New York Times</span></h1>
+        <h2 class="page-title">About <span>The East New York Times</span></h2>
         <p class="lead">"East New York deserves journalism that treats it like what it is — a living, breathing community full of people making decisions, raising families, and fighting for a better neighborhood."</p>
 
         <h2>Who We Are</h2>
