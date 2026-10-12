@@ -16,9 +16,9 @@ sitemap.xml       Every folder in the repo that contains an index.html, plus the
 news-sitemap.xml  Google News sitemap. Per Google's spec this must contain ONLY
                   articles published in the last 2 days, so it is short by design
                   and must be regenerated on every publish. If nothing was
-                  published in the window, the file is written with an empty
-                  <urlset>, which is valid and simply tells Google there is
-                  nothing new.
+                  published in the window, the newest article is kept so the
+                  file is never empty. Search Console flags an empty news
+                  sitemap as an error.
                   https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap
 
 Both files are written to the repo root. Commit them with your story.
@@ -136,7 +136,7 @@ def build_sitemap(root: str, slugs, today: str) -> str:
 
 def build_news_sitemap(root: str, slugs, now: datetime):
     cutoff = now - timedelta(days=NEWS_WINDOW_DAYS)
-    recent = []
+    candidates = []
     for slug in slugs:
         if slug in NOT_NEWS:
             continue
@@ -146,14 +146,22 @@ def build_news_sitemap(root: str, slugs, now: datetime):
             continue
         if published.tzinfo is None:
             published = published.replace(tzinfo=TZ)
-        if published >= cutoff:
-            title = headline(root, slug)
-            if not title:
+        title = headline(root, slug)
+        if not title:
+            if published >= cutoff:
                 print(f"WARNING: /{slug}/ has no headline; skipped from news sitemap")
-                continue
-            recent.append((slug, published, title))
+            continue
+        candidates.append((slug, published, title))
 
-    recent.sort(key=lambda pair: pair[1], reverse=True)
+    candidates.sort(key=lambda pair: pair[1], reverse=True)
+    recent = [c for c in candidates if c[1] >= cutoff]
+    if not recent and candidates:
+        # Search Console reports an error when it reads an empty news sitemap
+        # (seen Oct 10, 2026). On quiet days, keep the single newest article
+        # instead of writing an empty <urlset>. Google simply ignores entries
+        # older than 2 days, so this is harmless.
+        recent = candidates[:1]
+        print(f"No articles in the last {NEWS_WINDOW_DAYS} days; keeping newest: /{recent[0][0]}/")
 
     body = "\n".join(
         f"  <url>\n"
