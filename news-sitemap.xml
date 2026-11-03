@@ -12,15 +12,4 @@
       <news:title>New Vendor Licenses Are Coming. East New York Vendors Want a Fair Shot.</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://eastnewyorktimes.com/citadel-cathedral-church-foreclosure/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>East New York Times</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-01T00:00:00-04:00</news:publication_date>
-      <news:title>$1.8 Million Paid. A Church Still at Risk.</news:title>
-    </news:news>
-  </url>
 </urlset>
