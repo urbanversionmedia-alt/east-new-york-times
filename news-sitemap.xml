@@ -12,15 +12,4 @@
       <news:title>East New York's Midterm Results: From Albany to Washington</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://eastnewyorktimes.com/east-new-york-vendor-licenses-fair-shot/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>East New York Times</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-03T00:10:00+00:00</news:publication_date>
-      <news:title>New Vendor Licenses Are Coming. East New York Vendors Want a Fair Shot.</news:title>
-    </news:news>
-  </url>
 </urlset>
