@@ -6,12 +6,21 @@
     <atom:link href="https://eastnewyorktimes.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Independent community news for East New York, Cypress Hills, City Line, Starrett City and Brownsville, Brooklyn.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Nov 2026 09:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 09:00:00 -0500</lastBuildDate>
     <image>
       <url>https://eastnewyorktimes.com/enyt-mark-512.png</url>
       <title>East New York Times</title>
       <link>https://eastnewyorktimes.com/</link>
     </image>
+    <item>
+      <title>Medicaid Work Rules Start Jan. 1. Here's How to Check Where You Stand.</title>
+      <link>https://eastnewyorktimes.com/medicaid-work-rules-start-jan-1-check-where-you-stand/</link>
+      <guid isPermaLink="true">https://eastnewyorktimes.com/medicaid-work-rules-start-jan-1-check-where-you-stand/</guid>
+      <pubDate>Thu, 19 Nov 2026 09:00:00 -0500</pubDate>
+      <dc:creator>Deric Johnson</dc:creator>
+      <category>Health</category>
+      <description>A free city tool walks you through the new SNAP and Medicaid rules one question at a time. If you're exempt, you may still have to prove it.</description>
+    </item>
     <item>
       <title>The Tax Lien Sale Is Coming Back. Here's What East New York Homeowners Should Know Now.</title>
       <link>https://eastnewyorktimes.com/tax-lien-sale-2027-east-new-york-homeowners/</link>
@@ -260,14 +269,6 @@
       <pubDate>Thu, 25 Jun 2026 09:00:00 -0400</pubDate>
       <dc:creator>Deric Johnson</dc:creator>
       <description>At CB5’s final meeting of the season, Sandy Nurse pressed for housing vouchers, NYCHA repairs, and homeownership pathways while East New York’s next Assembly member, Christian Celeste Tate, watched from the audience.</description>
-    </item>
-    <item>
-      <title>Celeste Tate Defeats Dilan in AD54 — What It Means for East New York</title>
-      <link>https://eastnewyorktimes.com/ad54/</link>
-      <guid isPermaLink="true">https://eastnewyorktimes.com/ad54/</guid>
-      <pubDate>Wed, 24 Jun 2026 09:00:00 -0400</pubDate>
-      <dc:creator>Deric Johnson</dc:creator>
-      <description>Christian Celeste Tate defeated incumbent Assemblymember Erik Dilan in the Assembly District 54 Democratic primary, 62% to 38%. The district covers Bushwick, Cypress Hills, and East New York.</description>
     </item>
   </channel>
 </rss>
