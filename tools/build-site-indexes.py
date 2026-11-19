@@ -64,7 +64,10 @@ CB5 = [
 RECESS_MONTHS = {7, 8}
 # Board-announced changes: {("general", "2026-11"): "2026-11-18"} moves that
 # month's meeting; use None to mark it cancelled.
-OVERRIDES = {}
+OVERRIDES = {
+    # Moved up a week for Thanksgiving; held Wednesday, Nov. 18, 2026.
+    ("general", "2026-11"): "2026-11-18",
+}
 
 WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 ORDINALS = {1: "1st", 2: "2nd", 3: "3rd", 4: "4th"}
