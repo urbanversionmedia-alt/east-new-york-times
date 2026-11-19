@@ -16,9 +16,9 @@ sitemap.xml       Every folder in the repo that contains an index.html, plus the
 news-sitemap.xml  Google News sitemap. Per Google's spec this must contain ONLY
                   articles published in the last 2 days, so it is short by design
                   and must be regenerated on every publish. If nothing was
-                  published in the window, the newest article is kept so the
-                  file is never empty. Search Console flags an empty news
-                  sitemap as an error.
+                  published in the window, the file is an empty <urlset>.
+                  Google says this is fine: Search Console may show an
+                  "Empty Sitemap" warning, but it causes no problems.
                   https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap
 
 Both files are written to the repo root. Commit them with your story.
@@ -44,6 +44,9 @@ NOT_NEWS = {
     "corrections",
     "honorary-street-names",
     "how-to-request-street-conaming-cb5",
+    "about",
+    "deric-johnson",
+    "cb5meetings",
 }
 
 # Undated pages: give sitemap.xml a sensible lastmod without faking a news date.
@@ -53,6 +56,8 @@ STATIC_LASTMOD = {
     "honorary-street-names": "2026-08-19",
     "how-to-request-street-conaming-cb5": "2026-08-19",
     "virginia-burroughs-way-video": "2026-08-19",
+    "about": "2026-11-19",
+    "deric-johnson": "2026-11-19",
 }
 
 TZ = timezone(timedelta(hours=-4))  # America/New_York, EDT
@@ -155,13 +160,9 @@ def build_news_sitemap(root: str, slugs, now: datetime):
 
     candidates.sort(key=lambda pair: pair[1], reverse=True)
     recent = [c for c in candidates if c[1] >= cutoff]
-    if not recent and candidates:
-        # Search Console reports an error when it reads an empty news sitemap
-        # (seen Oct 10, 2026). On quiet days, keep the single newest article
-        # instead of writing an empty <urlset>. Google simply ignores entries
-        # older than 2 days, so this is harmless.
-        recent = candidates[:1]
-        print(f"No articles in the last {NEWS_WINDOW_DAYS} days; keeping newest: /{recent[0][0]}/")
+    # On quiet days the news sitemap is intentionally empty. Google requires
+    # articles older than two days to be removed, and an empty news sitemap is
+    # allowed (Search Console shows a harmless "Empty Sitemap" warning).
 
     body = "\n".join(
         f"  <url>\n"

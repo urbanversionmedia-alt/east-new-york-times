@@ -2,14 +2,27 @@ name: Refresh sitemaps
 
 # Google News only accepts articles from the last 2 days. This rebuilds
 # sitemap.xml and news-sitemap.xml every morning so older stories drop out
-# automatically, even on days nothing new is published.
+# automatically, even on days nothing new is published. It also rebuilds the
+# RSS feed, the author page story list and the CB5 meeting dates, and reports
+# new stories to Bing through IndexNow.
+#
+# It also runs when a story is merged to main, so the feed and sitemaps pick
+# up new stories right away. (Commits pushed by this job do not re-trigger it.)
 on:
   schedule:
     - cron: "15 10 * * *"   # 6:15 AM EDT / 5:15 AM EST
+  push:
+    branches: [main]
+    paths:
+      - "*/index.html"
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: refresh-sitemaps
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -20,14 +33,24 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 tools/build-sitemaps.py
+      - run: python3 tools/build-site-indexes.py
       - name: Commit if changed
+        id: commit
         run: |
-          if git diff --quiet -- sitemap.xml news-sitemap.xml; then
-            echo "Sitemaps already current."
+          FILES="sitemap.xml news-sitemap.xml feed.xml deric-johnson/index.html cb5meetings/index.html"
+          git add -N feed.xml 2>/dev/null || true
+          if git diff --quiet -- $FILES; then
+            echo "Generated files already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml news-sitemap.xml
-          git commit -m "Refresh sitemaps (daily)"
+          git add $FILES
+          git commit -m "Refresh sitemaps, feed and listings (daily)"
+          git pull --rebase
           git push
+      - name: Report new stories to IndexNow (Bing)
+        run: |
+          # Give Netlify a couple of minutes to publish the latest deploy first.
+          sleep 150
+          python3 tools/indexnow.py
