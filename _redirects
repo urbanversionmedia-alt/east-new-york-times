@@ -48,3 +48,10 @@
 
 /ethics/ /ethics/index.html 200
 /corrections/ /corrections/index.html 200
+
+# RSS feed aliases
+/rss.xml /feed.xml 301
+/feed /feed.xml 301
+/feed/ /feed.xml 301
+/rss /feed.xml 301
+/author/deric-johnson/ /deric-johnson/ 301
