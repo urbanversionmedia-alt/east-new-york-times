@@ -12,15 +12,4 @@
       <news:title>Thanksgiving Food Distribution Includes East New York Organizations</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://eastnewyorktimes.com/medicaid-work-rules-start-jan-1-check-where-you-stand/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>East New York Times</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-19T00:00:00-04:00</news:publication_date>
-      <news:title>Medicaid Work Rules Start Jan. 1. Here's How to Check Where You Stand.</news:title>
-    </news:news>
-  </url>
 </urlset>
