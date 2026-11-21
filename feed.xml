@@ -6,12 +6,21 @@
     <atom:link href="https://eastnewyorktimes.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Independent community news for East New York, Cypress Hills, City Line, Starrett City and Brownsville, Brooklyn.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Nov 2026 09:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 09:00:00 -0500</lastBuildDate>
     <image>
       <url>https://eastnewyorktimes.com/enyt-mark-512.png</url>
       <title>East New York Times</title>
       <link>https://eastnewyorktimes.com/</link>
     </image>
+    <item>
+      <title>Thanksgiving Food Distribution Includes East New York Organizations</title>
+      <link>https://eastnewyorktimes.com/thanksgiving-food-distribution-east-new-york-organizations/</link>
+      <guid isPermaLink="true">https://eastnewyorktimes.com/thanksgiving-food-distribution-east-new-york-organizations/</guid>
+      <pubDate>Sat, 21 Nov 2026 09:00:00 -0500</pubDate>
+      <dc:creator>Deric Johnson</dc:creator>
+      <category>Community</category>
+      <description>Reynoso says the annual Borough Hall effort brings food closer to families through community organizations.</description>
+    </item>
     <item>
       <title>Medicaid Work Rules Start Jan. 1. Here's How to Check Where You Stand.</title>
       <link>https://eastnewyorktimes.com/medicaid-work-rules-start-jan-1-check-where-you-stand/</link>
@@ -261,14 +270,6 @@
       <pubDate>Fri, 26 Jun 2026 09:00:00 -0400</pubDate>
       <dc:creator>Deric Johnson</dc:creator>
       <description>The Governor and Brooklyn District Attorney Eric Gonzalez announced a 176-count case against 23 alleged gang members in Brooklyn, including conspiracy to commit murder and weapons charges. Here is why East New York — and the 75th Precinct — should be paying attention.</description>
-    </item>
-    <item>
-      <title>Housing, Wealth, and Who Gets to Stay in East New York</title>
-      <link>https://eastnewyorktimes.com/housing-wealth-and-who-gets-to-stay-east-new-york/</link>
-      <guid isPermaLink="true">https://eastnewyorktimes.com/housing-wealth-and-who-gets-to-stay-east-new-york/</guid>
-      <pubDate>Thu, 25 Jun 2026 09:00:00 -0400</pubDate>
-      <dc:creator>Deric Johnson</dc:creator>
-      <description>At CB5’s final meeting of the season, Sandy Nurse pressed for housing vouchers, NYCHA repairs, and homeownership pathways while East New York’s next Assembly member, Christian Celeste Tate, watched from the audience.</description>
     </item>
   </channel>
 </rss>
